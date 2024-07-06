@@ -1,5 +1,5 @@
 <template>
-    <div class="auto-font-size" :style="{ 'text-align': position }">
+    <div class="auto-font" :style="{ 'text-align': position }">
         <span ref="innerSpan">
             <slot>{{ text }}</slot>
         </span>
@@ -37,7 +37,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.auto-font-size {
+.auto-font {
     width: 100%;
     opacity: 0;
     position: relative;

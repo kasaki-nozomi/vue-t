@@ -10,12 +10,12 @@ import '@/assets/style/index.scss'
 import '@/utils/flexable.js'
 import '@/utils/preload.js'
 
-import autoFontSize from '@/components/common/autofontsize/autoFontSize.js'
-import loading from      '@/components/common/loading/loading.js'
-import toast from        '@/components/common/toast/toast.js'
+import autofont from '@/components/common/autofont/autofont.js'
+import loading from '@/components/common/loading/loading.js'
+import toast from '@/components/common/toast/toast.js'
 
 import i18n from '@/i18n/index.js'
-import bus from  '@/utils/bus.js'
+import bus from '@/utils/bus.js'
 
 // import { ElInfiniteScroll } from 'element-plus'
 
@@ -25,7 +25,7 @@ const pinia = createPinia()
 // app.use(router)
 app.use(pinia)
 
-app.use(autoFontSize)
+app.use(autofont)
 app.use(loading)
 app.use(toast)
 
