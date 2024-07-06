@@ -18,44 +18,24 @@ import { getUrlParam } from '@/utils/utils'
 
 const store = useStore()
 
-const game = import.meta.env.VITE_APP_GAME
-
 const { proxy } = getCurrentInstance()
 
 const { locale } = useI18n()
 if (getUrlParam('lang') || getUrlParam('l')) {
     locale.value = getUrlParam('lang') || getUrlParam('l')
-    localStorage.setItem(`${game.toLowerCase()}-lang`, getUrlParam('lang') || getUrlParam('l'))
+    localStorage.setItem(`lang`, getUrlParam('lang') || getUrlParam('l'))
     const url = new URL(location.href)
     url.searchParams.delete('lang')
     url.searchParams.delete('l')
     history.pushState(null, null, url.href)
-} else if (localStorage.getItem(`${game.toLowerCase()}-lang`)) {
-    locale.value = localStorage.getItem(`${game.toLowerCase()}-lang`)
+} else if (localStorage.getItem(`lang`)) {
+    locale.value = localStorage.getItem(`lang`)
 } else {
     const broswerLang = (navigator.language || navigator.userLanguage).toLowerCase()
     locale.value = broswerLang === 'zh-tw' ? 'zh-tw' : broswerLang.split('-')[0]
 }
 
-if (getUrlParam('openid')) {
-    localStorage.setItem(`${game.toLowerCase()}-openid`, decodeURIComponent(getUrlParam('openid')))
-    const url = new URL(location.href)
-    url.searchParams.delete('openid')
-    history.pushState(null, null, url.href)
-    nextTick(() => proxy.bus.emit('login', { openid: localStorage.getItem(`${game.toLowerCase()}-openid`) }))
-} else if (localStorage.getItem(`${game.toLowerCase()}-openid`)) {
-    nextTick(() => proxy.bus.emit('login', { openid: localStorage.getItem(`${game.toLowerCase()}-openid`) }))
-}
-
-if (getUrlParam('utm_campaign')) {
-    localStorage.setItem(`${game}_utm_campaign`, getUrlParam('utm_campaign'))
-    const url = new URL(location.href)
-    url.searchParams.delete('utm_campaign')
-    history.pushState(null, null, url.href)
-}
-store.utmCampaign = localStorage.getItem(`${game}_utm_campaign`)
-
-document.title = `${import.meta.env[`VITE_NAME_${game}`]}`
+document.title = `hello`
 </script>
 
 <style lang="scss">

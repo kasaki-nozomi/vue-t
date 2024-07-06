@@ -16,7 +16,7 @@ const locale = getUrlParam('lang') || getUrlParam('l') || localStorage.getItem(`
 
 const props = defineProps({
     message: { type: String, required: true },
-    duration: { type: Number, default: 1600 }
+    duration: { type: Number, default: 1660 }
 })
 
 const visible = ref(false)

@@ -14,18 +14,17 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig(({ _, mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
-    const game = env.GAME
     const project = env.VITE_PROJECT
     const production = env.VITE_NODE_ENV === 'production'
 
     const config = {
-        base: production ? `${env.PUBLIC_PATH}${game.toLowerCase()}/${project}/` : env.PUBLIC_PATH,
+        base: env.PUBLIC_PATH,
         build: {
             assetsDir: 'assets',
             assetsInlineLimit: 1024 * 5,
             cssCodeSplit: true,
             minify: 'terser',
-            outDir: `${env.OUT_DIR}/${game.toLowerCase()}/${project}`,
+            outDir: env.OUT_DIR,
             rollupOptions: { output: { assetFileNames: 'assets/[ext]/[name].[hash].[ext]' } },
             sourcemap: !production,
             terserOptions: { compress: { drop_console: production } }
@@ -44,12 +43,12 @@ export default defineConfig(({ _, mode }) => {
                 minify: true,
                 inject: {
                     data: {
-                        title: env[`VITE_NAME_${game}`],
-                        icon: `${env.COMMON_PATH}/icon/${game.toLowerCase()}.png`,
-                        shareTitle: env[`VITE_TITLE_${game}`],
+                        title: ``,
+                        icon: ``,
+                        shareTitle: ``,
                         shareDescription: '',
-                        shareImage: `${env.COMMON_PATH}/share/${game.toLowerCase()}.jpg`,
-                        shareUrl: `${env[`VITE_OFFICIAL_URL_${game}`]}/event/${project}${!production ? '/index.html' : ''}`,
+                        shareImage: ``,
+                        shareUrl: ``,
                         date: new Date().toLocaleString()
                     }
                 }
@@ -65,6 +64,5 @@ export default defineConfig(({ _, mode }) => {
             }
         }
     }
-    process.env.VITE_APP_GAME = game
     return config
 })
