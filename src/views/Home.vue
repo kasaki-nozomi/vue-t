@@ -46,7 +46,7 @@ async function logout() { }
 <style lang="scss" scoped>
 .home {
     position: relative;
-    width: 750px;
+    width: 100%;
     height: 100%;
     min-height: 100vh;
     @include background($image: 'background.jpg', $position: top center, $size: cover);

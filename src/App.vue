@@ -55,17 +55,5 @@ body {
     &.ru {
         font-family: PingFang SC;
     }
-
-    &::before {
-        content: '';
-        z-index: -99;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        filter: blur(10px);
-        @include background($image: 'background.jpg', $position: top center, $size: 100% auto);
-    }
 }
 </style>

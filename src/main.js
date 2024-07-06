@@ -7,7 +7,7 @@ import { createPinia } from 'pinia'
 import '@/assets/style/common.scss'
 import '@/assets/style/index.scss'
 
-import '@/utils/flexable.js'
+// import '@/utils/flexable.js'
 import '@/utils/preload.js'
 
 import autofont from '@/components/common/autofont/autofont.js'
