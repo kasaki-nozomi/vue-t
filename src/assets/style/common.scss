@@ -1,0 +1,26 @@
+.button {
+    border: 0;
+    outline: none;
+    background: none;
+    text-decoration: none;
+
+    cursor: pointer;
+    // transition: all 0.15s;
+    transform-origin: center center;
+
+    &:hover {
+        -webkit-filter: brightness(1.1);
+        filter: brightness(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        -webkit-filter: brightness(0.9);
+        filter: brightness(0.9);
+    }
+
+    &.disable { 
+        pointer-events: none;
+        filter: grayscale(0.8);
+    }
+}

@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'Chillroundf';
+    src: url('@/assets/fonts/chillroundf.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('@/assets/fonts/nunito.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('@/assets/fonts/nunito-bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito-Extrabold';
+    src: url('@/assets/fonts/nunito-extrabold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-y;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    border: 0;
+    outline: none;
+    background: none;
+    text-decoration: none;
+    font-family: Chillroundf, PingFang SC;
+
+    cursor: pointer;
+    // transition: all 0.15s;
+    transform-origin: center center;
+
+    &.ru {
+        font-family: PingFang SC;
+    }
+
+    &:hover {
+        -webkit-filter: brightness(1.1);
+        filter: brightness(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        -webkit-filter: brightness(0.9);
+        filter: brightness(0.9);
+    }
+
+    &.disable { 
+        pointer-events: none;
+        filter: grayscale(0.4);
+    }
+}
+
+input {
+    border: 0;
+    outline: 0;
+    padding: 0;
+    background: none;
+    font-family: Chillroundf, PingFang SC;
+    text-align: center;
+
+    user-select: auto;
+    -ms-user-select: auto;
+    -moz-user-select: auto;
+    -khtml-user-select: auto;
+    -webkit-user-select: auto;
+
+    &.ru {
+        font-family: PingFang SC;
+    }
+}

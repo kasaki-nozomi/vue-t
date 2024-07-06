@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/ico" href="<%= icon %>" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title><%= title %></title>
+
+        <!-- facebook line whatsapp vk -->
+        <meta property="og:url" content="<%= shareUrl %>" />
+        <meta property="og:title" content="<%= shareTitle %>" />
+        <meta property="og:image" content="<%= shareImage %>" />
+        <meta property="og:description" content="<%= shareDescription %>" />
+        <meta property="og:type" content="website" />
+
+        <!-- twitter -->
+        <meta name="twitter:url" content="<%= shareUrl %>" />
+        <meta name="twitter:title" content="<%= shareTitle %>" />
+        <meta name="twitter:image" content="<%= shareImage %>" />
+        <meta name="twitter:description" content="<%= shareDescription %>" />
+        <meta name="twitter:site" content="@FunPlusGames" />
+        <meta name="twitter:creator" content="@FunPlusGames" />
+        <meta name="twitter:card" content="summary_large_image" />
+        
+        <!-- weibo -->
+        <meta name="weibo:title" content="<%= shareTitle %>" />
+        <meta name="weibo:image" content="<%= shareImage %>" />
+        <meta name="weibo:description" content="<%= shareDescription %>" />
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.js"></script>
+    </body>
+</html>

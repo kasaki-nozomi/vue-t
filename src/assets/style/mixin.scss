@@ -1,0 +1,82 @@
+$image-path: '@/assets/images/';
+
+@mixin flex-center($align-items: center, $justify-content: center, $flex-direction: row) {
+    display: flex;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    flex-direction: $flex-direction;
+}
+
+@mixin background($image, $repeat: no-repeat, $position: center center, $size: 100% 100%) {
+    background: url('#{$image-path}#{$image}') $repeat $position;
+    background-size: $size;
+}
+
+@mixin absolute-center() {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@mixin breathe() {
+    animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%,
+    100% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+@mixin rotate() {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@mixin opacity() {
+    animation: opacity 3s linear infinite;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;;
+    }
+}
+
+@mixin scroll-bar($width: 0, $height: 0, $color: rgb(0, 0, 0, 0.4), $back-color: rgb(0, 0, 0, 0)) {
+    scrollbar-width: auto;
+    &::-webkit-scrollbar {
+        display: initial;
+        width: $width;
+        height: $height;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: $color;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: $back-color;
+    }
+}
