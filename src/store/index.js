@@ -4,9 +4,19 @@ import { useLoadingStore } from '@/store/module/loading'
 import { useUserStore } from '@/store/module/user'
 
 const useStore = defineStore('main', {
-    state: () => ({ }),
+    state: () => ({
+        phone: window.innerWidth <= 750,
+        pad: window.innerWidth <= 1366,
+        pc: window.innerWidth > 750
+    }),
     getters: { },
-    actions: { }
+    actions: {
+        setResize() {
+            this.phone = window.innerWidth <= 750
+            this.pad = window.innerWidth <= 1366
+            this.pc = window.innerWidth > 750
+        }
+    }
 })
 
 export { 

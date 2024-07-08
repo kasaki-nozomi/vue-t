@@ -2,13 +2,20 @@
     <div class="header">
         <div class="header-logo button">
             <img class="logo" :src="logo" />
-            <img class="name" :src="name" />
+            <img class="name" :src="name" v-show="!store.phone" />
         </div>
-        <div class="header-tab">
+        <div v-if="!store.pad" class="header-tab">
             <button>首页</button>
             <button>历史项目</button>
             <button>公司介绍</button>
             <button>联系我们</button>
+        </div>
+        <div v-else class="header-tab-button">
+            <button @click="">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
         </div>
     </div>
 </template>
@@ -16,7 +23,7 @@
 <script setup>
 import { getCurrentInstance } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore, useUserStore } from '@/store'
+import { useStore } from '@/store'
 
 const { proxy } = getCurrentInstance()
 const { t } = useI18n()
@@ -30,8 +37,8 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
 <style lang="scss" scoped>
 .header {
     width: 100%;
-    height: 200PX;
-    padding: 0 120PX;
+    height: 180PX;
+    padding: 0 100px;
     @include flex-center(center, space-between);
 
     .header-logo {
@@ -40,7 +47,7 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
         @include flex-center();
 
         img {
-            height: 80PX;
+            height: 75PX;
         }
     }
 
@@ -62,6 +69,45 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
                 letter-spacing: 1PX;
                 color: white;
                 background: rgb(80, 80, 80);
+            }
+        }
+    }
+
+    .header-tab-button {
+        button {
+            gap: 6PX;
+            @include flex-center(center, normal, column);
+
+            div {
+                width: 32PX;
+                height: 4PX;
+                background: white;
+            }
+        }
+    }
+}
+
+@include setPhoneContent {
+    .header {
+        height: 100px;
+        padding: 0 25px;
+
+        .header-logo {
+
+            img {
+                height: 45px;
+            }
+        }
+
+        .header-tab-button {
+            button {
+                gap: 5px;
+
+                div {
+                    width: 24px;
+                    height: 3px;
+                    background: white;
+                }
             }
         }
     }

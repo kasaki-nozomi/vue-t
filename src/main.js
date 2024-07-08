@@ -9,6 +9,7 @@ import '@/assets/style/index.scss'
 
 // import '@/utils/flexable.js'
 import '@/utils/preload.js'
+import '@/utils/resize.js'
 
 import autofont from '@/components/common/autofont/autofont.js'
 import loading from '@/components/common/loading/loading.js'
