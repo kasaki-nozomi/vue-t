@@ -26,10 +26,12 @@ $image-path: '@/assets/images/';
 }
 
 @keyframes breathe {
+
     0%,
     100% {
         transform: scale(0.95);
     }
+
     50% {
         transform: scale(1);
     }
@@ -43,6 +45,7 @@ $image-path: '@/assets/images/';
     0% {
         transform: rotate(0);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -56,27 +59,45 @@ $image-path: '@/assets/images/';
     0% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.2;
     }
+
     100% {
-        opacity: 1;;
+        opacity: 1;
+        ;
     }
 }
 
 @mixin scroll-bar($width: 0, $height: 0, $color: rgb(0, 0, 0, 0.4), $back-color: rgb(0, 0, 0, 0)) {
     scrollbar-width: auto;
+
     &::-webkit-scrollbar {
         display: initial;
         width: $width;
         height: $height;
     }
+
     &::-webkit-scrollbar-thumb {
         border-radius: 10px;
         background: $color;
     }
+
     &::-webkit-scrollbar-track {
         border-radius: 10px;
         background: $back-color;
+    }
+}
+
+@mixin setMobileContent() {
+    @media screen and (max-width: 750px) {
+        @content
+    }
+}
+
+@mixin setPcContent() {
+    @media screen and (min-width: 750.5px) {
+        @content
     }
 }

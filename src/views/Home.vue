@@ -1,11 +1,13 @@
 <template>
     <div class="home">
         <Header></Header>
+        <Company></Company>
         <Footer></Footer>
     </div>
 </template>
 <script setup>
 import Header from '@/components/αHeader.vue'
+import Company from '@/components/βCompany.vue'
 import Footer from '@/components/δFooter.vue'
 
 import axios from 'axios'
@@ -49,6 +51,9 @@ async function logout() { }
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    @include background($image: 'background.jpg', $position: top center, $size: cover);
+    background: black;
+    @include flex-center(center, normal, column);
+    // @include background($image: 'background.jpg', $position: top center, $size: cover);
+
 }
 </style>

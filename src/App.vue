@@ -35,7 +35,7 @@ if (getUrlParam('lang') || getUrlParam('l')) {
     locale.value = broswerLang === 'zh-tw' ? 'zh-tw' : broswerLang.split('-')[0]
 }
 
-document.title = `hello`
+document.title = `空鸟文化`
 </script>
 
 <style lang="scss">
