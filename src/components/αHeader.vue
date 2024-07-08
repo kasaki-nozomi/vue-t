@@ -89,6 +89,7 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
 
 @include setPhoneContent {
     .header {
+        min-width: 300px;
         height: 100px;
         padding: 0 25px;
 
