@@ -8,7 +8,7 @@
 
 <script setup>
 const screenImage = new URL('@/assets/images/company/company.jpg', import.meta.url).href
-const screenVideo = new URL('@/assets/images/company/campany.mp4', import.meta.url).href
+const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.url).href
 </script>
 
 <style lang="scss" scoped>
@@ -19,7 +19,12 @@ const screenVideo = new URL('@/assets/images/company/campany.mp4', import.meta.u
         display: block;
         margin: 0;
         padding: 0;
-        width: 1920px;
+        // width: 1920px;
+        height: calc(100vh - 150PX);
+
+        @include setPhoneContent {
+            height: calc(100vh - 72PX);
+        }
     }
 }
 </style>

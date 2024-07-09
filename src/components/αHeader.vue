@@ -83,7 +83,7 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
                 padding: 0 36PX;
                 letter-spacing: 1PX;
                 color: white;
-                background: rgb(60, 60, 60);
+                background: rgb(50, 50, 50);
             }
         }
     }
@@ -153,21 +153,22 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
         }
     }
 }
+
 .tab-a-enter-active,
 .tab-d-leave-active {
-    transition: all 0.15s ease;
+    transition: all 0.1s ease;
 }
 .tab-b-enter-active,
 .tab-c-leave-active {
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 .tab-c-enter-active,
 .tab-b-leave-active {
-    transition: all 0.45s ease;
+    transition: all 0.3s ease;
 }
 .tab-d-enter-active,
 .tab-a-leave-active {
-    transition: all 0.6s ease;
+    transition: all 0.4s ease;
 }
 .tab-a-enter-from {
     opacity: 0;

@@ -16,7 +16,7 @@
             <div class="divide"></div>
             <div class="state">
                 <div class="state-title">Member size</div>
-                <div class="state-desc">8</div>
+                <div class="state-desc">15</div>
             </div>
         </div>
     </div>
@@ -29,24 +29,25 @@ const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
 <style lang="scss" scoped>
 .company {
     width: 100%;
-    margin-top: 100PX;
-    @include flex-center(center, normal, column);
+    height: 100vh;
+    min-height: 750PX;
+    @include flex-center(center, center, column);
 
     img {
-        width: 600px;
-        max-width: 250PX;
+        width: 800px;
+        max-width: 320PX;
     }
 
     .company-origin {
         max-width: 400PX;
-        margin-top: 42PX;
+        margin-top: 50PX;
         font-size: 15PX;
         color: rgba(255, 255, 255, 0.7);
     }
 
     .company-desc {
         max-width: 500PX;
-        margin-top: 28PX;
+        margin-top: 32PX;
         font-size: 15PX;
         text-align: center;
         color: rgba(255, 255, 255, 0.7);
@@ -54,7 +55,7 @@ const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
 
     .company-states {
         width: 80%;
-        margin-top: 52PX;
+        margin-top: 80PX;
         @include flex-center();
 
         .state {
@@ -62,7 +63,10 @@ const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
             @include flex-center(center, normal, column);
 
             .state-title {
+                height: 50PX;
+                text-align: center;
                 color: white;
+                @include flex-center();
             }
 
             .state-desc {

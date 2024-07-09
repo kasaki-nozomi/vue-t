@@ -27,24 +27,32 @@ const cooperates = [
 <style lang="scss" scoped>
 .cooperate {
     width: 100%;
+    height: calc(100vh - 225PX);
+    min-height: 600PX;
     margin-top: 100PX;
-    @include flex-center(center, normal, column);
+    @include flex-center(center, center, column);
+
+    @include setPhoneContent {
+        height: calc(200vh - 225PX);
+    }
 
     .cooperate-title {
         font-size: 40PX;
+        text-align: center;
         color: white;
     }
 
     .cooperate-list {
         width: 80%;
-        margin: 80PX 0 100PX 0;
+        max-width: 1400PX;
+        margin-top: 80PX;
         flex-wrap: wrap;
         gap: 50PX;
         @include flex-center();
 
         .cooperate-item {
             img {
-                width: 140PX;
+                width: 160PX;
             }
         }
     }
