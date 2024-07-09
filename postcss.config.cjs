@@ -11,7 +11,7 @@ module.exports = ({}) => {
                 fontViewportUnit: 'vw',
                 selectorBlackList: ['.ignore', '.hairlines'],
                 minPixelValue: 1,
-                mediaQuery: false,
+                mediaQuery: true,
                 exclude: /node_modules/i
             }
             // 'postcss-pxtorem': {

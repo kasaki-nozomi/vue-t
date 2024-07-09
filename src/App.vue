@@ -35,7 +35,7 @@ if (getUrlParam('lang') || getUrlParam('l')) {
     locale.value = broswerLang === 'zh-tw' ? 'zh-tw' : broswerLang.split('-')[0]
 }
 
-document.title = `空鸟文化`
+document.title = `KongNiao`
 </script>
 
 <style lang="scss">
@@ -43,12 +43,7 @@ body {
     background: rgba(0, 0, 0, 0.75);
 }
 
-#app {
-    height: 100%;
-}
-
 #root {
-    height: 100%;
     font-family: Chillroundf, PingFang SC;
     @include flex-center(center, normal, column);
 

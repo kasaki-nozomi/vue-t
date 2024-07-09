@@ -1,14 +1,18 @@
 <template>
     <div class="home">
         <Header></Header>
+        <Screen></Screen>
         <Company></Company>
+        <Cooperate></Cooperate>
         <Footer></Footer>
     </div>
 </template>
 <script setup>
 import Header from '@/components/αHeader.vue'
-import Company from '@/components/βCompany.vue'
-import Footer from '@/components/δFooter.vue'
+import Screen from '@/components/βScreen.vue'
+import Company from '@/components/εCompany.vue'
+import Cooperate from '@/components/ζCooperate.vue'
+import Footer from '@/components/ηFooter.vue'
 
 import axios from 'axios'
 import { getCurrentInstance } from 'vue'
@@ -52,6 +56,7 @@ async function logout() { }
     height: 100%;
     min-height: 100vh;
     background: black;
+    overflow-y: auto;
     @include flex-center(center, normal, column);
     // @include background($image: 'background.jpg', $position: top center, $size: cover);
 
