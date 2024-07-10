@@ -2,6 +2,8 @@
     <div class="home">
         <Header></Header>
         <Screen></Screen>
+        <Capacity></Capacity>
+        <Project></Project>
         <Company></Company>
         <Cooperate></Cooperate>
         <Footer></Footer>
@@ -10,6 +12,8 @@
 <script setup>
 import Header from '@/components/αHeader.vue'
 import Screen from '@/components/βScreen.vue'
+import Capacity from '@/components/γCapacity.vue'
+import Project from '@/components/δProject.vue'
 import Company from '@/components/εCompany.vue'
 import Cooperate from '@/components/ζCooperate.vue'
 import Footer from '@/components/ηFooter.vue'
@@ -58,7 +62,5 @@ async function logout() { }
     background: black;
     overflow-y: auto;
     @include flex-center(center, normal, column);
-    // @include background($image: 'background.jpg', $position: top center, $size: cover);
-
 }
 </style>

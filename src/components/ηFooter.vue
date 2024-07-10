@@ -52,10 +52,9 @@ const bl = new URL('@/assets/images/connect-bilibili.png', import.meta.url).href
         height: 100%;
         flex: 2;
         background: rgb(40, 40, 40);
-        @include flex-center(center, flex-start);
+        @include flex-center(center, center);
 
         .footer-info {
-            margin-left: 25%;
             @include flex-center();
 
             .footer-info-left {
