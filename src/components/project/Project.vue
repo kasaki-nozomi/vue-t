@@ -67,9 +67,9 @@ function goProject(id) {
             height: 825px;
         }
 
-        &.desc-show {
+        // &.desc-show {
             
-        }
+        // }
 
         .project-desc {
             position: absolute;
