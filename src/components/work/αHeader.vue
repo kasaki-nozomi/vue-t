@@ -1,8 +1,8 @@
 <template>
     <div class="header">
-        <div class="header-logo button" @click="router.go(-1)">
+        <div class="header-logo button" @click="router.push({ path: '/' })">
             <img class="logo" :src="logo" />
-            <img class="name" :src="name" v-show="!store.phone" />
+            <img class="name" :src="name" />
         </div>
     </div>
 </template>
@@ -10,12 +10,13 @@
 <script setup>
 import { getCurrentInstance, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import { useStore } from '@/store'
-import router from '@/router';
 
 const { proxy } = getCurrentInstance()
 const { t } = useI18n()
 
+const router = useRouter()
 const store = useStore()
 
 const logo = new URL('@/assets/images/company/logo.png', import.meta.url).href

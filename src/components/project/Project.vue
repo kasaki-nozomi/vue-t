@@ -38,7 +38,7 @@ const oliveRight = new URL('@/assets/images/olive-right.png', import.meta.url).h
 const desc = ref(false)
 
 function goProject(id) {
-    router.push({ name: 'work', params: { project: id } })
+    router.push({ path: '/work', query: { id: id } })
 }
 </script>
 
@@ -78,15 +78,15 @@ function goProject(id) {
             width: 100%;
             height: 100%;
             padding: 0 220px;
-            font-size: 20PX;
+            font-size: 32px;
             color: white;
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             @include flex-center();
 
-            @include setPhoneContent {
-                font-size: 60px;
+            @include setPadContent {
+                font-size: 40px;
             }
         }
     }

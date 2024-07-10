@@ -1,11 +1,13 @@
 <template>
     <div id="work" class="work">
         <Header></Header>
+        <Carousel></Carousel>
     </div>
 </template>
 
 <script setup>
 import Header from '@/components/work/αHeader.vue'
+import Carousel from '@/components/work/βCarousel.vue'
 </script>
 
 <style lang="scss" scoped>

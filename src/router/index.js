@@ -5,7 +5,7 @@ import Work from '@/views/Work.vue'
 
 const routes = [
     { path: '/', name: 'home', component: Home },
-    { path: '/work', name: 'work', component: Work }
+    { path: '/work', name: 'work', component: Work, props: true }
 ]
 
 const router = createRouter({
