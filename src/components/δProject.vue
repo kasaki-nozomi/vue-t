@@ -1,5 +1,6 @@
 <template>
     <div class="projects">
+        <div id="projects"></div>
         <div class="projects-list">
             <div v-for="(project, index) of projects">
                 <Project :id="index" :project="project"></Project>
@@ -54,5 +55,6 @@ const projects = [
 <style lang="scss" scoped>
 .projects {
     width: 100%;
+    padding: 40PX 0;
 }
 </style>

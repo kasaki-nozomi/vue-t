@@ -1,36 +1,61 @@
 <template>
-    <div class="company">
+    <div id="company" class="company">
         <img :src="logo" />
         <div class="company-origin">空鸟文化2023年我们成立了鵼视觉工作室</div>
         <div class="company-desc">我们团队秉承“ 开阔视野，引领潮流 ”的理念，我们相信，视觉的力量能够为文化行业带来更多的可能性，因此我们不断努力开拓新的领域，拓展更广阔的视野，致力于打造能引领潮流且有尖叫度的视觉IP。</div>
         <div class="company-states">
             <div class="state">
                 <div class="state-title">Cooperative company</div>
-                <div class="state-desc">8</div>
+                <div class="state-desc" @mouseenter="moreinfo = 'co'" @mouseleave="moreinfo = null">8</div>
+                <Transition name="moreinfo" mode="out-in"><div class="state-more" v-show="moreinfo === 'co'" v-html="cooperates"></div></Transition>
             </div>
             <div class="divide"></div>
             <div class="state">
                 <div class="state-title">History Awards</div>
-                <div class="state-desc">8</div>
+                <div class="state-desc" @mouseenter="moreinfo = 'hs'" @mouseleave="moreinfo = null">8</div>
+                <Transition name="moreinfo" mode="out-in"><div class="state-more" v-show="moreinfo === 'hs'" v-html="rewards"></div></Transition>
             </div>
             <div class="divide"></div>
             <div class="state">
                 <div class="state-title">Member size</div>
-                <div class="state-desc">15</div>
+                <div class="state-desc" @mouseenter="moreinfo = null" @mouseleave="moreinfo = null">15</div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
+
+const moreinfo = ref(null)
+
+const cooperates = 
+`
+我们的业务领域涵盖IP创作，游戏研发，概念设计和数字艺术等方面，拥有一支充满创意和执行力的专业团队。<br>
+我们团队曾为众多知名合作方提供过设计服务，包括但不限于：腾讯，网易，GGAC，七点GAME，畅游，吉比特，lofter，万维猫动画等。
+`
+
+const rewards = 
+`
+《大野》获：全球数字艺术大赛奇点奖 最佳影视开发奖<br>
+《山海劫》获第五届全球游戏美术大赛GGAC 专业场景组 银奖<br>
+《山海变》入选全国美协首届数字艺术大展<br>
+《山海变》入选首届中国数字艺术大展EDCC特展<br>
+《熵—第二次大爆炸之后》获第四届全球游戏美术大赛GGAC 2D组 优秀奖<br>
+《界冕》获第五届全球游戏美术大赛GGAC 专业组 特等奖<br>
+《回溯》获第四届全球游戏美术大赛GGAC 专业组 银奖<br>
+《长昼将尽》获：全球数字艺术大赛奇点奖 最佳影视开发奖
+`
 </script>
 
 <style lang="scss" scoped>
 .company {
+    position: relative;
     width: 100%;
-    height: 100vh;
-    min-height: 750PX;
+    min-height: 100vh;
+    padding: 40PX 0;
     @include flex-center(center, center, column);
 
     img {
@@ -39,31 +64,37 @@ const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
     }
 
     .company-origin {
-        max-width: 400PX;
+        width: 400PX;
+        max-width: 75%;
         margin-top: 50PX;
         font-size: 15PX;
-        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.65);
     }
 
     .company-desc {
-        max-width: 500PX;
+        width: 500PX;
+        max-width: 80%;
         margin-top: 32PX;
         font-size: 15PX;
         text-align: center;
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.65);
     }
 
     .company-states {
         width: 80%;
+        height: 120PX;
         margin-top: 80PX;
         @include flex-center();
 
         .state {
+            position: relative;
             flex: 1;
             @include flex-center(center, normal, column);
 
             .state-title {
                 height: 50PX;
+                font-size: 18PX;
                 text-align: center;
                 color: white;
                 @include flex-center();
@@ -72,23 +103,70 @@ const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
             .state-desc {
                 position: relative;
                 font-size: 60PX;
-                color: rgba(255, 255, 255, 0.5);
+                color: rgb(180, 180, 180);
+                transition: all 0.25s;
+                cursor: pointer;
+
+                &:hover {
+                    filter: brightness(1.5);
+                }
 
                 &::after {
                     content: "+";
                     position: absolute;
                     top: 0;
                     left: 100%;
-                    font-size: 20PX;
+                    font-size: 28PX;
+                    font-weight: bold;
+                }
+            }
+
+            .state-more {
+                z-index: 10;
+                position: absolute;
+                top: 105%;
+                width: 500PX;
+                max-width: 820px;
+                line-height: 22PX;
+                padding: 18PX;
+                font-size: 14PX;
+                border-radius: 6PX;
+                color: white;
+                background: rgb(100, 100, 100);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    top: -10PX;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-left: 14PX solid transparent;
+                    border-right: 14PX solid transparent;
+                    border-bottom: 12PX solid rgb(100, 100, 100);
                 }
             }
         }
 
         .divide {
-            width: 1px;
-            height: 80%;
-            background: rgb(200, 200, 200);
+            width: 1PX;
+            height: 60%;
+            margin-top: 10PX;
+            background: rgb(255, 255, 255, 0.25);
         }
     }
+}
+
+
+.moreinfo-enter-active,
+.moreinfo-leave-active {
+    transition: all 0.4s ease;
+}
+
+.moreinfo-enter-from,
+.moreinfo-leave-to {
+    opacity: 0;
+    transform: translateY(10%);
 }
 </style>

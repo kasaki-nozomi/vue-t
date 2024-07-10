@@ -1,10 +1,9 @@
 <template>
     <div class="project" :class="{ reverse: id % 2 !== 0 }">
-        <div class="project-left" @mouseenter="desc = true" @mouseleave="desc = false">
-            <img :src="project.image"/>
-            <Transition :name="`description-${id % 2 === 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc">{{ project.description }}</div></Transition>
+        <div class="project-left" :class="{ 'project-leftm': store.pad, 'desc-show': desc }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
+            <Transition :name="`description-${id % 2 === 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject(id)">{{ project.description }}</div></Transition>
         </div>
-        <div class="project-right">
+        <div class="project-right" v-show=!store.pad>
             <div class="project-info">
                 <div class="project-info-detail">
                     <img :src="oliveLeft" />
@@ -14,7 +13,7 @@
                     </div>
                     <img :src="oliveRight" />
                 </div>
-                <button class="project-info-more">查看更多</button>
+                <button class="project-info-more" @click="goProject(id)">查看更多</button>
             </div>
         </div>
     </div>
@@ -22,6 +21,11 @@
 
 <script setup>
 import { getCurrentInstance, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from '@/store'
+
+const router = useRouter()
+const store = useStore()
 
 const { id, project } = defineProps({
     id: { type: Number, required: true },
@@ -32,11 +36,16 @@ const oliveLeft = new URL('@/assets/images/olive-left.png', import.meta.url).hre
 const oliveRight = new URL('@/assets/images/olive-right.png', import.meta.url).href
 
 const desc = ref(false)
+
+function goProject(id) {
+    router.push({ name: 'work', params: { project: id } })
+}
 </script>
 
 <style lang="scss" scoped>
 .project {
     width: 100%;
+    // height: 500px;
     background: rgb(22, 22, 22);
     @include flex-center();
 
@@ -46,14 +55,20 @@ const desc = ref(false)
 
     .project-left {
         position: relative;
-        height: 100%;
+        height: 550px;
         flex: 2;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        transition: all 0.4s;
         cursor: pointer;
-        background: rgb(15, 15, 15);
 
-        img {
-            display: block;
-            width: 100%;
+        &.project-leftm {
+            height: 825px;
+        }
+
+        &.desc-show {
+            
         }
 
         .project-desc {
@@ -65,15 +80,21 @@ const desc = ref(false)
             padding: 0 220px;
             font-size: 20PX;
             color: white;
-            background: black;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             @include flex-center();
+
+            @include setPhoneContent {
+                font-size: 60px;
+            }
         }
     }
 
     .project-right {
         height: 100%;
         flex: 1;
-        @include flex-center(center, normal, column);
+        @include flex-center(center, center, column);
 
         .project-info {
             @include flex-center(center, normal, column);
@@ -121,7 +142,7 @@ const desc = ref(false)
 .description-left-leave-active,
 .description-right-enter-active,
 .description-right-leave-active {
-    transition: all 1s ease;
+    transition: all 0.88s ease;
 }
 .description-left-enter-from,
 .description-left-leave-to {

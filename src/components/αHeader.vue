@@ -1,14 +1,14 @@
 <template>
-    <div class="header">
+    <div id="header" class="header">
         <div class="header-logo button">
             <img class="logo" :src="logo" />
             <img class="name" :src="name" v-show="!store.phone" />
         </div>
         <div v-if="!store.pad" class="header-tab">
-            <button @click="tabClick('')">首页</button>
-            <button @click="tabClick('')">历史项目</button>
-            <button @click="tabClick('')">公司介绍</button>
-            <button @click="tabClick('')">联系我们</button>
+            <button @click="tabClick('header')">首页</button>
+            <button @click="tabClick('projects')">历史项目</button>
+            <button @click="tabClick('company')">公司介绍</button>
+            <button @click="tabClick('footer')">联系我们</button>
         </div>
         <div v-else class="header-tab-phone">
             <button class="header-tab-button" @click.stop="tabShow = !tabShow">
@@ -17,17 +17,17 @@
                 <div></div>
             </button>
             <div class="header-tab-group">
-                <Transition name="tab-a" mode="out-in"><button v-show="tabShow" @click="tabClick('')">首页</button></Transition>
-                <Transition name="tab-b" mode="out-in"><button v-show="tabShow" @click="tabClick('')">历史项目</button></Transition>
-                <Transition name="tab-c" mode="out-in"><button v-show="tabShow" @click="tabClick('')">公司介绍</button></Transition>
-                <Transition name="tab-d" mode="out-in"><button v-show="tabShow" @click="tabClick('')">联系我们</button></Transition>
+                <Transition name="tab-a" mode="out-in"><button v-show="tabShow" @click="tabClick('header')">首页</button></Transition>
+                <Transition name="tab-b" mode="out-in"><button v-show="tabShow" @click="tabClick('projects')">历史项目</button></Transition>
+                <Transition name="tab-c" mode="out-in"><button v-show="tabShow" @click="tabClick('company')">公司介绍</button></Transition>
+                <Transition name="tab-d" mode="out-in"><button v-show="tabShow" @click="tabClick('footer')">联系我们</button></Transition>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { getCurrentInstance, ref } from 'vue'
+import { getCurrentInstance, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 
@@ -41,17 +41,30 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
 
 const tabShow = ref(false)
 
+let home = null
+let project = null
+let company = null
+let connect = null
+
+nextTick(() => {
+    home = document.getElementById('header')
+    project = document.getElementById('projects')
+    company = document.getElementById('company')
+    connect = document.getElementById('footer')
+})
+
 function tabClick(tab) {
     tabShow.value = false
-    console.log(tab)
+    document.getElementById(tab).scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
 document.documentElement.addEventListener('click', () => (tabShow.value = false))
 </script>
 
 <style lang="scss" scoped>
 .header {
     width: 100%;
-    height: 150PX;
+    height: 140PX;
     padding: 0 100px;
     @include flex-center(center, space-between);
 
@@ -61,7 +74,7 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
         @include flex-center();
 
         img {
-            height: 60PX;
+            height: 56PX;
             margin: 25PX 0;
         }
     }
@@ -71,16 +84,16 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
         @include flex-center();
 
         button {
-            height: 66PX;
-            padding: 0 18PX;
-            font-size: 24PX;
-            border-radius: 66PX;
+            height: 54PX;
+            padding: 0 16PX;
+            font-size: 22PX;
+            border-radius: 54PX;
             color: rgb(220, 220, 220);
             background: transparent;
             transition: all 0.2s;
 
             &:hover {
-                padding: 0 36PX;
+                padding: 0 28PX;
                 letter-spacing: 1PX;
                 color: white;
                 background: rgb(50, 50, 50);

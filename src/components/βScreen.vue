@@ -14,13 +14,14 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
 <style lang="scss" scoped>
 .screen {
     background: rgb(25, 25, 25);
+    @include flex-center();
 
     video {
         display: block;
         margin: 0;
         padding: 0;
         // width: 1920px;
-        height: calc(100vh - 150PX);
+        height: calc(100vh - 140PX);
 
         @include setPhoneContent {
             height: calc(100vh - 72PX);

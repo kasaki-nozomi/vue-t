@@ -26,17 +26,14 @@ const cooperates = [
 
 <style lang="scss" scoped>
 .cooperate {
+    position: relative;
     width: 100%;
-    height: calc(100vh - 225PX);
-    min-height: 600PX;
-    margin-top: 100PX;
+    min-height: calc(100vh - 225PX);
+    padding: 40PX 0;
     @include flex-center(center, center, column);
 
-    @include setPhoneContent {
-        height: calc(200vh - 225PX);
-    }
-
     .cooperate-title {
+        max-width: 80%;
         font-size: 40PX;
         text-align: center;
         color: white;

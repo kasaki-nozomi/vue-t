@@ -36,8 +36,8 @@ const capacitys = [
 .capacity {
     width: 100%;
     max-width: 1000PX;
-    height: 100vh;
-    min-height: 750PX;
+    min-height: 100vh;
+    padding: 40PX 0;
     @include flex-center(center, center, column);
 
     .capacity-title {

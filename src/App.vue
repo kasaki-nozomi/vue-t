@@ -1,6 +1,11 @@
 <template>
     <div id="root" :class="locale">
-        <Home></Home>
+        <router-view  v-slot="{ Component, route }">
+            <Transition :name="route.name" mode="out-in">
+                <component :is="Component"></component>
+            </Transition>
+        </router-view>
+        <!-- <Home></Home> -->
         <!-- type: center-move | center-scale | bottom -->
         <Popup type="center-move"></Popup>
         <Loading></Loading>
@@ -8,7 +13,7 @@
 </template>
 
 <script setup>
-import Home from '@/views/Home.vue'
+// import Home from '@/views/Home.vue'
 import Popup from '@/components/popup/Popup.vue'
 
 import { getCurrentInstance, nextTick } from 'vue'
@@ -40,7 +45,7 @@ document.title = `KongNiao`
 
 <style lang="scss">
 body {
-    background: rgba(0, 0, 0, 0.75);
+    background: black;
 }
 
 #root {
@@ -50,5 +55,31 @@ body {
     &.ru {
         font-family: PingFang SC;
     }
+}
+
+.home-enter-active,
+.home-leave-active {
+    transition: all 0.4s ease;
+}
+.home-enter-from {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+.home-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.work-enter-active,
+.work-leave-active {
+    transition: all 0.5s ease;
+}
+.work-enter-from {
+    opacity: 0;
+    transform: translateX(100%);
+}
+.work-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
 }
 </style>
