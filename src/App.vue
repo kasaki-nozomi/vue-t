@@ -65,22 +65,22 @@ body {
 }
 .home-enter-from {
     opacity: 0;
-    // transform: translateY(10%);
+    transform: translateY(50PX);
     // transform: translateX(-100%);
 }
 .home-leave-to {
     opacity: 0;
-    // transform: translateY(10%);
+    transform: translateY(50PX);
     // transform: translateX(100%);
 }
 .info-enter-from {
     opacity: 0;
-    // transform: translateY(10%);
+    transform: translateY(50PX);
     // transform: translateX(100%);
 }
 .info-leave-to {
     opacity: 0;
-    // transform: translateY(10%);
+    transform: translateY(50PX);
     // transform: translateX(-100%);
 }
 </style>
