@@ -59,7 +59,7 @@ body {
 
 .home-enter-active,
 .home-leave-active {
-    transition: all 0.4s ease;
+    transition: all 0.45s ease;
 }
 .home-enter-from {
     opacity: 0;
@@ -70,15 +70,15 @@ body {
     transform: translateX(100%);
 }
 
-.work-enter-active,
-.work-leave-active {
-    transition: all 0.5s ease;
+.info-enter-active,
+.info-leave-active {
+    transition: all 0.45s ease;
 }
-.work-enter-from {
+.info-enter-from {
     opacity: 0;
     transform: translateX(100%);
 }
-.work-leave-to {
+.info-leave-to {
     opacity: 0;
     transform: translateX(-100%);
 }

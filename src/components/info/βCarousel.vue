@@ -1,11 +1,12 @@
 <template>
     <div class="carousel">
-    <swiper :autoHeight="true" :autoplay="{ delay: 5000, disableOnInteraction: false }" :loop="true" :modules="modules" :navigation="true" :pagination="{ clickable: true }">
-        <swiper-slide v-for="banner of banners">
-            <!-- <div class="banner" :style="{ backgroundImage: `url(${banner})` }"></div> -->
-            <img class="banner" :src="banner" />
-        </swiper-slide>
-    </swiper>
+        <swiper :autoHeight="true" :autoplay="{ delay: 5000, disableOnInteraction: false }" :loop="true" :modules="modules" :navigation="true" :pagination="{ clickable: true }">
+            <swiper-slide v-for="banner of banners">
+                <div class="banner" :style="{ backgroundImage: `url(${banner})` }"></div>
+                <!-- <img class="banner" :src="banner" /> -->
+            </swiper-slide>
+        </swiper>
+        <div class="carousel-desc">{{ projects[current].description }}</div>
     </div>
 </template>
 
@@ -14,6 +15,7 @@ import { getCurrentInstance, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
+import { projects } from '@/utils/projects'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
@@ -29,7 +31,46 @@ const store = useStore()
 
 const modules = [Autoplay, Navigation, Pagination]
 
-const projects = ['changyuan', 'changzhou', 'daye', 'shanhai', 'wukong', 'yaomu']
+const current = route.query.project || 'changyuan'
+
+// const projects = [
+//     {
+//         id: 'changyuan',
+//         name: '长源',
+//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
+//         image: new URL('@/assets/images/project/changyuan/cover.jpg', import.meta.url).href
+//     },
+//     {
+//         id: 'changzhou',
+//         name: '长昼将尽',
+//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
+//         image: new URL('@/assets/images/project/changzhou/cover.jpg', import.meta.url).href
+//     },
+//     {
+//         id: 'daye',
+//         name: '大野',
+//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
+//         image: new URL('@/assets/images/project/daye/cover.jpg', import.meta.url).href
+//     },
+//     {
+//         id: 'shanhai',
+//         name: '山海变',
+//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
+//         image: new URL('@/assets/images/project/shanhai/cover.jpg', import.meta.url).href
+//     },
+//     {
+//         id: 'wukong',
+//         name: '悟空传',
+//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
+//         image: new URL('@/assets/images/project/wukong/cover.png', import.meta.url).href
+//     },
+//     {
+//         id: 'yaomu',
+//         name: '摇木罗生',
+//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
+//         image: new URL('@/assets/images/project/yaomu/cover.jpg', import.meta.url).href
+//     }
+// ]
 const banners = {
     changyuan: [
         new URL('@/assets/images/project/changyuan/banner/1.jpg', import.meta.url).href,
@@ -84,14 +125,14 @@ const banners = {
         new URL('@/assets/images/project/changzhou/banner_/30.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/banner_/34.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/banner_/38.jpg', import.meta.url).href
-    ], 
+    ],
     daye: [
         new URL('@/assets/images/project/daye/banner/33.jpg', import.meta.url).href,
         new URL('@/assets/images/project/daye/banner/mijing.jpg', import.meta.url).href,
         new URL('@/assets/images/project/daye/banner/mijing4.jpg', import.meta.url).href,
         new URL('@/assets/images/project/daye/banner/mijing9.jpg', import.meta.url).href,
         new URL('@/assets/images/project/daye/banner/mijing14.jpg', import.meta.url).href
-    ], 
+    ],
     shanhai: [
         new URL('@/assets/images/project/shanhai/banner/001.jpg', import.meta.url).href,
         new URL('@/assets/images/project/shanhai/banner/002.jpg', import.meta.url).href,
@@ -103,7 +144,7 @@ const banners = {
         new URL('@/assets/images/project/shanhai/banner/008.jpg', import.meta.url).href,
         new URL('@/assets/images/project/shanhai/banner/009.jpg', import.meta.url).href,
         new URL('@/assets/images/project/shanhai/banner/010.jpg', import.meta.url).href,
-    ], 
+    ],
     wukong: [
         new URL('@/assets/images/project/wukong/banner/00.jpg', import.meta.url).href,
         new URL('@/assets/images/project/wukong/banner/01.jpg', import.meta.url).href,
@@ -115,7 +156,7 @@ const banners = {
         new URL('@/assets/images/project/wukong/banner_/03.jpg', import.meta.url).href,
         new URL('@/assets/images/project/wukong/banner_/04.jpg', import.meta.url).href,
         new URL('@/assets/images/project/wukong/banner_/05.jpg', import.meta.url).href
-    ], 
+    ],
     yaomu: [
         new URL('@/assets/images/project/yaomu/banner/001.jpg', import.meta.url).href,
         new URL('@/assets/images/project/yaomu/banner/002.jpg', import.meta.url).href,
@@ -124,18 +165,27 @@ const banners = {
         new URL('@/assets/images/project/yaomu/banner/0006.0003.jpg', import.meta.url).href,
         new URL('@/assets/images/project/yaomu/banner/0006.0670.jpg', import.meta.url).href,
     ]
-}[projects[Number(route.query.id)]]
+}[current]
 </script>
 
 <style lang="scss" scoped>
 .carousel {
     width: 100%;
+    background: black;
 
     .banner {
         width: 100%;
-        // height: 800px;
-        // background-size: cover;
-        // background-position: top center;
+        height: 800px;
+        background-size: cover;
+        background-position: top center;
+    }
+
+    .carousel-desc {
+        width: 100%;
+        margin: 100px 0;
+        padding: 0 200px;
+        font-size: 18PX;
+        color: rgba(255, 255, 255, 0.75);
     }
 }
 </style>

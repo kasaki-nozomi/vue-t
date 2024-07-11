@@ -1,18 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '@/views/Home.vue'
-import Work from '@/views/Work.vue'
+import Info from '@/views/Info.vue'
 
 const routes = [
     { path: '/', name: 'home', component: Home },
-    { path: '/work', name: 'work', component: Work, props: true }
+    { path: '/info', name: 'info', component: Info }
 ]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        return new Promise((resolve) => {
+            setTimeout(() => { resolve(savedPosition || { top: 0 }) }, 450)
+        })
+    }
 })
 
-router.beforeEach(async (to, from) => {})
+router.beforeEach(async (to, from) => { })
+router.afterEach(async (to, from) => { })
 
 export default router

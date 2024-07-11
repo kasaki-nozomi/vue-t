@@ -1,7 +1,7 @@
 <template>
-    <div class="project" :class="{ reverse: id % 2 !== 0 }">
+    <div class="project" :class="{ reverse: project.id % 2 === 0 }">
         <div class="project-left" :class="{ 'project-leftm': store.pad, 'desc-show': desc }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
-            <Transition :name="`description-${id % 2 === 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject(id)">{{ project.description }}</div></Transition>
+            <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject(id)">{{ project.description }}</div></Transition>
         </div>
         <div class="project-right" v-show=!store.pad>
             <div class="project-info">
@@ -13,7 +13,7 @@
                     </div>
                     <img :src="oliveRight" />
                 </div>
-                <button class="project-info-more" @click="goProject(id)">查看更多</button>
+                <button class="project-info-more" @click="goProject">查看更多</button>
             </div>
         </div>
     </div>
@@ -27,18 +27,15 @@ import { useStore } from '@/store'
 const router = useRouter()
 const store = useStore()
 
-const { id, project } = defineProps({
-    id: { type: Number, required: true },
-    project: { type: Number, required: true }
-})
+const { project } = defineProps({ project: { type: Number, required: true } })
 
 const oliveLeft = new URL('@/assets/images/olive-left.png', import.meta.url).href
 const oliveRight = new URL('@/assets/images/olive-right.png', import.meta.url).href
 
 const desc = ref(false)
 
-function goProject(id) {
-    router.push({ path: '/work', query: { id: id } })
+function goProject() {
+    router.push({ path: '/info', query: { project: project.symbol } })
 }
 </script>
 
