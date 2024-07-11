@@ -31,9 +31,7 @@ const store = useStore()
 
 const modules = [Autoplay, Navigation, Pagination]
 
-const current = ref(route.query.project || 'changyuan')
-
-watch(() => route.query, () => current.value = route.query.project || 'changyuan')
+const current = route.query.project || 'changyuan'
 
 const banners = {
     changyuan: [
@@ -129,7 +127,7 @@ const banners = {
         new URL('@/assets/images/project/yaomu/banner/0006.0003.jpg', import.meta.url).href,
         new URL('@/assets/images/project/yaomu/banner/0006.0670.jpg', import.meta.url).href,
     ]
-}[current.value]
+}[current]
 </script>
 
 <style lang="scss" scoped>

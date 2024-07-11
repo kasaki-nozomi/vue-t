@@ -1,8 +1,8 @@
 <template>
     <div id="root" :class="locale">
-        <router-view  v-slot="{ Component, route }">
+        <router-view  v-slot="{ Component, route }" >
             <Transition :name="route.name" mode="out-in">
-                <component :is="Component"></component>
+                <component :is="Component" :key="route.fullPath"></component>
             </Transition>
         </router-view>
         <!-- <Home></Home> -->

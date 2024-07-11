@@ -5,6 +5,7 @@
                 <div class="others-item" @mouseenter="info = project.id" @mouseleave="info = null" :style="{ backgroundImage: `url(${project.image})` }">
                     <Transition name="description" mode="out-in">
                         <div class="others-info" v-show="info === project.id">
+                            <div class="others-info-title">{{ project.title }}</div>
                             <div class="others-info-desc">{{ project.description }}</div>
                             <button class="others-info-more" @click="goProject(project.symbol)">MORE</button>
                         </div>
@@ -30,18 +31,15 @@ const router = useRouter()
 
 const store = useStore()
 
-const current = ref(route.query.project || 'changyuan')
-
-watch(() => route.query, () => current.value = route.query.project || 'changyuan')
+const current = route.query.project || 'changyuan'
 
 const count = ref(3)
 const info = ref(false)
 const more = ref(false)
-const others = Object.values(projects).filter((project) => project.symbol !== current.value).sort(() => Math.random() - 0.5)
+const others = Object.values(projects).filter((project) => project.symbol !== current).sort(() => Math.random() - 0.5)
 
 function goProject(project) {
     router.replace({ path: '/info', query: { project: project } })
-    // router.go(0)
 }
 </script>
 
@@ -70,12 +68,17 @@ function goProject(project) {
                 .others-info {
                     width: 100%;
                     height: 100%;
-                    padding: 20PX 40PX 0 40PX;
-                    gap: 20PX;
+                    padding: 20PX 40PX;
+                    gap: 15PX;
                     background: rgba(0, 0, 0, 0.7);
                     backdrop-filter: blur(10px);
                     -webkit-backdrop-filter: blur(10px);
                     @include flex-center(center, center, column);
+
+                    .others-info-title {
+                        font-size: 18PX;
+                        color: white;
+                    }
 
                     .others-info-desc {
                         font-size: 14PX;
