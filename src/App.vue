@@ -58,28 +58,29 @@ body {
 }
 
 .home-enter-active,
-.home-leave-active {
-    transition: all 0.45s ease;
+.home-leave-active,
+.info-enter-active,
+.info-leave-active {
+    transition: all 0.4s ease;
 }
 .home-enter-from {
     opacity: 0;
-    transform: translateX(-100%);
+    // transform: translateY(10%);
+    // transform: translateX(-100%);
 }
 .home-leave-to {
     opacity: 0;
-    transform: translateX(100%);
-}
-
-.info-enter-active,
-.info-leave-active {
-    transition: all 0.45s ease;
+    // transform: translateY(10%);
+    // transform: translateX(100%);
 }
 .info-enter-from {
     opacity: 0;
-    transform: translateX(100%);
+    // transform: translateY(10%);
+    // transform: translateX(100%);
 }
 .info-leave-to {
     opacity: 0;
-    transform: translateX(-100%);
+    // transform: translateY(10%);
+    // transform: translateX(-100%);
 }
 </style>

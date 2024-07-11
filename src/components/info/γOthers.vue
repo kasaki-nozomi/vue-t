@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, nextTick, ref } from 'vue'
+import { getCurrentInstance, nextTick, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 import { useRoute, useRouter } from 'vue-router'
@@ -30,16 +30,18 @@ const router = useRouter()
 
 const store = useStore()
 
-const current = route.query.project || 'changyuan'
+const current = ref(route.query.project || 'changyuan')
+
+watch(() => route.query, () => current.value = route.query.project || 'changyuan')
 
 const count = ref(3)
 const info = ref(false)
 const more = ref(false)
-const others = Object.values(projects).filter((project) => project.symbol !== current).sort(() => Math.random() - 0.5)
+const others = Object.values(projects).filter((project) => project.symbol !== current.value).sort(() => Math.random() - 0.5)
 
 function goProject(project) {
     router.replace({ path: '/info', query: { project: project } })
-    location.reload()
+    // router.go(0)
 }
 </script>
 

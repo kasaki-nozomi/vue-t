@@ -8,7 +8,7 @@
                 <div class="popup-header">
                     <div class="popup-title">
                         <div class="popup-title-text">
-                            <AutoFontSize :text="t(popupLang[current])"><p>{{ t(popupLang[current]) }}</p></AutoFontSize>
+                            <AutoFont :text="t(popupLang[current])"><p>{{ t(popupLang[current]) }}</p></AutoFont>
                         </div>
                     </div>
                     <button class="popup-close" @click="closePopup">Close</button>
