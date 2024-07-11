@@ -33,44 +33,6 @@ const modules = [Autoplay, Navigation, Pagination]
 
 const current = route.query.project || 'changyuan'
 
-// const projects = [
-//     {
-//         id: 'changyuan',
-//         name: '长源',
-//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
-//         image: new URL('@/assets/images/project/changyuan/cover.jpg', import.meta.url).href
-//     },
-//     {
-//         id: 'changzhou',
-//         name: '长昼将尽',
-//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
-//         image: new URL('@/assets/images/project/changzhou/cover.jpg', import.meta.url).href
-//     },
-//     {
-//         id: 'daye',
-//         name: '大野',
-//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
-//         image: new URL('@/assets/images/project/daye/cover.jpg', import.meta.url).href
-//     },
-//     {
-//         id: 'shanhai',
-//         name: '山海变',
-//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
-//         image: new URL('@/assets/images/project/shanhai/cover.jpg', import.meta.url).href
-//     },
-//     {
-//         id: 'wukong',
-//         name: '悟空传',
-//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
-//         image: new URL('@/assets/images/project/wukong/cover.png', import.meta.url).href
-//     },
-//     {
-//         id: 'yaomu',
-//         name: '摇木罗生',
-//         desc: 'The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.The game concept design centers on creating a captivating and immersive experience for players. It involves crafting a unique storyline, engaging gameplay mechanics, and distinctive visual aesthetics.',
-//         image: new URL('@/assets/images/project/yaomu/cover.jpg', import.meta.url).href
-//     }
-// ]
 const banners = {
     changyuan: [
         new URL('@/assets/images/project/changyuan/banner/1.jpg', import.meta.url).href,
