@@ -12,12 +12,6 @@ import Header from '@/components/info/αHeader.vue'
 import Carousel from '@/components/info/βCarousel.vue'
 import Others from '@/components/info/γOthers.vue'
 import Footer from '@/components/ηFooter.vue'
-
-// import { getCurrentInstance, nextTick, onMounted } from 'vue'
-
-// const { proxy } = getCurrentInstance()
-
-// onMounted(() => proxy.$refs.info.scrollTo(0, 0))
 </script>
 
 <style lang="scss" scoped>
