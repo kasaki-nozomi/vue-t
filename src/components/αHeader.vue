@@ -64,7 +64,7 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
 <style lang="scss" scoped>
 .header {
     width: 100%;
-    height: 140PX;
+    height: 110PX;
     padding: 0 100px;
     @include flex-center(center, space-between);
 
@@ -74,8 +74,8 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
         @include flex-center();
 
         img {
-            height: 56PX;
-            margin: 25PX 0;
+            height: 46PX;
+            margin: 26PX 0;
         }
     }
 
@@ -84,16 +84,17 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
         @include flex-center();
 
         button {
-            height: 54PX;
+            height: 48PX;
             padding: 0 16PX;
-            font-size: 22PX;
-            border-radius: 54PX;
-            color: rgb(220, 220, 220);
+            font-size: 20PX;
+            font-weight: bold;
+            border-radius: 48PX;
+            color: rgba(255, 255, 255, 0.6);
             background: transparent;
             transition: all 0.2s;
 
             &:hover {
-                padding: 0 28PX;
+                padding: 0 24PX;
                 letter-spacing: 1PX;
                 color: white;
                 background: rgb(50, 50, 50);
@@ -136,6 +137,7 @@ document.documentElement.addEventListener('click', () => (tabShow.value = false)
 @include setPhoneContent {
     .header {
         min-width: 300PX;
+        // height: 282px;
         height: 72PX;
         padding: 0 20PX;
 

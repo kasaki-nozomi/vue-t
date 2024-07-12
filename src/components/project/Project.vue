@@ -29,8 +29,8 @@ const store = useStore()
 
 const { project } = defineProps({ project: { type: Number, required: true } })
 
-const oliveLeft = new URL('@/assets/images/olive-left.png', import.meta.url).href
-const oliveRight = new URL('@/assets/images/olive-right.png', import.meta.url).href
+const oliveLeft = new URL('@/assets/images/olive-left.svg', import.meta.url).href
+const oliveRight = new URL('@/assets/images/olive-right.svg', import.meta.url).href
 
 const desc = ref(false)
 

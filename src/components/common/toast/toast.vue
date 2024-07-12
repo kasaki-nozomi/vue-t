@@ -1,18 +1,13 @@
 <template>
     <transition name="toast">
         <div class="toast" v-if="visible">
-            <div :class="['toast-content', locale]">{{ message }}</div>
+            <div :class="['toast-content']">{{ message }}</div>
         </div>
     </transition>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue'
-import { getUrlParam } from '@/utils/utils'
-
-const game = import.meta.env.VITE_APP_GAME
-
-const locale = getUrlParam('lang') || getUrlParam('l') || localStorage.getItem(`${game.toLowerCase()}-lang`)
 
 const props = defineProps({
     message: { type: String, required: true },
@@ -45,15 +40,11 @@ defineExpose({ visible })
     .toast-content {
         line-height: 40px;
         font-size: 24px;
-        font-family: Chillroundf, PingFang SC;
+        font-family: PingFang SC;
         text-align: center;
         word-wrap: break-word;
         color: white;
         @include flex-center();
-
-        &.ru {
-            font-family: PingFang SC;
-        }
     }
 }
 

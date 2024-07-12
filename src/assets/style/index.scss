@@ -1,4 +1,11 @@
 @font-face {
+    font-family: 'SourceHanSansSC';
+    src: url('@/assets/fonts/SourceHanSansSC.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'Chillroundf';
     src: url('@/assets/fonts/chillroundf.woff2') format('woff');
     font-weight: normal;
@@ -69,15 +76,11 @@ button {
     outline: none;
     background: none;
     text-decoration: none;
-    font-family: Chillroundf, PingFang SC;
+    font-family: PingFang SC;
 
     cursor: pointer;
     // transition: all 0.15s;
     transform-origin: center center;
-
-    &.ru {
-        font-family: PingFang SC;
-    }
 
     &:hover {
         -webkit-filter: brightness(1.1);
@@ -101,7 +104,7 @@ input {
     outline: 0;
     padding: 0;
     background: none;
-    font-family: Chillroundf, PingFang SC;
+    font-family: PingFang SC;
     text-align: center;
 
     user-select: auto;
@@ -109,8 +112,4 @@ input {
     -moz-user-select: auto;
     -khtml-user-select: auto;
     -webkit-user-select: auto;
-
-    &.ru {
-        font-family: PingFang SC;
-    }
 }

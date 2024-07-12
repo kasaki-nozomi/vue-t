@@ -1,6 +1,6 @@
 <template>
     <div class="screen">
-        <video autoplay muted loop :poster="screenImage">
+        <video autoplay loop muted :poster="screenImage">
             <source :src="screenVideo" type="video/mp4">
         </video>
     </div>
@@ -24,7 +24,7 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
         height: calc(100vh - 140PX);
 
         @include setPhoneContent {
-            height: calc(100vh - 72PX);
+            height: 1500px;
         }
     }
 }
