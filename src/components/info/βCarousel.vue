@@ -64,6 +64,18 @@ const banners = {
         new URL('@/assets/images/project/changyuan/banner/37.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changyuan/banner/43.jpg', import.meta.url).href
     ],
+    shanhai: [
+        new URL('@/assets/images/project/shanhai/banner/001.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/002.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/003.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/004.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/005.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/006.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/007.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/008.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/009.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/banner/010.jpg', import.meta.url).href,
+    ],
     changzhou: [
         new URL('@/assets/images/project/changzhou/banner/003.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/banner/004.jpg', import.meta.url).href,
@@ -95,17 +107,8 @@ const banners = {
         new URL('@/assets/images/project/daye/banner/mijing9.jpg', import.meta.url).href,
         new URL('@/assets/images/project/daye/banner/mijing14.jpg', import.meta.url).href
     ],
-    shanhai: [
-        new URL('@/assets/images/project/shanhai/banner/001.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/002.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/003.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/004.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/005.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/006.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/007.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/008.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/009.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/010.jpg', import.meta.url).href,
+    contest: [
+        new URL('@/assets/images/project/contest/banner/001.jpg', import.meta.url).href,
     ],
     wukong: [
         new URL('@/assets/images/project/wukong/banner/00.jpg', import.meta.url).href,

@@ -9,8 +9,18 @@ export const projects = {
         introduce: 'Short Description',
         description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
     },
-    changzhou: {
+    shanhai: {
         id: 2,
+        symbol: 'shanhai',
+        title: '山海变',
+        reward: '第五届全球游戏美术大赛GGAC专业组 特等奖',
+        logo: new URL('@/assets/images/project/shanhai/logo.png', import.meta.url).href,
+        image: new URL('@/assets/images/project/shanhai/cover.jpg', import.meta.url).href,
+        introduce: 'Short Description',
+        description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
+    },
+    changzhou: {
+        id: 3,
         symbol: 'changzhou',
         title: '长昼将尽',
         reward: '第五届全球游戏美术大赛GGAC专业组 特等奖',
@@ -20,7 +30,7 @@ export const projects = {
         description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
     },
     daye: {
-        id: 3,
+        id: 4,
         symbol: 'daye',
         title: '大野',
         reward: '第五届全球游戏美术大赛GGAC专业组 特等奖',
@@ -29,16 +39,7 @@ export const projects = {
         introduce: 'Short Description',
         description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
     },
-    shanhai: {
-        id: 4,
-        symbol: 'shanhai',
-        title: '山海变',
-        reward: '第五届全球游戏美术大赛GGAC专业组 特等奖',
-        logo: new URL('@/assets/images/project/shanhai/logo.png', import.meta.url).href,
-        image: new URL('@/assets/images/project/shanhai/cover.jpg', import.meta.url).href,
-        introduce: 'Short Description',
-        description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
-    },
+
     wukong: {
         id: 5,
         symbol: 'wukong',
@@ -49,8 +50,18 @@ export const projects = {
         introduce: 'Short Description',
         description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
     },
-    yaomu: {
+    contest: {
         id: 6,
+        symbol: 'contest',
+        title: '渲染大赛',
+        reward: '第五届全球游戏美术大赛GGAC专业组 特等奖',
+        logo: new URL('@/assets/images/project/contest/logo.svg', import.meta.url).href,
+        image: new URL('@/assets/images/project/contest/cover.jpg', import.meta.url).href,
+        introduce: 'Short Description',
+        description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
+    },
+    yaomu: {
+        id: 7,
         symbol: 'yaomu',
         title: '摇木罗生',
         reward: '第五届全球游戏美术大赛GGAC专业组 特等奖',
