@@ -25,8 +25,10 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
 
 <style lang="scss" scoped>
 .header {
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 140PX;
+    height: 100PX;
     padding: 0 100px;
     @include flex-center(center, flex-start);
 
@@ -36,29 +38,21 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
         @include flex-center();
 
         img {
-            height: 56PX;
-            margin: 25PX 0;
+            height: 44PX;
+            margin: 28PX 0;
         }
     }
+}
 
-    .header-tab {
-        gap: 20PX;
-        @include flex-center();
+@include setPadContent {
+    .header {
+        height: 86PX;
+        padding: 0 86px;
 
-        button {
-            height: 54PX;
-            padding: 0 16PX;
-            font-size: 22PX;
-            border-radius: 54PX;
-            color: rgb(220, 220, 220);
-            background: transparent;
-            transition: all 0.2s;
-
-            &:hover {
-                padding: 0 28PX;
-                letter-spacing: 1PX;
-                color: white;
-                background: rgb(50, 50, 50);
+        .header-logo {
+            img {
+                height: 40PX;
+                margin: 0;
             }
         }
     }
@@ -72,9 +66,8 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
         padding: 0 20PX;
 
         .header-logo {
-
             img {
-                height: 40PX;
+                height: 36PX;
                 margin: 0;
             }
         }

@@ -46,7 +46,7 @@ export const projects = {
         title: '悟空传',
         reward: '第五届全球游戏美术大赛GGAC专业组 特等奖',
         logo: new URL('@/assets/images/project/wukong/logo.png', import.meta.url).href,
-        image: new URL('@/assets/images/project/wukong/cover.png', import.meta.url).href,
+        image: new URL('@/assets/images/project/wukong/cover.jpg', import.meta.url).href,
         introduce: 'Short Description',
         description: 'In contemporary business strategy, intellectual property (IP) concept design is pivotal. It encompasses the creation and development of unique ideas, inventions, and branding elements that can be legally protected.'
     },

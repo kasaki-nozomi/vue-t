@@ -3,6 +3,10 @@
         <video autoplay loop muted :poster="screenImage">
             <source :src="screenVideo" type="video/mp4">
         </video>
+        <div class="screen-tip">
+            <div>Broaden horizons</div>
+            <div>& lead trends</div>
+        </div>
     </div>
 </template>
 
@@ -13,6 +17,7 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
 
 <style lang="scss" scoped>
 .screen {
+    position: relative;
     background: rgb(25, 25, 25);
     @include flex-center();
 
@@ -20,11 +25,24 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
         display: block;
         margin: 0;
         padding: 0;
-        // width: 1920px;
-        height: calc(100vh - 140PX);
+        width: 1920px;
+        height: 640px;
+        // height: calc(100vh - 100PX);
 
         @include setPhoneContent {
-            height: 1500px;
+            height: 1200px;
+        }
+    }
+
+    .screen-tip {
+        position: absolute;
+        @include flex-center(center, center, column);
+
+        div {
+            font-size: 56px;
+            line-height: 86px;
+            font-weight: 500;
+            color: white;
         }
     }
 }

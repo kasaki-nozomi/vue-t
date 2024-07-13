@@ -4,7 +4,10 @@
             <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject(id)">{{ project.description }}</div></Transition>
         </div>
         <div class="project-right" v-show=!store.pad>
-            <div class="project-info">
+            <img :class="project.symbol" :src="project.logo" />
+            <div v-if="project.symbol === 'contest'">Rendering</div>
+            <div v-if="project.symbol === 'contest'">Competition</div>
+            <!-- <div class="project-info">
                 <div class="project-info-detail">
                     <img :src="oliveLeft" />
                     <div class="info">
@@ -14,7 +17,7 @@
                     <img :src="oliveRight" />
                 </div>
                 <button class="project-info-more" @click="goProject">查看更多</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -52,8 +55,8 @@ function goProject() {
 
     .project-left {
         position: relative;
-        height: 550px;
-        flex: 2;
+        width: 1266px;
+        height: 500px;
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
@@ -63,10 +66,6 @@ function goProject() {
         &.project-leftm {
             height: 825px;
         }
-
-        // &.desc-show {
-            
-        // }
 
         .project-desc {
             position: absolute;
@@ -93,44 +92,49 @@ function goProject() {
         flex: 1;
         @include flex-center(center, center, column);
 
-        .project-info {
-            @include flex-center(center, normal, column);
+        img {
+            width: 180px;
+        }
 
-            .project-info-detail {
-                @include flex-center();
+        .changyuan {
+            width: 280px;
+        }
 
-                img {
-                    width: 70PX;
-                }
+        .shanhai {
+            margin-top: 28px;
+        }
 
-                .info {
-                    width: 120PX;
-                    margin: 0 20PX;
-                    color: white;
-                    @include flex-center(center,  center, column);
+        .changzhou {
+            width: 220px;
+            margin-top: 28px;
+        }
 
-                    .title {
-                        font-size: 20PX;
-                    }
+        .daye {
+            width: 260px;
+        }
 
-                    .introduce {
-                        margin-top: 10PX;
-                        font-size: 14PX;
-                        text-align: center;
-                    }
-                }
-            }
+        .wukong {
+            width: 300px;
+        }
+        
+        .contest {
+            width: 180px;
+        }
 
-            .project-info-more {
-                height: 45PX;
-                margin-top: 18PX;
-                padding: 0 24PX;
-                font-size: 18PX;
-                border-radius: 45PX;
-                color: black;
-                background: white;
-                @include flex-center();
-            }
+        .yaomu {
+            width: 220px;
+        }
+
+        div:nth-of-type(1) {
+            line-height: 80px;
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+        }
+
+        div:nth-of-type(2) {
+            font-size: 20px;
+            color: white;
         }
     } 
 }
@@ -139,16 +143,16 @@ function goProject() {
 .description-left-leave-active,
 .description-right-enter-active,
 .description-right-leave-active {
-    transition: all 0.88s ease;
+    transition: all 0.6s ease;
 }
 .description-left-enter-from,
 .description-left-leave-to {
     opacity: 0;
-    transform: translateX(-75%);
+    // transform: translateX(-75%);
 }
 .description-right-enter-from,
 .description-right-leave-to {
     opacity: 0;
-    transform: translateX(75%);
+    // transform: translateX(75%);
 }
 </style>

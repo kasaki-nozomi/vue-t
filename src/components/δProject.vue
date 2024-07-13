@@ -1,7 +1,7 @@
 <template>
     <div class="projects">
-        <div id="projects"></div>
-        <div class="projects-list">
+        <div></div>
+        <div id="projects" class="projects-list">
             <div v-for="project in projects">
                 <Project :project="project"></Project>
             </div>
@@ -17,6 +17,5 @@ import { projects } from '@/utils/projects'
 <style lang="scss" scoped>
 .projects {
     width: 100%;
-    padding: 40PX 0;
 }
 </style>

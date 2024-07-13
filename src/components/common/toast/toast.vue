@@ -40,7 +40,7 @@ defineExpose({ visible })
     .toast-content {
         line-height: 40px;
         font-size: 24px;
-        font-family: PingFang SC;
+        font-family: SourceHanSansSC, PingFang SC;
         text-align: center;
         word-wrap: break-word;
         color: white;

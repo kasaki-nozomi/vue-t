@@ -5,19 +5,19 @@
         <div class="company-desc">我们团队秉承“ 开阔视野，引领潮流 ”的理念，我们相信，视觉的力量能够为文化行业带来更多的可能性，因此我们不断努力开拓新的领域，拓展更广阔的视野，致力于打造能引领潮流且有尖叫度的视觉IP。</div>
         <div class="company-states">
             <div class="state">
-                <div class="state-title">Cooperative company</div>
-                <div class="state-desc" @mouseenter="moreinfo = 'co'" @mouseleave="moreinfo = null">8</div>
+                <div class="state-title">合作公司</div>
+                <div class="state-desc" @mouseenter="moreinfo = 'co'" @mouseleave="moreinfo = null">20</div>
                 <Transition name="moreinfo" mode="out-in"><div class="state-more" v-show="moreinfo === 'co'" v-html="cooperates"></div></Transition>
             </div>
             <div class="divide"></div>
             <div class="state">
-                <div class="state-title">History Awards</div>
-                <div class="state-desc" @mouseenter="moreinfo = 'hs'" @mouseleave="moreinfo = null">8</div>
+                <div class="state-title">历史奖项</div>
+                <div class="state-desc" @mouseenter="moreinfo = 'hs'" @mouseleave="moreinfo = null">20</div>
                 <Transition name="moreinfo" mode="out-in"><div class="state-more" v-show="moreinfo === 'hs'" v-html="rewards"></div></Transition>
             </div>
             <div class="divide"></div>
             <div class="state">
-                <div class="state-title">Member size</div>
+                <div class="state-title">成员数量</div>
                 <div class="state-desc" @mouseenter="moreinfo = null" @mouseleave="moreinfo = null">15</div>
             </div>
         </div>
@@ -54,37 +54,36 @@ const rewards =
 .company {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    padding: 40PX 0;
+    min-height: calc(100vh - 100PX);
     @include flex-center(center, center, column);
 
     img {
-        width: 800px;
-        max-width: 320PX;
+        width: 350px;
     }
 
     .company-origin {
-        width: 400PX;
-        max-width: 75%;
-        margin-top: 50PX;
-        font-size: 15PX;
+        width: 720px;
+        line-height: 40px;
+        margin-top: 72px;
+        font-size: 22px;
         text-align: center;
-        color: rgba(255, 255, 255, 0.65);
+        color: rgba(255, 255, 255, 0.75);
     }
 
     .company-desc {
-        width: 500PX;
-        max-width: 80%;
-        margin-top: 32PX;
-        font-size: 15PX;
+        width: 720px;
+        line-height: 42px;
+        margin-top: 32px;
+        font-size: 20px;
+        font-weight: 600;
         text-align: center;
         color: rgba(255, 255, 255, 0.65);
     }
 
     .company-states {
-        width: 80%;
-        height: 120PX;
-        margin-top: 80PX;
+        height: 160px;
+        margin-top: 120px;
+        gap: 220px;
         @include flex-center();
 
         .state {
@@ -93,8 +92,8 @@ const rewards =
             @include flex-center(center, normal, column);
 
             .state-title {
-                height: 50PX;
-                font-size: 18PX;
+                font-size: 22px;
+                font-weight: 600;
                 text-align: center;
                 color: white;
                 @include flex-center();
@@ -102,7 +101,8 @@ const rewards =
 
             .state-desc {
                 position: relative;
-                font-size: 60PX;
+                margin-top: 16px;
+                font-size: 72px;
                 color: rgb(180, 180, 180);
                 transition: all 0.25s;
                 cursor: pointer;
@@ -116,7 +116,7 @@ const rewards =
                     position: absolute;
                     top: 0;
                     left: 100%;
-                    font-size: 28PX;
+                    font-size: 40px;
                     font-weight: bold;
                 }
             }
@@ -124,13 +124,12 @@ const rewards =
             .state-more {
                 z-index: 10;
                 position: absolute;
-                top: 105%;
-                width: 500PX;
-                max-width: 820px;
-                line-height: 22PX;
-                padding: 18PX;
-                font-size: 14PX;
-                border-radius: 6PX;
+                top: 110%;
+                width: 800px;
+                line-height: 32px;
+                padding: 24px;
+                font-size: 22px;
+                border-radius: 10px;
                 color: white;
                 background: rgb(100, 100, 100);
 
@@ -139,20 +138,20 @@ const rewards =
                     position: absolute;
                     width: 0;
                     height: 0;
-                    top: -10PX;
+                    top: -14px;
                     left: 50%;
                     transform: translateX(-50%);
-                    border-left: 14PX solid transparent;
-                    border-right: 14PX solid transparent;
-                    border-bottom: 12PX solid rgb(100, 100, 100);
+                    border-left: 18px solid transparent;
+                    border-right: 18px solid transparent;
+                    border-bottom: 16px solid rgb(100, 100, 100);
                 }
             }
         }
 
         .divide {
-            width: 1PX;
-            height: 60%;
-            margin-top: 10PX;
+            width: 1px;
+            height: 65%;
+            margin-top: 10px;
             background: rgb(255, 255, 255, 0.25);
         }
     }

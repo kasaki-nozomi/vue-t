@@ -1,0 +1,230 @@
+<template>
+    <div id="footer" class="footer">
+        <div class="footer-left">
+            <div class="footer-info">
+                <div class="footer-info-detail">
+                    <div>公司地址</div>
+                    <div>浙江省杭州市上城区南山路218号1B-217</div>
+                </div>
+                <div class="footer-info-detail">
+                    <div>电话</div>
+                    <div>1325555987</div>
+                </div>
+                <div class="footer-info-detail">
+                    <div>邮箱</div>
+                    <div>ygb@caa.edu.cn</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-right" >
+            <div class="wx-qr" @mouseenter="qrShow = true" @mouseleave="qrShow = false">
+                <img class="wx" :src="wx" />
+                <img class="qr" v-show="qrShow" :src="qr" />
+            </div>
+            <div v-for="connect in connects" class="button">
+                <a :href="connect.url"></a>
+                <img :class="connect.code" :src="connect.icon" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import { getCurrentInstance, ref } from 'vue'
+import { useStore } from '@/store'
+
+const store = useStore()
+
+const qrShow = ref(false)
+
+const qr = new URL('@/assets/images/qr-code.png', import.meta.url).href
+const wx = new URL('@/assets/images/connect-weixin.svg', import.meta.url).href
+const connects = [
+    {
+        code: 'wb',
+        url: '',
+        icon: new URL('@/assets/images/connect-weibo.svg', import.meta.url).href,
+    },
+    {
+        code: 'zc',
+        url: '',
+        icon: new URL('@/assets/images/connect-zhanku.svg', import.meta.url).href,
+    },
+    {
+        code: 'as',
+        url: '',
+        icon: new URL('@/assets/images/connect-artstation.svg', import.meta.url).href,
+    },
+    {
+        code: 'gc',
+        url: '',
+        icon: new URL('@/assets/images/connect-ggac.svg', import.meta.url).href,
+    }
+]
+</script>
+
+<style lang="scss" scoped>
+.footer {
+    width: 100%;
+    height: 235px;
+    @include flex-center();
+
+    .footer-left {
+        width: 100%;
+        height: 100%;
+        flex: 2;
+        background: rgb(15, 15, 15);
+        @include flex-center(flex-start, center, column);
+
+        .footer-info {
+            margin-left: 180px;
+            div {
+                @include flex-center(center, normal);
+            }
+
+            .footer-info-detail {
+                div {
+                    min-width: 144px;
+                    line-height: 36px;
+                    margin: 8px 0;
+                    font-size: 20px;
+                    text-align: justify;
+                    color: white;
+                }
+
+                div:first-child {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .footer-right {
+        height: 100%;
+        flex: 1.2;
+        background: rgb(25, 25, 25);
+        gap: 34px;
+        @include flex-center();
+
+        div {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgb(50, 50, 50);
+            transition: all 0.25s;
+            cursor: pointer;
+            @include flex-center();
+
+            &:hover {
+                filter: brightness(1.5);
+            }
+
+            a {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            .qr {
+                position: absolute;
+                bottom: 120%;
+                width: 250px;
+            }
+
+            .wx {
+                width: 50px;
+            }
+
+            .wb {
+                width: 54px;
+            }
+
+            .zc {
+                width: 54px;
+            }
+
+            .as {
+                width: 45px;
+            }
+
+            .gc {
+                width: 32px;
+            }
+        }
+    }
+}
+
+@include setPhoneContent {
+    .footer {
+        height: 1080px;
+        flex-direction: column-reverse;
+
+        .footer-left {
+            @include flex-center();
+
+            .footer-info {
+                margin-left: 0;
+
+                .footer-info-detail {
+                    div {
+                        min-width: 369px;
+                        line-height: 90px;
+                        margin: 20px 0;
+                        font-size: 52px;
+                        text-align: justify;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .footer-right {
+            width: 100%;
+            flex: 1.6;
+            gap: 80px;
+
+            div {
+                width: 205px;
+                height: 205px;
+
+                .qr {
+                    bottom: 120%;
+                    width: 500px;
+                }
+
+                .wx {
+                    width: 120px;
+                }
+
+                .wb {
+                    width: 130px;
+                }
+
+                .zc {
+                    width: 130px;
+                }
+
+                .as {
+                    width: 112px;
+                }
+
+                .gc {
+                    width: 84px;
+                }
+            }
+        }
+    }
+}
+
+.connect-enter-active,
+.connect-leave-active {
+    transition: all 0.4s ease;
+}
+
+.connect-enter-from,
+.connect-leave-to {
+    opacity: 0;
+    transform: translateX(-10%);
+}
+</style>

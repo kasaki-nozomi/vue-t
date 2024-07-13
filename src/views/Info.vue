@@ -11,7 +11,7 @@
 import Header from '@/components/info/αHeader.vue'
 import Carousel from '@/components/info/βCarousel.vue'
 import Others from '@/components/info/γOthers.vue'
-import Footer from '@/components/ηFooter.vue'
+import Footer from '@/components/θFooter.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -19,7 +19,6 @@ import Footer from '@/components/ηFooter.vue'
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 100vh;
     background: rgb(20, 20, 20);
     overflow-y: auto;
     @include flex-center(center, normal, column);

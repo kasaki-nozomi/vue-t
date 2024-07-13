@@ -5,6 +5,7 @@
         <Capacity></Capacity>
         <Project></Project>
         <Company></Company>
+        <Honor></Honor>
         <Cooperate></Cooperate>
         <Footer></Footer>
     </div>
@@ -15,8 +16,9 @@ import Screen from '@/components/βScreen.vue'
 import Capacity from '@/components/γCapacity.vue'
 import Project from '@/components/δProject.vue'
 import Company from '@/components/εCompany.vue'
-import Cooperate from '@/components/ζCooperate.vue'
-import Footer from '@/components/ηFooter.vue'
+import Honor from '@/components/ζHonor.vue'
+import Cooperate from '@/components/ηCooperate.vue'
+import Footer from '@/components/θFooter.vue'
 
 import axios from 'axios'
 import { getCurrentInstance } from 'vue'

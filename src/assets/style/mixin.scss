@@ -96,7 +96,7 @@ $image-path: '@/assets/images/';
 }
 
 @mixin setPadContent() {
-    @media screen and (max-width: 1150px) {
+    @media screen and (max-width: 1050px) {
         @content
     }
 }
