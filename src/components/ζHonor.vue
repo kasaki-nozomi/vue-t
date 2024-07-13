@@ -135,4 +135,60 @@ const honors = [
         }
     }
 }
+
+@include setPadContent {
+    .honor {
+        min-height: calc(100vh - 86PX);
+    }
+}
+
+@include setPhoneContent {
+    .honor {
+        min-height: calc(100vh - 72PX);
+
+        .honor-title {
+            font-size: 72px;
+        }
+
+        .honor-list {
+            margin-top: 215px;
+            gap: 140px;
+
+            .honor-item {
+                width: 600px;
+                
+                img {
+                    width: 125px;
+                }
+
+                .honor-content {
+                    div {
+                        max-width: calc(600px - 265px);
+                    }
+
+                    div:nth-of-type(1) {
+                        line-height: 90px;
+                        font-size: 62px;
+                    }
+
+                    div:nth-of-type(2) {
+                        margin-top: 15px;
+                        font-size: 46px;
+                    }
+
+                    div:nth-of-type(3) {
+                        margin-top: 5px;
+                        font-size: 34px;
+                    }
+
+                    div:nth-of-type(4) {
+                        margin-top: 15px;
+                        font-size: 34px;
+                        line-height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
 </style>

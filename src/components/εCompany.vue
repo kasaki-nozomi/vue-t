@@ -7,13 +7,13 @@
             <div class="state">
                 <div class="state-title">合作公司</div>
                 <div class="state-desc" @mouseenter="moreinfo = 'co'" @mouseleave="moreinfo = null">20</div>
-                <Transition name="moreinfo" mode="out-in"><div class="state-more" v-show="moreinfo === 'co'" v-html="cooperates"></div></Transition>
+                <Transition name="moreinfo" mode="out-in"><div class="state-more one" v-show="moreinfo === 'co'" v-html="cooperates"></div></Transition>
             </div>
             <div class="divide"></div>
             <div class="state">
                 <div class="state-title">历史奖项</div>
                 <div class="state-desc" @mouseenter="moreinfo = 'hs'" @mouseleave="moreinfo = null">20</div>
-                <Transition name="moreinfo" mode="out-in"><div class="state-more" v-show="moreinfo === 'hs'" v-html="rewards"></div></Transition>
+                <Transition name="moreinfo" mode="out-in"><div class="state-more two" v-show="moreinfo === 'hs'" v-html="rewards"></div></Transition>
             </div>
             <div class="divide"></div>
             <div class="state">
@@ -153,6 +153,97 @@ const rewards =
             height: 65%;
             margin-top: 10px;
             background: rgb(255, 255, 255, 0.25);
+        }
+    }
+}
+
+@include setPadContent {
+    .company {
+        min-height: calc(100vh - 84PX);
+    }
+}
+
+@include setPhoneContent {
+    .company {
+        min-height: calc(100vh - 72PX);
+
+        img {
+            width: 760px;
+        }
+
+        .company-origin {
+            width: 1450px;
+            line-height: 100px;
+            margin-top: 200px;
+            font-size: 56px;
+        }
+
+        .company-desc {
+            width: 1450px;
+            line-height: 105px;
+            margin-top: 82px;
+            font-size: 52px;
+        }
+
+        .company-states {
+            height: 360px;
+            margin-top: 315px;
+            gap: 180px;
+
+            .state {
+                .state-title {
+                    font-size: 56px;
+                    font-weight: 600;
+                }
+
+                .state-desc {
+                    position: relative;
+                    margin-top: 60px;
+                    font-size: 160px;
+
+                    &::after {
+                        content: "+";
+                        font-size: 96px;
+                    }
+                }
+
+                .state-more {
+                    top: 110%;
+                    width: 1450px;
+                    line-height: 72px;
+                    padding: 40px;
+                    font-size: 42px;
+                    border-radius: 20px;
+
+                    &.one {
+                        left: 0;
+
+                        &::after {
+                            content: '';
+                            top: -28px;
+                            left: 120px;
+                            border-left: 32px solid transparent;
+                            border-right: 32px solid transparent;
+                            border-bottom: 30px solid rgb(100, 100, 100);
+                        }
+                    }
+
+                    &.two {
+                        &::after {
+                            content: '';
+                            top: -28px;
+                            border-left: 32px solid transparent;
+                            border-right: 32px solid transparent;
+                            border-bottom: 30px solid rgb(100, 100, 100);
+                        }
+                    }
+                }
+            }
+
+            .divide {
+                height: 70%;
+                margin-top: 0;
+            }
         }
     }
 }
