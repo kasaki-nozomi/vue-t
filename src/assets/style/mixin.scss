@@ -90,7 +90,7 @@ $image-path: '@/assets/images/';
 }
 
 @mixin setPhoneContent() {
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 600px) {
         @content
     }
 }
@@ -102,7 +102,7 @@ $image-path: '@/assets/images/';
 }
 
 @mixin setPcContent() {
-    @media screen and (min-width: 750.5px) {
+    @media screen and (min-width: 600.5px) {
         @content
     }
 }

@@ -25,13 +25,8 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
         display: block;
         margin: 0;
         padding: 0;
-        width: 1920px;
+        // width: 1920px;
         height: 640px;
-        // height: calc(100vh - 100PX);
-
-        @include setPhoneContent {
-            height: 1200px;
-        }
     }
 
     .screen-tip {
@@ -41,8 +36,23 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
         div {
             font-size: 56px;
             line-height: 86px;
-            font-weight: 500;
+            font-weight: 600;
             color: white;
+        }
+    }
+}
+
+@include setPhoneContent {
+    .screen {
+        video {
+            height: 1550px;
+        }
+
+        .screen-tip {
+            div {
+                font-size: 140px;
+                line-height: 240px;
+            }
         }
     }
 }

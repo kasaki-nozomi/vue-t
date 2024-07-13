@@ -29,6 +29,7 @@ const cooperates = [
     position: relative;
     width: 1400px;
     min-height: calc(100vh - 100PX);
+    padding: 160px 0;
     @include flex-center(center, center, column);
 
     .cooperate-title {

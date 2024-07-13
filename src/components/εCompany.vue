@@ -55,6 +55,7 @@ const rewards =
     position: relative;
     width: 100%;
     min-height: calc(100vh - 100PX);
+    padding: 160px 0;
     @include flex-center(center, center, column);
 
     img {

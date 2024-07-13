@@ -75,10 +75,11 @@ const honors = [
 .honor {
     width: 1600px;
     min-height: calc(100vh - 100PX);
+    padding: 160px 0;
     @include flex-center(center, center, column);
 
     .honor-title {
-        font-size: 53px;
+        font-size: 36px;
         color: white;
 
         span {

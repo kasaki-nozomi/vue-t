@@ -1,23 +1,15 @@
 <template>
-    <div class="project" :class="{ reverse: project.id % 2 === 0 }">
+    <div class="project" :class="{ reverse: project.id % 2 === 0 && !store.phone }">
         <div class="project-left" :class="{ 'project-leftm': store.pad, 'desc-show': desc }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
-            <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject(id)">{{ project.description }}</div></Transition>
+            <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject">{{ project.description }}</div></Transition>
         </div>
-        <div class="project-right" v-show=!store.pad>
+        <div class="project-right" v-if=!store.phone>
             <img :class="project.symbol" :src="project.logo" />
-            <div v-if="project.symbol === 'contest'">Rendering</div>
-            <div v-if="project.symbol === 'contest'">Competition</div>
-            <!-- <div class="project-info">
-                <div class="project-info-detail">
-                    <img :src="oliveLeft" />
-                    <div class="info">
-                        <div class="title">{{ project.title }}</div>
-                        <div class="introduce">{{ project.introduce }}</div>
-                    </div>
-                    <img :src="oliveRight" />
-                </div>
-                <button class="project-info-more" @click="goProject">查看更多</button>
-            </div> -->
+        </div>
+        <div class="project-bottom" v-if=store.phone>
+            <img :class="project.symbol" :src="project.logo" />
+            <div class="project-bottom-desc">{{ project.description }}</div>
+            <button @click="goProject">查看更多</button>
         </div>
     </div>
 </template>
@@ -30,10 +22,7 @@ import { useStore } from '@/store'
 const router = useRouter()
 const store = useStore()
 
-const { project } = defineProps({ project: { type: Number, required: true } })
-
-const oliveLeft = new URL('@/assets/images/olive-left.svg', import.meta.url).href
-const oliveRight = new URL('@/assets/images/olive-right.svg', import.meta.url).href
+const { project } = defineProps({ project: { type: Object, required: true } })
 
 const desc = ref(false)
 
@@ -45,7 +34,6 @@ function goProject() {
 <style lang="scss" scoped>
 .project {
     width: 100%;
-    // height: 500px;
     background: rgb(22, 22, 22);
     @include flex-center();
 
@@ -63,10 +51,6 @@ function goProject() {
         transition: all 0.4s;
         cursor: pointer;
 
-        &.project-leftm {
-            height: 825px;
-        }
-
         .project-desc {
             position: absolute;
             top: 0;
@@ -80,10 +64,6 @@ function goProject() {
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             @include flex-center();
-
-            @include setPadContent {
-                font-size: 40px;
-            }
         }
     }
 
@@ -92,15 +72,12 @@ function goProject() {
         flex: 1;
         @include flex-center(center, center, column);
 
-        img {
-            width: 180px;
-        }
-
         .changyuan {
             width: 280px;
         }
 
         .shanhai {
+            width: 180px;
             margin-top: 28px;
         }
 
@@ -118,25 +95,87 @@ function goProject() {
         }
         
         .contest {
-            width: 180px;
+            width: 240px;
         }
 
         .yaomu {
             width: 220px;
         }
-
-        div:nth-of-type(1) {
-            line-height: 80px;
-            font-size: 32px;
-            font-weight: 800;
-            color: white;
-        }
-
-        div:nth-of-type(2) {
-            font-size: 20px;
-            color: white;
-        }
     } 
+}
+
+@include setPhoneContent {
+    .project {
+        @include flex-center(center, normal, column);
+
+        .project-left {
+            width: 1920px;
+            height: 720px;
+
+            .project-desc {
+                line-height: 84px;
+                padding: 0 320px;
+                font-size: 48px;
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        .project-bottom {
+            @include flex-center(center, center, column);
+
+            img {
+                margin-top: 160px;
+            }
+
+            .changyuan {
+                width: 520px;
+            }
+
+            .shanhai {
+                width: 320px;
+            }
+
+            .changzhou {
+                width: 380px;
+            }
+
+            .daye {
+                width: 360px;
+            }
+
+            .wukong {
+                width: 480px;
+            }
+            
+            .contest {
+                width: 480px;
+            }
+
+            .yaomu {
+                width: 400px;
+            }
+
+            div {
+                width: 1280px;
+                line-height: 105px;
+                margin-top: 100px;
+                font-size: 52px;
+                color: white;
+                text-align: center;
+            }
+
+            button {
+                height: 130px;
+                margin: 160px 0 180px 0;
+                padding: 0 80px;
+                font-size: 52px;
+                border-radius: 130px;
+                color: black;
+                background: white;
+                @include flex-center();
+            }
+        }
+    }
 }
 
 .description-left-enter-active,

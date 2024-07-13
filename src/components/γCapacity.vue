@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-const title = '我们能做些什么？'
+const title = '&nbsp;&nbsp;我们能做些什么？'
 const title_ = '<span>KONG</span> VisualStudio & <span>KongNiao</span> Culture'
 const capacitys = [
     {
@@ -37,8 +37,6 @@ const capacitys = [
 
 <style lang="scss" scoped>
 .capacity {
-    width: 1920px;
-    // min-height: 100vh;
     padding: 200px 0 250px 0;
     @include background($image: 'back-mask-one.png');
     @include flex-center(center, center, column);
@@ -92,6 +90,57 @@ const capacitys = [
                 font-size: 22px;
                 line-height: 42px;
                 color: rgba(255, 255, 255, 0.45);
+            }
+        }
+    }
+}
+
+@include setPhoneContent {
+    .capacity {
+        padding: 520px 0 600px 0;
+        @include flex-center(center, center, column);
+
+        .capacity-box {
+            @include flex-center(center, center, column);
+        }
+
+        .capacity-bar {
+            width: 1000px;
+            height: 12px;
+            align-self: center;
+        }
+
+        .capacity-title {
+            margin-top: 100px;
+            font-size: 60px;
+            text-align: center;
+
+            div:first-child {
+                font-size: 90px;
+                line-height: 220px;
+            }
+        }
+
+        .capacity-list {
+            margin-top: 260px;
+            gap: 180px;
+            @include flex-center(flex-start, center, column);
+
+            .capacity-item {
+                width: 1400px;
+                @include flex-center(center, normal, column);
+
+                .title {
+                    font-size: 78px;
+                    text-align: center;
+                }
+
+                .desc {
+                    margin-top: 84px;
+                    font-size: 54px;
+                    line-height: 110px;
+                    text-align: center;
+                }
             }
         }
     }
