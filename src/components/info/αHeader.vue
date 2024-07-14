@@ -25,11 +25,13 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
 
 <style lang="scss" scoped>
 .header {
+    z-index: 10;
     position: fixed;
     top: 0;
     width: 100%;
     height: 100PX;
     padding: 0 100px;
+    background: black;
     @include flex-center(center, flex-start);
 
     .header-logo {

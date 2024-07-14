@@ -21,10 +21,28 @@ const oliveLeft = new URL('@/assets/images/olive-left.svg', import.meta.url).hre
 const oliveRight = new URL('@/assets/images/olive-right.svg', import.meta.url).href
 const honors = [
     {
+        title: '界冕',
+        reward: '专业组特等奖',
+        reward_en: 'Professional Group Special Award',
+        contest: '第五届全球游戏美术大赛GGAC'
+    },
+    {
         title: '大野',
         reward: '最佳影视开发奖',
         reward_en: 'Best Film Award',
         contest: '全球数字艺术大赛奇点奖'
+    },
+    {
+        title: '长昼将尽',
+        reward: '最佳影视开发奖',
+        reward_en: 'Best Film and Television Development Award',
+        contest: '全球数字艺术大赛奇点奖'
+    },
+    {
+        title: '山海劫',
+        reward: '专业场景银奖',
+        reward_en: 'Professional Scene Silver Award',
+        contest: '第五届全球游戏美术大赛GGAC'
     },
     {
         title: '山海变',
@@ -45,28 +63,10 @@ const honors = [
         contest: '第四届全球游戏美术大赛GGAC'
     },
     {
-        title: '山海劫',
-        reward: '专业场景银奖',
-        reward_en: 'Professional Scene Silver Award',
-        contest: '第五届全球游戏美术大赛GGAC'
-    },
-    {
         title: '熵—第二次大爆炸之后',
         reward: '2D组优秀奖',
         reward_en: '2D Group Excellence Award',
         contest: '第四届全球游戏美术大赛GGAC'
-    },
-    {
-        title: '界冕',
-        reward: '专业组特等奖',
-        reward_en: 'Professional Group Special Award',
-        contest: '第五届全球游戏美术大赛GGAC'
-    },
-    {
-        title: '长昼将尽',
-        reward: '最佳影视开发奖',
-        reward_en: 'Best Film and Television Development Award',
-        contest: '全球数字艺术大赛奇点奖'
     }
 ]
 </script>
