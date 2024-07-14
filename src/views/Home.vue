@@ -1,15 +1,17 @@
 <template>
-    <Header></Header>
-    <div id="home" class="home">
-        <Screen></Screen>
-        <Capacity></Capacity>
-        <Project></Project>
-        <div class="home-box" :style="style">
-            <Company></Company>
-            <Honor></Honor>
-            <Cooperate></Cooperate>
+    <div class="home-container">
+        <Header></Header>
+        <div id="home" class="home">
+            <Screen></Screen>
+            <Capacity></Capacity>
+            <Project></Project>
+            <div class="home-box" :style="style">
+                <Company></Company>
+                <Honor></Honor>
+                <Cooperate></Cooperate>
+            </div>
+            <Footer></Footer>
         </div>
-        <Footer></Footer>
     </div>
 </template>
 <script setup>
@@ -84,6 +86,10 @@ function getElementViewTop(element) {
 </script>
 
 <style lang="scss" scoped>
+.home-container {
+    @include flex-center(center, normal, column);
+}
+
 .home {
     position: relative;
     width: 100%;
@@ -99,7 +105,6 @@ function getElementViewTop(element) {
         background-image: url('@/assets/images/back-mask-two.png');
         background-size: cover;
         background-repeat: no-repeat;
-        // background-position: top center;
         background-attachment: fixed;
         @include flex-center(center, normal, column);
     }

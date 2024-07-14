@@ -117,7 +117,7 @@ document.documentElement.addEventListener('click', () => {
     z-index: 20;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 1920px;
     height: 100PX;
     padding: 0 100px;
     background: black;
@@ -287,7 +287,6 @@ document.documentElement.addEventListener('click', () => {
 
 @include setPhoneContent {
     .header {
-        min-width: 300PX;
         height: 72PX;
         padding: 0 20PX;
 
