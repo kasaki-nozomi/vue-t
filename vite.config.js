@@ -37,7 +37,7 @@ export default defineConfig(({ _, mode }) => {
         },
         plugins: [
             vue(),
-            // qrcode(),
+            qrcode(),
             // progress(),
             simpleHtmlPlugin({
                 minify: true,

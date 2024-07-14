@@ -114,7 +114,7 @@ document.documentElement.addEventListener('click', () => {
 
 <style lang="scss" scoped>
 .header {
-    z-index: 10;
+    z-index: 20;
     position: fixed;
     top: 0;
     width: 100%;

@@ -3,7 +3,7 @@
         <Transition name="company" mode="out-in">
             <div class="company-box" v-show="companyShow">
                 <img :src="logo" />
-                <div class="company-origin">空鸟文化2023年我们成立了鵼视觉工作室</div>
+                <!-- <div class="company-origin">空鸟文化2023年我们成立了鵼视觉工作室</div> -->
                 <div class="company-desc">我们是空鸟文化，一支洋溢着无限创意与卓越执行力的专业团队。我们深信，视觉的力量能够为文化行业开辟更多前所未有的可能性。因此，我们不断探索新的领域，拓宽视野，矢志打造出引领潮流且有视觉尖叫度文化产品和视觉IP。</div>
                 <div class="company-states">
                     <div class="state">
@@ -81,7 +81,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
     .company-desc {
         width: 720px;
         line-height: 42px;
-        margin-top: 32px;
+        margin-top: 52px;
         font-size: 20px;
         text-align: center;
         color: rgba(255, 255, 255, 0.65);
@@ -189,7 +189,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
         .company-desc {
             width: 1450px;
             line-height: 105px;
-            margin-top: 82px;
+            margin-top: 166px;
             font-size: 52px;
         }
 

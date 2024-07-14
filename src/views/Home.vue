@@ -1,6 +1,6 @@
 <template>
+    <Header></Header>
     <div id="home" class="home">
-        <Header></Header>
         <Screen></Screen>
         <Capacity></Capacity>
         <Project></Project>

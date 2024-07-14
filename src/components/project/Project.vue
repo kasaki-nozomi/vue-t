@@ -1,6 +1,6 @@
 <template>
     <div class="project" :class="{ reverse: project.id % 2 === 0 && !store.phone }">
-        <div class="project-left" :class="{ 'project-leftm': store.pad, 'desc-show': desc }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
+        <div class="project-left" :class="{ 'project-leftm': store.pad, 'desc-show': desc && !store.phone }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
             <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject" v-html="project.description"></div></Transition>
         </div>
         <div class="project-right" v-if=!store.phone>
