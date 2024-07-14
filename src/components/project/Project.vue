@@ -1,7 +1,7 @@
 <template>
     <div class="project" :class="{ reverse: project.id % 2 === 0 && !store.phone }">
         <div class="project-left" :class="{ 'project-leftm': store.pad, 'desc-show': desc }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
-            <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject">{{ project.description }}</div></Transition>
+            <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject" v-html="project.description"></div></Transition>
         </div>
         <div class="project-right" v-if=!store.phone>
             <img :class="project.symbol" :src="project.logo" />
@@ -57,8 +57,9 @@ function goProject() {
             left: 0;
             width: 100%;
             height: 100%;
+            line-height: 40px;
             padding: 0 220px;
-            font-size: 32px;
+            font-size: 20px;
             color: white;
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);

@@ -6,7 +6,7 @@
                     <Transition name="description" mode="out-in">
                         <div class="others-info" v-show="info === project.id">
                             <div class="others-info-title">{{ project.title }}</div>
-                            <div class="others-info-desc">{{ project.description }}</div>
+                            <div class="others-info-desc" v-html="project.description"></div>
                             <button class="others-info-more" @click="goProject(project.symbol)">MORE</button>
                         </div>
                     </Transition>
@@ -33,7 +33,7 @@ const store = useStore()
 
 const current = route.query.project || 'changyuan'
 
-const count = ref(3)
+const count = ref(store.phone ? 2 : 3)
 const info = ref(false)
 const more = ref(false)
 const others = Object.values(projects).filter((project) => project.symbol !== current).sort(() => Math.random() - 0.5)
@@ -46,13 +46,13 @@ function goProject(project) {
 <style lang="scss" scoped>
 .others {
     width: 100%;
-    padding: 50PX 0;
+    padding: 100px 0;
     @include flex-center(center, center, column);
 
     .others-list {
         width: 100%;
-        max-width: 1200PX;
-        gap: 40PX;
+        max-width: 1820px;
+        gap: 60px;
         flex-wrap: wrap;
         @include flex-center();
 
@@ -60,36 +60,44 @@ function goProject(project) {
             @include flex-center();
 
             .others-item {
-                width: 320PX;
-                height: 320PX;
+                width: 440px;
+                height: 440px;
                 background-size: cover;
                 overflow: hidden;
 
                 .others-info {
                     width: 100%;
                     height: 100%;
-                    padding: 20PX 40PX;
-                    gap: 15PX;
+                    padding: 20px 40px;
+                    gap: 15px;
                     background: rgba(0, 0, 0, 0.7);
                     backdrop-filter: blur(10px);
                     -webkit-backdrop-filter: blur(10px);
                     @include flex-center(center, center, column);
 
                     .others-info-title {
-                        font-size: 18PX;
+                        font-size: 22px;
+                        font-weight: 600;
                         color: white;
                     }
 
                     .others-info-desc {
-                        font-size: 14PX;
+                        line-height: 36px;
+                        font-size: 20px;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 6;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
                         color: white;
                     }
 
                     .others-info-more {
-                        height: 42PX;
-                        padding: 0 25PX;
-                        font-size: 16PX;
-                        border-radius: 42PX;
+                        height: 48px;
+                        margin-top: 10px;
+                        padding: 0 32px;
+                        font-size: 20px;
+                        border-radius: 48px;
                         color: black;
                         background: rgb(225, 225, 225);
                     }
@@ -99,13 +107,62 @@ function goProject(project) {
     }
 
     .others-more {
-        height: 55PX;
-        margin-top: 40PX;
-        padding: 0 60PX;
-        font-size: 20PX;
-        border-radius: 55PX;
+        height: 60px;
+        margin-top: 65px;
+        padding: 0 60px;
+        font-size: 24px;
+        border-radius: 60px;
         color: black;
         background: rgb(255, 255, 255);
+    }
+}
+
+@include setPhoneContent {
+    .others {
+        padding: 180px 0;
+
+        .others-list {
+            gap: 100px;
+
+            .other-list-box {
+                .others-item {
+                    width: 800px;
+                    height: 800px;
+
+                    .others-info {
+                        padding: 40px 72px;
+                        gap: 28px;
+                        background: rgba(0, 0, 0, 0.7);
+
+                        .others-info-title {
+                            font-size: 52px;
+                        }
+
+                        .others-info-desc {
+                            line-height: 72px;
+                            font-size: 42px;
+                            -webkit-line-clamp: 5;
+                        }
+
+                        .others-info-more {
+                            height: 88px;
+                            margin-top: 24px;
+                            padding: 0 60px;
+                            font-size: 44px;
+                            border-radius: 99px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .others-more {
+            height: 135px;
+            margin-top: 128px;
+            padding: 0 100px;
+            font-size: 58px;
+            border-radius: 135px;
+        }
     }
 }
 

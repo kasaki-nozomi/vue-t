@@ -4,11 +4,11 @@
             <div class="footer-info">
                 <div class="footer-info-detail">
                     <div>公司地址</div>
-                    <div>浙江省杭州市上城区南山路218号1B-217</div>
+                    <div>浙江省杭州市西湖区留下街道天目山路住538号4050室</div>
                 </div>
                 <div class="footer-info-detail">
                     <div>电话</div>
-                    <div>1325555987</div>
+                    <div>17673624006</div>
                 </div>
                 <div class="footer-info-detail">
                     <div>邮箱</div>
@@ -42,22 +42,22 @@ const wx = new URL('@/assets/images/connect-weixin.svg', import.meta.url).href
 const connects = [
     {
         code: 'wb',
-        url: '',
+        url: 'https://weibo.com/u/7174406359',
         icon: new URL('@/assets/images/connect-weibo.svg', import.meta.url).href,
     },
     {
         code: 'zc',
-        url: '',
+        url: 'https://www.zcool.com.cn/u/26538302',
         icon: new URL('@/assets/images/connect-zhanku.svg', import.meta.url).href,
     },
     {
         code: 'as',
-        url: '',
+        url: 'https://www.artstation.com/xiaoguainiao',
         icon: new URL('@/assets/images/connect-artstation.svg', import.meta.url).href,
     },
     {
         code: 'gc',
-        url: '',
+        url: 'https://www.ggac.com/user/151182',
         icon: new URL('@/assets/images/connect-ggac.svg', import.meta.url).href,
     }
 ]

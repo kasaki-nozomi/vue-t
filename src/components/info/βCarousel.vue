@@ -5,14 +5,24 @@
                 :modules="modules" :navigation="true" :pagination="{ clickable: true }">
                 <swiper-slide v-for="banner of banners">
                     <div :class="['banner', current]" :style="{ backgroundImage: `url(${banner})` }"></div>
-                    <!-- <img class="banner" :src="banner" /> -->
                 </swiper-slide>
             </swiper>
         </div>
         <div class="carousel-info">
             <img :class="current" :src="projects[current].logo" />
-            <div class="carousel-desc">{{ projects[current].description }}</div>
-            <div class="carousel-imgs"><img v-for="url of lists" :src="url" /></div>
+            <div v-if="current !== 'contest'" class="carousel-desc" v-html="projects[current].description"></div>
+            <div class="carousel-imgs">
+                <div v-if="current !== 'contest'"><img v-for="url of lists" :src="url" /></div>
+                <div v-if="current === 'contest'" class="carousel-video">
+                    <div v-for="contest of contests">
+                        <video autoplay loop muted :poster="contest.image">
+                            <source :src="contest.video" type="video/mp4">
+                        </video>
+                        <div class="video-title">{{ contest.title }}</div>
+                        <div class="video-desc" v-html="contest.desc"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -181,6 +191,21 @@ const lists = {
         new URL('@/assets/images/project/yaomu/list/007.jpg', import.meta.url).href
     ]
 }[current]
+
+const contests = [
+    {
+        title: '创造亚当',
+        image: new URL('@/assets/images/project/contest/cover.jpg', import.meta.url).href,
+        video: new URL('@/assets/images/project/contest/yadang.mp4', import.meta.url).href,
+        desc: '初始人们只是想用人工智能来解决生产生活上的问题，比如流水线代工、洗碗拖地等，但没想到这一切涉及到的领域竟然是如此之多，人类无法再独立思考，社会停滞。没有人再能像过去那样超越自我，突破时代，打破限制。与猿猴发现使用骨头作为工具和瓦特发明蒸汽机等相比，人类文明不再有任何进展。<br>因此，致力于模拟人类思维成长过程的亚当公司应运而生。通过大量的神经科学项目，研究人类大脑的结构和功能衍化，并提供人类孩童时期的模拟学习环境来训练模型，建立一个人类幼童的思维模型。'
+    },
+    {
+        title: '起源之海',
+        image: new URL('@/assets/images/project/contest/qiyuan.jpg', import.meta.url).href,
+        video: new URL('@/assets/images/project/contest/qiyuan.mp4', import.meta.url).href,
+        desc: '于起源之渊，最后的古人觊觎传说中的魂灵，光与远古秘能交织。终焉之际，魂灵之体消逝于深渊之底，旧的法则已然破碎，新的指引即将诞生。'
+    },
+]
 </script>
 
 <style lang="scss" scoped>
@@ -255,7 +280,7 @@ const lists = {
 
             &.contest {
                 margin-top: 110px;
-                width: 380px;
+                width: 480px;
             }
 
             &.yaomu {
@@ -281,7 +306,62 @@ const lists = {
                 margin-top: 16px;
             }
         }
+
+        .carousel-video {
+            margin-top: 80px;
+
+            div {
+                @include flex-center(center, normal, column);
+
+                video {
+                    display: block;
+                    margin-top: 16px;
+                    width: 1550px; 
+                }
+
+                .video-title {
+                    margin: 28px 0 20px 0;
+                    font-size: 28px;
+                    font-weight: bold;
+                    color: white;
+                }
+
+                .video-desc {
+                    width: 1250px;
+                    line-height: 42px;
+                    margin-bottom: 80px;
+                    font-size: 22px;
+                    text-align: center;
+                    color: rgba(255, 255, 255, 0.75);
+                }
+            }
+        }
     }
+}
+
+:deep(.swiper-button-prev:after) {
+    margin-left: 10px;
+    font-size: 42px;
+    color: white;
+}
+
+:deep(.swiper-button-next:after) {
+    margin-right: 10px;
+    font-size: 42px;
+    color: white;
+}
+
+:deep(.swiper-pagination-bullet) {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px !important;
+    border-radius: 10px;
+    background: white;
+    transition: all 0.15s;
+}
+
+:deep(.swiper-pagination-bullet-active) {
+    width: 36px;
 }
 
 @include setPhoneContent {
@@ -313,7 +393,7 @@ const lists = {
 
                 &.contest {
                     margin-top: 240px;
-                    width: 580px;
+                    width: 680px;
                 }
 
                 &.yaomu {
@@ -332,11 +412,55 @@ const lists = {
                 margin-bottom: 160px;
 
                 img {
-                    width: 1660px;
+                    width: 1800px;
                     margin-top: 22px;
                 }
             }
+
+            .carousel-video {
+                margin-top: 150px;
+
+                div {
+                    video {
+                        margin-top: 22px;
+                        width: 1770px; 
+                    }
+
+                    .video-title {
+                        margin: 48px 0 36px 0;
+                        font-size: 58px;
+                    }
+
+                    .video-desc {
+                        width: 1360px;
+                        line-height: 92px;
+                        margin-bottom: 150px;
+                        font-size: 50px;
+                    }
+                }
+            }
         }
+    }
+
+    :deep(.swiper-button-prev:after) {
+        margin-left: -20px;
+        font-size: 80px;
+    }
+
+    :deep(.swiper-button-next:after) {
+        margin-right: -20px;
+        font-size: 80px;
+    }
+
+    :deep(.swiper-pagination-bullet) {
+        width: 24px;
+        height: 24px;
+        margin: 0 12px !important;
+        border-radius: 24px;
+    }
+
+    :deep(.swiper-pagination-bullet-active) {
+        width: 60px;
     }
 }
 </style>

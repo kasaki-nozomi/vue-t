@@ -1,15 +1,25 @@
 <template>
-    <div class="cooperate">
-        <div class="cooperate-title"><span>合作公司 / </span>Cooperative companies</div>
-        <div class="cooperate-list">
-            <div class="cooperate-item" v-for="cooperate of cooperates">
-                <img :src="cooperate" />
+    <div id="cooperate" class="cooperate">
+        <Transition name="cooperate" mode="out-in">
+            <div class="cooperate-box" v-show="cooperateShow">
+                <div class="cooperate-title"><span>合作公司 / </span>Cooperative companies</div>
+                <div class="cooperate-list">
+                    <div class="cooperate-item" v-for="cooperate of cooperates">
+                        <img :src="cooperate" />
+                    </div>
+                </div>
             </div>
-        </div>
+        </Transition>
     </div>
 </template>
 
 <script setup>
+import { getCurrentInstance, ref } from 'vue'
+
+const { proxy } = getCurrentInstance()
+
+const cooperateShow = ref(false)
+
 const cooperates = [
     new URL('@/assets/images/cooperate/tencent.png', import.meta.url).href,
     new URL('@/assets/images/cooperate/netease.svg', import.meta.url).href,
@@ -22,6 +32,8 @@ const cooperates = [
     new URL('@/assets/images/cooperate/gbits.png', import.meta.url).href,
     new URL('@/assets/images/cooperate/ggacp.svg', import.meta.url).href,
 ]
+
+proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
 </script>
 
 <style lang="scss" scoped>
@@ -81,5 +93,16 @@ const cooperates = [
             }
         }
     }
+}
+
+.cooperate-enter-active,
+.cooperate-leave-active {
+    transition: all 0.6s ease;
+}
+
+.cooperate-enter-from,
+.cooperate-leave-to {
+    opacity: 0;
+    transform: translateY(20%);
 }
 </style>

@@ -1,22 +1,32 @@
 <template>
-    <div class="honor">
-        <div class="honor-title"><span>项目荣誉 / </span>Project Honors</div>
-        <div class="honor-list">
-            <div class="honor-item" v-for="honor of honors">
-                <img class="olive-left" :src="oliveLeft" />
-                <div class="honor-content">
-                    <div><AutoFont :text="honor.title"></AutoFont></div>
-                    <div>{{ honor.reward }}</div>
-                    <div>{{ honor.reward_en }}</div>
-                    <div>{{ honor.contest }}</div>
+    <div id="honor" class="honor">
+        <Transition name="honor" mode="out-in">
+            <div class="horor-box" v-show="honorShow">
+                <div class="honor-title"><span>项目荣誉 / </span>Project Honors</div>
+                <div class="honor-list">
+                    <div class="honor-item" v-for="honor of honors">
+                        <img class="olive-left" :src="oliveLeft" />
+                        <div class="honor-content">
+                            <div><AutoFont :text="honor.title"></AutoFont></div>
+                            <div>{{ honor.reward }}</div>
+                            <div>{{ honor.reward_en }}</div>
+                            <div>{{ honor.contest }}</div>
+                        </div>
+                        <img class="olive-right" :src="oliveRight" />
+                    </div>
                 </div>
-                <img class="olive-right" :src="oliveRight" />
             </div>
-        </div>
+        </Transition>
     </div>
 </template>
 
 <script setup>
+import { getCurrentInstance, ref } from 'vue'
+
+const { proxy } = getCurrentInstance()
+
+const honorShow = ref(false)
+
 const oliveLeft = new URL('@/assets/images/olive-left.svg', import.meta.url).href
 const oliveRight = new URL('@/assets/images/olive-right.svg', import.meta.url).href
 const honors = [
@@ -69,6 +79,8 @@ const honors = [
         contest: '第四届全球游戏美术大赛GGAC'
     }
 ]
+
+proxy.bus.on('honor-show', () => honorShow.value = true)
 </script>
 
 <style lang="scss" scoped>
@@ -78,8 +90,13 @@ const honors = [
     padding: 160px 0;
     @include flex-center(center, center, column);
 
+    .honor-box {
+        @include flex-center(center, center, column);
+    }
+
     .honor-title {
         font-size: 36px;
+        text-align: center;
         color: white;
 
         span {
@@ -191,5 +208,16 @@ const honors = [
             }
         }
     }
+}
+
+.honor-enter-active,
+.honor-leave-active {
+    transition: all 0.6s ease;
+}
+
+.honor-enter-from,
+.honor-leave-to {
+    opacity: 0;
+    transform: translateY(20%);
 }
 </style>

@@ -26,20 +26,22 @@
                 <div></div>
                 <div></div>
             </div>
-            <div class="header-tab-group">
-                <Transition name="tab-a" mode="out-in">
-                    <div class="header-tab-item-m" v-show="tabShow" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
-                </Transition>
-                <Transition name="tab-b" mode="out-in">
-                    <div class="header-tab-item-m" v-show="tabShow" @click.stop="projectShow = !projectShow" @mouseenter="projectShow = true">历史项目</div>
-                </Transition>
-                <Transition name="tab-c" mode="out-in">
-                    <div class="header-tab-item-m" v-show="tabShow" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
-                </Transition>
-                <Transition name="tab-d" mode="out-in">
-                    <div class="header-tab-item-m" v-show="tabShow" @click="tabClick('footer')" @mouseenter="projectShow = false">联系我们</div>
-                </Transition>
-            </div>
+            <Transition name="tab-group" mode="out-in">
+                <div class="header-tab-group" v-show="tabShow" >
+                    <!-- <Transition name="tab-a" mode="out-in"> -->
+                        <div class="header-tab-item-m" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
+                    <!-- </Transition>
+                    <Transition name="tab-b" mode="out-in"> -->
+                        <div class="header-tab-item-m" @click.stop="projectShow = !projectShow" @mouseenter="projectShow = true">历史项目</div>
+                    <!-- </Transition>
+                    <Transition name="tab-c" mode="out-in"> -->
+                        <div class="header-tab-item-m" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
+                    <!-- </Transition>
+                    <Transition name="tab-d" mode="out-in"> -->
+                        <div class="header-tab-item-m" @click="tabClick('footer')" @mouseenter="projectShow = false">联系我们</div>
+                    <!-- </Transition> -->
+                </div>
+            </Transition>
             <Transition name="project-m" mode="out-in">
                 <div class="header-projects-m" v-show="projectShow">
                     <div v-for="project in projects">
@@ -88,6 +90,10 @@ function tabGroupClick() {
 }
 
 function tabClick(tab) {
+    if (tab === 'header') {
+        document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+        return
+    }
     tabShow.value = false
     projectShow.value = false
     document.getElementById(tab).scrollIntoView({ behavior: "smooth", block: "start" })
@@ -227,6 +233,10 @@ document.documentElement.addEventListener('click', () => {
                 top: 100%;
                 border-radius: 0 0 5PX 5PX;
                 overflow: hidden;
+                transform-origin: 65% top;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(5PX);
+                -webkit-backdrop-filter: blur(5PX);
                 @include flex-center(flex-end, normal, column);
 
                 .header-tab-item-m {
@@ -237,9 +247,6 @@ document.documentElement.addEventListener('click', () => {
                     text-align: right;
                     white-space: nowrap;
                     color: white;
-                    background: rgba(255, 255, 255, 0.1);
-                    backdrop-filter: blur(5PX);
-                    -webkit-backdrop-filter: blur(5PX);
                     transition: all 0.15s;
                     cursor: pointer;
 
@@ -376,6 +383,17 @@ document.documentElement.addEventListener('click', () => {
 .tab-d-leave-to {
     opacity: 0;
     transform: translateY(-160%);
+}
+
+.tab-group-enter-active,
+.tab-group-leave-active {
+    transition: all 0.4s ease;
+}
+
+.tab-group-enter-from,
+.tab-group-leave-to  {
+    opacity: 0;
+    transform: scale(0.25);
 }
 
 .project-enter-active,
