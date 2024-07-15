@@ -1,7 +1,7 @@
 <template>
     <div id="honor" class="honor">
         <Transition name="honor" mode="out-in">
-            <div class="horor-box" v-show="honorShow">
+            <div class="horor-box" v-if="honorShow">
                 <div class="honor-title"><span>项目荣誉 / </span>Project Honors</div>
                 <div class="honor-list">
                     <div class="honor-item" v-for="honor of honors">
@@ -26,7 +26,6 @@ import { getCurrentInstance, ref } from 'vue'
 const { proxy } = getCurrentInstance()
 
 const honorShow = ref(false)
-
 const oliveLeft = new URL('@/assets/images/olive-left.svg', import.meta.url).href
 const oliveRight = new URL('@/assets/images/olive-right.svg', import.meta.url).href
 const honors = [
@@ -85,7 +84,7 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 
 <style lang="scss" scoped>
 .honor {
-    width: 1600px;
+    width: 1400px;
     min-height: calc(100vh - 100PX);
     padding: 160px 0;
     @include flex-center(center, center, column);
@@ -107,47 +106,47 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
     .honor-list {
         margin-top: 120px;
         flex-wrap: wrap;
-        gap: 65px;
+        gap: 55px;
         @include flex-center();
 
         .honor-item {
-            width: 330px;
+            width: 265px;
             @include flex-center(center, space-between);
             
             img {
-                width: 65px;
+                width: 48px;
             }
 
             .honor-content {
                 @include flex-center(center, center, column);
 
                 div {
-                    max-width: calc(330px - 135px);
+                    width: 180px;
                     text-align: center;
                     color: white;
                 }
 
                 div:nth-of-type(1) {
-                    line-height: 50px;
-                    font-size: 32px;
+                    line-height: 40px;
+                    font-size: 26px;
                     font-weight: 600;
                 }
 
                 div:nth-of-type(2) {
                     margin-top: 6px;
-                    font-size: 24px;
+                    font-size: 20px;
                 }
 
                 div:nth-of-type(3) {
-                    margin-top: 4px;
-                    font-size: 18px;
+                    margin-top: 6px;
+                    font-size: 16px;
                 }
 
                 div:nth-of-type(4) {
-                    margin-top: 4px;
-                    font-size: 16px;
-                    line-height: 28px;
-                    color: rgba(255, 255, 255, 0.75);
+                    margin-top: 6px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    color: rgba(255, 255, 255, 0.7);
                 }
             }
         }

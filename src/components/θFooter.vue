@@ -30,11 +30,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, ref } from 'vue'
-import { useStore } from '@/store'
-
-const store = useStore()
-
+import { ref } from 'vue'
 const qrShow = ref(false)
 
 const qr = new URL('@/assets/images/qr-code.png', import.meta.url).href

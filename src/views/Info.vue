@@ -1,17 +1,13 @@
 <template>
     <div id="info" class="info" ref="info">
-        <Header></Header>
         <Carousel></Carousel>
         <Others></Others>
-        <Footer></Footer>
     </div>
 </template>
 
 <script setup>
-import Header from '@/components/info/αHeader.vue'
 import Carousel from '@/components/info/βCarousel.vue'
 import Others from '@/components/info/γOthers.vue'
-import Footer from '@/components/θFooter.vue'
 </script>
 
 <style lang="scss" scoped>

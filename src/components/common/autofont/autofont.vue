@@ -25,7 +25,7 @@ function scaleText() {
     const outer = proxy.$el.offsetWidth
     const inner = proxy.$refs.innerSpan?.offsetWidth
     const scale = outer < inner ? outer / inner : 1
-    if (proxy.$refs.innerSpan) proxy.$refs.innerSpan.style.transform = `translateX(-${50 * scale}%) scale(${scale})`
+    if (proxy.$refs.innerSpan) proxy.$refs.innerSpan.style.transform = `scale(${scale})`
     proxy.$el.style.opacity = 1
 }
 
@@ -43,7 +43,6 @@ onMounted(() => {
     position: relative;
 
     span {
-        margin-left: 50%;
         display: inline-block;
         white-space: nowrap;
         transform-origin: left center;

@@ -1,5 +1,6 @@
 <template>
     <div class="others">
+        <div class="other-title"><span>其他项目 / </span>Other Projects</div>
         <div class="others-list">
             <div class="other-list-box" v-for="project of others.slice(0, count)">
                 <div class="others-item" @mouseenter="info = project.id" @mouseleave="info = null" :style="{ backgroundImage: `url(${project.image})` }">
@@ -18,14 +19,11 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, nextTick, ref, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { ref } from 'vue'
 import { useStore } from '@/store'
 import { useRoute, useRouter } from 'vue-router'
 import { projects } from '@/utils/projects'
 
-const { proxy } = getCurrentInstance()
-const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
@@ -46,12 +44,23 @@ function goProject(project) {
 <style lang="scss" scoped>
 .others {
     width: 100%;
-    padding: 100px 0;
+    padding: 100px 0 80px 0;
     @include flex-center(center, center, column);
+
+    .other-title {
+        font-size: 36px;
+        text-align: center;
+        color: white;
+
+        span {
+            font-weight: 600;
+        }
+    }
 
     .others-list {
         width: 100%;
         max-width: 1820px;
+        margin-top: 60px;
         gap: 60px;
         flex-wrap: wrap;
         @include flex-center();
@@ -69,7 +78,7 @@ function goProject(project) {
                     width: 100%;
                     height: 100%;
                     padding: 20px 40px;
-                    gap: 15px;
+                    gap: 25px;
                     background: rgba(0, 0, 0, 0.7);
                     backdrop-filter: blur(10px);
                     -webkit-backdrop-filter: blur(10px);
@@ -86,7 +95,7 @@ function goProject(project) {
                         font-size: 20px;
                         display: -webkit-box;
                         -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 6;
+                        -webkit-line-clamp: 5;
                         text-overflow: ellipsis;
                         overflow: hidden;
                         color: white;
@@ -107,11 +116,11 @@ function goProject(project) {
     }
 
     .others-more {
-        height: 60px;
-        margin-top: 65px;
-        padding: 0 60px;
-        font-size: 24px;
-        border-radius: 60px;
+        height: 66px;
+        margin-top: 80px;
+        padding: 0 50px;
+        font-size: 25px;
+        border-radius: 66px;
         color: black;
         background: rgb(255, 255, 255);
     }
@@ -121,7 +130,12 @@ function goProject(project) {
     .others {
         padding: 180px 0;
 
+        .other-title {
+            font-size: 72px;
+        }
+
         .others-list {
+            margin-top: 110px;
             gap: 100px;
 
             .other-list-box {
@@ -157,11 +171,11 @@ function goProject(project) {
         }
 
         .others-more {
-            height: 135px;
+            height: 150px;
             margin-top: 128px;
-            padding: 0 100px;
+            padding: 0 80px;
             font-size: 58px;
-            border-radius: 135px;
+            border-radius: 150px;
         }
     }
 }

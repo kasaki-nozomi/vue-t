@@ -1,8 +1,7 @@
 <template>
     <div class="carousel">
         <div v-if="current !== 'wukong' && current !== 'contest'" class="carousel-box">
-            <swiper :autoHeight="true" :autoplay="{ delay: 5000, disableOnInteraction: false }" :loop="true"
-                :modules="modules" :navigation="true" :pagination="{ clickable: true }">
+            <swiper :autoHeight="true" :autoplay="{ delay: 5000, disableOnInteraction: false }" :loop="true" :modules="modules" :navigation="true" :pagination="{ clickable: true }">
                 <swiper-slide v-for="banner of banners">
                     <div :class="['banner', current]" :style="{ backgroundImage: `url(${banner})` }"></div>
                 </swiper-slide>
@@ -287,10 +286,10 @@ const contests = [
         }
 
         .carousel-desc {
-            width: 1450px;
+            width: 1250px;
             line-height: 42px;
             margin: 100px 0;
-            font-size: 22px;
+            font-size: 18px;
             text-align: center;
             color: rgba(255, 255, 255, 0.75);
         }
@@ -300,7 +299,7 @@ const contests = [
 
             img {
                 display: block;
-                width: 1550px;
+                width: 1250px;
                 margin-top: 16px;
             }
         }
@@ -314,7 +313,7 @@ const contests = [
                 video {
                     display: block;
                     margin-top: 16px;
-                    width: 1550px; 
+                    width: 1400px; 
                 }
 
                 .video-title {

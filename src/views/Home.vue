@@ -1,6 +1,5 @@
 <template>
     <div class="home-container">
-        <Header></Header>
         <div id="home" class="home">
             <Screen></Screen>
             <Capacity></Capacity>
@@ -10,32 +9,24 @@
                 <Honor></Honor>
                 <Cooperate></Cooperate>
             </div>
-            <Footer></Footer>
         </div>
     </div>
 </template>
 <script setup>
-import Header from '@/components/αHeader.vue'
 import Screen from '@/components/βScreen.vue'
 import Capacity from '@/components/γCapacity.vue'
 import Project from '@/components/δProject.vue'
 import Company from '@/components/εCompany.vue'
 import Honor from '@/components/ζHonor.vue'
 import Cooperate from '@/components/ηCooperate.vue'
-import Footer from '@/components/θFooter.vue'
 
 import axios from 'axios'
 import { getCurrentInstance, ref, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-
-import { getSome, postSome } from '@/http/api'
-import { useStore, useUserStore } from '@/store'
+import { useRoute, useRouter } from 'vue-router'
 
 const { proxy } = getCurrentInstance()
-const { t } = useI18n()
-
-const store = useStore()
-const userStore = useUserStore()
+const route = useRoute()
+const router = useRouter()
 
 const CancelToken = axios.CancelToken
 let source = CancelToken.source()
@@ -55,6 +46,12 @@ onMounted(() => {
     company = document.getElementById('company')
     honor = document.getElementById('honor')
     cooperate = document.getElementById('cooperate')
+
+    const position = route.query?.position
+    if (position) {
+        document.documentElement.scrollTo({ top: document.getElementById(position).offsetTop, behavior: 'smooth' })
+        window.history.replaceState(null, null, window.location.href.split('?')[0])
+    }
 })
 
 const style = ref({})

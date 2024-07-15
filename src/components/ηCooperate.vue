@@ -1,7 +1,7 @@
 <template>
     <div id="cooperate" class="cooperate">
         <Transition name="cooperate" mode="out-in">
-            <div class="cooperate-box" v-show="cooperateShow">
+            <div class="cooperate-box" v-if="cooperateShow">
                 <div class="cooperate-title"><span>合作公司 / </span>Cooperative companies</div>
                 <div class="cooperate-list">
                     <div class="cooperate-item" v-for="cooperate of cooperates">
@@ -19,7 +19,6 @@ import { getCurrentInstance, ref } from 'vue'
 const { proxy } = getCurrentInstance()
 
 const cooperateShow = ref(false)
-
 const cooperates = [
     new URL('@/assets/images/cooperate/tencent.png', import.meta.url).href,
     new URL('@/assets/images/cooperate/netease.svg', import.meta.url).href,
@@ -57,7 +56,7 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
     .cooperate-list {
         margin-top: 120px;
         flex-wrap: wrap;
-        gap: 75px;
+        gap: 65px;
         @include flex-center();
 
         .cooperate-item {

@@ -1,6 +1,6 @@
 <template>
     <div id="header" class="header">
-        <div class="header-logo button">
+        <div class="header-logo button" @click="goHome">
             <img class="logo" :src="logo" />
             <img class="name" :src="name" v-show="!store.phone" />
         </div>
@@ -28,18 +28,10 @@
             </div>
             <Transition name="tab-group" mode="out-in">
                 <div class="header-tab-group" v-show="tabShow" >
-                    <!-- <Transition name="tab-a" mode="out-in"> -->
-                        <div class="header-tab-item-m" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
-                    <!-- </Transition>
-                    <Transition name="tab-b" mode="out-in"> -->
-                        <div class="header-tab-item-m" @click.stop="projectShow = true" @mouseenter="projectShow = true">历史项目</div>
-                    <!-- </Transition>
-                    <Transition name="tab-c" mode="out-in"> -->
-                        <div class="header-tab-item-m" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
-                    <!-- </Transition>
-                    <Transition name="tab-d" mode="out-in"> -->
-                        <div class="header-tab-item-m" @click="tabClick('footer')" @mouseenter="projectShow = false">联系我们</div>
-                    <!-- </Transition> -->
+                    <div class="header-tab-item-m" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
+                    <div class="header-tab-item-m" @click.stop="projectShow = true" @mouseenter="projectShow = true">历史项目</div>
+                    <div class="header-tab-item-m" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
+                    <div class="header-tab-item-m" @click="tabClick('footer')" @mouseenter="projectShow = false">联系我们</div>
                 </div>
             </Transition>
             <Transition name="project-m" mode="out-in">
@@ -54,15 +46,12 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, nextTick, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { nextTick, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
 import { projects } from '@/utils/projects'
 
-const { proxy } = getCurrentInstance()
-const { t } = useI18n()
-
+const route = useRoute()
 const router = useRouter()
 const store = useStore()
 
@@ -84,6 +73,10 @@ nextTick(() => {
     connect = document.getElementById('footer')
 })
 
+function goHome() {
+    if (route.name !== 'home') router.push({ path: '/' })
+}
+
 function tabGroupClick() {
     tabShow.value = !tabShow.value
     if (!tabShow.value) projectShow.value = false
@@ -94,9 +87,13 @@ function tabClick(tab) {
         document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
         return
     }
+    if (route.name !== 'home' && tab === 'company') {
+        router.push({ path: '/', query: { position: 'company' } })
+        return
+    }
     tabShow.value = false
     projectShow.value = false
-    document.getElementById(tab).scrollIntoView({ behavior: "smooth", block: "start" })
+    document.documentElement.scrollTo({ top: document.getElementById(tab).offsetTop, behavior: 'smooth' })
 }
 
 function projectClick(symbol) {

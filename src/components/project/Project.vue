@@ -1,21 +1,23 @@
 <template>
     <div class="project" :class="{ reverse: project.id % 2 === 0 && !store.phone }">
-        <div class="project-left" :class="{ 'project-leftm': store.pad, 'desc-show': desc && !store.phone }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
-            <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in"><div class="project-desc" v-show="desc" @click="goProject" v-html="project.description"></div></Transition>
+        <div class="project-left" :class="{ 'project-leftm': store.pad }" @mouseenter="desc = true" @mouseleave="desc = false" :style="{ backgroundImage: `url(${project.image})` }">
+            <Transition :name="`description-${project.id % 2 !== 0 ? 'left' : 'right' }`" mode="out-in">
+                <div class="project-desc" v-show="desc && !store.phone" @click="goProject" v-html="project.description"></div>
+            </Transition>
         </div>
         <div class="project-right" v-if=!store.phone>
             <img :class="project.symbol" :src="project.logo" />
         </div>
         <div class="project-bottom" v-if=store.phone>
             <img :class="project.symbol" :src="project.logo" />
-            <div class="project-bottom-desc">{{ project.description }}</div>
+            <div class="project-bottom-desc" v-html="project.description"></div>
             <button @click="goProject">查看更多</button>
         </div>
     </div>
 </template>
 
 <script setup>
-import { getCurrentInstance, ref } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from '@/store'
 
@@ -34,7 +36,7 @@ function goProject() {
 <style lang="scss" scoped>
 .project {
     width: 100%;
-    background: rgb(22, 22, 22);
+    background: black;
     @include flex-center();
 
     &.reverse {
@@ -82,7 +84,7 @@ function goProject() {
         }
 
         .changzhou {
-            width: 220px;
+            width: 210px;
         }
 
         .daye {
@@ -98,9 +100,21 @@ function goProject() {
         }
 
         .yaomu {
-            width: 220px;
+            width: 160px;
         }
     } 
+}
+
+@media screen and (min-width: 2000px) {
+    .project-left {
+        height: 500PX;
+    }
+
+    .project-right {
+        img {
+            height: 320PX
+        }
+    }
 }
 
 @include setPhoneContent {
@@ -110,17 +124,23 @@ function goProject() {
         .project-left {
             width: 1920px;
             height: 720px;
-
-            .project-desc {
-                line-height: 84px;
-                padding: 0 320px;
-                font-size: 48px;
-                backdrop-filter: blur(10px);
-            }
         }
 
         .project-bottom {
             @include flex-center(center, center, column);
+
+            .project-bottom-desc {
+                width: 1280px;
+                line-height: 84px;
+                font-size: 48px;
+                text-align: center;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                color: rgba(255, 255, 255, 0.75);
+            }
 
             img {
                 margin-top: 160px;

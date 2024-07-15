@@ -25,7 +25,6 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
         display: block;
         margin: 0;
         padding: 0;
-        // width: 1920px;
         height: 640px;
     }
 

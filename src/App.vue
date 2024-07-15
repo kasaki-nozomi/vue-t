@@ -1,10 +1,12 @@
 <template>
     <div id="root" :class="locale">
+        <Header></Header>
         <router-view  v-slot="{ Component, route }" >
             <Transition :name="route.name" mode="out-in">
                 <component :is="Component" :key="route.fullPath"></component>
             </Transition>
         </router-view>
+        <Footer></Footer>
         <!-- type: center-move | center-scale | bottom -->
         <Popup type="center-move"></Popup>
         <Loading></Loading>
@@ -12,16 +14,12 @@
 </template>
 
 <script setup>
+import Header from '@/components/αHeader.vue'
+import Footer from '@/components/θFooter.vue'
 import Popup from '@/components/popup/Popup.vue'
 
-import { getCurrentInstance, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
 import { getUrlParam } from '@/utils/utils'
-
-const store = useStore()
-
-const { proxy } = getCurrentInstance()
 
 const { locale } = useI18n()
 if (getUrlParam('lang') || getUrlParam('l')) {

@@ -39,7 +39,7 @@ const capacitys = [
 .capacity {
     width: 1920px;
     padding: 200px 0 250px 0;
-    @include background($image: 'back-mask-one.png');
+    @include background($image: 'back-mask-one.png', $size: cover);
     @include flex-center(center, center, column);
 
     .capacity-box {
@@ -71,26 +71,26 @@ const capacitys = [
     }
 
     .capacity-list {
-        margin-top: 120px;
-        gap: 180px;
+        margin-top: 100px;
+        gap: 155px;
         flex-wrap: wrap;
         @include flex-center(flex-start, center);
 
         .capacity-item {
-            width: 388px;
+            width: 360px;
             @include flex-center(flex-start, normal, column);
 
             .title {
-                font-size: 30px;
+                font-size: 28px;
                 font-weight: 800;
                 color: white;
             }
 
             .desc {
                 margin-top: 28px;
-                font-size: 22px;
-                line-height: 42px;
-                color: rgba(255, 255, 255, 0.45);
+                font-size: 18px;
+                line-height: 36px;
+                color: rgba(255, 255, 255, 0.65);
             }
         }
     }
@@ -140,7 +140,7 @@ const capacitys = [
                     margin-top: 84px;
                     font-size: 54px;
                     line-height: 110px;
-                    text-align: center;
+                    text-align: justify;
                 }
             }
         }

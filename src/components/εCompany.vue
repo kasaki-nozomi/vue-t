@@ -1,9 +1,8 @@
 <template>
     <div id="company" class="company">
         <Transition name="company" mode="out-in">
-            <div class="company-box" v-show="companyShow">
+            <div class="company-box" v-if="companyShow">
                 <img :src="logo" />
-                <!-- <div class="company-origin">空鸟文化2023年我们成立了鵼视觉工作室</div> -->
                 <div class="company-desc">我们是空鸟文化，一支洋溢着无限创意与卓越执行力的专业团队。我们深信，视觉的力量能够为文化行业开辟更多前所未有的可能性。因此，我们不断探索新的领域，拓宽视野，矢志打造出引领潮流且有视觉尖叫度文化产品和视觉IP。</div>
                 <div class="company-states">
                     <div class="state">
@@ -65,32 +64,22 @@ proxy.bus.on('company-show', () => companyShow.value = true)
     }
 
     img {
-        width: 350px;
+        width: 300px;
     }
 
-    .company-origin {
-        width: 720px;
+    .company-desc {
+        width: 700px;
         line-height: 40px;
-        margin-top: 72px;
-        font-size: 22px;
-        font-weight: 600;
+        margin-top: 52px;
+        font-size: 18px;
         text-align: center;
         color: rgba(255, 255, 255, 0.75);
     }
 
-    .company-desc {
-        width: 720px;
-        line-height: 42px;
-        margin-top: 52px;
-        font-size: 20px;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.65);
-    }
-
     .company-states {
-        height: 160px;
-        margin-top: 120px;
-        gap: 220px;
+        height: 140px;
+        margin-top: 80px;
+        gap: 150px;
         @include flex-center();
 
         .state {
@@ -99,7 +88,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
             @include flex-center(center, normal, column);
 
             .state-title {
-                font-size: 22px;
+                font-size: 18px;
                 font-weight: 600;
                 text-align: center;
                 color: white;
@@ -109,7 +98,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
             .state-desc {
                 position: relative;
                 margin-top: 16px;
-                font-size: 72px;
+                font-size: 58px;
                 color: rgb(180, 180, 180);
                 transition: all 0.25s;
                 cursor: pointer;
@@ -132,35 +121,39 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                 z-index: 10;
                 position: absolute;
                 top: 110%;
-                width: 800px;
-                line-height: 38px;
-                padding: 24px;
-                font-size: 22px;
+                width: 680px;
+                line-height: 36px;
+                padding: 40px;
+                font-size: 18px;
                 text-align: justify;
                 border-radius: 10px;
                 color: white;
-                background: rgb(100, 100, 100);
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
 
                 &::after {
                     content: '';
                     position: absolute;
                     width: 0;
                     height: 0;
-                    top: -14px;
+                    top: -16px;
                     left: 50%;
                     transform: translateX(-50%);
                     border-left: 18px solid transparent;
                     border-right: 18px solid transparent;
-                    border-bottom: 16px solid rgb(100, 100, 100);
+                    border-bottom: 16px solid rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
                 }
             }
         }
 
         .divide {
-            width: 1px;
+            width: 2px;
             height: 65%;
             margin-top: 10px;
-            background: rgb(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.25);
         }
     }
 }
@@ -217,9 +210,9 @@ proxy.bus.on('company-show', () => companyShow.value = true)
 
                 .state-more {
                     top: 110%;
-                    width: 1450px;
+                    width: 1460px;
                     line-height: 78px;
-                    padding: 40px;
+                    padding: 60px;
                     font-size: 42px;
                     border-radius: 20px;
 
@@ -233,17 +226,22 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                             left: 120px;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
-                            border-bottom: 32px solid rgb(100, 100, 100);
+                            border-bottom: 28px solid rgba(255, 255, 255, 0.1);
+                            backdrop-filter: blur(10px);
+                            -webkit-backdrop-filter: blur(10px);
                         }
                     }
 
                     &.two {
+                        width: 1510px;
                         &::after {
                             content: '';
                             top: -28px;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
-                            border-bottom: 32px solid rgb(100, 100, 100);
+                            border-bottom: 28px solid rgba(255, 255, 255, 0.1);
+                            backdrop-filter: blur(10px);
+                            -webkit-backdrop-filter: blur(10px);
                         }
                     }
 
@@ -258,7 +256,9 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                             right: 50px;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
-                            border-bottom: 32px solid rgb(100, 100, 100);
+                            border-bottom: 28px solid rgba(255, 255, 255, 0.1);
+                            backdrop-filter: blur(10px);
+                            -webkit-backdrop-filter: blur(10px);
                         }
                     }
                 }
