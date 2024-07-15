@@ -95,10 +95,11 @@ function goProject(project) {
                         font-size: 20px;
                         display: -webkit-box;
                         -webkit-box-orient: vertical;
+                        line-clamp: 5;
                         -webkit-line-clamp: 5;
                         text-overflow: ellipsis;
                         overflow: hidden;
-                        color: white;
+                        color: rgba(255, 255, 255, 0.8);
                     }
 
                     .others-info-more {

@@ -105,15 +105,47 @@ function goProject() {
     } 
 }
 
-@media screen and (min-width: 2000px) {
-    .project-left {
-        height: 500PX;
-    }
+@media screen and (min-width: 1920px) {
+    .project {
+        .project-left {
+            height: 500PX;
 
-    .project-right {
-        img {
-            height: 320PX
+            .project-desc {
+                line-height: 40PX;
+                padding: 0 220PX;
+                font-size: 20PX;
+            }
         }
+
+        .project-right {
+            .changyuan {
+                width: 280PX;
+            }
+
+            .shanhai {
+                width: 90PX;
+            }
+
+            .changzhou {
+                width: 210PX;
+            }
+
+            .daye {
+                width: 260PX;
+            }
+
+            .wukong {
+                width: 300PX;
+            }
+            
+            .contest {
+                width: 240PX;
+            }
+
+            .yaomu {
+                width: 160PX;
+            }
+        } 
     }
 }
 

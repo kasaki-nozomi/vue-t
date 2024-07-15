@@ -325,9 +325,9 @@ const contests = [
 
                 .video-desc {
                     width: 1250px;
-                    line-height: 42px;
+                    line-height: 38px;
                     margin-bottom: 80px;
-                    font-size: 22px;
+                    font-size: 20px;
                     text-align: center;
                     color: rgba(255, 255, 255, 0.75);
                 }
