@@ -52,26 +52,24 @@ const current = route.query.project || 'changyuan'
 
 const banners = {
     changyuan: [
-        new URL('@/assets/images/project/changyuan/banner/01.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/banner/02.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/banner/03.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/banner/04.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/banner/05.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/banner/06.jpg', import.meta.url).href
+        new URL('@/assets/images/project/changyuan/list/4.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan/list/12.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan/list/13.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan/list/29.jpg', import.meta.url).href
     ],
     shanhai: [
-        new URL('@/assets/images/project/shanhai/banner/01.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/02.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/03.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/shanhai/banner/04.jpg', import.meta.url).href
+        new URL('@/assets/images/project/shanhai/list/001.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/list/002.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/list/003.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shanhai/list/004.jpg', import.meta.url).href
     ],
     changzhou: [
-        new URL('@/assets/images/project/changzhou/banner/01.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/banner/02.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/banner/03.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/banner/04.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/banner/05.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/banner/06.jpg', import.meta.url).href
+        new URL('@/assets/images/project/changzhou/list/green/4.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/green/5.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/green/7.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/green/8.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/green/10.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/green/14.jpg', import.meta.url).href
     ],
     daye: [
         new URL('@/assets/images/project/daye/banner/01.jpg', import.meta.url).href,
@@ -81,15 +79,15 @@ const banners = {
         new URL('@/assets/images/project/daye/banner/05.jpg', import.meta.url).href
     ],
     contest: [
-        new URL('@/assets/images/project/contest/banner/01.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/contest/cover.jpg', import.meta.url).href,
     ],
     wukong: [
-        new URL('@/assets/images/project/wukong/banner/01.jpg', import.meta.url).href
+        new URL('@/assets/images/project/wukong/cover.jpg', import.meta.url).href
     ],
     yaomu: [
-        new URL('@/assets/images/project/yaomu/banner/01.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/yaomu/banner/02.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/yaomu/banner/03.jpg', import.meta.url).href
+        new URL('@/assets/images/project/yaomu/list/003.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/yaomu/list/004.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/yaomu/list/006.jpg', import.meta.url).href
     ]
 }[current]
 
@@ -245,7 +243,7 @@ const contests = [
             }
 
             &.yaomu {
-                height: 1080px;
+                height: 820px;
             }
         }
     }
@@ -262,7 +260,7 @@ const contests = [
             }
 
             &.shanhai {
-                width: 320px;
+                width: 165px;
             }
 
             &.changzhou {
@@ -375,7 +373,7 @@ const contests = [
                 }
 
                 &.shanhai {
-                    width: 460px;
+                    width: 300px;
                 }
 
                 &.changzhou {

@@ -32,7 +32,7 @@
                         <div class="header-tab-item-m" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
                     <!-- </Transition>
                     <Transition name="tab-b" mode="out-in"> -->
-                        <div class="header-tab-item-m" @click.stop="projectShow = !projectShow" @mouseenter="projectShow = true">历史项目</div>
+                        <div class="header-tab-item-m" @click.stop="projectShow = true" @mouseenter="projectShow = true">历史项目</div>
                     <!-- </Transition>
                     <Transition name="tab-c" mode="out-in"> -->
                         <div class="header-tab-item-m" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
@@ -217,6 +217,7 @@ document.documentElement.addEventListener('click', () => {
 
             .header-tab-button {
                 gap: 6PX;
+                cursor: pointer;
                 @include flex-center(center, normal, column);
 
                 div {

@@ -95,7 +95,6 @@ function getElementViewTop(element) {
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    // max-height: 100vh;
     background: black;
     overflow-y: auto;
     @include flex-center(center, normal, column);
@@ -107,6 +106,14 @@ function getElementViewTop(element) {
         background-repeat: no-repeat;
         background-attachment: fixed;
         @include flex-center(center, normal, column);
+    }
+}
+
+@include setPhoneContent {
+    .home {
+        .home-box {
+            background-image: url('@/assets/images/back-mask-two-m.png');
+        }
     }
 }
 </style>

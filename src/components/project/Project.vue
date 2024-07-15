@@ -78,13 +78,11 @@ function goProject() {
         }
 
         .shanhai {
-            width: 180px;
-            margin-top: 28px;
+            width: 90px;
         }
 
         .changzhou {
             width: 220px;
-            margin-top: 28px;
         }
 
         .daye {
@@ -133,7 +131,7 @@ function goProject() {
             }
 
             .shanhai {
-                width: 320px;
+                width: 280px;
             }
 
             .changzhou {
