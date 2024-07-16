@@ -59,10 +59,11 @@ window.onscroll = () => {
     const companyY = getElementViewTop(company)
     const honorY = getElementViewTop(honor)
     const cooperateY = getElementViewTop(cooperate)
+    console.log(companyY)
     if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${companyY / 3.2}px` }
-    if (companyY < window.innerHeight / 4.5) proxy.bus.emit('company-show')
-    if (honorY < window.innerHeight / 4.5) proxy.bus.emit('honor-show')
-    if (cooperateY < window.innerHeight / 4.5) proxy.bus.emit('cooperate-show')
+    if (companyY < window.innerHeight / 4) proxy.bus.emit('company-show')
+    if (honorY < window.innerHeight / 4) proxy.bus.emit('honor-show')
+    if (cooperateY < window.innerHeight / 4) proxy.bus.emit('cooperate-show')
 }
 
 function getElementViewTop(element) {
@@ -99,8 +100,10 @@ function getElementViewTop(element) {
     .home-box {
         width: 100%;
         background-image: url('@/assets/images/back-mask-two.png');
-        // background-size: cover;
-        background-size: 100% auto;
+        background-size: cover;
+        background-size: 1920px 3245px;
+        // background-position-x: center;
+        // background-position-y: 0;
         background-repeat: no-repeat;
         background-attachment: fixed;
         @include flex-center(center, normal, column);
@@ -111,6 +114,7 @@ function getElementViewTop(element) {
     .home {
         .home-box {
             background-image: url('@/assets/images/back-mask-two-m.png');
+            background-size: 1920px 6233px;
         }
     }
 }

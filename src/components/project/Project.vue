@@ -48,6 +48,7 @@ function goProject() {
         width: 1266px;
         height: 466px;
         background-size: cover;
+        background-position: center;
         background-repeat: no-repeat;
         overflow: hidden;
         transition: all 0.4s;
