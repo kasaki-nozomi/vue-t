@@ -27,9 +27,6 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, nextTick, ref, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import { projects } from '@/utils/projects'
 
@@ -39,11 +36,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const { proxy } = getCurrentInstance()
-const { t } = useI18n()
 const route = useRoute()
-
-const store = useStore()
 
 const modules = [Autoplay, Navigation, Pagination]
 
@@ -51,10 +44,10 @@ const current = route.query.project || 'changyuan'
 
 const banners = {
     changyuan: [
-        new URL('@/assets/images/project/changyuan/list/4.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/list/12.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/list/13.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/list/29.jpg', import.meta.url).href
+        new URL('@/assets/images/project/changyuan/banner/4.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan/banner/12.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan/banner/13.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan/banner/29.jpg', import.meta.url).href
     ],
     shanhai: [
         new URL('@/assets/images/project/shanhai/list/001.jpg', import.meta.url).href,
@@ -63,12 +56,12 @@ const banners = {
         new URL('@/assets/images/project/shanhai/list/004.jpg', import.meta.url).href
     ],
     changzhou: [
-        new URL('@/assets/images/project/changzhou/list/green/4.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/green/5.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/green/7.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/green/8.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/green/10.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/green/14.jpg', import.meta.url).href
+        new URL('@/assets/images/project/changzhou/banner/4.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/banner/5.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/banner/7.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/banner/8.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/banner/10.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/banner/14.jpg', import.meta.url).href
     ],
     daye: [
         new URL('@/assets/images/project/daye/banner/01.jpg', import.meta.url).href,
@@ -134,12 +127,6 @@ const lists = {
         new URL('@/assets/images/project/shanhai/list/010.jpg', import.meta.url).href
     ],
     changzhou: [
-        new URL('@/assets/images/project/changzhou/list/red/003.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/red/004.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/red/005.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/red/006.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/red/007.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/red/009.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/green/4.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/green/5.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/green/6.jpg', import.meta.url).href,
@@ -155,7 +142,13 @@ const lists = {
         new URL('@/assets/images/project/changzhou/list/green/28.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/green/30.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/green/34.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changzhou/list/green/38.jpg', import.meta.url).href
+        new URL('@/assets/images/project/changzhou/list/green/38.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/red/003.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/red/004.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/red/005.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/red/006.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/red/007.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changzhou/list/red/009.jpg', import.meta.url).href
     ],
     daye: [
         new URL('@/assets/images/project/daye/banner/01.jpg', import.meta.url).href,
@@ -218,7 +211,7 @@ const contests = [
             background-position: top center;
 
             &.changyuan {
-                height: 950px;
+                height: 808px;
             }
 
             &.shanhai {
@@ -226,7 +219,7 @@ const contests = [
             }
 
             &.changzhou {
-                height: 820px;
+                height: 686px;
             }
 
             &.daye {
@@ -286,7 +279,7 @@ const contests = [
         }
 
         .carousel-desc {
-            width: 1250px;
+            width: 1000px;
             line-height: 42px;
             margin: 100px 0;
             font-size: 18px;
@@ -324,7 +317,7 @@ const contests = [
                 }
 
                 .video-desc {
-                    width: 1250px;
+                    width: 1100px;
                     line-height: 38px;
                     margin-bottom: 80px;
                     font-size: 20px;

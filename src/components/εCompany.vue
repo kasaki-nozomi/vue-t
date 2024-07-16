@@ -36,7 +36,7 @@ const { proxy } = getCurrentInstance()
 const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
 const moreinfo = ref(null)
 const companyShow = ref(false)
-const cooperates = `迄今为止，我们已为众多知名合作方提供了卓越的设计服务，赢得了广泛的认可与赞誉。合作企业包括但不限于：腾讯，网易，GGAC，七点GAME，畅游，吉比特，lofter，万维猫等`
+const cooperates = `迄今为止，我们已为众多知名合作方提供了卓越的设计服务，赢得了广泛的认可与赞誉。合作企业包括但不限于：腾讯，网易，GGAC，七点GAME，畅游，吉比特，lofter，万维猫等。`
 const rewards = `
 《界冕》获第五届全球游戏美术大赛GGAC 专业组 特等奖<br>
 《大野》获：全球数字艺术大赛奇点奖 最佳影视开发奖<br>
@@ -121,14 +121,14 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                 z-index: 10;
                 position: absolute;
                 top: 110%;
-                width: 680px;
+                width: 600px;
                 line-height: 36px;
-                padding: 40px;
-                font-size: 18px;
+                padding: 32px;
+                font-size: 16px;
                 text-align: justify;
                 border-radius: 10px;
                 color: white;
-                background: rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.15);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
 
@@ -142,7 +142,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                     transform: translateX(-50%);
                     border-left: 18px solid transparent;
                     border-right: 18px solid transparent;
-                    border-bottom: 16px solid rgba(255, 255, 255, 0.1);
+                    border-bottom: 16px solid rgba(255, 255, 255, 0.15);
                     backdrop-filter: blur(10px);
                     -webkit-backdrop-filter: blur(10px);
                 }
@@ -226,7 +226,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                             left: 120px;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
-                            border-bottom: 28px solid rgba(255, 255, 255, 0.1);
+                            border-bottom: 28px solid rgba(255, 255, 255, 0.15);
                             backdrop-filter: blur(10px);
                             -webkit-backdrop-filter: blur(10px);
                         }
@@ -239,7 +239,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                             top: -28px;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
-                            border-bottom: 28px solid rgba(255, 255, 255, 0.1);
+                            border-bottom: 28px solid rgba(255, 255, 255, 0.15);
                             backdrop-filter: blur(10px);
                             -webkit-backdrop-filter: blur(10px);
                         }
@@ -256,7 +256,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                             right: 50px;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
-                            border-bottom: 28px solid rgba(255, 255, 255, 0.1);
+                            border-bottom: 28px solid rgba(255, 255, 255, 0.15);
                             backdrop-filter: blur(10px);
                             -webkit-backdrop-filter: blur(10px);
                         }
@@ -286,12 +286,12 @@ proxy.bus.on('company-show', () => companyShow.value = true)
 
 .company-enter-active,
 .company-leave-active {
-    transition: all 0.6s ease;
+    transition: all 0.8s ease;
 }
 
 .company-enter-from,
 .company-leave-to {
     opacity: 0;
-    transform: translateY(20%);
+    transform: translateY(60%);
 }
 </style>

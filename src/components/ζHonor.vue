@@ -104,47 +104,47 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
     }
 
     .honor-list {
-        margin-top: 120px;
+        margin-top: 100px;
         flex-wrap: wrap;
-        gap: 55px;
+        gap: 58px;
         @include flex-center();
 
         .honor-item {
-            width: 265px;
+            width: 245px;
             @include flex-center(center, space-between);
             
             img {
-                width: 48px;
+                width: 45px;
             }
 
             .honor-content {
                 @include flex-center(center, center, column);
 
                 div {
-                    width: 180px;
+                    width: 150px;
                     text-align: center;
                     color: white;
                 }
 
                 div:nth-of-type(1) {
                     line-height: 40px;
-                    font-size: 26px;
+                    font-size: 25px;
                     font-weight: 600;
                 }
 
                 div:nth-of-type(2) {
                     margin-top: 6px;
-                    font-size: 20px;
+                    font-size: 18px;
                 }
 
                 div:nth-of-type(3) {
                     margin-top: 6px;
-                    font-size: 16px;
+                    font-size: 15px;
                 }
 
                 div:nth-of-type(4) {
                     margin-top: 6px;
-                    font-size: 15px;
+                    font-size: 14px;
                     line-height: 22px;
                     color: rgba(255, 255, 255, 0.7);
                 }
@@ -180,7 +180,7 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 
                 .honor-content {
                     div {
-                        max-width: calc(600px - 265px);
+                        width: 333px;
                     }
 
                     div:nth-of-type(1) {
@@ -211,12 +211,12 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 
 .honor-enter-active,
 .honor-leave-active {
-    transition: all 0.6s ease;
+    transition: all 0.8s ease;
 }
 
 .honor-enter-from,
 .honor-leave-to {
     opacity: 0;
-    transform: translateY(20%);
+    transform: translateY(60%);
 }
 </style>

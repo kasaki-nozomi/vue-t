@@ -4,15 +4,21 @@
             <source :src="screenVideo" type="video/mp4">
         </video>
         <div class="screen-tip">
+            <!-- <div>KONG STUDIO</div>
             <div>Broaden horizons</div>
-            <div>& lead trends</div>
+            <div>& lead trends</div> -->
+            <img :src="store.phone ? screenTitle_m : screenTitle" />
         </div>
     </div>
 </template>
 
 <script setup>
+import { useStore } from '@/store'
+const store = useStore()
 const screenImage = new URL('@/assets/images/company/company.jpg', import.meta.url).href
 const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.url).href
+const screenTitle = new URL('@/assets/images/screen-title.svg', import.meta.url).href
+const screenTitle_m = new URL('@/assets/images/screen-title-m.svg', import.meta.url).href
 </script>
 
 <style lang="scss" scoped>
@@ -30,13 +36,25 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
 
     .screen-tip {
         position: absolute;
-        @include flex-center(center, center, column);
+        right: 120px;
+        bottom: 80px;
+        @include flex-center(flex-end, normal, column);
 
         div {
-            font-size: 56px;
-            line-height: 86px;
+            font-size: 30px;
+            line-height: 50px;
             font-weight: 600;
             color: white;
+        }
+
+        div:first-child {
+            margin-right: -8px;
+            font-size: 66px;
+            line-height: 100px;
+        }
+
+        img {
+            width: 450px;
         }
     }
 }
@@ -48,9 +66,16 @@ const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.u
         }
 
         .screen-tip {
+            right: auto;
+            bottom: 170px;
+
             div {
                 font-size: 140px;
                 line-height: 240px;
+            }
+
+            img {
+                width: 1150px;
             }
         }
     }

@@ -46,7 +46,7 @@ function goProject() {
     .project-left {
         position: relative;
         width: 1266px;
-        height: 500px;
+        height: 466px;
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
@@ -108,7 +108,7 @@ function goProject() {
 @media screen and (min-width: 1920px) {
     .project {
         .project-left {
-            height: 500PX;
+            height: 466PX;
 
             .project-desc {
                 line-height: 40PX;

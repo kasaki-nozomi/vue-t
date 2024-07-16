@@ -129,7 +129,7 @@ function goProject(project) {
 
 @include setPhoneContent {
     .others {
-        padding: 180px 0;
+        padding: 150px 0;
 
         .other-title {
             font-size: 72px;
@@ -141,8 +141,8 @@ function goProject(project) {
 
             .other-list-box {
                 .others-item {
-                    width: 800px;
-                    height: 800px;
+                    width: 850px;
+                    height: 850px;
 
                     .others-info {
                         padding: 40px 72px;

@@ -96,12 +96,12 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
 
 .cooperate-enter-active,
 .cooperate-leave-active {
-    transition: all 0.6s ease;
+    transition: all 0.8s ease;
 }
 
 .cooperate-enter-from,
 .cooperate-leave-to {
     opacity: 0;
-    transform: translateY(20%);
+    transform: translateY(60%);
 }
 </style>

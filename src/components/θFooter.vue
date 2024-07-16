@@ -12,8 +12,9 @@
                 </div>
                 <div class="footer-info-detail">
                     <div>邮箱</div>
-                    <div>ygb@caa.edu.cn</div>
+                    <div>pengyuhong@kongniaostudio.com</div>
                 </div>
+                <div class="footer-info-icp" @click="openICP">{{ icp }}</div>
             </div>
         </div>
         <div class="footer-right" >
@@ -33,6 +34,7 @@
 import { ref } from 'vue'
 const qrShow = ref(false)
 
+const icp = '浙ICP备2024110347号'
 const qr = new URL('@/assets/images/qr-code.png', import.meta.url).href
 const wx = new URL('@/assets/images/connect-weixin.svg', import.meta.url).href
 const connects = [
@@ -57,12 +59,16 @@ const connects = [
         icon: new URL('@/assets/images/connect-ggac.svg', import.meta.url).href,
     }
 ]
+
+function openICP() {
+    window.open('https://beian.miit.gov.cn/')
+}
 </script>
 
 <style lang="scss" scoped>
 .footer {
     width: 100%;
-    height: 235px;
+    height: 260px;
     @include flex-center();
 
     .footer-left {
@@ -83,7 +89,7 @@ const connects = [
                     min-width: 144px;
                     line-height: 36px;
                     margin: 8px 0;
-                    font-size: 20px;
+                    font-size: 18px;
                     text-align: justify;
                     color: white;
                 }
@@ -91,6 +97,13 @@ const connects = [
                 div:first-child {
                     font-weight: bold;
                 }
+            }
+
+            .footer-info-icp {
+                margin-top: 15px;
+                font-size: 16px;
+                color: rgba(255, 255, 255, 0.75);
+                cursor: pointer;
             }
         }
     }
@@ -153,13 +166,14 @@ const connects = [
 
 @include setPhoneContent {
     .footer {
-        height: 1080px;
+        height: 1250px;
         flex-direction: column-reverse;
 
         .footer-left {
             @include flex-center();
 
             .footer-info {
+                margin-top: 10px;
                 margin-left: 0;
 
                 .footer-info-detail {
@@ -172,12 +186,17 @@ const connects = [
                         color: white;
                     }
                 }
+
+                .footer-info-icp {
+                    margin-top: 36px;
+                    font-size: 48px;
+                }
             }
         }
 
         .footer-right {
             width: 100%;
-            flex: 1.6;
+            flex: 1.4;
             gap: 80px;
 
             div {
