@@ -12,7 +12,7 @@
                 <Transition name="project" mode="out-in">
                     <div class="header-projects" v-show="projectShow">
                         <div v-for="project in projects">
-                            <div class="header-projects-item" @click="projectClick(project.symbol)">{{ project.title }}</div>
+                            <div class="header-projects-item" @click="projectClick.stop(project.symbol)">{{ project.title }}</div>
                         </div>
                     </div>
                 </Transition>

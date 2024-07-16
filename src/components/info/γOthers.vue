@@ -72,6 +72,7 @@ function goProject(project) {
                 width: 440px;
                 height: 440px;
                 background-size: cover;
+                background-position: center;
                 overflow: hidden;
 
                 .others-info {
