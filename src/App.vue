@@ -1,7 +1,7 @@
 <template>
     <div id="root" :style="root">
         <Header></Header>
-        <el-scrollbar noresize="true">
+        <el-scrollbar>
             <router-view v-slot="{ Component, route }">
                 <Transition :name="route.name" mode="out-in">
                     <component :is="Component" :key="route.fullPath"></component>
@@ -30,7 +30,6 @@ body {
 #root {
     padding-top: 100PX;
     font-family: SourceHanSansSC, PingFang SC;
-    overflow-x: hidden;
     @include flex-center(center, normal, column);
 
     @include setPadContent {
@@ -48,6 +47,7 @@ body {
 
 .el-scrollbar__wrap {
     overflow-x: hidden !important;
+    overflow-y: auto !important;
 }
 
 .el-scrollbar__bar.is-vertical {
