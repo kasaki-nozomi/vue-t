@@ -47,7 +47,7 @@ const capacitys = [
     }
 
     .capacity-bar {
-        width: 404px;
+        width: 440px;
         height: 6px;
         align-self: start;
         background: white;
@@ -55,13 +55,16 @@ const capacitys = [
 
     .capacity-title {
         width: 100%;
-        margin-top: 36px;
-        font-size: 20px;
+        font-size: 18px;
         color: white;
 
+        div {
+            margin-top: 12px;
+        }
+
         div:first-child {
-            font-size: 32px;
-            line-height: 72px;
+            margin-top: 22px;
+            font-size: 25px;
             font-weight: 800;
         }
 
@@ -71,26 +74,26 @@ const capacitys = [
     }
 
     .capacity-list {
-        margin-top: 80px;
-        gap: 125px;
+        margin-top: 65px;
+        gap: 100px;
         flex-wrap: wrap;
         @include flex-center(flex-start, center);
 
         .capacity-item {
-            width: 323px;
+            width: 315px;
             @include flex-center(flex-start, normal, column);
 
             .title {
                 font-size: 28px;
                 font-weight: 800;
-                color: white;
+                color: rgba(255, 255, 255, 0.85);
             }
 
             .desc {
                 margin-top: 28px;
                 font-size: 16px;
-                line-height: 30px;
-                color: rgba(255, 255, 255, 0.65);
+                line-height: 32px;
+                color: rgba(255, 255, 255, 0.5);
             }
         }
     }

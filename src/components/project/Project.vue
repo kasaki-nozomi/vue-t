@@ -184,7 +184,7 @@ function goProject() {
             }
 
             .shanhai {
-                width: 280px;
+                width: 180px;
             }
 
             .changzhou {
@@ -204,7 +204,7 @@ function goProject() {
             }
 
             .yaomu {
-                width: 400px;
+                width: 280px;
             }
 
             div {

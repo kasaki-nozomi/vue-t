@@ -64,20 +64,20 @@ proxy.bus.on('company-show', () => companyShow.value = true)
     }
 
     img {
-        width: 300px;
+        width: 280px;
     }
 
     .company-desc {
-        width: 700px;
+        width: 660px;
         line-height: 40px;
         margin-top: 52px;
-        font-size: 18px;
+        font-size: 16px;
         text-align: center;
         color: rgba(255, 255, 255, 0.75);
     }
 
     .company-states {
-        height: 140px;
+        height: 130px;
         margin-top: 80px;
         gap: 150px;
         @include flex-center();
@@ -98,8 +98,9 @@ proxy.bus.on('company-show', () => companyShow.value = true)
             .state-desc {
                 position: relative;
                 margin-top: 16px;
-                font-size: 58px;
-                color: rgb(180, 180, 180);
+                font-size: 56px;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.5);
                 transition: all 0.25s;
                 cursor: pointer;
 
@@ -114,6 +115,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                     left: 100%;
                     font-size: 40px;
                     font-weight: bold;
+                    color: rgba(255, 255, 255, 0.5);
                 }
             }
 
@@ -205,6 +207,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                     &::after {
                         content: "+";
                         font-size: 96px;
+                        color: rgba(255, 255, 255, 0.5);
                     }
                 }
 

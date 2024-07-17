@@ -117,18 +117,18 @@ function getElementViewTop(element) {
             // background-image: url('@/assets/images/back-mask-two-m.png');
             // background-size: 1920px 6233px;
 
-            &::before {
-                content: ' ';
-                position: fixed;
-                z-index: -1;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background: url('@/assets/images/mask-one.jpg') center 0 no-repeat;
-                background-size: 100% auto;
-                // background-attachment: fixed;
-            }
+            // &::before {
+            //     content: ' ';
+            //     position: fixed;
+            //     z-index: -1;
+            //     top: 0;
+            //     right: 0;
+            //     bottom: 0;
+            //     left: 0;
+            //     background: url('@/assets/images/mask-one.jpg') center 0 no-repeat;
+            //     background-size: 100% auto;
+            //     background-attachment: fixed;
+            // }
         }
     }
 }

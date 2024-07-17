@@ -252,29 +252,29 @@ const contests = [
             }
 
             &.shanhai {
-                width: 165px;
+                width: 120px;
             }
 
             &.changzhou {
-                width: 320px;
+                width: 280px;
             }
 
             &.daye {
-                width: 320px;
+                width: 300px;
             }
 
             &.wukong {
                 margin-top: 110px;
-                width: 380px;
+                width: 360px;
             }
 
             &.contest {
                 margin-top: 110px;
-                width: 480px;
+                width: 420px;
             }
 
             &.yaomu {
-                width: 320px;
+                width: 180px;
             }
         }
 
@@ -365,7 +365,7 @@ const contests = [
                 }
 
                 &.shanhai {
-                    width: 300px;
+                    width: 220px;
                 }
 
                 &.changzhou {
@@ -387,7 +387,7 @@ const contests = [
                 }
 
                 &.yaomu {
-                    width: 550px;
+                    width: 360px;
                 }
             }
 

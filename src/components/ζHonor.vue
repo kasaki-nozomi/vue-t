@@ -84,7 +84,7 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 
 <style lang="scss" scoped>
 .honor {
-    width: 1400px;
+    width: 1200px;
     min-height: calc(100vh - 100PX);
     padding: 160px 0;
     @include flex-center(center, center, column);
@@ -106,11 +106,11 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
     .honor-list {
         margin-top: 100px;
         flex-wrap: wrap;
-        gap: 58px;
+        gap: 40px;
         @include flex-center();
 
         .honor-item {
-            width: 245px;
+            width: 230px;
             @include flex-center(center, space-between);
             
             img {
@@ -121,31 +121,32 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
                 @include flex-center(center, center, column);
 
                 div {
-                    width: 150px;
+                    width: 135px;
                     text-align: center;
                     color: white;
                 }
 
                 div:nth-of-type(1) {
-                    line-height: 40px;
-                    font-size: 25px;
+                    line-height: 36px;
+                    font-size: 24px;
                     font-weight: 600;
                 }
 
                 div:nth-of-type(2) {
-                    margin-top: 6px;
+                    margin-top: 5px;
                     font-size: 18px;
                 }
 
                 div:nth-of-type(3) {
-                    margin-top: 6px;
-                    font-size: 15px;
+                    line-height: 16px;
+                    margin-top: 5px;
+                    font-size: 12px;
                 }
 
                 div:nth-of-type(4) {
-                    margin-top: 6px;
-                    font-size: 14px;
-                    line-height: 22px;
+                    line-height: 18px;
+                    margin-top: 5px;
+                    font-size: 12px;
                     color: rgba(255, 255, 255, 0.7);
                 }
             }

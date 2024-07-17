@@ -38,7 +38,7 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
 <style lang="scss" scoped>
 .cooperate {
     position: relative;
-    width: 1400px;
+    width: 1200px;
     min-height: calc(100vh - 100PX);
     padding: 160px 0;
     @include flex-center(center, center, column);
@@ -54,14 +54,15 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
     }
 
     .cooperate-list {
-        margin-top: 120px;
+        margin-top: 100px;
         flex-wrap: wrap;
-        gap: 65px;
+        gap: 55px;
         @include flex-center();
 
         .cooperate-item {
             img {
-                width: 180px;
+                margin: 10px 0;
+                width: 160px;
             }
         }
     }

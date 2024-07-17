@@ -2,7 +2,7 @@
     <div id="header" class="header">
         <div class="header-logo button" @click="goHome">
             <img class="logo" :src="logo" />
-            <img class="name" :src="name" v-show="!store.phone" />
+            <img class="name" :src="name" />
         </div>
         <div v-if="!store.pad" class="header-tab">
             <div class="header-tab-item button" @click="tabClick('header')">首页</div>
@@ -201,6 +201,8 @@ document.documentElement.addEventListener('click', () => {
         padding: 0 86px;
 
         .header-logo {
+            gap: 15PX;
+
             img {
                 height: 40PX;
                 margin: 0;
@@ -289,8 +291,10 @@ document.documentElement.addEventListener('click', () => {
         padding: 0 20PX;
 
         .header-logo {
+            gap: 10PX;
+
             img {
-                height: 36PX;
+                height: 30PX;
             }
         }
 
