@@ -69,6 +69,7 @@ function openICP() {
 .footer {
     width: 100%;
     height: 260px;
+    flex-shrink: 0;
     @include flex-center();
 
     .footer-left {

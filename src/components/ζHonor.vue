@@ -84,6 +84,7 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 
 <style lang="scss" scoped>
 .honor {
+    position: relative;
     width: 1200px;
     min-height: calc(100vh - 100PX);
     padding: 160px 0;
@@ -138,7 +139,6 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
                 }
 
                 div:nth-of-type(3) {
-                    line-height: 16px;
                     margin-top: 5px;
                     font-size: 12px;
                 }
@@ -162,6 +162,7 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 
 @include setPhoneContent {
     .honor {
+        width: 1600px;
         min-height: calc(100vh - 72PX);
 
         .honor-title {

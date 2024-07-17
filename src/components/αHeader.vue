@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { nextTick, ref } from 'vue'
+import { nextTick, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
 import { projects } from '@/utils/projects'
@@ -61,16 +61,9 @@ const name = new URL('@/assets/images/company/name.png', import.meta.url).href
 const tabShow = ref(false)
 const projectShow = ref(false)
 
-let home = null
-let project = null
-let company = null
-let connect = null
-
-nextTick(() => {
-    home = document.getElementById('header')
-    project = document.getElementById('projects')
-    company = document.getElementById('company')
-    connect = document.getElementById('footer')
+let elscroll = null
+onMounted(() => {
+    elscroll = document.getElementsByClassName('el-scrollbar__wrap')[0]
 })
 
 function goHome() {
@@ -84,7 +77,7 @@ function tabGroupClick() {
 
 function tabClick(tab) {
     if (tab === 'header') {
-        document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+        elscroll.scrollTo({ top: 0, behavior: 'smooth' })
         return
     }
     if (route.name !== 'home' && tab === 'company') {
@@ -93,14 +86,13 @@ function tabClick(tab) {
     }
     tabShow.value = false
     projectShow.value = false
-    document.documentElement.scrollTo({ top: document.getElementById(tab).offsetTop, behavior: 'smooth' })
+    elscroll.scrollTo({ top: document.getElementById(tab).offsetTop, behavior: 'smooth' })
 }
 
 function projectClick(symbol) {
     tabShow.value = false
     projectShow.value = false
     router.push({ path: '/info', query: { project: symbol } })
-    // document.getElementById('projects').children[id - 1].scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
 document.documentElement.addEventListener('click', () => {
@@ -288,13 +280,13 @@ document.documentElement.addEventListener('click', () => {
 @include setPhoneContent {
     .header {
         height: 72PX;
-        padding: 0 20PX;
+        padding: 0 100px;
 
         .header-logo {
-            gap: 10PX;
+            gap: 8PX;
 
             img {
-                height: 30PX;
+                height: 28PX;
             }
         }
 

@@ -1,15 +1,17 @@
 <template>
-    <div id="root" :class="locale">
+    <div id="root" :style="root">
         <Header></Header>
-        <router-view  v-slot="{ Component, route }" >
-            <Transition :name="route.name" mode="out-in">
-                <component :is="Component" :key="route.fullPath"></component>
-            </Transition>
-        </router-view>
-        <Footer></Footer>
-        <!-- type: center-move | center-scale | bottom -->
-        <Popup type="center-move"></Popup>
-        <Loading></Loading>
+        <el-scrollbar :id="scroll">
+            <router-view v-slot="{ Component, route }">
+                <Transition :name="route.name" mode="out-in">
+                    <component :is="Component" :key="route.fullPath"></component>
+                </Transition>
+            </router-view>
+            <Footer></Footer>
+            <!-- type: center-move | center-scale | bottom -->
+            <Popup type="center-move"></Popup>
+            <Loading></Loading>
+        </el-scrollbar>
     </div>
 </template>
 
@@ -18,27 +20,12 @@ import Header from '@/components/αHeader.vue'
 import Footer from '@/components/θFooter.vue'
 import Popup from '@/components/popup/Popup.vue'
 
-import { useI18n } from 'vue-i18n'
-import { getUrlParam } from '@/utils/utils'
-
-const { locale } = useI18n()
-if (getUrlParam('lang') || getUrlParam('l')) {
-    locale.value = getUrlParam('lang') || getUrlParam('l')
-    localStorage.setItem(`lang`, getUrlParam('lang') || getUrlParam('l'))
-    const url = new URL(location.href)
-    url.searchParams.delete('lang')
-    url.searchParams.delete('l')
-    history.pushState(null, null, url.href)
-} else if (localStorage.getItem(`lang`)) {
-    locale.value = localStorage.getItem(`lang`)
-} else {
-    const broswerLang = (navigator.language || navigator.userLanguage).toLowerCase()
-    locale.value = broswerLang === 'zh-tw' ? 'zh-tw' : broswerLang.split('-')[0]
-}
+const root = { height: `${window.innerHeight}px` }
 
 document.title = `空鸟文化`
 </script>
 
+<style></style>
 <style lang="scss">
 body {
     background: black;
@@ -58,30 +45,46 @@ body {
     }
 }
 
+.el-scrollbar__bar.is-vertical {
+    width: 12PX !important;
+}
+
+.el-scrollbar__thumb {
+    position: absolute !important;
+    right: 0 !important;
+    width: 10PX !important;
+    border-radius: 12PX !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    transition: all 0.15s !important;
+    opacity: 1 !important;
+
+    &:hover {
+        width: 12PX !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    &:active {
+        width: 12PX !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+    }
+}
+
+
 .home-enter-active,
 .home-leave-active,
 .info-enter-active,
 .info-leave-active {
     transition: all 0.4s ease;
 }
-.home-enter-from {
-    opacity: 0;
-    transform: translateY(50PX);
-    // transform: translateX(-100%);
-}
-.home-leave-to {
-    opacity: 0;
-    transform: translateY(50PX);
-    // transform: translateX(100%);
-}
-.info-enter-from {
-    opacity: 0;
-    transform: translateY(50PX);
-    // transform: translateX(100%);
-}
+
+.home-enter-from,
+.home-leave-to,
+.info-enter-from,
 .info-leave-to {
     opacity: 0;
     transform: translateY(50PX);
-    // transform: translateX(-100%);
 }
 </style>

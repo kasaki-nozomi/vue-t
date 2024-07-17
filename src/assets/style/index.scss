@@ -39,30 +39,30 @@ html, body {
     -webkit-overflow-scrolling: touch;
 }
 
-@media screen and (min-width: 600px) {
-    html {
-        scrollbar-width: auto;
+// @media screen and (min-width: 600px) {
+//     html {
+//         scrollbar-width: auto;
 
-        &::-webkit-scrollbar {
-            display: initial;
-            width: 10PX;
-        }
+//         &::-webkit-scrollbar {
+//             display: initial;
+//             width: 10PX;
+//         }
     
-        &::-webkit-scrollbar-thumb {
-            border: 1px solid rgba(170, 170, 170, 0.25);
-            background: rgba(160, 160, 160, 0.25);
-        }
+//         &::-webkit-scrollbar-thumb {
+//             border: 1px solid rgba(170, 170, 170, 0.25);
+//             background: rgba(160, 160, 160, 0.25);
+//         }
 
-        &::-webkit-scrollbar-thumb:active {
-            border: 1px solid rgba(160, 160, 160, 0.25);
-            background: rgba(150, 150, 150, 0.25);
-        }
+//         &::-webkit-scrollbar-thumb:active {
+//             border: 1px solid rgba(160, 160, 160, 0.25);
+//             background: rgba(150, 150, 150, 0.25);
+//         }
     
-        &::-webkit-scrollbar-track {
-            background: rgb(0, 0, 0, 0);
-        }
-    }
-}
+//         &::-webkit-scrollbar-track {
+//             background: rgb(0, 0, 0, 0);
+//         }
+//     }
+// }
 
 p {
     margin: 0;

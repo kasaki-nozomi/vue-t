@@ -76,6 +76,7 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
 
 @include setPhoneContent {
     .cooperate {
+        width: 1500px;
         min-height: calc(100vh - 72PX);
 
         .cooperate-title {
