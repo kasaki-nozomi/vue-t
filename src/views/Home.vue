@@ -4,8 +4,7 @@
             <Screen></Screen>
             <Capacity></Capacity>
             <Project></Project>
-            <div class="home-box">
-                <div class="home-box-back" :style="style"></div>
+            <div id="home-box" class="home-box" :style="style">
                 <Company></Company>
                 <Honor></Honor>
                 <Cooperate></Cooperate>
@@ -22,7 +21,7 @@ import Honor from '@/components/ζHonor.vue'
 import Cooperate from '@/components/ηCooperate.vue'
 
 import axios from 'axios'
-import { getCurrentInstance, ref, onMounted } from 'vue'
+import { getCurrentInstance, nextTick, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
 
@@ -58,16 +57,18 @@ onMounted(() => {
         const companyY = getElementViewTop(company)
         const honorY = getElementViewTop(honor)
         const cooperateY = getElementViewTop(cooperate)
-        if (companyY < window.innerHeight) style.value = { top: `${(-companyY + companyY / (store.phone ? 12 : 6)) + (store.phone ? 72 : (store.pad ? 86 : 100))}px` }
+        if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${companyY / (store.phone ? 2 : 5) + (store.phone ? 72 : (store.pad ? 86 : 100))}px` }
         if (companyY < window.innerHeight / 3) proxy.bus.emit('company-show')
         if (honorY < window.innerHeight / 3) proxy.bus.emit('honor-show')
         if (cooperateY < window.innerHeight / 3) proxy.bus.emit('cooperate-show')
-    }, true)
+    })
 
     const position = route.query?.position
-    if (position) {
-        elscroll.scrollTo({ top: document.getElementById(position).offsetTop, behavior: 'smooth' })
+    if (position === 'company') {
         window.history.replaceState(null, null, window.location.href.split('?')[0])
+        elscroll.scrollTo({ top: document.getElementById('home-box').offsetTop, behavior: 'smooth' })
+    } else {
+        elscroll.scrollTop = 0
     }
 })
 
@@ -104,36 +105,21 @@ function getElementViewTop(element) {
     .home-box {
         position: relative;
         width: 100%;
-        // background-image: url('@/assets/images/back-mask-two.png');
-        // background-size: 100% auto;
-        // background-position-x: center;
-        // background-repeat: no-repeat;
-        // background-attachment: fixed;
+        background-image: url('@/assets/images/back-mask-two.png');
+        background-size: 100% auto;
+        background-position-x: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         overflow: hidden;
         @include flex-center(center, normal, column);
-        
-        .home-box-back {
-            position: absolute;
-            top: 0;
-            width: 1920px;
-            height: 1538px;
-            background-image: url('@/assets/images/back-mask-two.png');
-            background-size: 100% auto;
-            // transition: all 0.1s;
-        }
     }
 }
 
 @include setPhoneContent {
     .home {
         .home-box {
-            // background-image: url('@/assets/images/back-mask-two-m.png');
-            
-            .home-box-back {
-                width: 1920px;
-                height: 1538px;
-                background-image: url('@/assets/images/back-mask-two.png');
-            }
+            background-image: url('@/assets/images/back-mask-two-m.png');
+            background-size: 100% auto;
         }
     }
 }

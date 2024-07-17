@@ -8,6 +8,13 @@
 <script setup>
 import Carousel from '@/components/info/βCarousel.vue'
 import Others from '@/components/info/γOthers.vue'
+
+import { onMounted } from 'vue'
+
+onMounted(() => {
+    document.getElementsByClassName('el-scrollbar__wrap')[0].scrollTop = 0
+})
+
 </script>
 
 <style lang="scss" scoped>

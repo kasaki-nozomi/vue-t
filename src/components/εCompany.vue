@@ -7,19 +7,19 @@
                 <div class="company-states">
                     <div class="state">
                         <div class="state-title">合作公司</div>
-                        <div class="state-desc" @mouseenter="moreinfo = 'co'" @mouseleave="moreinfo = null">20</div>
+                        <div class="state-desc" @mouseenter="moreinfo = 'co'" @mouseleave="moreinfo = null">20<span>+</span></div>
                         <Transition name="moreinfo" mode="out-in"><div class="state-more one" v-show="moreinfo === 'co'" v-html="cooperates"></div></Transition>
                     </div>
                     <div class="divide"></div>
                     <div class="state">
                         <div class="state-title">历史奖项</div>
-                        <div class="state-desc" @mouseenter="moreinfo = 'hs'" @mouseleave="moreinfo = null">20</div>
+                        <div class="state-desc" @mouseenter="moreinfo = 'hs'" @mouseleave="moreinfo = null">20<span>+</span></div>
                         <Transition name="moreinfo" mode="out-in"><div class="state-more two" v-show="moreinfo === 'hs'" v-html="rewards"></div></Transition>
                     </div>
                     <div class="divide"></div>
                     <div class="state">
                         <div class="state-title">成员数量</div>
-                        <div class="state-desc" @mouseenter="moreinfo = 'mm'" @mouseleave="moreinfo = null">15</div>
+                        <div class="state-desc" @mouseenter="moreinfo = 'mm'" @mouseleave="moreinfo = null">15<span>+</span></div>
                         <Transition name="moreinfo" mode="out-in"><div class="state-more three" v-show="moreinfo === 'mm'" v-html="member"></div></Transition>
                     </div>
                 </div>
@@ -108,8 +108,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                     filter: brightness(1.5);
                 }
 
-                &::after {
-                    content: "+";
+                span {
                     position: absolute;
                     top: 0;
                     left: 100%;
@@ -204,10 +203,12 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                     margin-top: 60px;
                     font-size: 160px;
 
-                    &::after {
-                        content: "+";
+                    &:hover {
+                        filter: brightness(1);
+                    }
+
+                    span {
                         font-size: 96px;
-                        color: rgba(255, 255, 255, 0.5);
                     }
                 }
 

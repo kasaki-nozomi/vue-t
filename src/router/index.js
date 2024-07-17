@@ -11,11 +11,11 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    scrollBehavior(to, from, savedPosition) {
-        return new Promise((resolve) => {
-            setTimeout(() => { resolve(savedPosition || { top: 0 }) }, 400)
-        })
-    }
+    // scrollBehavior(to, from, savedPosition) {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => { resolve({ top: 0 }) }, 400)
+    //     })
+    // }
 })
 
 router.beforeEach(async (to, from) => { })

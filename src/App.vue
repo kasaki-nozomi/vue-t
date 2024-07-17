@@ -1,16 +1,13 @@
 <template>
     <div id="root" :style="root">
         <Header></Header>
-        <el-scrollbar :id="scroll">
+        <el-scrollbar noresize="true">
             <router-view v-slot="{ Component, route }">
                 <Transition :name="route.name" mode="out-in">
                     <component :is="Component" :key="route.fullPath"></component>
                 </Transition>
             </router-view>
-            <Footer></Footer>
-            <!-- type: center-move | center-scale | bottom -->
-            <Popup type="center-move"></Popup>
-            <Loading></Loading>
+            <Footer></Footer>   
         </el-scrollbar>
     </div>
 </template>
@@ -18,7 +15,6 @@
 <script setup>
 import Header from '@/components/αHeader.vue'
 import Footer from '@/components/θFooter.vue'
-import Popup from '@/components/popup/Popup.vue'
 
 const root = { height: `${window.innerHeight}px` }
 
@@ -34,6 +30,7 @@ body {
 #root {
     padding-top: 100PX;
     font-family: SourceHanSansSC, PingFang SC;
+    overflow-x: hidden;
     @include flex-center(center, normal, column);
 
     @include setPadContent {
@@ -43,6 +40,14 @@ body {
     @include setPhoneContent {
         padding-top: 72PX;
     }
+}
+
+.el-scrollbar {
+    width: 1920px !important;
+}
+
+.el-scrollbar__wrap {
+    overflow-x: hidden !important;
 }
 
 .el-scrollbar__bar.is-vertical {
