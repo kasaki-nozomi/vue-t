@@ -16,7 +16,11 @@
 import Header from '@/components/αHeader.vue'
 import Footer from '@/components/θFooter.vue'
 
-const root = { height: `${window.innerHeight}px` }
+import { ref } from 'vue'
+
+const root = ref({ height: `${window.innerHeight}px` })
+
+window.onresize = () => root.value = { height: `${window.innerHeight}px` }
 
 document.title = `空鸟文化`
 </script>

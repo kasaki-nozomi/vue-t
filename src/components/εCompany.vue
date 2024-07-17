@@ -138,7 +138,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                     position: absolute;
                     width: 0;
                     height: 0;
-                    top: -16px;
+                    bottom: 100%;
                     left: 50%;
                     transform: translateX(-50%);
                     border-left: 18px solid transparent;
@@ -226,7 +226,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
 
                         &::after {
                             content: '';
-                            top: -28px;
+                            bottom: 100%;
                             left: 120px;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
@@ -240,7 +240,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                         width: 1510px;
                         &::after {
                             content: '';
-                            top: -28px;
+                            bottom: 100%;
                             border-left: 32px solid transparent;
                             border-right: 32px solid transparent;
                             border-bottom: 28px solid rgba(255, 255, 255, 0.15);
@@ -255,7 +255,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
 
                         &::after {
                             content: '';
-                            top: -28px;
+                            bottom: 100%;
                             left: auto;
                             right: 50px;
                             border-left: 32px solid transparent;

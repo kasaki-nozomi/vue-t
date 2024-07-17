@@ -17,7 +17,7 @@
                     </div>
                 </Transition>
             </div>
-            <div class="header-tab-item button" @click="tabClick('company')">公司介绍</div>
+            <div class="header-tab-item button" @click="tabClick('home-box')">公司介绍</div>
             <div class="header-tab-item button" @click="tabClick('footer')">联系我们</div>
         </div>
         <div v-else class="header-tab-m">
@@ -30,7 +30,7 @@
                 <div class="header-tab-group" v-show="tabShow" >
                     <div class="header-tab-item-m" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
                     <div class="header-tab-item-m" @click.stop="projectShow = true" @mouseenter="projectShow = true">历史项目</div>
-                    <div class="header-tab-item-m" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
+                    <div class="header-tab-item-m" @click="tabClick('home-box')" @mouseenter="projectShow = false">公司介绍</div>
                     <div class="header-tab-item-m" @click="tabClick('footer')" @mouseenter="projectShow = false">联系我们</div>
                 </div>
             </Transition>

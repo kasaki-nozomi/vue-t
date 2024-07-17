@@ -22,7 +22,7 @@ const title_ = '<span>KONG</span> VisualStudio & <span>KongNiao</span> Culture'
 const capacitys = [
     {
         title: 'IP孵化',
-        desc: '空鸟文化一直致力于打造具有现象级影响力的IP，将其作为核心业务来推动。我们的宗旨在于通过工作室核心专业素养和颠覆性的文化创意，帮助各种娱乐项目实现从零到一的概念落地。在过去几年，我们的工作室成功孵化了多个视觉创意IP，涵盖古风、科幻等多个领域，为各类企业提供了丰富的创意资源和概念支持。'
+        desc: '空鸟文化一直致力于打造具有现象级影响力的IP，将其作为核心业务来推动。我们的宗旨在于通过工作室核心专业素养和颠覆性的文化创意，帮助各种娱乐项目实现从零到一的概念落地。在过去几年，我们的工作室成功孵化了多个视觉创意IP，涵盖古风、科幻等多个领域，为各类企业提供了丰富的创意和概念支持。'
     },
     {
         title: '概念设计',
@@ -80,11 +80,11 @@ const capacitys = [
         @include flex-center(flex-start, center);
 
         .capacity-item {
-            width: 315px;
+            width: 310px;
             @include flex-center(flex-start, normal, column);
 
             .title {
-                font-size: 28px;
+                font-size: 22px;
                 font-weight: 800;
                 color: rgba(255, 255, 255, 0.85);
             }
