@@ -103,7 +103,6 @@ const lists = {
         new URL('@/assets/images/project/changyuan/list/18.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changyuan/list/19.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changyuan/list/22.jpg', import.meta.url).href,
-        new URL('@/assets/images/project/changyuan/list/12.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changyuan/list/23.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changyuan/list/24.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changyuan/list/25.jpg', import.meta.url).href,
