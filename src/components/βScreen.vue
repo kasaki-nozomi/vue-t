@@ -1,6 +1,6 @@
 <template>
     <div class="screen">
-        <video autoplay loop muted :poster="screenImage">
+        <video class="screen-video" autoplay loop muted playsinline webkit-playsinline :poster="screenImage">
             <source :src="screenVideo" type="video/mp4">
         </video>
         <div class="screen-tip">
@@ -13,12 +13,23 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useStore } from '@/store'
 const store = useStore()
 const screenImage = new URL('@/assets/images/company/company.jpg', import.meta.url).href
 const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.url).href
 const screenTitle = new URL('@/assets/images/screen-title.svg', import.meta.url).href
 const screenTitle_m = new URL('@/assets/images/screen-title-m.svg', import.meta.url).href
+
+onMounted(() => {
+    let videos = Array.from(document.getElementsByClassName('screen-video'))
+    document.documentElement.addEventListener('click', () => {
+        if (videos.length) videos.forEach((video) => { if (video.paused) video.play() } )
+    })
+    document.getElementsByClassName('el-scrollbar__wrap')[0].addEventListener('scroll', () => {
+        if (videos.length) videos.forEach((video) => { if (video.paused) video.play() } )
+    })
+})
 </script>
 
 <style lang="scss" scoped>

@@ -14,7 +14,7 @@
                 <div v-if="current !== 'contest'"><img v-for="url of lists" :src="url" /></div>
                 <div v-if="current === 'contest'" class="carousel-video">
                     <div v-for="contest of contests">
-                        <video autoplay loop muted :poster="contest.image">
+                        <video class="contest-video" autoplay loop muted playsinline webkit-playsinline :poster="contest.image">
                             <source :src="contest.video" type="video/mp4">
                         </video>
                         <div class="video-title">{{ contest.title }}</div>
@@ -27,6 +27,7 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { projects } from '@/utils/projects'
 
@@ -195,6 +196,16 @@ const contests = [
         desc: '于起源之渊，最后的古人觊觎传说中的魂灵，光与远古秘能交织。终焉之际，魂灵之体消逝于深渊之底，旧的法则已然破碎，新的指引即将诞生。'
     },
 ]
+
+onMounted(() => {
+    let videos = Array.from(document.getElementsByClassName('contest-video'))
+    document.documentElement.addEventListener('click', () => {
+        if (videos.length) videos.forEach((video) => { if (video.paused) video.play() } )
+    })
+    document.getElementsByClassName('el-scrollbar__wrap')[0].addEventListener('scroll', () => {
+        if (videos.length) videos.forEach((video) => { if (video.paused) video.play() } )
+    })
+})
 </script>
 
 <style lang="scss" scoped>

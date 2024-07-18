@@ -57,7 +57,7 @@ onMounted(() => {
         const companyY = getElementViewTop(company)
         const honorY = getElementViewTop(honor)
         const cooperateY = getElementViewTop(cooperate)
-        if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${companyY / (store.phone ? 2 : 5) + (store.phone ? 72 : (store.pad ? 86 : 100))}px` }
+        if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${(companyY + (store.phone ? 72 : (store.pad ? 86 : 100))) / (store.phone ? 2 : 5)}px` }
         if (companyY < window.innerHeight / 3) proxy.bus.emit('company-show')
         if (honorY < window.innerHeight / 3) proxy.bus.emit('honor-show')
         if (cooperateY < window.innerHeight / 3) proxy.bus.emit('cooperate-show')
