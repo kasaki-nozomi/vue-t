@@ -21,8 +21,6 @@ import { ref } from 'vue'
 const root = ref({ height: `${window.innerHeight}px` })
 
 window.onresize = () => root.value = { height: `${window.innerHeight}px` }
-
-document.title = `空鸟文化`
 </script>
 
 <style></style>

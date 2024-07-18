@@ -47,8 +47,8 @@ const capacitys = [
     }
 
     .capacity-bar {
-        width: 440px;
-        height: 6px;
+        width: 420px;
+        height: 5px;
         align-self: start;
         background: white;
     }
@@ -59,11 +59,11 @@ const capacitys = [
         color: white;
 
         div {
-            margin-top: 12px;
+            margin-top: 14px;
         }
 
         div:first-child {
-            margin-top: 22px;
+            margin-top: 28px;
             font-size: 25px;
             font-weight: 800;
         }

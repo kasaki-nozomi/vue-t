@@ -43,7 +43,7 @@ export default defineConfig(({ _, mode }) => {
                 minify: true,
                 inject: {
                     data: {
-                        title: ``,
+                        title: `空鸟文化`,
                         icon: ``,
                         shareTitle: ``,
                         shareDescription: '',
