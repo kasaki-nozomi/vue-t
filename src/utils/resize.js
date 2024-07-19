@@ -1,3 +1,3 @@
 import { useStore } from "@/store"
 
-window.onresize = () => useStore().setResize()
+window.addEventListener('resize', () => useStore().setResize() )

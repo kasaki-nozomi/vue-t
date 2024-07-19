@@ -24,12 +24,12 @@ const cooperates = [
     new URL('@/assets/images/cooperate/netease.svg', import.meta.url).href,
     new URL('@/assets/images/cooperate/7game.png', import.meta.url).href,
     new URL('@/assets/images/cooperate/mao.svg', import.meta.url).href,
-    new URL('@/assets/images/cooperate/ggac.svg', import.meta.url).href,
+    new URL('@/assets/images/cooperate/alchemy.png', import.meta.url).href,
     new URL('@/assets/images/cooperate/changyou.svg', import.meta.url).href,
     new URL('@/assets/images/cooperate/lofter.svg', import.meta.url).href,
     new URL('@/assets/images/cooperate/diezhi.png', import.meta.url).href,
     new URL('@/assets/images/cooperate/gbits.png', import.meta.url).href,
-    new URL('@/assets/images/cooperate/ggacp.svg', import.meta.url).href,
+    new URL('@/assets/images/cooperate/ggacp.png', import.meta.url).href,
 ]
 
 proxy.bus.on('cooperate-show', () => cooperateShow.value = true)

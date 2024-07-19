@@ -55,7 +55,7 @@ const honors = [
     },
     {
         title: '山海变',
-        reward: '入围奖',
+        reward: '入围',
         reward_en: 'Finalist',
         contest: '全国美协首届数字艺术大展'
     },
@@ -63,7 +63,7 @@ const honors = [
         title: '山海变',
         reward: '入选EDCC特展',
         reward_en: 'Selected for EDCC',
-        contest: '首届中国数字艺术大展'
+        contest: '全国美协首届数字艺术大展'
     },
     {
         title: '回溯',

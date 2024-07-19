@@ -7,7 +7,7 @@
                     <component :is="Component" :key="route.fullPath"></component>
                 </Transition>
             </router-view>
-            <Footer></Footer>   
+            <Footer></Footer>
         </el-scrollbar>
     </div>
 </template>
@@ -20,7 +20,7 @@ import { ref } from 'vue'
 
 const root = ref({ height: `${window.innerHeight}px` })
 
-window.onresize = () => root.value = { height: `${window.innerHeight}px` }
+window.addEventListener('resize', () => root.value = { height: `${window.innerHeight}px` })
 </script>
 
 <style></style>
