@@ -52,7 +52,6 @@ function goProject() {
         background-repeat: no-repeat;
         overflow: hidden;
         transition: all 0.4s;
-        cursor: pointer;
 
         .project-desc {
             position: absolute;
@@ -67,6 +66,7 @@ function goProject() {
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
             @include flex-center();
         }
     }
@@ -97,7 +97,7 @@ function goProject() {
         }
         
         .contest {
-            width: 240px;
+            width: 270px;
         }
 
         .yaomu {
@@ -140,7 +140,7 @@ function goProject() {
             }
             
             .contest {
-                width: 240PX;
+                width: 270PX;
             }
 
             .yaomu {
@@ -200,7 +200,7 @@ function goProject() {
             }
             
             .contest {
-                width: 480px;
+                width: 550px;
             }
 
             .yaomu {

@@ -123,7 +123,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                 position: absolute;
                 top: 110%;
                 width: 600px;
-                line-height: 36px;
+                line-height: 32px;
                 padding: 32px;
                 font-size: 16px;
                 text-align: justify;
@@ -209,6 +209,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
 
                     span {
                         font-size: 96px;
+                        color: rgba(255, 255, 255, 0.25);
                     }
                 }
 

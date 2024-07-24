@@ -13,10 +13,15 @@
             <div class="carousel-imgs">
                 <div v-if="current !== 'contest'"><img v-for="url of lists" :src="url" /></div>
                 <div v-if="current === 'contest'" class="carousel-video">
-                    <div v-for="contest of contests">
-                        <video class="contest-video" autoplay loop muted playsinline webkit-playsinline :poster="contest.image">
-                            <source :src="contest.video" type="video/mp4">
-                        </video>
+                    <div v-for="(contest, index) of contests">
+                        <div class="contest-video-box">
+                            <video class="contest-video" autoplay loop muted playsinline webkit-playsinline :poster="contest.image">
+                                <source :src="contest.video" type="video/mp4">
+                            </video>
+                            <div class="contest-loading" v-show="state[index]">
+                                <img :src="loading" />
+                            </div>
+                        </div>
                         <div class="video-title">{{ contest.title }}</div>
                         <div class="video-desc" v-html="contest.desc"></div>
                     </div>
@@ -27,7 +32,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { projects } from '@/utils/projects'
 
@@ -40,6 +45,11 @@ import 'swiper/css/pagination'
 const route = useRoute()
 
 const modules = [Autoplay, Navigation, Pagination]
+
+const state = ref([true, true])
+const play = ref([false, false])
+const looping = ref([true, true])
+const loading = new URL('@/assets/images/loading.svg', import.meta.url).href
 
 const current = route.query.project || 'changyuan'
 
@@ -199,11 +209,17 @@ const contests = [
 
 onMounted(() => {
     let videos = Array.from(document.getElementsByClassName('contest-video'))
+    videos.length && videos.forEach((video, index) => { 
+        video.addEventListener('playing', () => { [state.value[index], play.value[index]] = [false, true] }, { once: true })
+        video.addEventListener('waiting', () => { if (looping.value[index]) state.value[index] = true })
+        video.addEventListener('canplay', () => { if (play.value[index]) state.value[index] = false })
+        video.addEventListener('timeupdate', () => { looping.value[index] = video.currentTime <= video.duration - 0.5 })
+    })
     document.documentElement.addEventListener('click', () => {
-        if (videos.length) videos.forEach((video) => { if (video.paused) video.play() } )
+        videos.length && videos.forEach((video) => { if (video.paused) video.play() } )
     })
     document.getElementsByClassName('el-scrollbar__wrap')[0].addEventListener('scroll', () => {
-        if (videos.length) videos.forEach((video) => { if (video.paused) video.play() } )
+        videos.length && videos.forEach((video) => { if (video.paused) video.play() } )
     })
 })
 </script>
@@ -279,8 +295,8 @@ onMounted(() => {
             }
 
             &.contest {
-                margin-top: 110px;
-                width: 420px;
+                margin-top: 88px;
+                width: 500px;
             }
 
             &.yaomu {
@@ -313,10 +329,28 @@ onMounted(() => {
             div {
                 @include flex-center(center, normal, column);
 
-                video {
-                    display: block;
-                    margin-top: 16px;
-                    width: 1400px; 
+                .contest-video-box {
+                    position: relative;
+
+                    video {
+                        display: block;
+                        margin-top: 16px;
+                        width: 1400px; 
+                    }
+
+                    .contest-loading {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.25);
+                        @include flex-center();
+
+                        img {
+                            width: 66px;
+                            opacity: 0.75;
+                            @include rotate();
+                        }
+                    }
                 }
 
                 .video-title {
@@ -392,8 +426,8 @@ onMounted(() => {
                 }
 
                 &.contest {
-                    margin-top: 240px;
-                    width: 680px;
+                    margin: 120px 0 40px 0;
+                    width: 800px;
                 }
 
                 &.yaomu {
@@ -421,9 +455,17 @@ onMounted(() => {
                 margin-top: 150px;
 
                 div {
-                    video {
-                        margin-top: 22px;
-                        width: 1770px; 
+                    .contest-video-box {
+                        video {
+                            margin-top: 22px;
+                            width: 1800px; 
+                        }
+
+                        .contest-loading {
+                            img {
+                                width: 140px;
+                            }
+                        }
                     }
 
                     .video-title {
