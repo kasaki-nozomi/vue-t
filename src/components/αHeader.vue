@@ -133,7 +133,7 @@ document.documentElement.addEventListener('click', () => {
             padding: 0 16PX;
             font-size: 20PX;
             border-radius: 48PX;
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(255, 255, 255, 0.8);
             background: transparent;
             transition: all 0.2s;
             cursor: pointer;
@@ -163,7 +163,6 @@ document.documentElement.addEventListener('click', () => {
             z-index: 20;
             position: absolute;
             top: 74PX;
-            border-radius: 5PX;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5PX);
             -webkit-backdrop-filter: blur(5PX);
@@ -171,7 +170,7 @@ document.documentElement.addEventListener('click', () => {
             @include flex-center(center, normal, column);
 
             .header-projects-item {
-                width: 125PX;
+                width: 145PX;
                 padding: 15PX 0;
                 font-size: 16PX;
                 color: white;
@@ -180,7 +179,7 @@ document.documentElement.addEventListener('click', () => {
                 @include flex-center();
 
                 &:hover {
-                    background: rgba(0, 0, 0, 0.15);
+                    background: rgba(0, 0, 0, 0.5);
                 }
             }
         }
@@ -223,7 +222,6 @@ document.documentElement.addEventListener('click', () => {
                 position: absolute;
                 right: -24PX;
                 top: 100%;
-                border-radius: 0 0 5PX 5PX;
                 overflow: hidden;
                 transform-origin: 65% top;
                 background: rgba(255, 255, 255, 0.1);
@@ -243,7 +241,7 @@ document.documentElement.addEventListener('click', () => {
                     cursor: pointer;
 
                     &:hover {
-                        background: rgba(0, 0, 0, 0.05);
+                        background: rgba(0, 0, 0, 0.5);
                     }
                 }
             }
@@ -252,7 +250,6 @@ document.documentElement.addEventListener('click', () => {
                 position: absolute;
                 top: 100%;
                 right: calc(120PX - 24PX);
-                border-radius: 0 0 5PX 5PX;
                 background: rgba(255, 255, 255, 0.1);
                 backdrop-filter: blur(5PX);
                 -webkit-backdrop-filter: blur(5PX);
@@ -260,7 +257,7 @@ document.documentElement.addEventListener('click', () => {
                 @include flex-center(center, normal, column);
 
                 .header-projects-item-m {
-                    width: 120PX;
+                    width: 140PX;
                     padding: 10PX;
                     padding: 12PX 0;
                     font-size: 16PX;
@@ -269,7 +266,7 @@ document.documentElement.addEventListener('click', () => {
                     @include flex-center();
 
                     &:hover {
-                        background: rgba(0, 0, 0, 0.2);
+                        background: rgba(0, 0, 0, 0.5);
                     }
                 }
             }
@@ -318,82 +315,22 @@ document.documentElement.addEventListener('click', () => {
     }
 }
 
-.tab-a-enter-active,
-.tab-d-leave-active {
-    transition: all 0.1s ease;
-}
-
-.tab-b-enter-active,
-.tab-c-leave-active {
-    transition: all 0.2s ease;
-}
-
-.tab-c-enter-active,
-.tab-b-leave-active {
-    transition: all 0.3s ease;
-}
-
-.tab-d-enter-active,
-.tab-a-leave-active {
-    transition: all 0.4s ease;
-}
-
-.tab-a-enter-from {
-    opacity: 0;
-    transform: translateY(-50%);
-}
-
-.tab-b-enter-from {
-    opacity: 0;
-    transform: translateY(-100%);
-}
-
-.tab-c-enter-from {
-    opacity: 0;
-    transform: translateY(-150%);
-}
-
-.tab-d-enter-from {
-    opacity: 0;
-    transform: translateY(-200%);
-}
-
-.tab-a-leave-to {
-    opacity: 0;
-    transform: translateY(-40%);
-}
-
-.tab-b-leave-to {
-    opacity: 0;
-    transform: translateY(-80%);
-}
-
-.tab-c-leave-to {
-    opacity: 0;
-    transform: translateY(-120%);
-}
-
-.tab-d-leave-to {
-    opacity: 0;
-    transform: translateY(-160%);
-}
-
 .tab-group-enter-active,
 .tab-group-leave-active {
-    transition: all 0.4s ease;
+    transition: all 0.28s ease;
 }
 
 .tab-group-enter-from,
 .tab-group-leave-to  {
     opacity: 0;
-    transform: scale(0.25);
+    transform: scale(0.5);
 }
 
 .project-enter-active,
 .project-leave-active,
 .project-m-enter-active,
 .project-m-leave-active {
-    transition: all 0.4s ease;
+    transition: all 0.28s ease;
 }
 
 .project-enter-from,
@@ -401,6 +338,6 @@ document.documentElement.addEventListener('click', () => {
 .project-m-enter-from,
 .project-m-leave-to  {
     opacity: 0;
-    transform: scale(0.25);
+    transform: scale(0.5);
 }
 </style>

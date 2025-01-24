@@ -290,17 +290,27 @@ onMounted(() => {
             }
 
             &.wukong {
-                margin-top: 110px;
                 width: 360px;
+                margin-top: 110px;
             }
 
             &.contest {
-                margin-top: 88px;
                 width: 500px;
+                margin-top: 88px;
             }
 
             &.yaomu {
                 width: 180px;
+            }
+
+            &.changyuan2 {
+                width: 200px;
+            }
+
+            &.shuohui {
+                width: 440px;
+                margin-top: 80px;
+                margin-bottom: -80px;
             }
         }
 
@@ -432,6 +442,16 @@ onMounted(() => {
 
                 &.yaomu {
                     width: 360px;
+                }
+
+                &.changyuan2 {
+                    width: 440px;
+                }
+
+                &.shuohui {
+                    width: 840px;
+                    margin-top: 80px;
+                    margin-bottom: -80px;
                 }
             }
 

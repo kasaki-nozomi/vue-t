@@ -35,7 +35,6 @@ export const projects = {
         introduce: 'Short Description',
         description: '皇帝为长生不老沉迷修仙。 一日，术士告皇帝在遥远东岛有仙草出现，可使人长生不老。 皇帝听闻大喜，便特派以浾詶为首的锦衣卫出发，作为先遣确认消息真假，浾詶带领小队连夜秘密出皇宫，远赴东极岛寻仙草消息。 仙草现世，消息一出引起各个势力震动。 却不知，仙草的出现只是一个开始，整个世界开始被势包裹。 <br>多个世界与人类世界连通，且每个时空会相互交错相互叠加。每日的子时都会进行“世界交错”。每天醒来都会发现身处新的世界。'
     },
-
     wukong: {
         id: 5,
         symbol: 'wukong',
@@ -62,5 +61,23 @@ export const projects = {
         image: new URL('@/assets/images/project/yaomu/cover.jpg', import.meta.url).href,
         introduce: 'Short Description',
         description: '“日月忽其不淹，春与秋其代序，朝露可窥沧海澹澹，摇木如见万物葳蕤。星陨九霄入人间，坠三方虚宿之处为‘祸’。三足鼎立之势已破，流民万万，赤地千里。机械母体黑夜中降临西凉，董卓由此融合变异。顷之，贪欲横行大地，纷争四处并起，蜀汉，曹魏，孙吴三方势力竞相争夺起无意中发现的‘解药’。而如若祈问战争何时终结，沧海告曰，待摇木罗生至虚宿意志的终焉。”————序言'
-    }
+    },
+    changyuan2: {
+        id: 8,
+        symbol: 'changyuan2',
+        title: '长源2',
+        logo: new URL('@/assets/images/project/changyuan2/logo.png', import.meta.url).href,
+        image: new URL('@/assets/images/project/changyuan2/cover.jpg', import.meta.url).href,
+        introduce: 'Short Description',
+        description: '传说上个轮回的生命心意相通，当人类前往高柱顶部，尝试打开前往那个黄金时代的大门时，从里面涌出的意识洪流却污染了人类彼此孤立的灵魂个体，所有拥有灵魂的生命都会因为患上终疫而变异成怪物。沙漠之中，少女被未知的奇迹指引。穿越滚滚白沙，最终望向位于大柱顶端的初水之地，回到那个“虚假”的黄金时代。'
+    },
+    shuohui: {
+        id: 9,
+        symbol: 'shuohui',
+        title: '朔晖·曼血械城',
+        logo: new URL('@/assets/images/project/shuohui/logo.png', import.meta.url).href,
+        image: new URL('@/assets/images/project/shuohui/cover.jpg', import.meta.url).href,
+        introduce: 'Short Description',
+        description: '这是一颗不同于地球的星球，净化之光随沙诺的轮回酒下，微弱的碎光石在星面闪烁透出古老的生机。奇点，诺瓦厄尔星球核心与灵魂，悬浮在深渊的哈迪斯心脏。厄尔之手从深渊中攀升,缠绕着曜石，它们捧起灵魂与血肉,将生物重铸为曼血械躯。机械与生机交融成就了不朽与毁灭的双生宿命。朔月的光辉既是初生的黎明，亦是终焉的暮色。腐朽的械躯，再度崛起，逐光的旅程，启示灵魂。'
+    },
 }

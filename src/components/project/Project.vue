@@ -63,7 +63,7 @@ function goProject() {
             padding: 0 220px;
             font-size: 20px;
             color: white;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             cursor: pointer;
@@ -102,6 +102,14 @@ function goProject() {
 
         .yaomu {
             width: 160px;
+        }
+
+        .changyuan2 {
+            width: 260px;
+        }
+
+        .shuohui {
+            width: 440px;
         }
     } 
 }
@@ -169,6 +177,7 @@ function goProject() {
                 text-align: center;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
+                line-clamp: 4;
                 -webkit-line-clamp: 4;
                 text-overflow: ellipsis;
                 overflow: hidden;
@@ -207,6 +216,16 @@ function goProject() {
                 width: 280px;
             }
 
+            .changyuan2 {
+                width: 480px;
+            }
+
+            .shuohui {
+                width: 880px;
+                margin-top: 80px;
+                margin-bottom: -80px;
+            }
+
             div {
                 width: 1280px;
                 line-height: 105px;
@@ -239,11 +258,9 @@ function goProject() {
 .description-left-enter-from,
 .description-left-leave-to {
     opacity: 0;
-    // transform: translateX(-75%);
 }
 .description-right-enter-from,
 .description-right-leave-to {
     opacity: 0;
-    // transform: translateX(75%);
 }
 </style>

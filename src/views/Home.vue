@@ -20,25 +20,13 @@ import Company from '@/components/εCompany.vue'
 import Honor from '@/components/ζHonor.vue'
 import Cooperate from '@/components/ηCooperate.vue'
 
-import axios from 'axios'
-import { getCurrentInstance, nextTick, ref, onMounted } from 'vue'
+import { getCurrentInstance, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
 
 const { proxy } = getCurrentInstance()
 const route = useRoute()
-const router = useRouter()
 const store = useStore()
-
-const CancelToken = axios.CancelToken
-let source = CancelToken.source()
-
-proxy.bus.on('login', async (params) => {
-    proxy.loading.show()
-    await login(params)
-    proxy.loading.hide()
-})
-async function login(params) { console.log(params) }
 
 let elscroll = null
 let company = null
