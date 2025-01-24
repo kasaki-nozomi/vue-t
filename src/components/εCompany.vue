@@ -89,7 +89,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
 
             .state-title {
                 font-size: 18px;
-                font-weight: 600;
+                font-weight: bold;
                 text-align: center;
                 color: white;
                 @include flex-center();
@@ -99,7 +99,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
                 position: relative;
                 margin-top: 16px;
                 font-size: 56px;
-                font-weight: 500;
+                font-weight: bold;
                 color: rgba(255, 255, 255, 0.5);
                 transition: all 0.25s;
                 cursor: pointer;
@@ -195,7 +195,7 @@ proxy.bus.on('company-show', () => companyShow.value = true)
             .state {
                 .state-title {
                     font-size: 56px;
-                    font-weight: 600;
+                    font-weight: bold;
                 }
 
                 .state-desc {

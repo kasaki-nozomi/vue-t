@@ -65,11 +65,11 @@ const capacitys = [
         div:first-child {
             margin-top: 28px;
             font-size: 25px;
-            font-weight: 800;
+            font-weight: bold;
         }
 
         :deep(span) {
-            font-weight: 800;
+            font-weight: bold;
         } 
     }
 
@@ -85,7 +85,7 @@ const capacitys = [
 
             .title {
                 font-size: 22px;
-                font-weight: 800;
+                font-weight: bold;
                 color: rgba(255, 255, 255, 0.85);
             }
 

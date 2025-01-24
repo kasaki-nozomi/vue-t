@@ -49,7 +49,7 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
         color: white;
 
         span {
-            font-weight: 600;
+            font-weight: bold;
         }
     }
 

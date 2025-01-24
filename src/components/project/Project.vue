@@ -61,7 +61,7 @@ function goProject() {
             height: 100%;
             line-height: 40px;
             padding: 0 220px;
-            font-size: 20px;
+            font-size: 16px;
             color: white;
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
@@ -105,7 +105,7 @@ function goProject() {
         }
 
         .changyuan2 {
-            width: 260px;
+            width: 220px;
         }
 
         .shuohui {
@@ -122,7 +122,7 @@ function goProject() {
             .project-desc {
                 line-height: 40PX;
                 padding: 0 220PX;
-                font-size: 20PX;
+                font-size: 16PX;
             }
         }
 
@@ -154,6 +154,14 @@ function goProject() {
             .yaomu {
                 width: 160PX;
             }
+
+            .changyuan2 {
+                width: 220PX;
+            }
+
+            .shuohui {
+                width: 440PX;
+            }
         } 
     }
 }
@@ -172,7 +180,7 @@ function goProject() {
 
             .project-bottom-desc {
                 width: 1280px;
-                line-height: 84px;
+                line-height: 96px;
                 font-size: 48px;
                 text-align: center;
                 display: -webkit-box;
@@ -217,7 +225,7 @@ function goProject() {
             }
 
             .changyuan2 {
-                width: 480px;
+                width: 400px;
             }
 
             .shuohui {

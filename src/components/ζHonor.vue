@@ -100,7 +100,7 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
         color: white;
 
         span {
-            font-weight: 600;
+            font-weight: bold;
         }
     }
 
@@ -130,7 +130,7 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
                 div:nth-of-type(1) {
                     line-height: 36px;
                     font-size: 24px;
-                    font-weight: 600;
+                    font-weight: bold;
                 }
 
                 div:nth-of-type(2) {

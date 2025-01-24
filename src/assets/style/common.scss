@@ -5,7 +5,6 @@
     text-decoration: none;
 
     cursor: pointer;
-    // transition: all 0.15s;
     transform-origin: center center;
 
     &:hover {
@@ -14,7 +13,7 @@
     }
 
     &:active {
-        transform: scale(0.95);
+        transform: scale(0.98);
         -webkit-filter: brightness(0.9);
         filter: brightness(0.9);
     }

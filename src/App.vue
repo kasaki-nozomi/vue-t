@@ -23,7 +23,6 @@ const root = ref({ height: `${window.innerHeight}px` })
 window.addEventListener('resize', () => root.value = { height: `${window.innerHeight}px` })
 </script>
 
-<style></style>
 <style lang="scss">
 body {
     background: black;
@@ -31,7 +30,6 @@ body {
 
 #root {
     padding-top: 100PX;
-    font-family: SourceHanSansSC, PingFang SC;
     @include flex-center(center, normal, column);
 
     @include setPadContent {

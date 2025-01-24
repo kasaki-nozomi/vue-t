@@ -53,7 +53,7 @@ function goProject(project) {
         color: white;
 
         span {
-            font-weight: 600;
+            font-weight: bold;
         }
     }
 
@@ -87,7 +87,7 @@ function goProject(project) {
 
                     .others-info-title {
                         font-size: 22px;
-                        font-weight: 600;
+                        font-weight: bold;
                         color: white;
                     }
 
@@ -107,10 +107,11 @@ function goProject(project) {
                         height: 48px;
                         margin-top: 10px;
                         padding: 0 32px;
-                        font-size: 20px;
+                        font-size: 18px;
                         border-radius: 48px;
                         color: black;
                         background: rgb(225, 225, 225);
+                        @include flex-center();
                     }
                 }
             }
@@ -121,10 +122,11 @@ function goProject(project) {
         height: 66px;
         margin-top: 80px;
         padding: 0 50px;
-        font-size: 25px;
+        font-size: 24px;
         border-radius: 66px;
         color: black;
         background: rgb(255, 255, 255);
+        @include flex-center();
     }
 }
 
@@ -164,8 +166,8 @@ function goProject(project) {
                             height: 88px;
                             margin-top: 24px;
                             padding: 0 60px;
-                            font-size: 44px;
-                            border-radius: 99px;
+                            font-size: 36px;
+                            border-radius: 88px;
                         }
                     }
                 }
@@ -176,7 +178,7 @@ function goProject(project) {
             height: 150px;
             margin-top: 128px;
             padding: 0 80px;
-            font-size: 58px;
+            font-size: 52px;
             border-radius: 150px;
         }
     }

@@ -1,8 +1,25 @@
 @font-face {
     font-family: 'SourceHanSansSC';
-    src: url('@/assets/fonts/SourceHanSansSC.woff2') format('woff');
+    src: url('@/assets/fonts/SourceHanSansRegular.otf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'SourceHanSansSC';
+    src: url('@/assets/fonts/SourceHanSansLight.otf');
     font-weight: normal;
-    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SC-Normal';
+    src: url('@/assets/fonts/SourceHanSansNormal.otf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'SC-Bold';
+    src: url('@/assets/fonts/SourceHanSansBold.otf');
+    font-weight: normal;
 }
 
 * {
@@ -22,6 +39,8 @@
 
     scrollbar-width: none;
 
+    font-family: SourceHanSansSC, PingFang SC, Arial;
+
     &::-webkit-scrollbar {
         display: none;
     }
@@ -33,36 +52,9 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    // overflow-y: overlay;
     overflow-y: auto;
-    // scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
-
-// @media screen and (min-width: 600px) {
-//     html {
-//         scrollbar-width: auto;
-
-//         &::-webkit-scrollbar {
-//             display: initial;
-//             width: 10PX;
-//         }
-    
-//         &::-webkit-scrollbar-thumb {
-//             border: 1px solid rgba(170, 170, 170, 0.25);
-//             background: rgba(160, 160, 160, 0.25);
-//         }
-
-//         &::-webkit-scrollbar-thumb:active {
-//             border: 1px solid rgba(160, 160, 160, 0.25);
-//             background: rgba(150, 150, 150, 0.25);
-//         }
-    
-//         &::-webkit-scrollbar-track {
-//             background: rgb(0, 0, 0, 0);
-//         }
-//     }
-// }
 
 p {
     margin: 0;
@@ -73,10 +65,8 @@ button {
     outline: none;
     background: none;
     text-decoration: none;
-    font-family: SourceHanSansSC, PingFang SC;
 
     cursor: pointer;
-    // transition: all 0.15s;
     transform-origin: center center;
 
     &:hover {
@@ -85,7 +75,7 @@ button {
     }
 
     &:active {
-        transform: scale(0.95);
+        transform: scale(0.98);
         -webkit-filter: brightness(0.9);
         filter: brightness(0.9);
     }
@@ -101,7 +91,6 @@ input {
     outline: 0;
     padding: 0;
     background: none;
-    font-family: SourceHanSansSC, PingFang SC;
     text-align: center;
 
     user-select: auto;

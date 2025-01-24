@@ -5,10 +5,9 @@
             <img class="name" :src="name" />
         </div>
         <div v-if="!store.pad" class="header-tab">
-            <div class="header-tab-item button" @click="tabClick('header')">首页</div>
+            <div class="header-tab-item button" @click="tabClick('header')"><div class="text"><div class="inner">首页</div></div></div>
             <div class="header-tab-item" @click.stop="projectShow = true" @mouseenter="projectShow = true" @mouseleave="projectShow = false">
-                历史项目
-                <div class="empty"></div>
+                <div class="text"><div class="inner">历史项目</div></div>
                 <Transition name="project" mode="out-in">
                     <div class="header-projects" v-show="projectShow">
                         <div v-for="project in projects">
@@ -17,8 +16,8 @@
                     </div>
                 </Transition>
             </div>
-            <div class="header-tab-item button" @click="tabClick('home-box')">公司介绍</div>
-            <div class="header-tab-item button" @click="tabClick('footer')">联系我们</div>
+            <div class="header-tab-item button" @click="tabClick('company')"><div class="text"><div class="inner">公司介绍</div></div></div>
+            <div class="header-tab-item button" @click="tabClick('footer')"><div class="text"><div class="inner">联系我们</div></div></div>
         </div>
         <div v-else class="header-tab-m">
             <div class="header-tab-button" @click.stop="tabGroupClick">
@@ -30,7 +29,7 @@
                 <div class="header-tab-group" v-show="tabShow" >
                     <div class="header-tab-item-m" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
                     <div class="header-tab-item-m" @click.stop="projectShow = true" @mouseenter="projectShow = true">历史项目</div>
-                    <div class="header-tab-item-m" @click="tabClick('home-box')" @mouseenter="projectShow = false">公司介绍</div>
+                    <div class="header-tab-item-m" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
                     <div class="header-tab-item-m" @click="tabClick('footer')" @mouseenter="projectShow = false">联系我们</div>
                 </div>
             </Transition>
@@ -124,45 +123,61 @@ document.documentElement.addEventListener('click', () => {
     }
 
     .header-tab {
-        gap: 20PX;
+        z-index: 20;
+        position: relative;
+        height: 100%;
         @include flex-center();
 
         .header-tab-item {
             position: relative;
-            height: 48PX;
-            padding: 0 16PX;
+            height: 100%;
             font-size: 20PX;
-            border-radius: 48PX;
             color: rgba(255, 255, 255, 0.8);
-            background: transparent;
-            transition: all 0.2s;
+            background: black;
             cursor: pointer;
             @include flex-center();
 
-            &:hover {
-                color: white;
+            .text {
+                z-index: 20;
+                position: relative;
+                height: 100%;
+                padding: 0 10PX;
+                background: black;
+                @include flex-center();
+
+                .inner {
+                    height: 48PX;
+                    padding: 0 16PX;
+                    border-radius: 48PX;
+                    color: rgba(255, 255, 255, 0.8);
+                    background: transparent;
+                    transition: all 0.2s;
+                    cursor: pointer;
+                    @include flex-center();
+
+                    &:hover {
+                        color: white;
+                    }
+                }
             }
         }
 
         >:not(.header-tab-item:nth-child(2)) {
-            &:hover {
-                padding: 0 24PX;
-                letter-spacing: 1PX;
-                background: rgb(50, 50, 50);
+            .text {
+                .inner {
+                    &:hover {
+                        padding: 0 26PX;
+                        letter-spacing: 1PX;
+                        background: rgb(50, 50, 50);
+                    }
+                }
             }
-        }
-
-        .empty {
-            position: absolute;
-            top: 80%;
-            width: 120PX;
-            height: 40PX;
         }
 
         .header-projects {
             z-index: 20;
             position: absolute;
-            top: 74PX;
+            top: 100%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5PX);
             -webkit-backdrop-filter: blur(5PX);
@@ -257,10 +272,10 @@ document.documentElement.addEventListener('click', () => {
                 @include flex-center(center, normal, column);
 
                 .header-projects-item-m {
-                    width: 140PX;
+                    width: 130PX;
                     padding: 10PX;
                     padding: 12PX 0;
-                    font-size: 16PX;
+                    font-size: 15PX;
                     color: white;
                     cursor: pointer;
                     @include flex-center();
@@ -302,14 +317,14 @@ document.documentElement.addEventListener('click', () => {
                 right: -20PX;
 
                 .header-tab-item-m {
-                    width: 106PX;
+                    width: 100PX;
                     padding: 12PX 20PX;
-                    font-size: 16PX;
+                    font-size: 15PX;
                 }
             }
 
             .header-projects-m {
-                right: calc(106PX - 20PX);
+                right: calc(100PX - 20PX);
             }
         }
     }
@@ -334,10 +349,14 @@ document.documentElement.addEventListener('click', () => {
 }
 
 .project-enter-from,
-.project-leave-to,
+.project-leave-to {
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
 .project-m-enter-from,
 .project-m-leave-to  {
     opacity: 0;
-    transform: scale(0.5);
+    transform: translateX(50%);
 }
 </style>

@@ -1,8 +1,30 @@
-const preload = [
-    // new URL('@/assets/images/background.jpg', import.meta.url).href
+const images = [
+    
 ]
 
-for(let i = 0; i < preload.length; i++) {
-    const image = new Image()
-    image.src = preload[i]
+const loadImage = (src) => {
+    if (!src) return Promise.resolve()
+    return new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.as = 'image'
+        link.rel = 'prefetch'
+        link.href = src
+        document.head.appendChild(link)
+        
+        link.onload = resolve
+        link.onerror = reject
+        setTimeout(reject, 5000)
+    })
 }
+
+const loadImages = async () => {
+    while (images.length) {
+        try {
+            await loadImage(images.shift())
+        } catch (error) {
+            console.error(error)
+        }
+    }
+}
+
+Promise.all(Array.from({ length: 2 }, loadImages))

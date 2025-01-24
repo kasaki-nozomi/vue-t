@@ -19,6 +19,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .info {
+    z-index: 20;
     position: relative;
     width: 100%;
     height: 100%;

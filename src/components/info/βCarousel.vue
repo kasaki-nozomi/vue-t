@@ -11,7 +11,12 @@
             <img :class="current" :src="projects[current].logo" />
             <div v-if="current !== 'contest'" class="carousel-desc" v-html="projects[current].description"></div>
             <div class="carousel-imgs">
-                <div v-if="current !== 'contest'"><img v-for="url of lists" :src="url" /></div>
+                <div v-if="current !== 'contest'">
+                    <div v-for="(url, index) of lists">
+                        <el-image class="image" v-if="url" :src="url" :preview-src-list="lists" :initial-index="index" />
+                        <div v-else class="divide"></div>
+                    </div>
+                </div>
                 <div v-if="current === 'contest'" class="carousel-video">
                     <div v-for="(contest, index) of contests">
                         <div class="contest-video-box">
@@ -91,6 +96,18 @@ const banners = {
         new URL('@/assets/images/project/yaomu/list/003.jpg', import.meta.url).href,
         new URL('@/assets/images/project/yaomu/list/004.jpg', import.meta.url).href,
         new URL('@/assets/images/project/yaomu/list/006.jpg', import.meta.url).href
+    ],
+    changyuan2: [
+        new URL('@/assets/images/project/changyuan2/list/04.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/07.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/020.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/021.jpg', import.meta.url).href
+    ],
+    shuohui: [
+        new URL('@/assets/images/project/shuohui/banner/01.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/banner/02.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/banner/03.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/banner/09.jpg', import.meta.url).href
     ]
 }[current]
 
@@ -153,6 +170,7 @@ const lists = {
         new URL('@/assets/images/project/changzhou/list/green/30.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/green/34.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/green/38.jpg', import.meta.url).href,
+        null,
         new URL('@/assets/images/project/changzhou/list/red/003.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/red/004.jpg', import.meta.url).href,
         new URL('@/assets/images/project/changzhou/list/red/005.jpg', import.meta.url).href,
@@ -189,6 +207,62 @@ const lists = {
         new URL('@/assets/images/project/yaomu/list/004.jpg', import.meta.url).href,
         new URL('@/assets/images/project/yaomu/list/006.jpg', import.meta.url).href,
         new URL('@/assets/images/project/yaomu/list/007.jpg', import.meta.url).href
+    ],
+    changyuan2: [
+        new URL('@/assets/images/project/changyuan2/list/01.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/02.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/03.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/04.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/05.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/06.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/07.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/08.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/09.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/010.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/011.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/012.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/013.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/014.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/015.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/016.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/017.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/018.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/019.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/020.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/021.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/022.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/023.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/024.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/025.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/026.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/027.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/028.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/029.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/030.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/031.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/032.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/033.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/034.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/changyuan2/list/035.jpg', import.meta.url).href
+    ],
+    shuohui: [
+        new URL('@/assets/images/project/shuohui/list/one/03.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/one/04.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/one/05.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/one/06.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/one/07.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/one/08.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/one/13.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/one/14.jpg', import.meta.url).href,
+        null,
+        new URL('@/assets/images/project/shuohui/list/two/01.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/two/03.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/two/04.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/two/05.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/two/08.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/two/09.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/two/13.jpg', import.meta.url).href,
+        new URL('@/assets/images/project/shuohui/list/two/14.jpg', import.meta.url).href
     ]
 }[current]
 
@@ -224,8 +298,29 @@ onMounted(() => {
 })
 </script>
 
+<style lang="scss">
+.el-image-viewer__wrapper {
+    top: 100PX;
+    outline: unset;
+}
+
+@include setPadContent {
+    .el-image-viewer__wrapper {
+        top: 86PX;
+    }
+}
+
+@include setPhoneContent {
+    .el-image-viewer__wrapper {
+        top: 72PX;
+    }
+}
+</style>
+
 <style lang="scss" scoped>
 .carousel {
+    z-index: 100;
+    position: relative;
     width: 100%;
     background: black;
 
@@ -262,6 +357,14 @@ onMounted(() => {
 
             &.yaomu {
                 height: 820px;
+            }
+
+            &.changyuan2 {
+                height: 816px;
+            }
+
+            &.shuohui {
+                height: 818px;
             }
         }
     }
@@ -326,10 +429,18 @@ onMounted(() => {
         .carousel-imgs {
             margin-bottom: 100px;
 
-            img {
+            .image {
                 display: block;
                 width: 1250px;
                 margin-top: 16px;
+            }
+
+            .divide {
+                width: 1250px;
+                height: 2px;
+                margin: 40px 0 40px 0;
+                background: linear-gradient(to right, rgb(255, 255, 255, 0.4) 40%, transparent 0) repeat-x;
+                background-size: 10px 2px;
             }
         }
 
@@ -465,9 +576,17 @@ onMounted(() => {
             .carousel-imgs {
                 margin-bottom: 160px;
 
-                img {
+                .image {
                     width: 1800px;
                     margin-top: 22px;
+                }
+
+                .divide {
+                    width: 1800px;
+                    height: 2px;
+                    margin: 60px 0 60px 0;
+                    background: linear-gradient(to right, rgb(255, 255, 255, 0.4) 50%, transparent 0) repeat-x;
+                    background-size: 20px 2px;
                 }
             }
 

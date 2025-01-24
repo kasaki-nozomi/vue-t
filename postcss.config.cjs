@@ -14,12 +14,6 @@ module.exports = ({}) => {
                 mediaQuery: true,
                 exclude: /node_modules/i
             }
-            // 'postcss-pxtorem': {
-            //     rootValue: 75,
-            //     unitPrecision: 5,
-            //     propList: ['*'],
-            //     exclude: /node_modules/i
-            // }
         }
     }
 }
