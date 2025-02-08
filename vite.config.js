@@ -97,12 +97,12 @@ export default defineConfig(({ _, mode }) => {
             }),
             ViteCompression({ threshold: 1024 * 10 }),
             ViteImageOptimizer(),
-            VitePluginPreloadImages({
-                dirs: 'src/assets/images/project/**/*.{jpg,png,svg}',
-                attrs: {
-                    rel: 'prefetch'
-                }
-            }),
+            // VitePluginPreloadImages({
+            //     dirs: 'src/assets/images/project/**/*.{jpg,png,svg}',
+            //     attrs: {
+            //         rel: 'prefetch'
+            //     }
+            // }),
             AutoImport({ resolvers: [ElementPlusResolver()] }),
             Components({ resolvers: [ElementPlusResolver()] })
         ],

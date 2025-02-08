@@ -33,7 +33,7 @@ import { getCurrentInstance, ref } from 'vue'
 
 const { proxy } = getCurrentInstance()
 
-const logo = new URL('@/assets/images/company/logoo.png', import.meta.url).href
+const logo = new URL('@/assets/images/company/logo_name.png', import.meta.url).href
 const moreinfo = ref(null)
 const companyShow = ref(false)
 const cooperates = `迄今为止，我们已为众多知名合作方提供了卓越的设计服务，赢得了广泛的认可与赞誉。合作企业包括但不限于：腾讯，网易，GGAC，七点GAME，畅游，吉比特，lofter，万维猫等。`

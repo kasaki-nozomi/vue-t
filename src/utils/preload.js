@@ -1,6 +1,4 @@
-const images = [
-    
-]
+const images = []
 
 const loadImage = (src) => {
     if (!src) return Promise.resolve()
@@ -10,7 +8,7 @@ const loadImage = (src) => {
         link.rel = 'prefetch'
         link.href = src
         document.head.appendChild(link)
-        
+
         link.onload = resolve
         link.onerror = reject
         setTimeout(reject, 5000)

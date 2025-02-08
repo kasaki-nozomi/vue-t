@@ -6,7 +6,7 @@
         </div>
         <div v-if="!store.pad" class="header-tab">
             <div class="header-tab-item button" @click="tabClick('header')"><div class="text"><div class="inner">首页</div></div></div>
-            <div class="header-tab-item" @click.stop="projectShow = true" @mouseenter="projectShow = true" @mouseleave="projectShow = false">
+            <div class="header-tab-item" @click.stop="projectShow = true" @mouseenter.stop="projectShow = true" @mouseleave.stop="projectShow = false">
                 <div class="text"><div class="inner">历史项目</div></div>
                 <Transition name="project" mode="out-in">
                     <div class="header-projects" v-show="projectShow">
@@ -14,7 +14,7 @@
                             <div class="header-projects-item" @click.stop="projectClick(project.symbol)">{{ project.title }}</div>
                         </div>
                     </div>
-                </Transition>
+                </Transition> 
             </div>
             <div class="header-tab-item button" @click="tabClick('company')"><div class="text"><div class="inner">公司介绍</div></div></div>
             <div class="header-tab-item button" @click="tabClick('footer')"><div class="text"><div class="inner">联系我们</div></div></div>
@@ -123,7 +123,6 @@ document.documentElement.addEventListener('click', () => {
     }
 
     .header-tab {
-        z-index: 20;
         position: relative;
         height: 100%;
         @include flex-center();
@@ -175,7 +174,7 @@ document.documentElement.addEventListener('click', () => {
         }
 
         .header-projects {
-            z-index: 20;
+            z-index: 10;
             position: absolute;
             top: 100%;
             background: rgba(255, 255, 255, 0.1);

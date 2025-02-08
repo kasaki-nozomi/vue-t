@@ -61,7 +61,7 @@ function goProject() {
             height: 100%;
             line-height: 40px;
             padding: 0 220px;
-            font-size: 16px;
+            font-size: 18px;
             color: white;
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
@@ -261,7 +261,7 @@ function goProject() {
 .description-left-leave-active,
 .description-right-enter-active,
 .description-right-leave-active {
-    transition: all 0.6s ease;
+    transition: all 0.5s ease;
 }
 .description-left-enter-from,
 .description-left-leave-to {

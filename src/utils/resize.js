@@ -1,3 +1,3 @@
-import { useStore } from "@/store"
+import { useStore } from '@/store'
 
-window.addEventListener('resize', () => useStore().setResize() )
+window.addEventListener('resize', () => useStore().setResize())

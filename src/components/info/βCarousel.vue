@@ -319,7 +319,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .carousel {
-    z-index: 100;
     position: relative;
     width: 100%;
     background: black;

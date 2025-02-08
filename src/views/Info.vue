@@ -14,12 +14,10 @@ import { onMounted } from 'vue'
 onMounted(() => {
     document.getElementsByClassName('el-scrollbar__wrap')[0].scrollTop = 0
 })
-
 </script>
 
 <style lang="scss" scoped>
 .info {
-    z-index: 20;
     position: relative;
     width: 100%;
     height: 100%;
