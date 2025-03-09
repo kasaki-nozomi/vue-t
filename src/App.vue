@@ -3,7 +3,7 @@
         <Header></Header>
         <el-scrollbar>
             <router-view v-slot="{ Component, route }">
-                <Transition :name="route.name" mode="out-in">
+                <Transition name="route" mode="out-in">
                     <component :is="Component" :key="route.fullPath"></component>
                 </Transition>
             </router-view>
@@ -13,18 +13,18 @@
 </template>
 
 <script setup>
-import Header from '@/components/αHeader.vue'
-import Footer from '@/components/θFooter.vue'
-
 import { ref } from 'vue'
 
-const root = ref({ height: `${window.innerHeight}px` })
+import Header from '@/components/αHeader.vue'
+import Footer from '@/components/βFooter.vue'
 
+const root = ref({ height: `${window.innerHeight}px` })
 window.addEventListener('resize', () => root.value = { height: `${window.innerHeight}px` })
 </script>
 
 <style lang="scss">
 body {
+    color: white;
     background: black;
 }
 
@@ -78,17 +78,13 @@ body {
 }
 
 
-.home-enter-active,
-.home-leave-active,
-.info-enter-active,
-.info-leave-active {
+.route-enter-active,
+.route-leave-active {
     transition: all 0.4s ease;
 }
 
-.home-enter-from,
-.home-leave-to,
-.info-enter-from,
-.info-leave-to {
+.route-enter-from,
+.route-leave-to {
     opacity: 0;
     transform: translateY(50PX);
 }

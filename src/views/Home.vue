@@ -5,6 +5,7 @@
             <Capacity></Capacity>
             <Project></Project>
             <div id="home-box" class="home-box" :style="style">
+                <div class="home-box-mask"></div>
                 <Company></Company>
                 <Honor></Honor>
                 <Cooperate></Cooperate>
@@ -13,12 +14,12 @@
     </div>
 </template>
 <script setup>
-import Screen from '@/components/βScreen.vue'
-import Capacity from '@/components/γCapacity.vue'
-import Project from '@/components/δProject.vue'
-import Company from '@/components/εCompany.vue'
-import Honor from '@/components/ζHonor.vue'
-import Cooperate from '@/components/ηCooperate.vue'
+import Screen from '@/components/home/αScreen.vue'
+import Capacity from '@/components/home/βCapacity.vue'
+import Project from '@/components/home/γProject.vue'
+import Company from '@/components/home/δCompany.vue'
+import Honor from '@/components/home/εHonor.vue'
+import Cooperate from '@/components/home/ζCooperate.vue'
 
 import { getCurrentInstance, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -45,7 +46,7 @@ onMounted(() => {
         const companyY = getElementViewTop(company)
         const honorY = getElementViewTop(honor)
         const cooperateY = getElementViewTop(cooperate)
-        if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${(companyY + (store.phone ? 72 : (store.pad ? 86 : 100))) / (store.phone ? 2 : 5)}px` }
+        if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${(companyY + (store.phone ? 72 : (store.pad ? 86 : 100))) / (store.phone ? 4 : 5)}px` }
         if (companyY < window.innerHeight / 3) proxy.bus.emit('company-show')
         if (honorY < window.innerHeight / 3) proxy.bus.emit('honor-show')
         if (cooperateY < window.innerHeight / 3) proxy.bus.emit('cooperate-show')
@@ -68,11 +69,6 @@ function getElementViewTop(element) {
         current = current.offsetParent
     }
     let elementScrollTop = elscroll.scrollTop
-    // if (document.compatMode == 'BackCompat') {
-    //     elementScrollTop = document.body.scrollTop
-    // } else {
-    //     elementScrollTop = document.documentElement.scrollTop
-    // }
     return actualTop - elementScrollTop
 }
 </script>
@@ -93,21 +89,32 @@ function getElementViewTop(element) {
     .home-box {
         position: relative;
         width: 100%;
-        background-image: url('@/assets/images/back-mask-two.png');
+        background-image: url('@/assets/images/home/mask.png');
         background-size: 100% auto;
         background-position-x: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
         overflow: hidden;
         @include flex-center(center, normal, column);
+
+        .home-box-mask {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 1000px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        }
     }
 }
 
 @include setPhoneContent {
     .home {
         .home-box {
-            background-image: url('@/assets/images/back-mask-two-m.png');
-            background-size: 100% auto;
+            background-image: url('@/assets/images/home/mask-m.png');
+
+            .home-box-mask {
+                height: 2000px;
+            }
         }
     }
 }

@@ -7,6 +7,8 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+
 import Project from '@/components/project/Project.vue'
 import { projects } from '@/utils/projects'
 </script>

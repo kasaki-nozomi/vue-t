@@ -6,6 +6,7 @@ import Project from '@/views/Project.vue'
 import IP from '@/views/IP.vue'
 import Business from '@/views/Business.vue'
 import Error from '@/views/404.vue'
+import { nextTick } from 'vue'
 
 const routes = [
     { path: '/', name: 'home', component: Home },
@@ -19,14 +20,16 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    // scrollBehavior(to, from, savedPosition) {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => { resolve({ top: 0 }) }, 400)
-    //     })
-    // }
+    scrollBehavior(to, from, savedPosition) {}
 })
 
-router.beforeEach(async (to, from) => { })
-router.afterEach(async (to, from) => { })
+router.beforeEach(async (to, from) => {})
+
+router.afterEach(async (to, from) => {
+    setTimeout(() => {
+        const scrollWrap = document.getElementsByClassName('el-scrollbar__wrap')[0]
+        if (scrollWrap) scrollWrap.scrollTop = 0
+    }, 400)
+})
 
 export default router

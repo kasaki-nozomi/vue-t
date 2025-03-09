@@ -41,7 +41,6 @@ export default defineConfig(({ _, mode }) => {
                     manualChunks: (id) => {
                         if (!id.includes('node_modules')) {
                             if (id.includes('lang')) return 'lang'
-                            if (id.includes('images/prizes')) return 'chunks/prizes'
                             if (id.includes('src/views')) {
                                 return id.split('src/views/')[1].split('.')[0].toLowerCase()
                             }

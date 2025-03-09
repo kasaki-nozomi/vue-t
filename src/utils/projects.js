@@ -275,3 +275,130 @@ export const businesses = {
         description: ''
     }
 }
+
+
+
+
+
+export const HomeProjectsList = [
+    {
+        id: 1,
+        symbol: 'jiemian',
+        title: '界冕',
+        image: new URL('@/assets/images/home/project/list/01-jiemian.jpg', import.meta.url).href
+    },
+    {
+        id: 2,
+        symbol: 'changyuan',
+        title: '长源',
+        image: new URL('@/assets/images/home/project/list/02-changyuan.jpg', import.meta.url).href
+    },
+    {
+        id: 3,
+        symbol: 'shanhaibian',
+        title: '山海变',
+        image: new URL('@/assets/images/home/project/list/03-shanhaibian.jpg', import.meta.url).href
+    },
+    {
+        id: 4,
+        symbol: 'changzhou',
+        title: '长昼将尽',
+        image: new URL('@/assets/images/home/project/list/04-changzhou.jpg', import.meta.url).href
+    },
+    {
+        id: 5,
+        symbol: 'daye',
+        title: '大野',
+        image: new URL('@/assets/images/home/project/list/05-daye.jpg', import.meta.url).href
+    },
+    {
+        id: 6,
+        symbol: 'zhenxi',
+        title: '畅游_殄熄',
+        image: new URL('@/assets/images/home/project/list/06-zhenxi.jpg', import.meta.url).href
+    },
+    {
+        id: 7,
+        symbol: 'dayu',
+        title: '星帝影视_大鱼二之海岛鱼怪',
+        image: new URL('@/assets/images/home/project/list/07-dayu.jpg', import.meta.url).href
+    },
+    {
+        id: 8,
+        symbol: 'baozha',
+        title: '第二次大爆炸之后',
+        image: new URL('@/assets/images/home/project/list/08-baozha.jpg', import.meta.url).href
+    },
+    {
+        id: 9,
+        symbol: 'yinyangshi',
+        title: '网易_阴阳师',
+        image: new URL('@/assets/images/home/project/list/09-yinyangshi.jpg', import.meta.url).href
+    },
+    {
+        id: 10,
+        symbol: 'shenmifusu',
+        title: '万维猫_神秘复苏',
+        image: new URL('@/assets/images/home/project/list/10-shenmifusu.jpg', import.meta.url).href
+    },
+    {
+        id: 11,
+        symbol: 'shuaitu',
+        title: '网易_率土之滨',
+        image: new URL('@/assets/images/home/project/list/11-shuaitu.jpg', import.meta.url).href
+    },
+    {
+        id: 12,
+        symbol: 'tiangong',
+        title: '万维猫_天宫',
+        image: new URL('@/assets/images/home/project/list/12-tiangong.jpg', import.meta.url).href
+    },
+    {
+        id: 13,
+        symbol: 'mijing',
+        title: '华策_迷径之上',
+        image: new URL('@/assets/images/home/project/list/13-mijing.jpg', import.meta.url).href
+    },
+    {
+        id: 14,
+        symbol: 'duanpian',
+        title: '科幻短片',
+        image: new URL('@/assets/images/home/project/list/14-duanpian.jpg', import.meta.url).href
+    },
+    {
+        id: 15,
+        symbol: 'tengxun',
+        title: '腾讯CG',
+        image: new URL('@/assets/images/home/project/list/15-tengxun.jpg', import.meta.url).href
+    },
+    {
+        id: 16,
+        symbol: 'maiya',
+        title: '吾立方_迈亚溶解',
+        image: new URL('@/assets/images/home/project/list/16-maiya.jpg', import.meta.url).href
+    },
+    {
+        id: 17,
+        symbol: 'wuxiameishu',
+        title: '武侠美术方案',
+        image: new URL('@/assets/images/home/project/list/17-wuxiameishu.jpg', import.meta.url).href
+    },
+    {
+        id: 18,
+        symbol: 'xuanran',
+        title: '渲染大赛',
+        image: new URL('@/assets/images/home/project/list/18-xuanran.jpg', import.meta.url).href
+    },
+    {
+        id: 19,
+        symbol: 'yaomu',
+        title: '摇木罗生',
+        image: new URL('@/assets/images/home/project/list/19-yaomu.jpg', import.meta.url).href
+    },
+    {
+        id: 20,
+        symbol: 'yidaiyilu-2',
+        title: '新华社一带一路',
+        image: new URL('@/assets/images/home/project/list/20-yidaiyilu.jpg', import.meta.url).href
+    }
+]

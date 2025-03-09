@@ -1,11 +1,11 @@
-import mitt from 'mitt'
+import useMitt from 'mitt'
 
-const mitt_ = mitt()
+const mitt = useMitt()
 
-export const bus = mitt_
+export const bus = mitt
 
 export default {
     install: (app) => {
-        app.config.globalProperties.bus = mitt_
+        app.config.globalProperties.bus = mitt
     }
 }
