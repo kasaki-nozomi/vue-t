@@ -113,6 +113,7 @@ document.documentElement.addEventListener('click', () => {
         cursor: pointer;
 
         img {
+            display: block;
             height: 44PX;
         }
     }
@@ -292,7 +293,7 @@ document.documentElement.addEventListener('click', () => {
             gap: 8PX;
 
             img {
-                height: 28PX;
+                height: 36PX;
             }
         }
 
