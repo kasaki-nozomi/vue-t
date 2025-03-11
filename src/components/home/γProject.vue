@@ -7,13 +7,13 @@
             <div class="project-list-box" ref="container" @scroll="handleScroll" @mouseenter="scrollSpeed = 0"
                 @mouseleave="scrollSpeed = defaultSpeed" @touchstart="scrollSpeed = 0"
                 @touchend="scrollSpeed = defaultSpeed">
-                <div v-for="project of HomeProjectsList.slice(-count)" :key="`start-${project.symbol}`">
+                <div v-for="project of Projects.slice(-count)" :key="`start-${project.symbol}`">
                     <Project :project="project"></Project>
                 </div>
-                <div v-for="project of HomeProjectsList" :key="project.symbol">
+                <div v-for="project of Projects" :key="project.symbol">
                     <Project :project="project"></Project>
                 </div>
-                <div v-for="project of HomeProjectsList.slice(0, count)" :key="`end-${project.symbol}`">
+                <div v-for="project of Projects.slice(0, count)" :key="`end-${project.symbol}`">
                     <Project :project="project"></Project>
                 </div>
             </div>
@@ -38,11 +38,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
+import { ref, onMounted } from 'vue'
 import Project from '@/components/home/project/Project.vue'
-
-import { HomeProjectsList } from '@/utils/projects'
+import Projects from '@/resource/home'
 
 const title = new URL('@/assets/images/home/project/title.svg', import.meta.url).href
 const left = new URL('@/assets/images/home/project/left.svg', import.meta.url).href
@@ -57,19 +55,17 @@ const leftSpeed = -5
 const rightSpeed = 5
 
 let scrollSpeed = defaultSpeed
-
-let containerWidth = 0
 let itemWidth = 0
 
 const handleScroll = () => {
     if (scrolling.value) return
     if (container.value.scrollLeft <= 0) {
         container.value.style.scrollBehavior = 'auto'
-        container.value.scrollLeft += itemWidth * HomeProjectsList.length
+        container.value.scrollLeft += itemWidth * Projects.length
         container.value.clientWidth
-    } else if (container.value.scrollLeft > HomeProjectsList.length * itemWidth) {
+    } else if (container.value.scrollLeft > Projects.length * itemWidth) {
         container.value.style.scrollBehavior = 'auto'
-        container.value.scrollLeft -= itemWidth * HomeProjectsList.length
+        container.value.scrollLeft -= itemWidth * Projects.length
         container.value.clientWidth
     }
 }
@@ -78,7 +74,6 @@ const handleScrollClick = (speed) => scrollSpeed = speed
 const handleScrollClickUp = () => scrollSpeed = defaultSpeed
 
 onMounted(() => {
-    containerWidth = container.value.getBoundingClientRect().width
     itemWidth = container.value.children[0].getBoundingClientRect().width
 
     const autoScroll = () => {

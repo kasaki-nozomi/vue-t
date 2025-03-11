@@ -2,13 +2,13 @@
     <div class="others">
         <div class="other-title"><span>其他项目 / </span>Other Projects</div>
         <div class="others-list">
-            <div class="other-list-box" v-for="project of others.slice(0, count)">
-                <div class="others-item" @mouseenter="info = project.id" @mouseleave="info = null" :style="{ backgroundImage: `url(${project.image})` }">
+            <div class="other-list-box" v-for="project of others.slice(0, count)" :key="project.symbol">
+                <div class="others-item" @mouseenter="info = project.symbol" @mouseleave="info = null" :style="{ backgroundImage: `url(${project.image})` }">
                     <Transition name="description" mode="out-in">
-                        <div class="others-info" v-show="info === project.id">
+                        <div class="others-info" v-show="info === project.symbol">
                             <div class="others-info-title">{{ project.title }}</div>
-                            <div class="others-info-desc" v-html="project.description"></div>
-                            <button class="others-info-more" @click="goProject(project.symbol)">MORE</button>
+                            <div class="others-info-description" v-html="project.description"></div>
+                            <button class="others-info-more" @click="goProject(project)">MORE</button>
                         </div>
                     </Transition>
                 </div>
@@ -21,30 +21,26 @@
 <script setup>
 import { ref } from 'vue'
 import { useStore } from '@/store'
-import { useRoute, useRouter } from 'vue-router'
-import { projects } from '@/utils/projects'
+import { useRouter } from 'vue-router'
 
-const route = useRoute()
 const router = useRouter()
-
 const store = useStore()
 
-const current = route.query.project || 'changyuan'
+const info = ref(null)
+const count = ref(store.phone ? 8 : 9)
 
-const count = ref(store.phone ? 2 : 3)
-const info = ref(false)
-const more = ref(false)
-const others = Object.values(projects).filter((project) => project.symbol !== current).sort(() => Math.random() - 0.5)
+const props = defineProps({ others: { type: Array, required: true } })
 
 function goProject(project) {
-    router.replace({ path: '/info', query: { project: project } })
+    store.setProject(project)
+    router.push({ path: '/info', query: { id: project.symbol } })
 }
 </script>
 
 <style lang="scss" scoped>
 .others {
     width: 100%;
-    padding: 100px 0 80px 0;
+    padding: 80px 0 160px 0;
     @include flex-center(center, center, column);
 
     .other-title {
@@ -71,6 +67,7 @@ function goProject(project) {
             .others-item {
                 width: 440px;
                 height: 440px;
+                border-radius: 10px;
                 background-size: cover;
                 background-position: center;
                 overflow: hidden;
@@ -91,7 +88,7 @@ function goProject(project) {
                         color: white;
                     }
 
-                    .others-info-desc {
+                    .others-info-description {
                         line-height: 36px;
                         font-size: 20px;
                         display: -webkit-box;
@@ -140,7 +137,7 @@ function goProject(project) {
 
         .others-list {
             margin-top: 110px;
-            gap: 100px;
+            gap: 60px;
 
             .other-list-box {
                 .others-item {
@@ -156,7 +153,7 @@ function goProject(project) {
                             font-size: 52px;
                         }
 
-                        .others-info-desc {
+                        .others-info-description {
                             line-height: 72px;
                             font-size: 42px;
                             line-clamp: 5;
@@ -187,12 +184,11 @@ function goProject(project) {
 
 .description-enter-active,
 .description-leave-active {
-    transition: all 0.6s ease;
+    transition: all 0.4s ease;
 }
 
 .description-enter-from,
 .description-leave-to {
     opacity: 0;
-    transform: translateY(-75%);
 }
 </style>

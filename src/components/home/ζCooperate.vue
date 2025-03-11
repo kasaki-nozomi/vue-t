@@ -2,9 +2,6 @@
     <div id="cooperate" class="cooperate">
         <Transition name="cooperate" mode="out-in">
             <div class="cooperate-list" v-if="cooperateShow">
-                <!-- <div class="cooperate-item" v-for="cooperate of cooperates">
-                    <img :src="cooperate" />
-                </div> -->
                 <img :src="store.phone ? cooperate_m : cooperate" />
             </div>
         </Transition>
@@ -22,18 +19,6 @@ const store = useStore()
 const cooperateShow = ref(true)
 const cooperate = new URL('@/assets/images/home/cooperate/banner.png', import.meta.url).href
 const cooperate_m = new URL('@/assets/images/home/cooperate/banner-m.png', import.meta.url).href
-const cooperates = [
-    new URL('@/assets/images/cooperate/tencent.png', import.meta.url).href,
-    new URL('@/assets/images/cooperate/netease.svg', import.meta.url).href,
-    new URL('@/assets/images/cooperate/7game.png', import.meta.url).href,
-    new URL('@/assets/images/cooperate/mao.svg', import.meta.url).href,
-    new URL('@/assets/images/cooperate/alchemy.png', import.meta.url).href,
-    new URL('@/assets/images/cooperate/changyou.svg', import.meta.url).href,
-    new URL('@/assets/images/cooperate/lofter.svg', import.meta.url).href,
-    new URL('@/assets/images/cooperate/diezhi.png', import.meta.url).href,
-    new URL('@/assets/images/cooperate/gbits.png', import.meta.url).href,
-    new URL('@/assets/images/cooperate/ggacp.png', import.meta.url).href,
-]
 
 proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="home-container">
+    <div class="home-wrapper">
         <div id="home" class="home">
             <Screen></Screen>
             <Capacity></Capacity>
@@ -74,38 +74,40 @@ function getElementViewTop(element) {
 </script>
 
 <style lang="scss" scoped>
-.home-container {
-    @include flex-center(center, normal, column);
-}
-
-.home {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    background: black;
+.home-wrapper {
     @include flex-center(center, normal, column);
 
-    .home-box {
+    .home {
         position: relative;
         width: 100%;
-        background-image: url('@/assets/images/home/mask.png');
-        background-size: 100% auto;
-        background-position-x: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        overflow: hidden;
+        height: 100%;
+        min-height: 100vh;
+        background: black;
         @include flex-center(center, normal, column);
 
-        .home-box-mask {
-            position: absolute;
-            top: 0;
+        .home-box {
+            position: relative;
             width: 100%;
-            height: 1000px;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+            background-image: url('@/assets/images/home/mask.png');
+            background-size: 100% auto;
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+            @include flex-center(center, normal, column);
+
+            .home-box-mask {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 1000px;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+            }
         }
     }
 }
+
+
 
 @include setPhoneContent {
     .home {

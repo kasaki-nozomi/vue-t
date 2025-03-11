@@ -1,0 +1,9 @@
+const content = import.meta.glob('@/assets/images/business/list/14-maiya/content/**/*.{jpg,png,jpeg,gif,webp}', {
+    eager: true,
+    import: 'default'
+})
+
+export default {
+    content: Object.keys(content),
+    scroll: []
+}

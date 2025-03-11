@@ -3,7 +3,7 @@
         <video class="screen-video" autoplay loop muted playsinline webkit-playsinline :poster="screenImage">
             <source :src="screenVideo" type="video/mp4">
         </video>
-        <div class="screen-tip">
+        <div class="screen-title">
             <img :src="title" />
         </div>
         <div class="screen-loading" v-show="state">
@@ -14,9 +14,6 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useStore } from '@/store'
-
-const store = useStore()
 
 const state = ref(true)
 const play = ref(false)
@@ -25,8 +22,8 @@ const loading = new URL('@/assets/images/loading.svg', import.meta.url).href
 
 const title = new URL('@/assets/images/home/screen/title.svg', import.meta.url).href
 
-const screenImage = new URL('@/assets/images/company/company.jpg', import.meta.url).href
-const screenVideo = new URL('@/assets/images/company/company.mp4', import.meta.url).href
+const screenImage = new URL('@/assets/images/home/screen/screen.jpg', import.meta.url).href
+const screenVideo = new URL('@/assets/images/home/screen/screen.mp4', import.meta.url).href
 
 onMounted(() => {
     let video = document.getElementsByClassName('screen-video')[0]
@@ -52,7 +49,7 @@ onMounted(() => {
         height: 640px;
     }
 
-    .screen-tip {
+    .screen-title {
         position: absolute;
         bottom: 66px;
         @include flex-center(flex-center, normal, column);
@@ -84,7 +81,7 @@ onMounted(() => {
             height: 1550px;
         }
 
-        .screen-tip {
+        .screen-title {
             right: auto;
             bottom: 160px;
 

@@ -23,7 +23,8 @@ const store = useStore()
 const { project, index } = defineProps({ project: { type: Object, required: true } })
 
 function goProject() {
-    router.push({ path: '/info', query: { project: project.symbol } })
+    store.setProject(null)
+    router.push({ path: '/info', query: { id: project.symbol } })
 }
 </script>
 

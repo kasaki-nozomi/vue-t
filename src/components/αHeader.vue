@@ -2,7 +2,6 @@
     <div id="header" class="header">
         <div class="header-logo button" @click="goHome">
             <img class="logo" :src="logo" />
-            <img class="name" :src="name" />
         </div>
         <div v-if="!store.pad" class="header-tab">
             <div class="header-tab-item button" @click="tabClick('header')"><div class="text"><div class="inner">首页</div></div></div>
@@ -10,9 +9,9 @@
                 <div class="text"><div class="inner">历史项目</div></div>
                 <Transition name="project" mode="out-in">
                     <div class="header-projects" v-show="projectShow">
-                        <div v-for="project in projects">
+                        <!-- <div v-for="project in projects">
                             <div class="header-projects-item" @click.stop="projectClick(project.symbol)">{{ project.title }}</div>
-                        </div>
+                        </div> -->
                     </div>
                 </Transition> 
             </div>
@@ -35,9 +34,9 @@
             </Transition>
             <Transition name="project-m" mode="out-in">
                 <div class="header-projects-m" v-show="projectShow">
-                    <div v-for="project in projects">
+                    <!-- <div v-for="project in projects">
                         <div class="header-projects-item-m" @click="projectClick(project.symbol)">{{ project.title }}</div>
-                    </div>
+                    </div> -->
                 </div>
             </Transition>
         </div>
@@ -48,14 +47,13 @@
 import { nextTick, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
-import { projects } from '@/utils/projects'
+// import { projects } from '@/utils/projects'
 
 const route = useRoute()
 const router = useRouter()
 const store = useStore()
 
-const logo = new URL('@/assets/images/company/logo.png', import.meta.url).href
-const name = new URL('@/assets/images/company/name.png', import.meta.url).href
+const logo = new URL('@/assets/images/header/logo.png', import.meta.url).href
 
 const tabShow = ref(false)
 const projectShow = ref(false)
@@ -113,12 +111,9 @@ document.documentElement.addEventListener('click', () => {
 
     .header-logo {
         cursor: pointer;
-        gap: 20PX;
-        @include flex-center();
 
         img {
             height: 44PX;
-            margin: 28PX 0;
         }
     }
 

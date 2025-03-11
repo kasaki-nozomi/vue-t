@@ -5,9 +5,7 @@
                 <div class="honor-item" v-for="honor of honors">
                     <img :src="left" />
                     <div class="honor-content">
-                        <div>
-                            <AutoFont :text="honor.title"></AutoFont>
-                        </div>
+                        <div><AutoFont :text="honor.title"></AutoFont></div>
                         <div>{{ honor.reward }}</div>
                         <div>{{ honor.reward_en }}</div>
                         <div>{{ honor.contest }}</div>
