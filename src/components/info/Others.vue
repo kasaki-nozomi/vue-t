@@ -27,7 +27,7 @@ const router = useRouter()
 const store = useStore()
 
 const info = ref(null)
-const count = ref(store.phone ? 8 : 9)
+const count = ref(store.phone ? 4 : 6)
 
 const props = defineProps({ others: { type: Array, required: true } })
 
@@ -67,7 +67,7 @@ function goProject(project) {
             .others-item {
                 width: 440px;
                 height: 440px;
-                border-radius: 10px;
+                border-radius: 2px;
                 background-size: cover;
                 background-position: center;
                 overflow: hidden;
@@ -143,6 +143,7 @@ function goProject(project) {
                 .others-item {
                     width: 850px;
                     height: 850px;
+                    border-radius: 4px;
 
                     .others-info {
                         padding: 40px 72px;

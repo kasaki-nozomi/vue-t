@@ -1,25 +1,19 @@
 @font-face {
     font-family: 'SourceHanSansSC';
-    src: url('@/assets/fonts/SourceHanSansRegular.otf');
-    font-weight: bold;
+    src: url('@/assets/fonts/SourceHanSansSC-Regular.otf');
+    font-weight: normal;
 }
 
 @font-face {
     font-family: 'SourceHanSansSC';
-    src: url('@/assets/fonts/SourceHanSansLight.otf');
-    font-weight: normal;
+    src: url('@/assets/fonts/SourceHanSansSC-Light.otf');
+    font-weight: lighter;
 }
 
 @font-face {
-    font-family: 'SC-Normal';
-    src: url('@/assets/fonts/SourceHanSansNormal.otf');
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'SC-Bold';
-    src: url('@/assets/fonts/SourceHanSansBold.otf');
-    font-weight: normal;
+    font-family: 'SourceHanSansSC';
+    src: url('@/assets/fonts/SourceHanSansSC-Normal.otf');
+    font-weight: bold;
 }
 
 * {

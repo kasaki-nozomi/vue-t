@@ -117,7 +117,7 @@ onMounted(() => {
 
     .content-logo {
         >img {
-            width: 320px;
+            width: 280px;
         }
     }
 

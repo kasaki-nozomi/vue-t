@@ -4,6 +4,6 @@ const content = import.meta.glob('@/assets/images/ip/list/08-wukong/content/**/*
 })
 
 export default {
-    content: Object.keys(content),
+    content: Object.values(content),
     scroll: []
 }

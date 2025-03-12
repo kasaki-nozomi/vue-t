@@ -2,6 +2,7 @@
     <div id="cooperate" class="cooperate">
         <Transition name="cooperate" mode="out-in">
             <div class="cooperate-list" v-if="cooperateShow">
+                <div class="cooperate-title">合作企业 - Cooperative enterprise</div>
                 <img :src="store.phone ? cooperate_m : cooperate" />
             </div>
         </Transition>
@@ -34,10 +35,16 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
     .cooperate-list {
         flex-wrap: wrap;
         gap: 55px;
-        @include flex-center();
+        @include flex-center(center, normal, column);
+
+        .cooperate-title {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.75);
+        }
 
         >img {
             width: 980px;
+            margin-top: 36px;
         }
 
         .cooperate-item {
@@ -58,14 +65,18 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
 @include setPhoneContent {
     .cooperate {
         // min-height: calc(100vh - 72PX);
-        padding: 750px 0;
+        padding: 500px 0;
 
         .cooperate-list {
-            margin-top: 200px;
             gap: 180px;
+
+            .cooperate-title {
+                font-size: 62px;
+            }
 
             >img {
                 width: 1300px;
+                margin-top: 80px;
             }
 
             .cooperate-item {

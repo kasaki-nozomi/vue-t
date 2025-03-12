@@ -25,7 +25,7 @@
                 </div>
                 <div class="footer-info-detail">
                     <div>E-Mail</div>
-                    <div>pengyuhong@kongniaostudio.com</div>
+                    <div>pyh@kongniaostudio.com</div>
                 </div>
                 <div class="footer-info-icp" @click="openICP">{{ icp }}</div>
             </div>

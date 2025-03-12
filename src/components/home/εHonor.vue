@@ -1,16 +1,21 @@
 <template>
     <div id="honor" class="honor">
         <Transition name="honor" mode="out-in">
-            <div class="honor-list" v-if="honorShow">
-                <div class="honor-item" v-for="honor of honors">
-                    <img :src="left" />
-                    <div class="honor-content">
-                        <div><AutoFont :text="honor.title"></AutoFont></div>
-                        <div>{{ honor.reward }}</div>
-                        <div>{{ honor.reward_en }}</div>
-                        <div>{{ honor.contest }}</div>
+            <div class="honor-container" v-if="honorShow">
+                <div class="honor-title">团队荣誉 - Team honors</div>
+                <div class="honor-list">
+                    <div class="honor-item" v-for="honor of honors">
+                        <img :src="left" />
+                        <div class="honor-content">
+                            <div>
+                                <AutoFont :text="honor.title"></AutoFont>
+                            </div>
+                            <div>{{ honor.reward }}</div>
+                            <div>{{ honor.reward_en }}</div>
+                            <div>{{ honor.contest }}</div>
+                        </div>
+                        <img :src="right" />
                     </div>
-                    <img :src="right" />
                 </div>
             </div>
         </Transition>
@@ -86,52 +91,62 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
     padding: 200px 0;
     @include flex-center(center, center, column);
 
-    .honor-list {
-        width: 1000px;
-        flex-wrap: wrap;
-        gap: 40px;
-        @include flex-center();
+    .honor-container {
+        @include flex-center(center, normal, column);
 
-        .honor-item {
-            @include flex-center(center, space-between);
+        .honor-title {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.75);
+        }
 
-            img {
-                width: 40px;
-            }
+        .honor-list {
+            width: 1000px;
+            margin-top: 72px;
+            flex-wrap: wrap;
+            gap: 40px;
+            @include flex-center();
 
-            .honor-content {
-                @include flex-center(center, center, column);
+            .honor-item {
+                @include flex-center(center, space-between);
 
-                div {
-                    width: 124px;
-                    text-align: center;
-                    color: white;
+                img {
+                    width: 40px;
                 }
 
-                div:nth-of-type(1) {
-                    line-height: 30px;
-                    font-size: 20px;
-                    font-weight: bold;
-                }
+                .honor-content {
+                    @include flex-center(center, center, column);
 
-                div:nth-of-type(2) {
-                    line-height: 22px;
-                    margin-top: 4px;
-                    font-size: 14px;
-                }
+                    div {
+                        width: 124px;
+                        text-align: center;
+                        color: white;
+                    }
 
-                div:nth-of-type(3) {
-                    line-height: 14px;
-                    margin-top: 4px;
-                    font-size: 10px;
-                }
+                    div:nth-of-type(1) {
+                        line-height: 30px;
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
 
-                div:nth-of-type(4) {
-                    width: 100px;
-                    line-height: 16px;
-                    margin-top: 4px;
-                    font-size: 10px;
-                    color: rgba(255, 255, 255, 0.5);
+                    div:nth-of-type(2) {
+                        line-height: 22px;
+                        margin-top: 4px;
+                        font-size: 14px;
+                    }
+
+                    div:nth-of-type(3) {
+                        line-height: 14px;
+                        margin-top: 4px;
+                        font-size: 10px;
+                    }
+
+                    div:nth-of-type(4) {
+                        width: 100px;
+                        line-height: 16px;
+                        margin-top: 4px;
+                        font-size: 10px;
+                        color: rgba(255, 255, 255, 0.5);
+                    }
                 }
             }
         }
@@ -147,45 +162,52 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 @include setPhoneContent {
     .honor {
         // min-height: calc(100vh - 72PX);
-        padding: 750px 0;
+        padding: 500px 0;
 
-        .honor-list {
-            width: 1600px;
-            margin-top: 215px;
-            gap: 140px;
+        .honor-container {
 
-            .honor-item {
-                img {
-                    width: 116px;
-                }
+            .honor-title {
+                font-size: 62px;
+            }
 
-                .honor-content {
-                    div {
-                        width: 333px;
+            .honor-list {
+                width: 1600px;
+                margin-top: 220px;
+                gap: 140px;
+
+                .honor-item {
+                    img {
+                        width: 116px;
                     }
 
-                    div:nth-of-type(1) {
-                        line-height: 90px;
-                        font-size: 62px;
-                    }
+                    .honor-content {
+                        div {
+                            width: 333px;
+                        }
 
-                    div:nth-of-type(2) {
-                        line-height: 68px;
-                        margin-top: 15px;
-                        font-size: 46px;
-                    }
+                        div:nth-of-type(1) {
+                            line-height: 90px;
+                            font-size: 62px;
+                        }
 
-                    div:nth-of-type(3) {
-                        line-height: 48px;
-                        margin-top: 5px;
-                        font-size: 32px;
-                    }
+                        div:nth-of-type(2) {
+                            line-height: 68px;
+                            margin-top: 15px;
+                            font-size: 46px;
+                        }
 
-                    div:nth-of-type(4) {
-                        width: 280px;
-                        line-height: 48px;
-                        margin-top: 15px;
-                        font-size: 32px;
+                        div:nth-of-type(3) {
+                            line-height: 48px;
+                            margin-top: 5px;
+                            font-size: 32px;
+                        }
+
+                        div:nth-of-type(4) {
+                            width: 280px;
+                            line-height: 48px;
+                            margin-top: 15px;
+                            font-size: 32px;
+                        }
                     }
                 }
             }

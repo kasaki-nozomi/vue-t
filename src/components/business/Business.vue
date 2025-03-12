@@ -30,7 +30,7 @@ function goProject() {
     img {
         width: 100%;
         height: 240px;
-        border-radius: 5px;
+        border-radius: 2px;
     }
 
     >div {
@@ -73,7 +73,7 @@ function goProject() {
     .business {
         img {
             height: 600px;
-            border-radius: 10px;
+            border-radius: 4px;
         }
 
         >div {

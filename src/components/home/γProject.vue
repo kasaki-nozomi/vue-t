@@ -106,7 +106,7 @@ onMounted(() => {
             @include flex-center(normal, normal);
 
             >div {
-                padding: 0 15px;
+                padding: 0 10px;
             }
 
             >div:nth-of-type(even) {
@@ -203,7 +203,7 @@ onMounted(() => {
 
                 >div {
                     margin-top: 0;
-                    padding: 0 25px;
+                    padding: 0 20px;
                 }
 
                 >div:nth-of-type(even) {

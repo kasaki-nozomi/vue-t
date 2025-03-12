@@ -46,7 +46,7 @@ onMounted(() => {
         const companyY = getElementViewTop(company)
         const honorY = getElementViewTop(honor)
         const cooperateY = getElementViewTop(cooperate)
-        if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${(companyY + (store.phone ? 72 : (store.pad ? 86 : 100))) / (store.phone ? 4 : 5)}px` }
+        if (companyY < window.innerHeight) style.value = { backgroundPositionY: `${(companyY + (store.phone ? 72 : (store.pad ? 86 : 100))) / (store.phone ? 4 : 2)}px` }
         if (companyY < window.innerHeight / 3) proxy.bus.emit('company-show')
         if (honorY < window.innerHeight / 3) proxy.bus.emit('honor-show')
         if (cooperateY < window.innerHeight / 3) proxy.bus.emit('cooperate-show')
@@ -110,12 +110,14 @@ function getElementViewTop(element) {
 
 
 @include setPhoneContent {
-    .home {
-        .home-box {
-            background-image: url('@/assets/images/home/mask-m.png');
+    .home-wrapper {
+        .home {
+            .home-box {
+                background-image: url('@/assets/images/home/mask-m.png');
 
-            .home-box-mask {
-                height: 2000px;
+                .home-box-mask {
+                    height: 2000px;
+                }
             }
         }
     }

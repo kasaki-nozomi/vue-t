@@ -4,6 +4,6 @@ const content = import.meta.glob('@/assets/images/business/list/03-tiangong/cont
 })
 
 export default {
-    content: Object.keys(content),
+    content: Object.values(content),
     scroll: []
 }

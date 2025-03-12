@@ -4,7 +4,7 @@
             <div class="company-box" v-if="companyShow">
                 <img :src="banner" />
                 <div class="company-title">
-                    2023年空鸟文化成立了鵼视觉工作室
+                    我们是空鸟文化
                 </div>
                 <div class="company-desc">
                     我们团队秉承“ 开阔视野，引领潮流 ”的理念，我们相信，视觉的力量能够为文化行业带来更多的可能性，因此我们不断努力开拓新的领域，拓展更广阔的视野，致力于打造能引领潮流且有尖叫度的视觉IP
@@ -39,7 +39,7 @@
                     <div class="state">
                         <div class="state-bar"></div>
                         <div class="state-count" @mouseenter="moreinfo = 'membership'" @mouseleave="moreinfo = null">
-                            15<span>+</span>
+                            40<span>+</span>
                         </div>
                         <div class="state-title">
                             <div>成员数量</div>

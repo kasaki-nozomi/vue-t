@@ -9,6 +9,6 @@ const scroll = import.meta.glob('@/assets/images/ip/list/03-daye/scroll/**/*.{jp
 })
 
 export default {
-    content: Object.keys(content),
-    scroll: Object.keys(scroll)
+    content: Object.values(content),
+    scroll: Object.values(scroll)
 }

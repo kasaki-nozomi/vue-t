@@ -4,6 +4,6 @@ const content = import.meta.glob('@/assets/images/business/list/14-maiya/content
 })
 
 export default {
-    content: Object.keys(content),
+    content: Object.values(content),
     scroll: []
 }
