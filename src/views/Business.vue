@@ -112,6 +112,7 @@ const project = new URL('@/assets/images/project.svg', import.meta.url).href
 
                 .item-mask {
                     position: absolute;
+                    top: 0;
                     width: 100%;
                     height: 240px;
                     background: rgba(0, 0, 0, 0.4);

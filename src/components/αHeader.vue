@@ -3,15 +3,15 @@
         <div class="header-logo button" @click="goHome">
             <img class="logo" :src="logo" />
         </div>
-        <div v-if="!store.pad" class="header-tab">
+        <!-- <div v-if="!store.pad" class="header-tab">
             <div class="header-tab-item button" @click="tabClick('header')"><div class="text"><div class="inner">首页</div></div></div>
             <div class="header-tab-item" @click.stop="projectShow = true" @mouseenter.stop="projectShow = true" @mouseleave.stop="projectShow = false">
                 <div class="text"><div class="inner">历史项目</div></div>
                 <Transition name="project" mode="out-in">
                     <div class="header-projects" v-show="projectShow">
-                        <!-- <div v-for="project in projects">
+                        <div v-for="project in projects">
                             <div class="header-projects-item" @click.stop="projectClick(project.symbol)">{{ project.title }}</div>
-                        </div> -->
+                        </div>
                     </div>
                 </Transition> 
             </div>
@@ -34,12 +34,12 @@
             </Transition>
             <Transition name="project-m" mode="out-in">
                 <div class="header-projects-m" v-show="projectShow">
-                    <!-- <div v-for="project in projects">
+                    <div v-for="project in projects">
                         <div class="header-projects-item-m" @click="projectClick(project.symbol)">{{ project.title }}</div>
-                    </div> -->
+                    </div>
                 </div>
             </Transition>
-        </div>
+        </div> -->
     </div>
 </template>
 

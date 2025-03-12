@@ -3,7 +3,9 @@
         <div class="scroll-box">
             <swiper :autoHeight="true" :autoplay="{ delay: 5000, disableOnInteraction: false }" :loop="true" :modules="modules" :navigation="true" :pagination="{ clickable: true }">
                 <swiper-slide v-for="banner of scroll">
-                    <div :class="['banner', route.query.id]" :style="{ backgroundImage: `url(${banner})` }"></div>
+                    <div :class="['banner', route.query.id]" :style="{ backgroundImage: `url(${banner})` }">
+                        <div class="mask"></div>
+                    </div>
                 </swiper-slide>
             </swiper>
         </div>
@@ -33,10 +35,19 @@ const props = defineProps({ scroll: { type: Array, required: true } })
 
     .scroll-box {
         .banner {
+            position: relative;
             width: 100%;
             height: 800px;
             background-size: cover;
             background-position: top center;
+
+            .mask {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 400px;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+            }
         }
     }
 }
