@@ -1,7 +1,7 @@
 <template>
     <div class="mechanics">
         <div class="mechanics-content">
-            <div class="left button" @click="goLeft">
+            <div v-if="mechanics.length > 1" class="left button" @click="goLeft">
                 <img :src="left" />
             </div>
             <div class="mechanics-list">
@@ -25,15 +25,15 @@
                     </Transition>
                 </div>
             </div>
-            <div class="right button" @click="goRight">
+            <div v-if="mechanics.length > 1 "class="right button" @click="goRight">
                 <img :src="right" />
             </div>
         </div>
-        <div class="mechanics-aside" v-if="mechanics.length > 1">
+        <div v-if="mechanics.length > 1" class="mechanics-aside">
             <div class="aside-list">
                 <div v-for="(item, index) in mechanics" :key="item.id" @click="goIndex(index)">
-                    <img :src="item.icon" v-show="current === index" />
-                    <div class="point" v-show="current !== index">
+                    <img v-show="current === index && item.icon" :src="item.icon" />
+                    <div v-show="current !== index" class="point">
                         <div></div>
                     </div>
                     <div class="line" v-show="index !== mechanics.length - 1">
