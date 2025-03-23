@@ -1,22 +1,25 @@
 <template>
-    <div id="root" :style="root">
-        <Header></Header>
+    <div id="root" :class="route.name" :style="root">
+        <Header v-if="route.name !== 'game'"></Header>
         <el-scrollbar>
             <router-view v-slot="{ Component, route }">
                 <Transition name="route" mode="out-in">
                     <component :is="Component" :key="route.fullPath"></component>
                 </Transition>
             </router-view>
-            <Footer></Footer>
+            <Footer v-if="route.name !== 'game'"></Footer>
         </el-scrollbar>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Header from '@/components/αHeader.vue'
 import Footer from '@/components/βFooter.vue'
+
+const route = useRoute()
 
 const root = ref({ height: `${window.innerHeight}px` })
 window.addEventListener('resize', () => root.value = { height: `${window.innerHeight}px` })
@@ -39,6 +42,23 @@ body {
     @include setPhoneContent {
         padding-top: 72PX;
     }
+
+    &.game {
+        padding-top: 0;
+
+        .el-scrollbar__wrap {
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+        }
+
+        .el-scrollbar__view {
+            height: 100% !important;
+        }
+
+        .el-scrollbar__thumb {
+            display: none !important;
+        }
+    }
 }
 
 .el-scrollbar {
@@ -49,6 +69,8 @@ body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
 }
+
+
 
 .el-scrollbar__bar.is-vertical {
     width: 12PX !important;

@@ -5,6 +5,10 @@ import { useUserStore } from '@/store/module/user'
 
 const useStore = defineStore('main', {
     state: () => ({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        ratio: window.innerWidth / window.innerHeight,
+
         phone: window.innerWidth <= 600,
         pad: window.innerWidth <= 1050,
         pc: window.innerWidth > 600,
@@ -14,6 +18,10 @@ const useStore = defineStore('main', {
     getters: { },
     actions: {
         setResize() {
+            this.width = window.innerWidth
+            this.height = window.innerHeight
+            this.ratio = window.innerWidth / window.innerHeight
+
             this.phone = window.innerWidth <= 600
             this.pad = window.innerWidth <= 1050
             this.pc = window.innerWidth > 600

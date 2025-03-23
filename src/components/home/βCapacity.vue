@@ -58,7 +58,7 @@ const capacitys = [
         title: 'Game Project -<br> 游戏项目',
         desc: '不远的未来我们将打造一款独属于中国的艺术3A游戏。在此之前，我们工作室的业务已全面覆盖游戏研发的数个重要环节，空鸟文化汇聚了来自不同背景、拥有各异技能却同样热爱游戏的精英人士，力求为玩家带来一场难忘且震撼的3A游戏体验',
         background: new URL('@/assets/images/home/capacity/game.png', import.meta.url).href,
-        link: '/project'
+        link: '/game'
     }
 ]
 </script>

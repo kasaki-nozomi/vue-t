@@ -48,6 +48,7 @@ const project = new URL('@/assets/images/project.svg', import.meta.url).href
 
     .business-banner {
         position: relative;
+        width: 1920px;
 
         .banner {
             width: 100%;
