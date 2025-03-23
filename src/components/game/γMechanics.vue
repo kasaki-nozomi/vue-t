@@ -237,7 +237,7 @@ const mechanics = [
                     height: auto-value(18);
                     margin: auto-value(20) 0;
                     border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.2);
+                    background: rgba(255, 255, 255, 0.15);
                     cursor: pointer;
                     @include flex-center();
 
@@ -246,7 +246,7 @@ const mechanics = [
                         width: 48%;
                         height: 48%;
                         border-radius: 50%;
-                        background: rgba(255, 255, 255, 0.8);
+                        background: rgba(255, 255, 255, 0.6);
                     }
                 }
 
@@ -257,20 +257,20 @@ const mechanics = [
                         width: auto-value(4);
                         height: auto-value(4);
                         border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.2);
+                        background: rgba(255, 255, 255, 0.15);
                     }
 
                     div:nth-child(2) {
                         width: auto-value(2);
                         height: auto-value(60);
-                        background: rgba(255, 255, 255, 0.15);
+                        background: rgba(255, 255, 255, 0.1);
                     }
 
                     div:nth-child(3) {
                         width: auto-value(4);
                         height: auto-value(4);
                         border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.2);
+                        background: rgba(255, 255, 255, 0.15);
                     }
                 }
             }

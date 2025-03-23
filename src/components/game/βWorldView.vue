@@ -4,7 +4,7 @@
             <div v-if="worldview.length > 1" class="left button" @click="goLeft">
                 <img :src="left" />
             </div>
-            <div class="worldview-info" :class="`info-${current}`">
+            <div class="worldview-info" :class="`info-${current}`" @click="popup = true">
                 <img :src="info" />
             </div>
             <div class="worldview-list">
@@ -47,15 +47,21 @@
                 </div>
             </div>
         </div>
+        <Transition name="popup" mode="out-in">
+            <Popup v-if="popup && worldview[current].popup" :image="worldview[current].popup" @close="popup = false" />
+        </Transition>
     </div>
 </template>
 
 <script setup>
+import Popup from '@/components/game/components/Popup.vue'
+
 import { left, right, info } from '@/resource/game'
 
 import { ref } from 'vue'
 
 const current = ref(0)
+const popup = ref(false)
 
 const direction = ref('left')
 
@@ -284,9 +290,9 @@ const worldview = [
                     position: relative;
                     width: auto-value(18);
                     height: auto-value(18);
-                    margin: auto-value(20) 0;
+                    margin: auto-value(15) 0;
                     border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.2);
+                    background: rgba(255, 255, 255, 0.15);
                     cursor: pointer;
                     @include flex-center();
 
@@ -295,7 +301,7 @@ const worldview = [
                         width: 48%;
                         height: 48%;
                         border-radius: 50%;
-                        background: rgba(255, 255, 255, 0.8);
+                        background: rgba(255, 255, 255, 0.6);
                     }
                 }
 
@@ -306,20 +312,20 @@ const worldview = [
                         width: auto-value(4);
                         height: auto-value(4);
                         border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.2);
+                        background: rgba(255, 255, 255, 0.15);
                     }
 
                     div:nth-child(2) {
                         width: auto-value(2);
                         height: auto-value(60);
-                        background: rgba(255, 255, 255, 0.15);
+                        background: rgba(255, 255, 255, 0.1);
                     }
 
                     div:nth-child(3) {
                         width: auto-value(4);
                         height: auto-value(4);
                         border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.2);
+                        background: rgba(255, 255, 255, 0.15);
                     }
                 }
             }
@@ -345,5 +351,15 @@ const worldview = [
 .right-enter-from {
     opacity: 0;
     transform: translateX(auto-value(60));
+}
+
+.popup-enter-active,
+.popup-leave-active {
+    transition: all 0.4s ease;
+}
+.popup-enter-from,
+.popup-leave-to {
+    opacity: 0;
+    transform: translateY(auto-value(60));
 }
 </style>

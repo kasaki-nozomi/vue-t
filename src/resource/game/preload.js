@@ -1,4 +1,6 @@
-const images = []
+import List  from '@/resource/game'
+
+const images = List.map(item => item.cover)
 
 const loadImage = (src) => {
     if (!src) return Promise.resolve()
@@ -11,7 +13,7 @@ const loadImage = (src) => {
 
         link.onload = resolve
         link.onerror = reject
-        setTimeout(reject, 5000)
+        setTimeout(reject, 20000)
     })
 }
 

@@ -14,6 +14,8 @@
 </template>
 
 <script setup>
+import '@/resource/game/preload'
+
 import Aside from '@/components/game/components/Aside.vue'
 
 import HomePage from '@/components/game/αHomePage.vue'

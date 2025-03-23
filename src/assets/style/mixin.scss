@@ -78,8 +78,8 @@ $image-path: '@/assets/images/';
     margin: auto;
 }
 
-@mixin breathe() {
-    animation: breathe 2s ease-in-out infinite;
+@mixin breathe($time: 2s) {
+    animation: breathe $time ease-in-out infinite;
 }
 
 @keyframes breathe {
@@ -93,8 +93,8 @@ $image-path: '@/assets/images/';
     }
 }
 
-@mixin rotate() {
-    animation: rotate 2s linear infinite;
+@mixin rotate($time: 40s) {
+    animation: rotate $time linear infinite;
 }
 
 @keyframes rotate {

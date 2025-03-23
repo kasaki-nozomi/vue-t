@@ -26,11 +26,12 @@ const emit = defineEmits(['updateCurrent'])
 
     .logo {
         margin-left: auto-value(-10);
-        @include auto-width(200);
+        @include auto-width(330);
     }
 
     .aside-list {
-        margin: auto-value(100) 0 auto-value(180) 0;
+        width: auto-value(180);
+        margin: auto-value(100) 0 auto-value(160) 0;
 
         .aside-item {
             opacity: 0.6;
