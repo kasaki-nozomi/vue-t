@@ -22,7 +22,8 @@ const emit = defineEmits(['updateCurrent'])
 
 <style lang="scss" scoped>
 .aside {
-    color: rgb(122, 95, 95);
+    z-index: 10;
+    position: relative;
 
     .logo {
         margin-left: auto-value(-10);

@@ -5,7 +5,7 @@
                 <img :src="left" />
             </div>
             <div class="character-list">
-                <div v-for="(item, index) in character" :key="item.id">
+                <div v-for="(item, index) in character" :key="item.name">
                     <Transition :name="direction" mode="out-in">
                         <div class="character-item" v-show="current === index">
                             <img class="background" :src="item.background" />
@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import { left, right } from '@/resource/game'
+import { left, right, info } from '@/resource/game'
 
 import { ref } from 'vue'
 
@@ -126,7 +126,6 @@ const character = [
     position: relative;
     width: auto-value(1720);
     height: 100%;
-    pointer-events: none;
     @include flex-center();
 
     .character-content {
@@ -139,7 +138,6 @@ const character = [
             z-index: 10;
             position: absolute;
             left: auto-value(220);
-            pointer-events: auto;
 
             img {
                 width: auto-value(40);
@@ -150,7 +148,6 @@ const character = [
             z-index: 10;
             position: absolute;
             right: auto-value(220);
-            pointer-events: auto;
 
             img {
                 width: auto-value(40);
@@ -161,7 +158,6 @@ const character = [
             position: relative;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             @include flex-center();
 
             >div {
@@ -231,7 +227,6 @@ const character = [
     .character-aside {
         position: absolute;
         right: auto-value(66);
-        pointer-events: auto;
 
         .aside-list {
             @include flex-center(center, center, column);
