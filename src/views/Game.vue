@@ -124,7 +124,7 @@ onMounted(() => {
         }
 
         .game-main {
-            margin-left: auto-value(200);
+            margin-left: auto-value(150);
             @include flex-center();
         }
 

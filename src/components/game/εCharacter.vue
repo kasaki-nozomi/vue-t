@@ -5,13 +5,16 @@
                 <img :src="left" />
             </div>
             <div class="character-list">
-                <div v-for="(item, index) in character" :key="item.name">
+                <div v-for="(item, index) in character" :class="{'not-active': current !== index}" :key="item.name">
                     <Transition :name="direction" mode="out-in">
                         <div class="character-item" v-show="current === index">
                             <img class="background" :src="item.background" />
                             <img class="mask" :src="mask" /> 
-                            <img class="image" :src="item.image" />
-                            <div class="info">
+                            <img class="image" :class="item.name"  :src="item.image" />
+                            <img class="symbol" :class="item.name" :src="item.symbol" />
+                            <img class="fullname" :class="item.name" :src="item.fullname" />
+                            <img class="info" :src="info" @click="popup = true" />
+                            <div class="message">
                                 <div v-if="item.title" class="title">
                                     <div>{{ item.title }}</div>
                                     <div>{{ item.title_en }}</div>
@@ -47,6 +50,9 @@
                 </div>
             </div>
         </div>
+        <Transition name="popup" mode="out-in">
+            <Popup v-if="popup && character[current].popup" :image="character[current].popup" @close="popup = false" />
+        </Transition>
     </div>
 </template>
 
@@ -56,6 +62,8 @@ import { left, right, info } from '@/resource/game'
 import { ref } from 'vue'
 
 const current = ref(0)
+
+const popup = ref(false)
 
 const circle = new URL('@/assets/images/game/05-character/avatar.svg', import.meta.url).href
 const mask = new URL('@/assets/images/game/05-character/mask.svg', import.meta.url).href
@@ -81,14 +89,15 @@ function goIndex(index) {
 const character = [
     {
         id: 1,
-        name: 'famu',
+        name: 'jing',
         title: '',
         title_en: '',
-        avatar: new URL('@/assets/images/game/05-character/list/famu-avatar.png', import.meta.url).href,
-        background: new URL('@/assets/images/game/05-character/list/famu-background.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/05-character/list/famu-popup.png', import.meta.url).href,
-        symbol: new URL('@/assets/images/game/05-character/list/famu-symbol.svg', import.meta.url).href,
-        image: new URL('@/assets/images/game/05-character/list/famu.png', import.meta.url).href,
+        avatar: new URL('@/assets/images/game/05-character/list/jing-avatar.png', import.meta.url).href,
+        background: new URL('@/assets/images/game/05-character/list/jing-background.png', import.meta.url).href,
+        popup: new URL('@/assets/images/game/05-character/list/jing-popup.png', import.meta.url).href,
+        symbol: new URL('@/assets/images/game/05-character/list/jing-symbol.svg', import.meta.url).href,
+        image: new URL('@/assets/images/game/05-character/list/jing.png', import.meta.url).href,
+        fullname:  new URL('@/assets/images/game/05-character/list/jing-name.svg', import.meta.url).href,
         description: '',
         description_en: ''
     },
@@ -102,29 +111,31 @@ const character = [
         popup: new URL('@/assets/images/game/05-character/list/wyatt-popup.png', import.meta.url).href,
         symbol: new URL('@/assets/images/game/05-character/list/wyatt-symbol.svg', import.meta.url).href,
         image: new URL('@/assets/images/game/05-character/list/wyatt.png', import.meta.url).href,
+        fullname:  new URL('@/assets/images/game/05-character/list/wyatt-name.svg', import.meta.url).href,
         description: '',
         description_en: ''
     },
     {
         id: 3,
-        name: 'jing',
+        name: 'famu',
         title: '',
         title_en: '',
-        avatar: new URL('@/assets/images/game/05-character/list/jing-avatar.png', import.meta.url).href,
-        background: new URL('@/assets/images/game/05-character/list/jing-background.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/05-character/list/jing-popup.png', import.meta.url).href,
-        symbol: new URL('@/assets/images/game/05-character/list/jing-symbol.svg', import.meta.url).href,
-        image: new URL('@/assets/images/game/05-character/list/jing.png', import.meta.url).href,
+        avatar: new URL('@/assets/images/game/05-character/list/famu-avatar.png', import.meta.url).href,
+        background: new URL('@/assets/images/game/05-character/list/famu-background.png', import.meta.url).href,
+        popup: new URL('@/assets/images/game/05-character/list/famu-popup.png', import.meta.url).href,
+        symbol: new URL('@/assets/images/game/05-character/list/famu-symbol.svg', import.meta.url).href,
+        image: new URL('@/assets/images/game/05-character/list/famu.png', import.meta.url).href,
+        fullname:  new URL('@/assets/images/game/05-character/list/famu-name.svg', import.meta.url).href,
         description: '',
         description_en: ''
-    }
+    },
 ]
 </script>
 
 <style lang="scss" scoped>
 .character {
     position: relative;
-    width: auto-value(1720);
+    width: auto-value(1770);
     height: 100%;
     @include flex-center();
 
@@ -137,7 +148,7 @@ const character = [
         .left {
             z-index: 10;
             position: absolute;
-            left: auto-value(220);
+            left: auto-value(330);
 
             img {
                 width: auto-value(40);
@@ -167,6 +178,10 @@ const character = [
                 @include flex-center();
             }
 
+            .not-active {
+                pointer-events: none;
+            }
+
             .character-item {
                 position: relative;
                 width: 100%;
@@ -175,9 +190,9 @@ const character = [
 
                 .background {
                     position: absolute;
-                    right: auto-value(0);
-                    width: 100%;
-                    height: auto-value(1170);
+                    right: 0;
+                    bottom: 0;
+                    width: auto-value(1700);
                 }
 
                 .mask {
@@ -189,11 +204,96 @@ const character = [
 
                 .image {
                     position: absolute;
-                    bottom: 0;
-                    width: auto-value(1020);
+
+                    &.jing {
+                        bottom: auto-value(-120);
+                        width: auto-value(1100);
+                        margin-right: auto-value(100);
+                    }
+
+                    &.wyatt {
+                        bottom: auto-value(-150);
+                        width: auto-value(1100);
+                        margin-right: auto-value(100);
+                    }
+
+                    &.famu {
+                        bottom: auto-value(-140);
+                        width: auto-value(1040);
+                        margin-right: auto-value(20);
+                    }
+                }
+
+                .symbol {
+                    position: absolute;
+                    width: auto-value(180);
+
+                    &.famu {
+                        width: auto-value(240);
+                        right: auto-value(580);
+                        bottom: auto-value(255);
+                    }
+
+                    &.wyatt {
+                        right: auto-value(580);
+                        bottom: auto-value(255);
+                    }
+
+                    &.jing {
+                        right: auto-value(580);
+                        bottom: auto-value(255);
+                    }
+                }
+
+                .fullname {
+                    position: absolute;
+                    
+                    &.jing {
+                        height: auto-value(66);
+                        right: auto-value(740);
+                        bottom: auto-value(265);
+                    }
+
+                    &.wyatt {
+                        height: auto-value(90);
+                        right: auto-value(710);
+                        bottom: auto-value(265);
+                    }
+
+                    &.famu {
+                        height: auto-value(66);
+                        right: auto-value(710);
+                        bottom: auto-value(265);
+                    }
                 }
 
                 .info {
+                    position: absolute;
+                    width: auto-value(260);
+                    right: auto-value(720);
+                    bottom: auto-value(100);
+                    transition: all 0.4s ease;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+ 
+                .info {
+                    position: absolute;
+                    width: auto-value(280);
+                    right: auto-value(680);
+                    bottom: auto-value(50);
+                    transition: all 0.4s ease;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+                }
+
+                .message {
                     @include flex-center(center, center, column);
 
                     .title {
@@ -317,5 +417,15 @@ const character = [
 .right-enter-from {
     opacity: 0;
     transform: translateX(auto-value(60));
+}
+
+.popup-enter-active,
+.popup-leave-active {
+    transition: all 0.4s ease;
+}
+.popup-enter-from,
+.popup-leave-to {
+    opacity: 0;
+    transform: translateY(auto-value(60));
 }
 </style>

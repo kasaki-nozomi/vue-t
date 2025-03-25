@@ -19,6 +19,7 @@ const mask = new URL('@/assets/images/game/02-worldview/mask.svg', import.meta.u
 
 <style lang="scss" scoped>
 .popup {
+    z-index: 100;
     position: fixed;
     left: 0;
     top: 0;

@@ -141,6 +141,16 @@ const worldview = [
         image: new URL('@/assets/images/game/02-worldview/list/06.png', import.meta.url).href,  
         description: '',
         description_en: ''
+    },
+    {
+        id: 7,
+        title: '',
+        title_en: '',
+        icon: new URL('@/assets/images/game/02-worldview/list/07-icon.png', import.meta.url).href,
+        popup: new URL('@/assets/images/game/02-worldview/list/07-popup.png', import.meta.url).href,
+        image: new URL('@/assets/images/game/02-worldview/list/07.png', import.meta.url).href,  
+        description: '',
+        description_en: ''
     }
 ]
 </script>
@@ -156,6 +166,8 @@ const worldview = [
         @include flex-center();
 
         .left {
+            z-index: 10;
+            position: relative;
             margin-right: auto-value(80);
 
             img {
@@ -164,6 +176,8 @@ const worldview = [
         }
 
         .right {
+            z-index: 10;
+            position: relative;
             margin-left: auto-value(80);
 
             img {

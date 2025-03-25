@@ -116,8 +116,8 @@ const mechanics = [
         image: [
             new URL('@/assets/images/game/03-mechanics/list/04-1.png', import.meta.url).href
         ],
-        description: '基地作为玩家在单局战斗失败后回到的固定场景，玩家在回到基地场景后，可以选择与NPC进行交互，触发特殊事件或是获得能力提升。',
-        description_en: 'The base serves as the fixed scene where players return after failing a single battle. Upon returning to the base, players can choose to interact with NPCs, trigger special events, or gain ability enhancements.'
+        description: '夸张的异能：玩家在射击的同时使用特殊的异能，形式上每个异能有一个“器官”，通过植入玩家角色身体的形式来获取对应的能力及增幅，并且植入的基底同样是可收集要素。',
+        description_en: 'Exaggerated abilities: Players use special abilities while shooting, with each ability having an "organ" that is implanted into the player`s character`s body to obtain corresponding abilities and amplification, and the implanted base is also a collectible element.'
     }
 ]
 </script>
@@ -132,6 +132,8 @@ const mechanics = [
         @include flex-center();
 
         .left {
+            z-index: 10;
+            position: relative;
             margin-right: auto-value(50);
 
             img {
@@ -140,6 +142,8 @@ const mechanics = [
         }
 
         .right {
+            z-index: 10;
+            position: relative;
             margin-left: auto-value(50);
 
             img {

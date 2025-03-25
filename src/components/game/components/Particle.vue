@@ -1,6 +1,6 @@
 <template>
     <div class="particle">
-        <div id="particles-js" class="particles-js"></div>
+        <div id="particles-js"></div>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ onMounted(() => {
     particlesJS('particles-js', {
         particles: {
             number: {
-                value: 40,
+                value: 20,
                 density: {
                     enable: true,
                     value_area: 800
@@ -129,7 +129,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
 
-    .particles-js {
+    #particles-js {
         width: 100%;
         height: 100%;
     }
