@@ -35,17 +35,13 @@
         <div v-if="character.length > 1" class="character-aside">
             <div class="aside-list">
                 <div v-for="(item, index) in character" :key="item.id" @click="goIndex(index)">
-                    <div class="avatar" v-show="current === index && item.avatar">
-                        <img :src="circle" />
+                    <div class="avatar" :class="{ active: current === index }">
+                        <Transition name="circle" mode="out-in">
+                            <div class="circle" v-show="current === index">
+                                <img :src="circle" />
+                            </div>
+                        </Transition>
                         <img :src="item.avatar" />
-                    </div>
-                    <div  class="point" v-show="current !== index">
-                        <div></div>
-                    </div>
-                    <div class="line" v-show="index !== character.length - 1">
-                        <div></div>
-                        <div></div>
-                        <div></div>
                     </div>
                 </div>
             </div>
@@ -57,9 +53,9 @@
 </template>
 
 <script setup>
-import { left, right, info } from '@/resource/game'
-
 import { ref } from 'vue'
+import { left, right, info } from '@/resource/game'
+import character from '@/resource/game/character'
 
 const current = ref(0)
 
@@ -85,51 +81,6 @@ function goIndex(index) {
     direction.value = index > current.value ? 'right' : 'left'
     current.value = index
 }
-
-const character = [
-    {
-        id: 1,
-        name: 'jing',
-        title: '',
-        title_en: '',
-        avatar: new URL('@/assets/images/game/05-character/list/jing-avatar.png', import.meta.url).href,
-        background: new URL('@/assets/images/game/05-character/list/jing-background.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/05-character/list/jing-popup.png', import.meta.url).href,
-        symbol: new URL('@/assets/images/game/05-character/list/jing-symbol.svg', import.meta.url).href,
-        image: new URL('@/assets/images/game/05-character/list/jing.png', import.meta.url).href,
-        fullname:  new URL('@/assets/images/game/05-character/list/jing-name.svg', import.meta.url).href,
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 2,
-        name: 'wyatt',
-        title: '',
-        title_en: '',
-        avatar: new URL('@/assets/images/game/05-character/list/wyatt-avatar.png', import.meta.url).href,
-        background: new URL('@/assets/images/game/05-character/list/wyatt-background.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/05-character/list/wyatt-popup.png', import.meta.url).href,
-        symbol: new URL('@/assets/images/game/05-character/list/wyatt-symbol.svg', import.meta.url).href,
-        image: new URL('@/assets/images/game/05-character/list/wyatt.png', import.meta.url).href,
-        fullname:  new URL('@/assets/images/game/05-character/list/wyatt-name.svg', import.meta.url).href,
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 3,
-        name: 'famu',
-        title: '',
-        title_en: '',
-        avatar: new URL('@/assets/images/game/05-character/list/famu-avatar.png', import.meta.url).href,
-        background: new URL('@/assets/images/game/05-character/list/famu-background.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/05-character/list/famu-popup.png', import.meta.url).href,
-        symbol: new URL('@/assets/images/game/05-character/list/famu-symbol.svg', import.meta.url).href,
-        image: new URL('@/assets/images/game/05-character/list/famu.png', import.meta.url).href,
-        fullname:  new URL('@/assets/images/game/05-character/list/famu-name.svg', import.meta.url).href,
-        description: '',
-        description_en: ''
-    },
-]
 </script>
 
 <style lang="scss" scoped>
@@ -255,13 +206,13 @@ const character = [
                     }
 
                     &.wyatt {
-                        height: auto-value(90);
+                        height: auto-value(85);
                         right: auto-value(710);
                         bottom: auto-value(265);
                     }
 
                     &.famu {
-                        height: auto-value(66);
+                        height: auto-value(85);
                         right: auto-value(710);
                         bottom: auto-value(265);
                     }
@@ -334,20 +285,33 @@ const character = [
             >div {
                 .avatar {
                     position: relative;
-                    width: auto-value(94);
-                    height: auto-value(94);
+                    width: auto-value(100);
+                    height: auto-value(100);
                     margin: auto-value(15) 0;
+                    opacity: 0.6;
+                    transform: scale(0.85);
+                    transition: all 0.15s ease;
                     @include flex-center();
 
-                    img:first-child {
-                        position: absolute;
-                        width: 100%;
-                        @include rotate(20s)
+                    &.active {
+                        opacity: 1;
+                        transform: scale(1);
                     }
 
-                    img:last-child {
+                    .circle {
                         position: absolute;
-                        width: auto-value(88);
+                        width: 100%;
+                        @include flex-center();
+                        
+                        img {
+                            width: 100%;
+                            @include rotate(20s)
+                        }
+                    }
+
+                    >img {
+                        position: absolute;
+                        width: 94%;
                         cursor: pointer;
                     }
                 }
@@ -356,7 +320,7 @@ const character = [
                     position: relative;
                     width: auto-value(18);
                     height: auto-value(18);
-                    margin: auto-value(15) 0;
+                    margin: auto-value(20) 0;
                     border-radius: 50%;
                     background: rgba(255, 255, 255, 0.15);
                     cursor: pointer;
@@ -368,30 +332,6 @@ const character = [
                         height: 48%;
                         border-radius: 50%;
                         background: rgba(255, 255, 255, 0.6);
-                    }
-                }
-
-                .line {
-                    @include flex-center(center, center, column);
-
-                    div:nth-child(1) {
-                        width: auto-value(4);
-                        height: auto-value(4);
-                        border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.15);
-                    }
-
-                    div:nth-child(2) {
-                        width: auto-value(2);
-                        height: auto-value(60);
-                        background: rgba(255, 255, 255, 0.1);
-                    }
-
-                    div:nth-child(3) {
-                        width: auto-value(4);
-                        height: auto-value(4);
-                        border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.15);
                     }
                 }
             }
@@ -427,5 +367,15 @@ const character = [
 .popup-leave-to {
     opacity: 0;
     transform: translateY(auto-value(60));
+}
+
+.circle-enter-active,
+.circle-leave-active {
+    transition: all 0.5s ease;
+}
+.circle-enter-from,
+.circle-leave-to {
+    opacity: 0;
+    transform: scale(0);
 }
 </style>

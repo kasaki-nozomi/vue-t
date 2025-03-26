@@ -30,7 +30,7 @@ const mask = new URL('@/assets/images/game/02-worldview/mask.svg', import.meta.u
         position: relative;
         width: 100%;
         height: calc(100% + auto-value(250));
-        margin-top: auto-value(-250 / 2);
+        margin-top: auto-value(-125);
         background: rgba(0, 0, 0, 0.5);
         @include flex-center();
 

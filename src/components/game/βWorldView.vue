@@ -4,9 +4,6 @@
             <div v-if="worldview.length > 1" class="left button" @click="goLeft">
                 <img :src="left" />
             </div>
-            <div class="worldview-info" :class="`info-${current}`" @click="popup = true">
-                <img :src="info" />
-            </div>
             <div class="worldview-list">
                 <div v-for="(item, index) in worldview" :key="item.id">
                     <Transition :name="direction" mode="out-in">
@@ -24,6 +21,9 @@
                                     <div>{{ item.description_en }}</div>
                                 </div>
                             </div>
+                            <div class="worldview-info" :class="`info-${index}`" @click="popup = true">
+                                <img :src="info" />
+                            </div>
                         </div>
                     </Transition>
                 </div>
@@ -35,15 +35,16 @@
         <div v-if="worldview.length > 1" class="worldview-aside">
             <div class="aside-list">
                 <div v-for="(item, index) in worldview" :key="item.id" @click="goIndex(index)">
-                    <img v-show="current === index && item.icon" :src="item.icon" />
-                    <div v-show="current !== index" class="point">
-                        <div></div>
-                    </div>
-                    <div class="line" v-show="index !== worldview.length - 1">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                    <Transition name="worldview">
+                        <div v-if="current === index" class="image">
+                            <img :src="item.icon" />
+                        </div>
+                        <div v-else class="point">
+                            <div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </Transition>
                 </div>
             </div>
         </div>
@@ -56,9 +57,11 @@
 <script setup>
 import Popup from '@/components/game/components/Popup.vue'
 
-import { left, right, info } from '@/resource/game'
+
 
 import { ref } from 'vue'
+import { left, right, info } from '@/resource/game'
+import worldview from '@/resource/game/worldview'
 
 const current = ref(0)
 const popup = ref(false)
@@ -80,79 +83,6 @@ function goIndex(index) {
     direction.value = index > current.value ? 'right' : 'left'
     current.value = index
 }
-
-const worldview = [
-    {
-        id: 1,
-        title: '',
-        title_en: '',
-        icon: new URL('@/assets/images/game/02-worldview/list/01-icon.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/02-worldview/list/01-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/01.png', import.meta.url).href,
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 2,
-        title: '',
-        title_en: '',
-        icon: new URL('@/assets/images/game/02-worldview/list/02-icon.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/02-worldview/list/02-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/02.png', import.meta.url).href,  
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 3,
-        title: '',
-        title_en: '',
-        icon: new URL('@/assets/images/game/02-worldview/list/03-icon.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/02-worldview/list/03-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/03.png', import.meta.url).href,
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 4,
-        title: '',
-        title_en: '',
-        icon: new URL('@/assets/images/game/02-worldview/list/04-icon.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/02-worldview/list/04-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/04.png', import.meta.url).href,  
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 5,
-        title: '',
-        title_en: '',
-        icon: new URL('@/assets/images/game/02-worldview/list/05-icon.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/02-worldview/list/05-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/05.png', import.meta.url).href,  
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 6,
-        title: '',
-        title_en: '',
-        icon: new URL('@/assets/images/game/02-worldview/list/06-icon.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/02-worldview/list/06-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/06.png', import.meta.url).href,  
-        description: '',
-        description_en: ''
-    },
-    {
-        id: 7,
-        title: '',
-        title_en: '',
-        icon: new URL('@/assets/images/game/02-worldview/list/07-icon.png', import.meta.url).href,
-        popup: new URL('@/assets/images/game/02-worldview/list/07-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/07.png', import.meta.url).href,  
-        description: '',
-        description_en: ''
-    }
-]
 </script>
 
 <style lang="scss" scoped>
@@ -185,53 +115,6 @@ const worldview = [
             }
         }
 
-        .worldview-info {
-            position: absolute;
-            right: auto-value(0);
-            bottom: auto-value(0);
-            transition: all 0.4s ease;
-            cursor: pointer;
-
-            img {
-                width: auto-value(250);
-            }
-
-            &:hover {
-                transform: scale(1.1);
-            }
-
-            &.info-0 {
-                right: auto-value(200);
-                bottom: auto-value(280);
-            }
-
-
-            &.info-1 {
-                right: auto-value(100);
-                bottom: auto-value(320);
-            }
-
-            &.info-2 {
-                right: auto-value(440);
-                bottom: auto-value(160);
-            }
-
-            &.info-3 {
-                right: auto-value(160);
-                bottom: auto-value(250);
-            }
-
-            &.info-4 {
-                right: auto-value(260);
-                bottom: auto-value(220);
-            }
-
-            &.info-5 {
-                right: auto-value(180);
-                bottom: auto-value(260);
-            }
-        }
-
         .worldview-list {
             position: relative;
             width: auto-value(1000);
@@ -241,17 +124,20 @@ const worldview = [
 
             >div {
                 position: absolute;
+                width: 100%;
                 height: 100%;
                 @include flex-center();
             }
 
             .worldview-item {
+                position: relative;
+
                 .image-list {
                     position: relative;
                     @include flex-center();
 
                     img {
-                        width: auto-value(1020);
+                        width: auto-value(980);
                     }
                 }
 
@@ -282,6 +168,56 @@ const worldview = [
                         }
                     }
                 }
+
+                .worldview-info {
+                    position: absolute;
+                    transition: all 0.4s ease;
+                    cursor: pointer;
+                    pointer-events: auto;
+
+                    img {
+                        width: auto-value(250);
+                    }
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+
+                    &.info-0 {
+                        right: auto-value(70);
+                        bottom: auto-value(140);
+                    }
+
+                    &.info-1 {
+                        right: auto-value(180);
+                        bottom: auto-value(60);
+                    }
+
+                    &.info-2 {
+                        right: auto-value(100);
+                        bottom: auto-value(80);
+                    }
+
+                    &.info-3 {
+                        right: auto-value(100);
+                        bottom: auto-value(50);
+                    }
+
+                    &.info-4 {
+                        right: auto-value(120);
+                        bottom: auto-value(80);
+                    }
+
+                    &.info-5 {
+                        right: auto-value(20);
+                        bottom: auto-value(120);
+                    }
+
+                    &.info-6 {
+                        right: auto-value(80);
+                        bottom: auto-value(80);
+                    }
+                }
             }
         }
     }
@@ -294,52 +230,41 @@ const worldview = [
             @include flex-center(center, center, column);
 
             >div {
-                img {
-                    width: auto-value(100);
-                    margin: auto-value(-10) 0;
-                    cursor: pointer;
-                }
+                position: relative;
+                height: auto-value(80);
+                @include flex-center();
 
-                .point {
-                    position: relative;
-                    width: auto-value(18);
-                    height: auto-value(18);
-                    margin: auto-value(15) 0;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.15);
+                .image {
+                    position: absolute;
+                    height: auto-value(100);
                     cursor: pointer;
                     @include flex-center();
 
-                    div {
-                        position: absolute;
-                        width: 48%;
-                        height: 48%;
+                    img {
+                        width: auto-value(100);
                         border-radius: 50%;
-                        background: rgba(255, 255, 255, 0.6);
                     }
                 }
 
-                .line {
-                    @include flex-center(center, center, column);
+                .point {
+                    position: absolute;
+                    height: auto-value(70);
+                    @include flex-center();
 
-                    div:nth-child(1) {
-                        width: auto-value(4);
-                        height: auto-value(4);
-                        border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.15);
-                    }
+                    >div {
+                        width: auto-value(18);
+                        height: auto-value(18);
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.2);
+                        cursor: pointer;
+                        @include flex-center();
 
-                    div:nth-child(2) {
-                        width: auto-value(2);
-                        height: auto-value(60);
-                        background: rgba(255, 255, 255, 0.1);
-                    }
-
-                    div:nth-child(3) {
-                        width: auto-value(4);
-                        height: auto-value(4);
-                        border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.15);
+                        >div {
+                            width: 48%;
+                            height: 48%;
+                            border-radius: 50%;
+                            background: rgba(255, 255, 255, 0.8);
+                        }
                     }
                 }
             }
@@ -375,5 +300,16 @@ const worldview = [
 .popup-leave-to {
     opacity: 0;
     transform: translateY(auto-value(60));
+}
+
+.worldview-enter-active,
+.worldview-leave-active {
+    transition: all 0.25s ease;
+}
+
+.worldview-enter-from,
+.worldview-leave-to {
+    opacity: 0;
+    transform: scale(0.8);
 }
 </style>

@@ -1,6 +1,15 @@
-import List  from '@/resource/game'
+import GameList from '@/resource/game'
+import Mechanics from '@/resource/game/mechanics'
+import Worldview from '@/resource/game/worldview'
+import Character from '@/resource/game/character'
 
-const images = List.map(item => item.cover)
+const images = [
+    ...GameList.map(item => item.cover),
+    ...Mechanics.map(item => item.icon),
+    ...Worldview.map(item => item.icon),
+    ...Worldview.map(item => item.popup),
+    ...Character.map(item => item.popup)
+]
 
 const loadImage = (src) => {
     if (!src) return Promise.resolve()

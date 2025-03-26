@@ -32,15 +32,16 @@
         <div v-if="mechanics.length > 1" class="mechanics-aside">
             <div class="aside-list">
                 <div v-for="(item, index) in mechanics" :key="item.id" @click="goIndex(index)">
-                    <img v-show="current === index && item.icon" :src="item.icon" />
-                    <div v-show="current !== index" class="point">
-                        <div></div>
-                    </div>
-                    <div class="line" v-show="index !== mechanics.length - 1">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                    <Transition name="mechanics">
+                        <div v-if="current === index" class="image">
+                            <img :src="item.icon" />
+                        </div>
+                        <div v-else class="point">
+                            <div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </Transition>
                 </div>
             </div>
         </div>
@@ -51,6 +52,8 @@
 import { left, right } from '@/resource/game'
 
 import { ref } from 'vue'
+
+import mechanics from '@/resource/game/mechanics'
 
 const current = ref(0)
 
@@ -71,55 +74,6 @@ function goIndex(index) {
     direction.value = index > current.value ? 'right' : 'left'
     current.value = index
 }
-
-const mechanics = [
-    {
-        id: 1,
-        title: '丰富的RPG养成',
-        title_en: 'In-depth RPG Progression',
-        icon: new URL('@/assets/images/game/03-mechanics/list/01-icon.png', import.meta.url).href, 
-        image: [
-            new URL('@/assets/images/game/03-mechanics/list/01-1.png', import.meta.url).href,
-            new URL('@/assets/images/game/03-mechanics/list/01-2.png', import.meta.url).href 
-        ],  
-        description: '在圆盘地区的冒险中收集各类材料，强化异能，打造独属于你的最强武器，关闭信标，在向世界终焉进发的道路上探寻最本真的奥秘。',
-        description_en: 'Embark on an adventure in the Disk Region to gather various materials, enhance your abilities, and forge the ultimate weapon unique to you. Shut down the beacons, and on the path toward the world`s end, uncover the most fundamental mysteries.'
-    },
-    {
-        id: 2,
-        title: '爽快的第三人称射击',
-        title_en: 'Third-Person Shooter',
-        icon: new URL('@/assets/images/game/03-mechanics/list/02-icon.png', import.meta.url).href,
-        image: [
-            new URL('@/assets/images/game/03-mechanics/list/02-1.png', import.meta.url).href,
-        ],
-        description: '在圆盘地区的冒险中收集各类材料，强化异能，打造独属于你的最强武器，关闭信标，在向世界终焉进发的道路上探寻最本真的奥秘。',
-        description_en: 'Embark on an adventure in the Disk Region to gather various materials, enhance your abilities, and forge the ultimate weapon unique to you. Shut down the beacons, and on the path toward the world`s end, uncover the most fundamental mysteries.'
-    },
-    {
-        id: 3,
-        title: '三维（人格指数）玩法系统概述',
-        title_en: 'Overview of the Three-Dimensional Gameplay System',
-        icon: new URL('@/assets/images/game/03-mechanics/list/03-icon.png', import.meta.url).href,
-        image: [
-            new URL('@/assets/images/game/03-mechanics/list/03-1.png', import.meta.url).href,
-            new URL('@/assets/images/game/03-mechanics/list/03-2.png', import.meta.url).href
-        ],
-        description: '人格指数：三维，分为韧骨、本真、争鸣，每个三维五个大等级。每一个大等级下有3个小等级,韧骨：实体，铸建磐石之躯（物理）,本真：纯洁，永葆原初之灵（防御）,争鸣：意念，以意念操控敌方（异能）',
-        description_en: 'Personality Index: Three Dimensions, divided into Tenacity, Purity, and Resonance, each with five major levels. Each major level has three minor levels. Tenacity: Physical, forging a body as solid as rock (Physical). Purity: Innocence, preserving the original spirit (Defense). Resonance: Mind, manipulating enemies with mental power (Psychic).'
-    },
-    {
-        id: 4,
-        title: '基地功能',
-        title_en: 'Base Functions',
-        icon: new URL('@/assets/images/game/03-mechanics/list/04-icon.png', import.meta.url).href, 
-        image: [
-            new URL('@/assets/images/game/03-mechanics/list/04-1.png', import.meta.url).href
-        ],
-        description: '夸张的异能：玩家在射击的同时使用特殊的异能，形式上每个异能有一个“器官”，通过植入玩家角色身体的形式来获取对应的能力及增幅，并且植入的基底同样是可收集要素。',
-        description_en: 'Exaggerated abilities: Players use special abilities while shooting, with each ability having an "organ" that is implanted into the player`s character`s body to obtain corresponding abilities and amplification, and the implanted base is also a collectible element.'
-    }
-]
 </script>
 
 <style lang="scss" scoped>
@@ -229,52 +183,41 @@ const mechanics = [
             @include flex-center(center, center, column);
 
             >div {
-                img {
-                    width: auto-value(100);
-                    margin: auto-value(-10) 0;
-                    cursor: pointer;
-                }
+                position: relative;
+                height: auto-value(80);
+                @include flex-center();
 
-                .point {
-                    position: relative;
-                    width: auto-value(18);
-                    height: auto-value(18);
-                    margin: auto-value(20) 0;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.15);
+                .image {
+                    position: absolute;
+                    height: auto-value(100);
                     cursor: pointer;
                     @include flex-center();
 
-                    div {
-                        position: absolute;
-                        width: 48%;
-                        height: 48%;
+                    img {
+                        width: auto-value(100);
                         border-radius: 50%;
-                        background: rgba(255, 255, 255, 0.6);
                     }
                 }
 
-                .line {
-                    @include flex-center(center, center, column);
+                .point {
+                    position: absolute;
+                    height: auto-value(70);
+                    @include flex-center();
 
-                    div:nth-child(1) {
-                        width: auto-value(4);
-                        height: auto-value(4);
-                        border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.15);
-                    }
+                    >div {
+                        width: auto-value(18);
+                        height: auto-value(18);
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.2);
+                        cursor: pointer;
+                        @include flex-center();
 
-                    div:nth-child(2) {
-                        width: auto-value(2);
-                        height: auto-value(60);
-                        background: rgba(255, 255, 255, 0.1);
-                    }
-
-                    div:nth-child(3) {
-                        width: auto-value(4);
-                        height: auto-value(4);
-                        border-radius: auto-value(2);
-                        background: rgba(255, 255, 255, 0.15);
+                        >div {
+                            width: 48%;
+                            height: 48%;
+                            border-radius: 50%;
+                            background: rgba(255, 255, 255, 0.8);
+                        }
                     }
                 }
             }
@@ -300,5 +243,16 @@ const mechanics = [
 .right-enter-from {
     opacity: 0;
     transform: translateX(auto-value(60));
+}
+
+.mechanics-enter-active,
+.mechanics-leave-active {
+    transition: all 0.25s ease;
+}
+
+.mechanics-enter-from,
+.mechanics-leave-to {
+    opacity: 0;
+    transform: scale(0.8);
 }
 </style>
