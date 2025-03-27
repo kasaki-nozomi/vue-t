@@ -15,7 +15,7 @@
                                     <div></div>
                                 </div>
                             </div>
-                            <div class="info">
+                            <!-- <div class="info">
                                 <div class="title">
                                     <div v-if="item.title">{{ item.title }}</div>
                                     <div v-if="item.title_en">{{ item.title_en }}</div>
@@ -24,9 +24,19 @@
                                     <div v-if="item.description" v-html="item.description"></div>
                                     <div v-if="item.description_en" v-html="item.description_en"></div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </Transition>
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <div v-if="enviroment[current].title">{{ enviroment[current].title }}</div>
+                        <div v-if="enviroment[current].title_en">{{ enviroment[current].title_en }}</div>
+                    </div>
+                    <div class="description">
+                        <div v-if="enviroment[current].description" v-html="enviroment[current].description"></div>
+                        <div v-if="enviroment[current].description_en" v-html="enviroment[current].description_en"></div>
+                    </div>
                 </div>
             </div>
             <div v-if="enviroment.length > 1" class="right button" @click="goRight">
@@ -112,94 +122,127 @@ function goIndex(index) {
         .enviroment-list {
             position: relative;
             width: auto-value(1000);
-            height: auto-value(1000);
-            @include flex-center();
+            height: auto-value(630);
+            @include flex-center(center, normal, column);
 
             >div {
                 position: absolute;
                 height: 100%;
+                padding-bottom: auto-value(100);
                 @include flex-center();
-            }
 
-            .enviroment-item {
-                .image-list {
-                    position: relative;
-                    @include flex-center();
-
-                    img {
-                        width: auto-value(920);
-                        border-radius: auto-value(2);
-                        border: auto-value(1) solid rgba(255, 255, 255, 0.2);
-                    }
-
-                    .title {
-                        position: absolute;
-                        top: auto-value(20);
-                        right: auto-value(-40);
+                .enviroment-item {
+                    .image-list {
+                        position: relative;
                         @include flex-center();
 
-                        div:first-child {
-                            height: auto-value(80);
-                            padding: 0 auto-value(32);
-                            font-size: auto-value(22);
-                            border-radius: auto-value(2) 0 0 auto-value(2);
-                            color: white;
-                            background: black;
-                            @include flex-center();
+                        img {
+                            width: auto-value(920);
+                            border-radius: auto-value(2);
+                            border: auto-value(1) solid rgba(255, 255, 255, 0.2);
                         }
 
-                        div:last-child {
-                            width: auto-value(4);
-                            height: auto-value(80);
-                            border-radius: 0 auto-value(2) auto-value(2) 0;
-                            background: rgba(30, 110, 128, 1);
+                        .title {
+                            position: absolute;
+                            top: auto-value(20);
+                            right: auto-value(-40);
+                            @include flex-center();
+
+                            div:first-child {
+                                height: auto-value(80);
+                                padding: 0 auto-value(32);
+                                font-size: auto-value(22);
+                                border-radius: auto-value(2) 0 0 auto-value(2);
+                                color: white;
+                                background: black;
+                                @include flex-center();
+                            }
+
+                            div:last-child {
+                                width: auto-value(4);
+                                height: auto-value(80);
+                                border-radius: 0 auto-value(2) auto-value(2) 0;
+                                background: rgba(30, 110, 128, 1);
+                            }
+                        }
+
+                        &.double {
+                            height: auto-value(480);
+
+                            img {
+                                position: absolute;
+                                width: auto-value(720);
+                            }
+
+                            img:first-child {
+                                transform: translate(-20%, -20%);
+                            }
+
+                            img:last-child {
+                                transform: translate(20%, 20%);
+                            }
                         }
                     }
 
-                    &.double {
-                        height: auto-value(480);
+                    .info {
+                        margin-bottom: auto-value(-60);
+                        @include flex-center(center, center, column);
 
-                        img {
-                            position: absolute;
-                            width: auto-value(720);
+                        .title {
+                            @include flex-center();
+
+                            div {
+                                max-width: auto-value(800);
+                                font-size: auto-value(18);
+                                margin: 0 auto-value(12);
+                                margin-top: auto-value(36);
+                            }
                         }
 
-                        img:first-child {
-                            transform: translate(-20%, -20%);
-                        }
+                        .description {
+                            @include flex-center(center, center, column);
 
-                        img:last-child {
-                            transform: translate(20%, 20%);
+                            div {
+                                max-width: auto-value(900);
+                                margin-top: auto-value(20);
+                                line-height: 1.8;
+                                font-size: auto-value(14);
+                                text-align: center;
+                                color: rgba(255, 255, 255, 0.5);
+                            }
                         }
                     }
                 }
+            }
 
-                .info {
-                    margin-bottom: auto-value(-60);
+            .info {
+                position: absolute;
+                top: auto-value(464);
+                height: auto;
+                padding-bottom: 0;
+                @include flex-center(center, center, column);
+
+                .title {
+                    @include flex-center();
+
+                    div {
+                        max-width: auto-value(800);
+                        font-size: auto-value(18);
+                        margin: 0 auto-value(12);
+                        margin-top: auto-value(36);
+                    }
+                }
+
+                .description {
                     @include flex-center(center, center, column);
 
-                    .title {
-                        @include flex-center();
-
-                        div {
-                            max-width: auto-value(800);
-                            font-size: auto-value(18);
-                            margin: 0 auto-value(12);
-                            margin-top: auto-value(36);
-                        }
-                    }
-
-                    .description {
-                        @include flex-center(center, center, column);
-
-                        div {
-                            max-width: auto-value(900);
-                            margin-top: auto-value(20);
-                            line-height: 1.8;
-                            font-size: auto-value(14);
-                            text-align: center;
-                            color: rgba(255, 255, 255, 0.5);
-                        }
+                    div {
+                        max-width: auto-value(900);
+                        margin-top: auto-value(14);
+                        line-height: 2;
+                        font-size: auto-value(14);
+                        text-align: center;
+                        color: rgba(255, 255, 255, 0.5);
                     }
                 }
             }

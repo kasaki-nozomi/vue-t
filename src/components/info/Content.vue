@@ -175,7 +175,7 @@ onMounted(() => {
                         img {
                             width: 66px;
                             opacity: 0.75;
-                            @include rotate();
+                            @include rotate(1.2s);
                         }
                     }
                 }
@@ -267,7 +267,7 @@ onMounted(() => {
                             img {
                                 width: 66px;
                                 opacity: 0.75;
-                                @include rotate();
+                                @include rotate(1.2s);
                             }
                         }
                     }

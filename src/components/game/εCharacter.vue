@@ -157,20 +157,20 @@ function goIndex(index) {
                     position: absolute;
 
                     &.jing {
-                        bottom: auto-value(-120);
-                        width: auto-value(1100);
+                        bottom: auto-value(-160);
+                        width: auto-value(1020);
                         margin-right: auto-value(100);
                     }
 
                     &.wyatt {
-                        bottom: auto-value(-150);
-                        width: auto-value(1100);
-                        margin-right: auto-value(100);
+                        bottom: auto-value(-160);
+                        width: auto-value(1040);
+                        margin-right: auto-value(120);
                     }
 
                     &.famu {
-                        bottom: auto-value(-140);
-                        width: auto-value(1040);
+                        bottom: auto-value(-160);
+                        width: auto-value(1020);
                         margin-right: auto-value(20);
                     }
                 }
@@ -206,13 +206,13 @@ function goIndex(index) {
                     }
 
                     &.wyatt {
-                        height: auto-value(85);
+                        height: auto-value(80);
                         right: auto-value(710);
                         bottom: auto-value(265);
                     }
 
                     &.famu {
-                        height: auto-value(85);
+                        height: auto-value(80);
                         right: auto-value(710);
                         bottom: auto-value(265);
                     }

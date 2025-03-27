@@ -70,7 +70,7 @@ onMounted(() => {
             left: 15px;
             width: 32px;
             opacity: 0.5;
-            @include rotate();
+            @include rotate(1.2s);
         }
     }
 }

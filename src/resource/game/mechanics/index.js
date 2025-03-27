@@ -36,13 +36,13 @@ export default [
     },
     {
         id: 4,
-        title: '基地功能',
-        title_en: 'Base Functions',
+        title: '夸张的异能',
+        title_en: 'Exaggerated abilities',
         icon: new URL('@/assets/images/game/03-mechanics/list/04-icon.png', import.meta.url).href, 
         image: [
             new URL('@/assets/images/game/03-mechanics/list/04-1.png', import.meta.url).href
         ],
-        description: '夸张的异能：玩家在射击的同时使用特殊的异能，形式上每个异能有一个“器官”，通过植入玩家角色身体的形式来获取对应的能力及增幅，并且植入的基底同样是可收集要素。',
+        description: '玩家在射击的同时使用特殊的异能，形式上每个异能有一个“器官”，通过植入玩家角色身体的形式来获取对应的能力及增幅，并且植入的基底同样是可收集要素。',
         description_en: 'Exaggerated abilities: Players use special abilities while shooting, with each ability having an "organ" that is implanted into the player`s character`s body to obtain corresponding abilities and amplification, and the implanted base is also a collectible element.'
     }
 ]
