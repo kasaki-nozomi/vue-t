@@ -6,7 +6,7 @@
         </div>
         <div v-if="!store.pad" class="header-tab">
             <div class="header-tab-item button" @click="tabClickPC('header')">首页</div>
-            <div class="header-tab-item button" @click="tabClickPC('company')">公司介绍</div>
+            <div class="header-tab-item button" @click="tabClickPC('home-box')">公司介绍</div>
             <div class="header-tab-item button" @click="tabClickPC('footer')">联系我们</div>
             <div class="header-tab-button" :class="{ open: projectShow }" @click="projectShow = !projectShow" @mouseenter="projectShow = true">
                 <Transition name="tab-button">
@@ -76,7 +76,9 @@ function tabClick(link) {
 function tabClickPC(tab) {
     tabShow.value = false
     if (tab === 'header') return elscroll.scrollTo({ top: 0, behavior: 'smooth' })
-    if (route.name !== 'home' && tab === 'company') return router.push({ path: '/', query: { position: 'company' } })
+    if (route.name !== 'home' && tab === 'company') {
+        router.push({ path: '/', query: { position: 'company' } })
+    }
     elscroll.scrollTo({ top: document.getElementById(tab).offsetTop, behavior: 'smooth' })
 }
 
