@@ -11,9 +11,10 @@ import Scroll from '@/components/info/Scroll.vue'
 import Content from '@/components/info/Content.vue'
 import Others from '@/components/info/Others.vue'
 
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from '@/store'
+
 import Project from '@/utils/project'
 import BusinessList from '@/resource/business'
 import IPList from '@/resource/ip'
@@ -32,16 +33,18 @@ others.value = [...BusinessList, ...IPList]
     .sort(() => Math.random() - 0.5)
 
 async function getList() {
-    if (!store.project) {
-        const project = [...BusinessList, ...IPList].find(item => item.symbol === current)
-        if (project) store.setProject(project)
-        else store.setProject(IPList[0])
-    }
+    const project = [...BusinessList, ...IPList].find(item => item.symbol === current)
+    if (project) store.setProject(project)
+    else store.setProject(IPList[0])
+
     const list = await store.project.list()
     scroll.value = list.default.scroll
     content.value = list.default.content
 }
-getList()
+
+onMounted(() => {
+    getList()
+})
 </script>
 
 <style lang="scss" scoped>

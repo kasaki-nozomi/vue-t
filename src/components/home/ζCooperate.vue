@@ -28,7 +28,6 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
 .cooperate {
     position: relative;
     width: 1200px;
-    // min-height: calc(100vh - 100PX);
     padding: 200px 0 400px 0;
     @include flex-center(center, center, column);
 
@@ -56,15 +55,8 @@ proxy.bus.on('cooperate-show', () => cooperateShow.value = true)
     }
 }
 
-// @include setPadContent {
-//     .cooperate {
-//         min-height: calc(100vh - 86PX);
-//     }
-// }
-
 @include setPhoneContent {
     .cooperate {
-        // min-height: calc(100vh - 72PX);
         padding: 500px 0;
 
         .cooperate-list {

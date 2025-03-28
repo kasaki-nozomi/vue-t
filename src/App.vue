@@ -32,15 +32,15 @@ body {
 }
 
 #root {
-    padding-top: 100PX;
+    padding-top: 90PX;
     @include flex-center(center, normal, column);
 
     @include setPadContent {
-        padding-top: 86PX;
+        padding-top: 72PX;
     }
 
     @include setPhoneContent {
-        padding-top: 72PX;
+        padding-top: 300px;
     }
 
     &.game {
@@ -69,8 +69,6 @@ body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
 }
-
-
 
 .el-scrollbar__bar.is-vertical {
     width: 12PX !important;

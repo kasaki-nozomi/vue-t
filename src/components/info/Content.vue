@@ -1,11 +1,11 @@
 <template>
     <div class="content">
-        <div v-if="store.project.logo" class="content-logo">
-            <img :src="store.project.logo" />
+        <div v-if="store.project?.logo" class="content-logo">
+            <img :src="store.project?.logo" />
         </div>
-        <div class="content-title">{{ store.project.title }}</div>
-        <div v-if="store.project.description" class="content-description">
-            {{ store.project.description }}
+        <div class="content-title">{{ store.project?.title }}</div>
+        <div v-if="store.project?.description" class="content-description">
+            {{ store.project?.description }}
         </div>
         <div class="content-section">
             <img :src="section" />
@@ -87,19 +87,19 @@ onMounted(() => {
 
 <style lang="scss">
 .el-image-viewer__wrapper {
-    top: 100PX;
+    top: 90PX;
     outline: unset;
 }
 
 @include setPadContent {
     .el-image-viewer__wrapper {
-        top: 86PX;
+        top: 72PX;
     }
 }
 
 @include setPhoneContent {
     .el-image-viewer__wrapper {
-        top: 72PX;
+        top: 300px;
     }
 }
 </style>

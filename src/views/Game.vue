@@ -88,7 +88,6 @@ function throttling(func, wait = 1000) {
 
 onMounted(() => {
     gameWrapper.value.addEventListener('wheel', throttling((event) => {
-        console.log(111111)
         if (event.deltaY > 0) {
             direction.value = 'up'
             current.value = Math.max(current.value - 1, 0)

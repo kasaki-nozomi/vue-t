@@ -84,7 +84,6 @@ proxy.bus.on('company-show', () => companyShow.value = true)
 .company {
     position: relative;
     width: 100%;
-    // min-height: calc(100vh - 100PX);
     padding: 200px 0;
     @include flex-center(center, center, column);
 
@@ -196,15 +195,8 @@ proxy.bus.on('company-show', () => companyShow.value = true)
     }
 }
 
-// @include setPadContent {
-//     .company {
-//         min-height: calc(100vh - 84PX);
-//     }
-// }
-
 @include setPhoneContent {
     .company {
-        // min-height: calc(100vh - 72PX);
         padding: 750px 0;
 
         .company-box {

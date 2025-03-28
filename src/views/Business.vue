@@ -8,7 +8,7 @@
         </div>
         <div class="business-list">
             <div class="business-content">
-                <div class="business-item" v-for="business of Businesses.slice(0, 2)">
+                <div class="business-item" v-for="business of BusinessList.slice(0, 2)">
                     <Business :business="business" />
                     <div class="item-mask"></div>
                     <img v-if="business.symbol === 'scene'" :src="scene" />
@@ -19,7 +19,7 @@
                 <img :src="project" />
             </div>
             <div class="business-content">
-                <div class="business-item" v-for="business of Businesses.slice(2)">
+                <div class="business-item" v-for="business of BusinessList.slice(2)">
                     <Business :business="business" />
                 </div>
             </div>
@@ -29,7 +29,7 @@
 
 <script setup>
 import Business from '@/components/business/Business.vue'
-import Businesses from '@/resource/business'
+import BusinessList from '@/resource/business'
 
 const banner = new URL('@/assets/images/business/banner.jpg', import.meta.url).href
 const title = new URL('@/assets/images/business/banner.svg', import.meta.url).href

@@ -11,7 +11,7 @@
                 <img :src="project" />
             </div>
             <div class="ip-content">
-                <div class="ip-item" v-for="ip of iplist">
+                <div class="ip-item" v-for="ip of IPList">
                     <IP :ip="ip" />
                 </div>
             </div>
@@ -21,7 +21,7 @@
 
 <script setup>
 import IP from '@/components/ip/IP.vue'
-import iplist from '@/resource/ip'
+import IPList from '@/resource/ip'
 
 const banner = new URL('@/assets/images/ip/banner.jpg', import.meta.url).href
 const title = new URL('@/assets/images/ip/banner.svg', import.meta.url).href

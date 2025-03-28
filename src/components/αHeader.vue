@@ -1,59 +1,60 @@
 <template>
     <div id="header" class="header">
+        <div class="header-back"></div>
         <div class="header-logo button" @click="goHome">
             <img class="logo" :src="logo" />
         </div>
-        <!-- <div v-if="!store.pad" class="header-tab">
-            <div class="header-tab-item button" @click="tabClick('header')"><div class="text"><div class="inner">首页</div></div></div>
-            <div class="header-tab-item" @click.stop="projectShow = true" @mouseenter.stop="projectShow = true" @mouseleave.stop="projectShow = false">
-                <div class="text"><div class="inner">历史项目</div></div>
-                <Transition name="project" mode="out-in">
-                    <div class="header-projects" v-show="projectShow">
-                        <div v-for="project in projects">
-                            <div class="header-projects-item" @click.stop="projectClick(project.symbol)">{{ project.title }}</div>
-                        </div>
-                    </div>
-                </Transition> 
+        <div v-if="!store.pad" class="header-tab">
+            <div class="header-tab-item button" @click="tabClickPC('header')">首页</div>
+            <div class="header-tab-item button" @click="tabClickPC('company')">公司介绍</div>
+            <div class="header-tab-item button" @click="tabClickPC('footer')">联系我们</div>
+            <div class="header-tab-button" :class="{ open: projectShow }" @click="projectShow = !projectShow" @mouseenter="projectShow = true">
+                <Transition name="tab-button">
+                    <img v-if="projectShow" :src="close" />
+                    <img v-else :src="open" />
+                </Transition>
             </div>
-            <div class="header-tab-item button" @click="tabClick('company')"><div class="text"><div class="inner">公司介绍</div></div></div>
-            <div class="header-tab-item button" @click="tabClick('footer')"><div class="text"><div class="inner">联系我们</div></div></div>
+            <Transition name="project" mode="out-in">
+                <div class="header-projects" v-show="projectShow">
+                    <Tab />
+                </div>
+            </Transition> 
         </div>
-        <div v-else class="header-tab-m">
-            <div class="header-tab-button" @click.stop="tabGroupClick">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+        <div v-else class="header-tab-mobile">
             <Transition name="tab-group" mode="out-in">
-                <div class="header-tab-group" v-show="tabShow" >
-                    <div class="header-tab-item-m" @click="tabClick('header')" @mouseenter="projectShow = false">首页</div>
-                    <div class="header-tab-item-m" @click.stop="projectShow = true" @mouseenter="projectShow = true">历史项目</div>
-                    <div class="header-tab-item-m" @click="tabClick('company')" @mouseenter="projectShow = false">公司介绍</div>
-                    <div class="header-tab-item-m" @click="tabClick('footer')" @mouseenter="projectShow = false">联系我们</div>
-                </div>
-            </Transition>
-            <Transition name="project-m" mode="out-in">
-                <div class="header-projects-m" v-show="projectShow">
-                    <div v-for="project in projects">
-                        <div class="header-projects-item-m" @click="projectClick(project.symbol)">{{ project.title }}</div>
+                <div class="header-tab-mobile-group" v-show="tabShow" >
+                    <div class="header-tab-mobile-item" v-for="capacity in capacitys" @click.stop="tabClick(capacity.link)">
+                        {{ capacity.title_cn }}
                     </div>
                 </div>
             </Transition>
-        </div> -->
+            <div class="header-tab-mobile-button" :class="{ open: tabShow }" @click.stop="tabShow = !tabShow">
+                <Transition name="tab-button">
+                    <img v-if="tabShow" :src="close" />
+                    <img v-else :src="open" />
+                </Transition>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
-import { nextTick, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
-// import { projects } from '@/utils/projects'
+
+import Tab from '@/components/header/Tab.vue'
+import capacitys from '@/resource/home/capacity'
 
 const route = useRoute()
 const router = useRouter()
 const store = useStore()
 
 const logo = new URL('@/assets/images/header/logo.png', import.meta.url).href
+
+const close = new URL('@/assets/images/header/close.svg', import.meta.url).href
+
+const open = new URL('@/assets/images/header/open.svg', import.meta.url).href
 
 const tabShow = ref(false)
 const projectShow = ref(false)
@@ -67,34 +68,21 @@ function goHome() {
     if (route.name !== 'home') router.push({ path: '/' })
 }
 
-function tabGroupClick() {
-    tabShow.value = !tabShow.value
-    if (!tabShow.value) projectShow.value = false
+function tabClick(link) {
+    tabShow.value = false
+    router.push(link)
 }
 
-function tabClick(tab) {
-    if (tab === 'header') {
-        elscroll.scrollTo({ top: 0, behavior: 'smooth' })
-        return
-    }
-    if (route.name !== 'home' && tab === 'company') {
-        router.push({ path: '/', query: { position: 'company' } })
-        return
-    }
+function tabClickPC(tab) {
     tabShow.value = false
-    projectShow.value = false
+    if (tab === 'header') return elscroll.scrollTo({ top: 0, behavior: 'smooth' })
+    if (route.name !== 'home' && tab === 'company') return router.push({ path: '/', query: { position: 'company' } })
     elscroll.scrollTo({ top: document.getElementById(tab).offsetTop, behavior: 'smooth' })
 }
 
-function projectClick(symbol) {
-    tabShow.value = false
-    projectShow.value = false
-    router.push({ path: '/info', query: { project: symbol } })
-}
-
 document.documentElement.addEventListener('click', () => {
-    tabShow.value = false
     projectShow.value = false
+    tabShow.value = false
 })
 </script>
 
@@ -104,12 +92,24 @@ document.documentElement.addEventListener('click', () => {
     position: fixed;
     top: 0;
     width: 1920px;
-    height: 100PX;
-    padding: 0 100px;
+    height: 90PX;
+    padding: 0 100PX 0 120PX;
     background: black;
     @include flex-center(center, space-between);
 
+    .header-back {
+        z-index: 5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+    }
+
     .header-logo {
+        z-index: 10;
+        position: relative;
         cursor: pointer;
 
         img {
@@ -124,160 +124,119 @@ document.documentElement.addEventListener('click', () => {
         @include flex-center();
 
         .header-tab-item {
-            position: relative;
-            height: 100%;
-            font-size: 20PX;
-            color: rgba(255, 255, 255, 0.8);
-            background: black;
+            z-index: 10;
+            height: 48PX;
+            margin: 0 14PX;
+            padding: 0 18PX;
+            font-size: 18PX;
+            border-radius: 48PX;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.2s;
             cursor: pointer;
             @include flex-center();
 
-            .text {
-                z-index: 20;
-                position: relative;
-                height: 100%;
-                padding: 0 10PX;
-                background: black;
-                @include flex-center();
-
-                .inner {
-                    height: 48PX;
-                    padding: 0 16PX;
-                    border-radius: 48PX;
-                    color: rgba(255, 255, 255, 0.8);
-                    background: transparent;
-                    transition: all 0.2s;
-                    cursor: pointer;
-                    @include flex-center();
-
-                    &:hover {
-                        color: white;
-                    }
-                }
+            &:hover {
+                padding: 0 28PX;
+                letter-spacing: 1PX;
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
             }
         }
 
-        >:not(.header-tab-item:nth-child(2)) {
-            .text {
-                .inner {
-                    &:hover {
-                        padding: 0 26PX;
-                        letter-spacing: 1PX;
-                        background: rgb(50, 50, 50);
-                    }
-                }
+        .header-tab-button {
+            z-index: 10;
+            align-self: start;
+            height: 96PX;
+            width: 90PX;
+            margin-left: 20PX;
+            padding-top: 6PX;
+            background: rgba(50, 50, 60, 1);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            @include flex-center();
+
+            &.open {
+                background: rgba(20, 20, 20, 1);
+            }
+
+            img {
+                position: absolute;
+                width: 42PX;
             }
         }
 
         .header-projects {
-            z-index: 10;
+            z-index: 1;
             position: absolute;
             top: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5PX);
-            -webkit-backdrop-filter: blur(5PX);
-            transform-origin: top center;
+            right: 0;
             @include flex-center(center, normal, column);
-
-            .header-projects-item {
-                width: 145PX;
-                padding: 15PX 0;
-                font-size: 16PX;
-                color: white;
-                cursor: pointer;
-                transition: all 0.15s;
-                @include flex-center();
-
-                &:hover {
-                    background: rgba(0, 0, 0, 0.5);
-                }
-            }
         }
     }
 }
 
 @include setPadContent {
     .header {
-        height: 86PX;
-        padding: 0 86px;
+        height: 72PX;
+        padding: 0 82px;
 
         .header-logo {
-            gap: 15PX;
-
             img {
-                height: 40PX;
+                height: 36PX;
                 margin: 0;
             }
         }
 
-        .header-tab-m {
+        .header-tab-mobile {
             position: relative;
             height: 100%;
-            @include flex-center();
 
-            .header-tab-button {
-                gap: 6PX;
-                cursor: pointer;
-                @include flex-center(center, normal, column);
-
-                div {
-                    width: 26PX;
-                    height: 3PX;
-                    background: white;
-                }
-            }
-
-            .header-tab-group {
-                z-index: 10;
+            .header-tab-mobile-group {
                 position: absolute;
-                right: -24PX;
+                right: 0;
                 top: 100%;
-                overflow: hidden;
-                transform-origin: 65% top;
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(5PX);
-                -webkit-backdrop-filter: blur(5PX);
+                padding: 6PX 0;
+                background: rgba(20, 20, 20, 1);
                 @include flex-center(flex-end, normal, column);
 
-                .header-tab-item-m {
+                .header-tab-mobile-item {
                     position: relative;
-                    width: 120PX;
-                    padding: 12PX 24PX;
-                    font-size: 18PX;
-                    text-align: right;
-                    white-space: nowrap;
+                    width: 150PX;
+                    height: 50PX;
+                    padding: 0 20PX;
+                    font-size: 14PX;
                     color: white;
                     transition: all 0.15s;
                     cursor: pointer;
+                    @include flex-center(center, normal);
 
                     &:hover {
-                        background: rgba(0, 0, 0, 0.5);
+                        background: rgb(40, 40, 40);
                     }
                 }
             }
 
-            .header-projects-m {
+            .header-tab-mobile-button {
+                z-index: 10;
                 position: absolute;
-                top: 100%;
-                right: calc(120PX - 24PX);
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(5PX);
-                -webkit-backdrop-filter: blur(5PX);
-                transform-origin: right 15%;
-                @include flex-center(center, normal, column);
+                top: 0;
+                right: 0;
+                height: 78PX;
+                width: 74PX;
+                padding-top: 6PX;
+                background: rgba(50, 50, 60, 1);
+                transition: all 0.2s ease;
+                cursor: pointer;
+                @include flex-center();
 
-                .header-projects-item-m {
-                    width: 130PX;
-                    padding: 10PX;
-                    padding: 12PX 0;
-                    font-size: 15PX;
-                    color: white;
-                    cursor: pointer;
-                    @include flex-center();
+                &.open {
+                    background: rgba(20, 20, 20, 1);
+                }
 
-                    &:hover {
-                        background: rgba(0, 0, 0, 0.5);
-                    }
+                img {
+                    position: absolute;
+                    width: 34PX;
                 }
             }
         }
@@ -286,72 +245,75 @@ document.documentElement.addEventListener('click', () => {
 
 @include setPhoneContent {
     .header {
-        height: 72PX;
-        padding: 0 100px;
+        height: 300px;
+        padding: 0 140px;
 
         .header-logo {
-            gap: 8PX;
-
             img {
-                height: 36PX;
+                height: 140px;
             }
         }
 
-        .header-tab-m {
-            .header-tab-button {
-                gap: 5PX;
+        .header-tab-mobile {
+            .header-tab-mobile-group {
+                right: 0;
+                padding: 25px 0;
 
-                div {
-                    width: 22PX;
-                    height: 3PX;
-                    background: white;
+                .header-tab-mobile-item {
+                    width: 580px;
+                    height: 222px;
+                    padding: 0 120px;
+                    font-size: 60px;
+                    cursor: pointer;
                 }
             }
+            
+            .header-tab-mobile-button {
+                height: 320px;
+                width: 290px;
+                padding-top: 25px;
 
-            .header-tab-group {
-                right: -20PX;
-
-                .header-tab-item-m {
-                    width: 100PX;
-                    padding: 12PX 20PX;
-                    font-size: 15PX;
+                img {
+                    width: 140px;
                 }
-            }
-
-            .header-projects-m {
-                right: calc(100PX - 20PX);
-            }
+            } 
         }
     }
 }
 
+.tab-button-enter-active {
+    transition: all 0.4s ease;
+    transition-delay: 0.1s;
+}
+.tab-button-leave-active {
+    transition: all 0.4s ease;
+}
+
+.tab-button-enter-from,
+.tab-button-leave-to  {
+    opacity: 0;
+    transform: translateY(-80%);
+}
+
 .tab-group-enter-active,
 .tab-group-leave-active {
-    transition: all 0.28s ease;
+    transition: all 0.4s ease;
 }
 
 .tab-group-enter-from,
 .tab-group-leave-to  {
     opacity: 0;
-    transform: scale(0.5);
+    transform: translateY(-100%);
 }
 
 .project-enter-active,
-.project-leave-active,
-.project-m-enter-active,
-.project-m-leave-active {
-    transition: all 0.28s ease;
+.project-leave-active {
+    transition: all 0.4s ease;
 }
 
 .project-enter-from,
 .project-leave-to {
     opacity: 0;
     transform: translateY(-50%);
-}
-
-.project-m-enter-from,
-.project-m-leave-to  {
-    opacity: 0;
-    transform: translateX(50%);
 }
 </style>

@@ -87,7 +87,6 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
 <style lang="scss" scoped>
 .honor {
     position: relative;
-    // min-height: calc(100vh - 100PX);
     padding: 200px 0;
     @include flex-center(center, center, column);
 
@@ -153,15 +152,8 @@ proxy.bus.on('honor-show', () => honorShow.value = true)
     }
 }
 
-// @include setPadContent {
-//     .honor {
-//         min-height: calc(100vh - 86PX);
-//     }
-// }
-
 @include setPhoneContent {
     .honor {
-        // min-height: calc(100vh - 72PX);
         padding: 500px 0;
 
         .honor-container {
