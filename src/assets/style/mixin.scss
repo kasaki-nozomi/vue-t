@@ -162,3 +162,9 @@ $image-path: '@/assets/images/';
         @content;
     }
 }
+
+@mixin setPortraitContent() {
+    @media (max-aspect-ratio: 1) {
+        @content;
+    }
+}

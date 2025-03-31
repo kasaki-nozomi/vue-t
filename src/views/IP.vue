@@ -25,7 +25,6 @@ import IPList from '@/resource/ip'
 
 const banner = new URL('@/assets/images/ip/banner.jpg', import.meta.url).href
 const title = new URL('@/assets/images/ip/banner.svg', import.meta.url).href
-
 const project = new URL('@/assets/images/project.svg', import.meta.url).href
 </script>
 

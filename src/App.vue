@@ -55,7 +55,7 @@ body {
             height: 100% !important;
         }
 
-        .el-scrollbar__thumb {
+        .el-scrollbar__bar {
             display: none !important;
         }
     }

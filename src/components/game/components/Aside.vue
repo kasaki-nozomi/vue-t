@@ -26,8 +26,8 @@ const emit = defineEmits(['updateCurrent'])
     position: relative;
 
     .logo {
+        width: auto-value(330);
         margin-left: auto-value(-10);
-        @include auto-width(330);
     }
 
     .aside-list {
@@ -51,11 +51,12 @@ const emit = defineEmits(['updateCurrent'])
 
             .icon {
                 position: relative;
+                width: auto-value(32);
+                height: auto-value(32);
                 @include flex-center();
-                @include auto-size(32, 32);
 
                 img {
-                    @include auto-width(24);
+                    width: auto-value(24);
                 }
 
                 div {
@@ -68,9 +69,9 @@ const emit = defineEmits(['updateCurrent'])
             }
 
             .title {
+                height: auto-value(50);
                 margin-top: auto-value(5);
                 margin-left: auto-value(26);
-                @include auto-height(50);
             }
         }
     }
