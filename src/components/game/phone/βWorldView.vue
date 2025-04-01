@@ -1,25 +1,12 @@
 <template>
     <div class="worldview">
         <div class="worldview-content">
-            <div v-if="worldview.length > 1" class="left button" @click="goLeft">
-                <img :src="left" />
-            </div>
             <div class="worldview-list">
                 <div v-for="(item, index) in worldview" :key="item.id">
                     <Transition :name="direction" mode="out-in">
                         <div class="worldview-item" v-show="current === index">
-                            <div class="image-list">
-                                <img :src="item.image" />
-                            </div>
-                            <div class="info">
-                                <div v-if="item.title" class="title">
-                                    <div>{{ item.title }}</div>
-                                    <div>{{ item.title_en }}</div>
-                                </div>
-                                <div v-if="item.description" class="description">
-                                    <div>{{ item.description }}</div>
-                                    <div>{{ item.description_en }}</div>
-                                </div>
+                            <div class="image-list" :class="`image-${index}`">
+                                <img :src="item.phone.image" />
                             </div>
                             <div class="worldview-info" :class="`info-${index}`" @click="popup = true">
                                 <img :src="info" />
@@ -28,11 +15,11 @@
                     </Transition>
                 </div>
             </div>
-            <div v-if="worldview.length > 1 "class="right button" @click="goRight">
-                <img :src="right" />
-            </div>
         </div>
         <div v-if="worldview.length > 1" class="worldview-aside">
+            <div class="left button" @click="goLeft">
+                <img :src="left" />
+            </div>
             <div class="aside-list">
                 <div v-for="(item, index) in worldview" :key="item.id" @click="goIndex(index)">
                     <Transition name="worldview">
@@ -47,17 +34,18 @@
                     </Transition>
                 </div>
             </div>
+            <div class="right button" @click="goRight">
+                <img :src="right" />
+            </div>
         </div>
         <Transition name="popup" mode="out-in">
-            <Popup v-if="popup && worldview[current].popup" :image="worldview[current].popup" @close="popup = false" />
+            <Popup v-if="popup && worldview[current].phone.popup" :image="worldview[current].phone.popup" @close="popup = false" />
         </Transition>
     </div>
 </template>
 
 <script setup>
-import Popup from '@/components/game/components/Popup.vue'
-
-
+import Popup from '@/components/game/components/phone/Popup.vue'
 
 import { ref } from 'vue'
 import { left, right, info } from '@/resource/game'
@@ -88,37 +76,20 @@ function goIndex(index) {
 <style lang="scss" scoped>
 .worldview {
     position: relative;
-    width: auto-value(1440);
+    width: 100%;
+    height: 100%;
     @include flex-center();
 
     .worldview-content {
         position: relative;
+        width: 100%;
+        height: 100%;
         @include flex-center();
-
-        .left {
-            z-index: 10;
-            position: relative;
-            margin-right: auto-value(80);
-
-            img {
-                width: auto-value(40);
-            }
-        }
-
-        .right {
-            z-index: 10;
-            position: relative;
-            margin-left: auto-value(80);
-
-            img {
-                width: auto-value(40);
-            }
-        }
 
         .worldview-list {
             position: relative;
-            width: auto-value(1000);
-            height: auto-value(1000);
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             @include flex-center();
 
@@ -131,91 +102,66 @@ function goIndex(index) {
 
             .worldview-item {
                 position: relative;
+                width: 100%;
+                height: 100%;
+                @include flex-center();
 
                 .image-list {
                     position: relative;
+                    width: 100%;
+                    height: 100%;
+                    padding-bottom: 40rem;
                     @include flex-center();
 
+                    &.image-2 {
+                        padding-bottom: 160rem;
+                    }
+
                     img {
-                        width: auto-value(980);
-                    }
-                }
-
-                .info {
-                    @include flex-center(center, center, column);
-
-                    .title {
-                        margin-bottom: auto-value(15);
-                        @include flex-center();
-
-                        div {
-                            max-width: auto-value(800);
-                            font-size: auto-value(18);
-                            margin: 0 auto-value(12);
-                        }
-                    }
-
-                    .description {
-                        @include flex-center(center, center, column);
-
-                        div {
-                            max-width: auto-value(900);
-                            margin: auto-value(5) 0;
-                            line-height: 1.8;
-                            font-size: auto-value(14);
-                            text-align: center;
-                            color: rgba(255, 255, 255, 0.5);
-                        }
+                        width: 750rem;
                     }
                 }
 
                 .worldview-info {
                     position: absolute;
-                    transition: all 0.4s ease;
+                    transition: all 0.2s ease;
                     cursor: pointer;
                     pointer-events: auto;
 
                     img {
-                        width: auto-value(250);
+                        width: 300rem;
                     }
 
                     &:hover {
-                        transform: scale(1.1);
+                        transform: scale(1.05);
                     }
 
                     &.info-0 {
-                        right: auto-value(70);
-                        bottom: auto-value(140);
+                        transform: translate(-120rem, 190rem);
                     }
 
                     &.info-1 {
-                        right: auto-value(180);
-                        bottom: auto-value(60);
+                        transform: translate(20rem, 160rem);
                     }
 
                     &.info-2 {
-                        right: auto-value(100);
-                        bottom: auto-value(80);
+                        transform: translate(-40rem, 240rem);
                     }
 
                     &.info-3 {
-                        right: auto-value(100);
-                        bottom: auto-value(50);
+                        transform: translate(-40rem, 140rem);
                     }
 
                     &.info-4 {
-                        right: auto-value(120);
-                        bottom: auto-value(80);
+                        transform: translate(-140rem, 100rem);
                     }
 
                     &.info-5 {
-                        right: auto-value(20);
-                        bottom: auto-value(120);
+                        transform: translate(-100rem, 140rem);
                     }
 
                     &.info-6 {
-                        right: auto-value(80);
-                        bottom: auto-value(80);
+                        transform: translate(-100rem, 140rem);
                     }
                 }
             }
@@ -224,36 +170,56 @@ function goIndex(index) {
 
     .worldview-aside {
         position: absolute;
-        right: 0;
+        bottom: 120rem;
+        @include flex-center();
+
+        .left {
+            z-index: 10;
+            position: relative;
+            margin-right: 25rem;
+
+            img {
+                width: 45rem;
+            }
+        }
+
+        .right {
+            z-index: 10;
+            position: relative;
+            margin-left: 25rem;
+
+            img {
+                width: 45rem;
+            }
+        }
 
         .aside-list {
-            @include flex-center(center, center, column);
+            @include flex-center();
 
             >div {
                 position: relative;
-                height: auto-value(80);
+                width: 66rem;
                 @include flex-center();
 
                 .image {
                     position: absolute;
-                    height: auto-value(100);
+                    width: 100rem;
                     cursor: pointer;
                     @include flex-center();
 
                     img {
-                        width: auto-value(100);
+                        width: 100rem;
                         border-radius: 50%;
                     }
                 }
 
                 .point {
                     position: absolute;
-                    height: auto-value(70);
                     @include flex-center();
 
                     >div {
-                        width: auto-value(18);
-                        height: auto-value(18);
+                        width: 20rem;
+                        height: 20rem;
                         border-radius: 50%;
                         background: rgba(255, 255, 255, 0.2);
                         cursor: pointer;
@@ -299,7 +265,7 @@ function goIndex(index) {
 .popup-enter-from,
 .popup-leave-to {
     opacity: 0;
-    transform: translateY(auto-value(60));
+    transform: translateY(60rem);
 }
 
 .worldview-enter-active,

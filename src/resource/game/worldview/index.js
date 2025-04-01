@@ -6,6 +6,10 @@ export default [
         icon: new URL('@/assets/images/game/02-worldview/list/01-icon.png', import.meta.url).href,
         popup: new URL('@/assets/images/game/02-worldview/list/01-popup.png', import.meta.url).href,
         image: new URL('@/assets/images/game/02-worldview/list/01.png', import.meta.url).href,
+        phone: {
+            popup: new URL('@/assets/images/game/02-worldview/list/phone/01-popup.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/02-worldview/list/phone/01.png', import.meta.url).href,
+        },
         description: '',
         description_en: ''
     },
@@ -15,7 +19,11 @@ export default [
         title_en: '',
         icon: new URL('@/assets/images/game/02-worldview/list/02-icon.png', import.meta.url).href,
         popup: new URL('@/assets/images/game/02-worldview/list/02-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/02.png', import.meta.url).href,  
+        image: new URL('@/assets/images/game/02-worldview/list/02.png', import.meta.url).href,
+        phone: {
+            popup: new URL('@/assets/images/game/02-worldview/list/phone/02-popup.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/02-worldview/list/phone/02.png', import.meta.url).href,
+        },
         description: '',
         description_en: ''
     },
@@ -26,6 +34,10 @@ export default [
         icon: new URL('@/assets/images/game/02-worldview/list/03-icon.png', import.meta.url).href,
         popup: new URL('@/assets/images/game/02-worldview/list/03-popup.png', import.meta.url).href,
         image: new URL('@/assets/images/game/02-worldview/list/03.png', import.meta.url).href,
+        phone: {
+            popup: new URL('@/assets/images/game/02-worldview/list/phone/03-popup.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/02-worldview/list/phone/03.png', import.meta.url).href,
+        },
         description: '',
         description_en: ''
     },
@@ -35,7 +47,11 @@ export default [
         title_en: '',
         icon: new URL('@/assets/images/game/02-worldview/list/04-icon.png', import.meta.url).href,
         popup: new URL('@/assets/images/game/02-worldview/list/04-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/04.png', import.meta.url).href,  
+        image: new URL('@/assets/images/game/02-worldview/list/04.png', import.meta.url).href,
+        phone: {
+            popup: new URL('@/assets/images/game/02-worldview/list/phone/04-popup.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/02-worldview/list/phone/04.png', import.meta.url).href,
+        }, 
         description: '',
         description_en: ''
     },
@@ -45,7 +61,11 @@ export default [
         title_en: '',
         icon: new URL('@/assets/images/game/02-worldview/list/05-icon.png', import.meta.url).href,
         popup: new URL('@/assets/images/game/02-worldview/list/05-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/05.png', import.meta.url).href,  
+        image: new URL('@/assets/images/game/02-worldview/list/05.png', import.meta.url).href,
+        phone: {
+            popup: new URL('@/assets/images/game/02-worldview/list/phone/05-popup.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/02-worldview/list/phone/05.png', import.meta.url).href,
+        },
         description: '',
         description_en: ''
     },
@@ -55,7 +75,11 @@ export default [
         title_en: '',
         icon: new URL('@/assets/images/game/02-worldview/list/06-icon.png', import.meta.url).href,
         popup: new URL('@/assets/images/game/02-worldview/list/06-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/06.png', import.meta.url).href,  
+        image: new URL('@/assets/images/game/02-worldview/list/06.png', import.meta.url).href,
+        phone: {
+            popup: new URL('@/assets/images/game/02-worldview/list/phone/06-popup.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/02-worldview/list/phone/06.png', import.meta.url).href,
+        },
         description: '',
         description_en: ''
     },
@@ -65,7 +89,11 @@ export default [
         title_en: '',
         icon: new URL('@/assets/images/game/02-worldview/list/07-icon.png', import.meta.url).href,
         popup: new URL('@/assets/images/game/02-worldview/list/07-popup.png', import.meta.url).href,
-        image: new URL('@/assets/images/game/02-worldview/list/07.png', import.meta.url).href,  
+        image: new URL('@/assets/images/game/02-worldview/list/07.png', import.meta.url).href,
+        phone: {
+            popup: new URL('@/assets/images/game/02-worldview/list/phone/07-popup.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/02-worldview/list/phone/07.png', import.meta.url).href,
+        },
         description: '',
         description_en: ''
     }

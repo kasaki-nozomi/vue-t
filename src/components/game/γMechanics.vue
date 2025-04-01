@@ -132,6 +132,10 @@ function goIndex(index) {
                         img {
                             position: absolute;
                             width: auto-value(720);
+
+                            &:hover {
+                                z-index: 10;
+                            }
                         }
 
                         img:first-child {

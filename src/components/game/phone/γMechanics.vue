@@ -1,9 +1,6 @@
 <template>
     <div class="mechanics">
         <div class="mechanics-content">
-            <div v-if="mechanics.length > 1" class="left button" @click="goLeft">
-                <img :src="left" />
-            </div>
             <div class="mechanics-list">
                 <div v-for="(item, index) in mechanics" :key="item.id">
                     <Transition :name="direction" mode="out-in">
@@ -25,11 +22,11 @@
                     </Transition>
                 </div>
             </div>
-            <div v-if="mechanics.length > 1 "class="right button" @click="goRight">
-                <img :src="right" />
-            </div>
         </div>
         <div v-if="mechanics.length > 1" class="mechanics-aside">
+            <div class="left button" @click="goLeft">
+                <img :src="left" />
+            </div>
             <div class="aside-list">
                 <div v-for="(item, index) in mechanics" :key="item.id" @click="goIndex(index)">
                     <Transition name="mechanics">
@@ -43,6 +40,9 @@
                         </div>
                     </Transition>
                 </div>
+            </div>
+            <div class="right button" @click="goRight">
+                <img :src="right" />
             </div>
         </div>
     </div>
@@ -79,36 +79,19 @@ function goIndex(index) {
 <style lang="scss" scoped>
 .mechanics {
     position: relative;
-    width: auto-value(1440);
+    width: 100%;
+    height: 100%;
     @include flex-center();
 
     .mechanics-content {
+        width: 100%;
+        height: 100%;
         @include flex-center();
-
-        .left {
-            z-index: 10;
-            position: relative;
-            margin-right: auto-value(50);
-
-            img {
-                width: auto-value(40);
-            }
-        }
-
-        .right {
-            z-index: 10;
-            position: relative;
-            margin-left: auto-value(50);
-
-            img {
-                width: auto-value(40);
-            }
-        }
 
         .mechanics-list {
             position: relative;
-            width: auto-value(1000);
-            height: auto-value(1000);
+            width: 100%;
+            height: 100%;
             @include flex-center();
 
             >div {
@@ -123,23 +106,25 @@ function goIndex(index) {
                     @include flex-center();
 
                     img {
-                        width: auto-value(900);
+                        width: 700rem;
                     }
 
                     &.double {
-                        height: auto-value(480);
-
                         img {
                             position: absolute;
-                            width: auto-value(720);
+                            width: 600rem;
+
+                            &:hover {
+                                z-index: 10;
+                            }
                         }
 
                         img:first-child {
-                            transform: translate(-20%, -20%);
+                            transform: translate(-10%, -24%);
                         }
 
                         img:last-child {
-                            transform: translate(20%, 20%);
+                            transform: translate(10%, 24%);
                         }
                     }
                 }
@@ -177,36 +162,56 @@ function goIndex(index) {
 
     .mechanics-aside {
         position: absolute;
-        right: 0;
+        bottom: 120rem;
+        @include flex-center();
+
+        .left {
+            z-index: 10;
+            position: relative;
+            margin-right: 25rem;
+
+            img {
+                width: 45rem;
+            }
+        }
+
+        .right {
+            z-index: 10;
+            position: relative;
+            margin-left: 25rem;
+
+            img {
+                width: 45rem;
+            }
+        }
 
         .aside-list {
-            @include flex-center(center, center, column);
+            @include flex-center();
 
             >div {
                 position: relative;
-                height: auto-value(80);
+                width: 66rem;
                 @include flex-center();
 
                 .image {
                     position: absolute;
-                    height: auto-value(100);
+                    width: 100rem;
                     cursor: pointer;
                     @include flex-center();
 
                     img {
-                        width: auto-value(100);
+                        width: 100rem;
                         border-radius: 50%;
                     }
                 }
 
                 .point {
                     position: absolute;
-                    height: auto-value(70);
                     @include flex-center();
 
                     >div {
-                        width: auto-value(18);
-                        height: auto-value(18);
+                        width: 20rem;
+                        height: 20rem;
                         border-radius: 50%;
                         background: rgba(255, 255, 255, 0.2);
                         cursor: pointer;

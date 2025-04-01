@@ -274,6 +274,12 @@ onMounted(() => {
                     margin-bottom: 60rem;  
                 }
             }
+
+            .game-main-phone {
+                width: 100%;
+                height: 100%;
+                @include flex-center();
+            }
         }
     }
 }

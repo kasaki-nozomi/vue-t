@@ -57,8 +57,6 @@
 <script setup>
 import Popup from '@/components/game/components/Popup.vue'
 
-
-
 import { ref } from 'vue'
 import { left, right, info } from '@/resource/game'
 import worldview from '@/resource/game/worldview'
