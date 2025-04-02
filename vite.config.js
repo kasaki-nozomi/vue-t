@@ -109,7 +109,8 @@ export default defineConfig(({ _, mode }) => {
             alias: {
                 '@': path.resolve(__dirname, 'src')
             }
-        }
+        },
+        server: { port: 2233 }
     }
     return config
 })

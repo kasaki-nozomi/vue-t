@@ -16,6 +16,12 @@ export const getUABrowser = () => {
     return parser.browser.name
 }
 
+export const getUADevice = () => {
+    const ua = navigator.userAgent
+    const parser = UAParser(ua)
+    return parser.device.model
+}
+
 export const timeFormat = (seconds) => {
     const days = Math.floor(seconds / (24 * 60 * 60))
     const hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60))

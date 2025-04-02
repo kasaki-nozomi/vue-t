@@ -29,9 +29,9 @@ function tabClick(symbol) {
 
 <style lang="scss" scoped>
 .tab-item {
-    width: 300PX;
+    width: 320PX;
     height: 100%;
-    padding: 40PX 40PX 30PX 40PX;
+    padding: 36PX 36PX 30PX 36PX;
 
     &.tab-item-odds {
         background: rgba(30, 30, 30, 1);
@@ -96,6 +96,4 @@ function tabClick(symbol) {
         }
     }
 }
-
-
 </style>

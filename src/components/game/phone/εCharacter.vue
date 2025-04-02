@@ -1,38 +1,25 @@
 <template>
     <div class="character">
         <div class="character-content">
-            <div v-if="character.length > 1" class="left button" @click="goLeft">
-                <img :src="left" />
-            </div>
             <div class="character-list">
                 <div v-for="(item, index) in character" :class="{'not-active': current !== index}" :key="item.name">
                     <Transition :name="direction" mode="out-in">
-                        <div class="character-item" v-show="current === index">
-                            <img class="background" :src="item.background" />
+                        <div class="character-item" v-show="current === index" :style="{ backgroundImage: `url(${item.phone.background})` }">
                             <img class="mask" :src="mask" /> 
-                            <img class="image" :class="item.name"  :src="item.image" />
+                            <img class="image" :class="item.name"  :src="item.phone.image" />
                             <img class="symbol" :class="item.name" :src="item.symbol" />
                             <img class="fullname" :class="item.name" :src="item.fullname" />
                             <img class="info" :src="info" @click="popup = true" />
-                            <div class="message">
-                                <div v-if="item.title" class="title">
-                                    <div>{{ item.title }}</div>
-                                    <div>{{ item.title_en }}</div>
-                                </div>
-                                <div v-if="item.description" class="description">
-                                    <div>{{ item.description }}</div>
-                                    <div>{{ item.description_en }}</div>
-                                </div>
-                            </div>
                         </div>
                     </Transition>
                 </div>
             </div>
-            <div v-if="character.length > 1 "class="right button" @click="goRight">
-                <img :src="right" />
-            </div>
+
         </div>
         <div v-if="character.length > 1" class="character-aside">
+            <div v-if="character.length > 1" class="left button" @click="goLeft">
+                <img :src="left" />
+            </div>
             <div class="aside-list">
                 <div v-for="(item, index) in character" :key="item.id" @click="goIndex(index)">
                     <div class="avatar" :class="{ active: current === index }">
@@ -45,6 +32,9 @@
                     </div>
                 </div>
             </div>
+            <div v-if="character.length > 1 "class="right button" @click="goRight">
+                <img :src="right" />
+            </div>
         </div>
         <Transition name="popup" mode="out-in">
             <Popup v-if="popup && character[current].popup" :image="character[current].popup" @close="popup = false" />
@@ -53,6 +43,8 @@
 </template>
 
 <script setup>
+import Popup from '@/components/game/components/phone/Popup.vue'
+
 import { ref } from 'vue'
 import { left, right, info } from '@/resource/game'
 import character from '@/resource/game/character'
@@ -86,7 +78,7 @@ function goIndex(index) {
 <style lang="scss" scoped>
 .character {
     position: relative;
-    width: auto-value(1770);
+    width: 100%;
     height: 100%;
     @include flex-center();
 
@@ -95,26 +87,6 @@ function goIndex(index) {
         width: 100%;
         height: 100%;
         @include flex-center();
-
-        .left {
-            z-index: 10;
-            position: absolute;
-            left: auto-value(330);
-
-            img {
-                width: auto-value(40);
-            }
-        }
-
-        .right {
-            z-index: 10;
-            position: absolute;
-            right: auto-value(220);
-
-            img {
-                width: auto-value(40);
-            }
-        }
 
         .character-list {
             position: relative;
@@ -137,62 +109,51 @@ function goIndex(index) {
                 position: relative;
                 width: 100%;
                 height: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
                 @include flex-center();
-
-                .background {
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    width: auto-value(1700);
-                }
 
                 .mask {
                     position: absolute;
-                    top: auto-value(10);
-                    width: auto-value(1100);
-                    @include rotate(100s)
+                    width: 660rem;
+                    margin-top: -250rem;
+                    @include rotate(50s)
                 }
 
                 .image {
                     position: absolute;
 
                     &.jing {
-                        bottom: auto-value(-160);
-                        width: auto-value(1020);
-                        margin-right: auto-value(100);
+                        width: 1080rem;
+                        margin-top: 100rem;
                     }
 
                     &.wyatt {
-                        bottom: auto-value(-160);
-                        width: auto-value(1040);
-                        margin-right: auto-value(120);
+                        width: 1020rem;
+                        margin-top: 120rem;
                     }
 
                     &.famu {
-                        bottom: auto-value(-160);
-                        width: auto-value(1020);
-                        margin-right: auto-value(20);
+                        width: 1080rem;
+                        margin-top: 140rem;
                     }
                 }
 
                 .symbol {
                     position: absolute;
-                    width: auto-value(180);
+                    transform: translate(180rem, 180rem);
 
                     &.famu {
-                        width: auto-value(240);
-                        right: auto-value(580);
-                        bottom: auto-value(255);
+                        width: 248rem;
                     }
 
                     &.wyatt {
-                        right: auto-value(580);
-                        bottom: auto-value(255);
+                        width: 200rem;
                     }
 
                     &.jing {
-                        right: auto-value(580);
-                        bottom: auto-value(255);
+                        width: 240rem;
                     }
                 }
 
@@ -200,76 +161,26 @@ function goIndex(index) {
                     position: absolute;
                     
                     &.jing {
-                        height: auto-value(66);
-                        right: auto-value(740);
-                        bottom: auto-value(265);
+                        height: 70rem;
+                        margin-top: 440rem;
                     }
 
                     &.wyatt {
-                        height: auto-value(80);
-                        right: auto-value(710);
-                        bottom: auto-value(265);
+                        height: 88rem;
+                        margin-top: 540rem;
                     }
 
                     &.famu {
-                        height: auto-value(80);
-                        right: auto-value(710);
-                        bottom: auto-value(265);
-                    }
-                }
-
-                .info {
-                    position: absolute;
-                    width: auto-value(260);
-                    right: auto-value(720);
-                    bottom: auto-value(100);
-                    transition: all 0.4s ease;
-                    cursor: pointer;
-
-                    &:hover {
-                        transform: scale(1.1);
+                        height: 88rem;
+                        margin-top: 540rem;
                     }
                 }
  
                 .info {
                     position: absolute;
-                    width: auto-value(280);
-                    right: auto-value(680);
-                    bottom: auto-value(50);
-                    transition: all 0.4s ease;
+                    width: 320rem;
+                    transform: translate(180rem, 440rem);
                     cursor: pointer;
-
-                    &:hover {
-                        transform: scale(1.05);
-                    }
-                }
-
-                .message {
-                    @include flex-center(center, center, column);
-
-                    .title {
-                        margin-bottom: auto-value(15);
-                        @include flex-center();
-
-                        div {
-                            max-width: auto-value(800);
-                            font-size: auto-value(18);
-                            margin: 0 auto-value(12);
-                        }
-                    }
-
-                    .description {
-                        @include flex-center(center, center, column);
-
-                        div {
-                            max-width: auto-value(900);
-                            margin: auto-value(5) 0;
-                            line-height: 1.8;
-                            font-size: auto-value(14);
-                            text-align: center;
-                            color: rgba(255, 255, 255, 0.5);
-                        }
-                    }
                 }
             }
         }
@@ -277,18 +188,37 @@ function goIndex(index) {
 
     .character-aside {
         position: absolute;
-        right: auto-value(66);
+        bottom: 100rem;
+        @include flex-center();
+
+        .left {
+            z-index: 10;
+            margin-right: 30rem;
+
+            img {
+                width: 45rem;
+            }
+        }
+
+        .right {
+            z-index: 10;
+            margin-left: 30rem;
+
+            img {
+                width: 45rem;
+            }
+        }
 
         .aside-list {
-            @include flex-center(center, center, column);
+            @include flex-center();
 
             >div {
                 .avatar {
                     position: relative;
-                    width: auto-value(100);
-                    height: auto-value(100);
-                    margin: auto-value(15) 0;
-                    opacity: 0.6;
+                    width: 100rem;
+                    height: 100rem;
+                    margin: 0 5rem;
+                    opacity: 0.85;
                     transform: scale(0.85);
                     transition: all 0.15s ease;
                     @include flex-center();
@@ -315,25 +245,6 @@ function goIndex(index) {
                         cursor: pointer;
                     }
                 }
-                
-                .point {
-                    position: relative;
-                    width: auto-value(18);
-                    height: auto-value(18);
-                    margin: auto-value(20) 0;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.15);
-                    cursor: pointer;
-                    @include flex-center();
-
-                    div {
-                        position: absolute;
-                        width: 48%;
-                        height: 48%;
-                        border-radius: 50%;
-                        background: rgba(255, 255, 255, 0.6);
-                    }
-                }
             }
         }
     }
@@ -351,12 +262,12 @@ function goIndex(index) {
 .left-enter-from,
 .right-leave-to {
     opacity: 0;
-    transform: translateX(auto-value(-60));
+    transform: translateX(-50rem);
 }
 .left-leave-to,
 .right-enter-from {
     opacity: 0;
-    transform: translateX(auto-value(60));
+    transform: translateX(50rem);
 }
 
 .popup-enter-active,
@@ -366,7 +277,7 @@ function goIndex(index) {
 .popup-enter-from,
 .popup-leave-to {
     opacity: 0;
-    transform: translateY(auto-value(60));
+    transform: translateY(50rem);
 }
 
 .circle-enter-active,

@@ -34,9 +34,7 @@
                             <img :src="item.icon" />
                         </div>
                         <div v-else class="point">
-                            <div>
-                                <div></div>
-                            </div>
+                            <div><div></div></div>
                         </div>
                     </Transition>
                 </div>
@@ -96,23 +94,30 @@ function goIndex(index) {
 
             >div {
                 position: absolute;
+                width: 100%;
                 height: 100%;
                 @include flex-center();
             }
 
             .mechanics-item {
+                padding-bottom: 60rem;
+                @include flex-center(center, normal, column);
+
                 .image-list {
                     position: relative;
+                    height: 400rem;
                     @include flex-center();
 
                     img {
-                        width: 700rem;
+                        width: 650rem;
                     }
 
                     &.double {
+                        height: 450rem;
+
                         img {
                             position: absolute;
-                            width: 600rem;
+                            width: 560rem;
 
                             &:hover {
                                 z-index: 10;
@@ -130,28 +135,25 @@ function goIndex(index) {
                 }
 
                 .info {
-                    @include flex-center(center, center, column);
+                    width: 580rem;
+                    @include flex-center(normal, center, column);
 
                     .title {
-                        @include flex-center();
-
                         div {
-                            max-width: auto-value(800);
-                            font-size: auto-value(18);
-                            margin: 0 auto-value(12);
+                            margin: 5rem 0;
+                            font-size: 22rem;
+                            text-align: left;
                         }
                     }
 
                     .description {
-                        margin-top: auto-value(15);
-                        @include flex-center(center, center, column);
+                        margin-top: 28rem;
 
                         div {
-                            max-width: auto-value(900);
-                            margin: auto-value(5) 0;
+                            margin: 5rem 0;
                             line-height: 1.8;
-                            font-size: auto-value(14);
-                            text-align: center;
+                            font-size: 18rem;
+                            text-align: left;
                             color: rgba(255, 255, 255, 0.5);
                         }
                     }
@@ -195,12 +197,12 @@ function goIndex(index) {
 
                 .image {
                     position: absolute;
-                    width: 100rem;
+                    width: 110rem;
                     cursor: pointer;
                     @include flex-center();
 
                     img {
-                        width: 100rem;
+                        width: 110rem;
                         border-radius: 50%;
                     }
                 }
@@ -242,12 +244,12 @@ function goIndex(index) {
 .left-enter-from,
 .right-leave-to {
     opacity: 0;
-    transform: translateX(auto-value(-60));
+    transform: translateX(-40rem);
 }
 .left-leave-to,
 .right-enter-from {
     opacity: 0;
-    transform: translateX(auto-value(60));
+    transform: translateX(40rem);
 }
 
 .mechanics-enter-active,
@@ -258,6 +260,6 @@ function goIndex(index) {
 .mechanics-enter-from,
 .mechanics-leave-to {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.5);
 }
 </style>

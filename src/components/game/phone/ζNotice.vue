@@ -37,11 +37,12 @@ const noticeList = [
 
 <style lang="scss" scoped>
 .notice {
+    width: 100%;
     height: 100%;
 
     .notice-list {
         position: relative;
-        width: auto-value(1000);
+        width: 100%;
         height: 100%;
 
         >div {
@@ -53,17 +54,22 @@ const noticeList = [
 
         .notice-item {
             width: 100%;
+            @include flex-center(center, normal, column);
 
             .notice-image-list {
                 img {
-                    width: 100%;
+                    width: 580rem;
                 }
             }
 
             .notice-info {
-                margin-top: auto-value(15);
-                font-size: auto-value(18);
-                @include flex-center(center, space-between);
+                width: 580rem;
+                margin-top: 20rem;
+                font-size: 18rem;
+
+                div {
+                    margin-bottom: 20rem;
+                }
             }
         }
     }
@@ -79,6 +85,6 @@ const noticeList = [
 .notice-enter-from,
 .notice-leave-to {
     opacity: 0;
-    transform: translateX(auto-value(60));
+    transform: translateX(60rem);
 }
 </style>

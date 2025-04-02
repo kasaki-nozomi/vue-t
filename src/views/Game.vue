@@ -241,16 +241,15 @@ onMounted(() => {
 
                 .first {
                     position: fixed;
-                    
                     bottom: calc(22vh - 62rem);
                     width: 460rem;
                 }
 
                 .second {
                     position: fixed;
-                    left: 60rem;
-                    top: 60rem;
-                    width: 460rem;
+                    left: 80rem;
+                    top: 100rem;
+                    width: 320rem;
                 }
             }
 

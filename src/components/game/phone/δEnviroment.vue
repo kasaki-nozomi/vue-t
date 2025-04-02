@@ -1,9 +1,6 @@
 <template>
     <div class="enviroment">
         <div class="enviroment-content">
-            <div v-if="enviroment.length > 1" class="left button" @click="goLeft">
-                <img :src="left" />
-            </div>
             <div class="enviroment-list">
                 <div v-for="(item, index) in enviroment" :key="item.id">
                     <Transition :name="direction" mode="out-in">
@@ -15,16 +12,6 @@
                                     <div></div>
                                 </div>
                             </div>
-                            <!-- <div class="info">
-                                <div class="title">
-                                    <div v-if="item.title">{{ item.title }}</div>
-                                    <div v-if="item.title_en">{{ item.title_en }}</div>
-                                </div>
-                                <div class="description">
-                                    <div v-if="item.description" v-html="item.description"></div>
-                                    <div v-if="item.description_en" v-html="item.description_en"></div>
-                                </div>
-                            </div> -->
                         </div>
                     </Transition>
                 </div>
@@ -39,11 +26,11 @@
                     </div>
                 </div>
             </div>
-            <div v-if="enviroment.length > 1" class="right button" @click="goRight">
-                <img :src="right" />
-            </div>
         </div>
         <div v-if="enviroment.length > 1" class="enviroment-aside">
+            <div class="left button" @click="goLeft">
+                <img :src="left" />
+            </div>
             <div class="aside-list">
                 <div v-for="(item, index) in enviroment" :key="item.id" @click="goIndex(index)">
                     <Transition name="enviroment">
@@ -51,12 +38,13 @@
                             <img :src="item.image[0]" />
                         </div>
                         <div v-else class="point">
-                            <div>
-                                <div></div>
-                            </div>
+                            <div><div></div></div>
                         </div>
                     </Transition>
                 </div>
+            </div>
+            <div class="right button" @click="goRight">
+                <img :src="right" />
             </div>
         </div>
     </div>
@@ -93,42 +81,23 @@ function goIndex(index) {
 <style lang="scss" scoped>
 .enviroment {
     position: relative;
-    width: auto-value(1440);
+    width: 100%;
+    height: 100%;
     @include flex-center();
 
     .enviroment-content {
+        width: 100%;
+        height: 100%;
         @include flex-center();
-
-        .left {
-            z-index: 10;
-            position: relative;
-            margin-right: auto-value(60);
-
-            img {
-                width: auto-value(40);
-            }
-        }
-
-        .right {
-            z-index: 10;
-            position: relative;
-            margin-left: auto-value(60);
-
-            img {
-                width: auto-value(40);
-            }
-        }
 
         .enviroment-list {
             position: relative;
-            width: auto-value(1000);
-            height: auto-value(630);
-            @include flex-center(center, normal, column);
+            width: 100%;
+            @include flex-center(center, center, column);
 
             >div {
                 position: absolute;
-                height: 100%;
-                padding-bottom: auto-value(100);
+                padding-bottom: 440rem;
                 @include flex-center();
 
                 .enviroment-item {
@@ -137,111 +106,65 @@ function goIndex(index) {
                         @include flex-center();
 
                         img {
-                            width: auto-value(920);
-                            border-radius: auto-value(2);
-                            border: auto-value(1) solid rgba(255, 255, 255, 0.2);
+                            width: 560rem;
+                            border-radius: 2rem;
+                            border: 1rem solid rgba(255, 255, 255, 0.2);
                         }
 
                         .title {
                             position: absolute;
-                            top: auto-value(20);
-                            right: auto-value(-40);
+                            top: 24rem;
+                            right: -28rem;
                             @include flex-center();
 
                             div:first-child {
-                                height: auto-value(80);
-                                padding: 0 auto-value(32);
-                                font-size: auto-value(22);
-                                border-radius: auto-value(2) 0 0 auto-value(2);
+                                min-width: 120rem;
+                                height: 55rem;
+                                padding: 0 20rem;
+                                font-size: 16rem;
+                                border-radius: 2rem 0 0 2rem;
                                 color: white;
                                 background: black;
                                 @include flex-center();
                             }
 
                             div:last-child {
-                                width: auto-value(4);
-                                height: auto-value(80);
-                                border-radius: 0 auto-value(2) auto-value(2) 0;
+                                width: 2rem;
+                                height: 45rem;
+                                border-radius: 0 2rem 2rem 0;
                                 background: rgba(30, 110, 128, 1);
                             }
                         }
-
-                        &.double {
-                            height: auto-value(480);
-
-                            img {
-                                position: absolute;
-                                width: auto-value(720);
-                            }
-
-                            img:first-child {
-                                transform: translate(-20%, -20%);
-                            }
-
-                            img:last-child {
-                                transform: translate(20%, 20%);
-                            }
-                        }
-                    }
-
-                    .info {
-                        margin-bottom: auto-value(-60);
-                        @include flex-center(center, center, column);
-
-                        .title {
-                            @include flex-center();
-
-                            div {
-                                max-width: auto-value(800);
-                                font-size: auto-value(18);
-                                margin: 0 auto-value(12);
-                                margin-top: auto-value(36);
-                            }
-                        }
-
-                        .description {
-                            @include flex-center(center, center, column);
-
-                            div {
-                                max-width: auto-value(900);
-                                margin-top: auto-value(20);
-                                line-height: 1.8;
-                                font-size: auto-value(14);
-                                text-align: center;
-                                color: rgba(255, 255, 255, 0.5);
-                            }
-                        }
-                    }
+                    }                      
                 }
             }
 
             .info {
                 position: absolute;
-                top: auto-value(464);
+                top: 0;
+                width: 550rem;
                 height: auto;
-                padding-bottom: 0;
                 @include flex-center(center, center, column);
 
                 .title {
-                    @include flex-center();
+                    width: 100%;
+                    @include flex-center(center, normal);
 
                     div {
-                        max-width: auto-value(800);
-                        font-size: auto-value(18);
-                        margin: 0 auto-value(12);
-                        margin-top: auto-value(36);
+                        max-width: 600rem;
+                        font-size: 22rem;
                     }
                 }
 
                 .description {
-                    @include flex-center(center, center, column);
+                    width: 100%;
+                    @include flex-center(normal, center, column);
 
                     div {
-                        max-width: auto-value(900);
-                        margin-top: auto-value(14);
+                        margin-top: 20rem;
                         line-height: 2;
-                        font-size: auto-value(14);
-                        text-align: center;
+                        font-size: 18rem;
+                        text-align: left;
                         color: rgba(255, 255, 255, 0.5);
                     }
                 }
@@ -251,46 +174,66 @@ function goIndex(index) {
 
     .enviroment-aside {
         position: absolute;
-        right: 0;
+        bottom: 120rem;
+        @include flex-center();
+
+        .left {
+            z-index: 10;
+            position: relative;
+            margin-right: 25rem;
+
+            img {
+                width: 45rem;
+            }
+        }
+
+        .right {
+            z-index: 10;
+            position: relative;
+            margin-left: 25rem;
+
+            img {
+                width: 45rem;
+            }
+        }
 
         .aside-list {
-            @include flex-center(center, center, column);
+            @include flex-center();
 
             >div {
                 position: relative;
-                height: auto-value(70);
+                width: 60rem;
                 @include flex-center();
 
                 .image {
                     position: absolute;
-                    height: auto-value(70);
+                    width: 110rem;
                     cursor: pointer;
                     @include flex-center();
 
                     img {
-                        width: auto-value(38);
-                        height: auto-value(38);
+                        width: 44rem;
+                        height: 44rem;
                         border-radius: 50%;
                     }
 
                     &::after {
                         position: absolute;
                         content: '';
-                        width: auto-value(56);
-                        height: auto-value(56);
+                        width: 64rem;
+                        height: 64rem;
                         border-radius: 50%;
-                        border: auto-value(1) solid rgba(255, 255, 255, 0.15);
+                        border: 1rem solid rgba(255, 255, 255, 0.15);
                     }
                 }
 
                 .point {
                     position: absolute;
-                    height: auto-value(70);
                     @include flex-center();
 
                     >div {
-                        width: auto-value(18);
-                        height: auto-value(18);
+                        width: 20rem;
+                        height: 20rem;
                         border-radius: 50%;
                         background: rgba(255, 255, 255, 0.2);
                         cursor: pointer;
@@ -323,13 +266,13 @@ function goIndex(index) {
 .left-enter-from,
 .right-leave-to {
     opacity: 0;
-    transform: translateX(auto-value(-60));
+    transform: translateX(-40rem);
 }
 
 .left-leave-to,
 .right-enter-from {
     opacity: 0;
-    transform: translateX(auto-value(60));
+    transform: translateX(40rem);
 }
 
 .enviroment-enter-active,

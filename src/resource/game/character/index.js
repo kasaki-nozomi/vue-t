@@ -10,6 +10,10 @@ export default [
         symbol: new URL('@/assets/images/game/05-character/list/jing-symbol.svg', import.meta.url).href,
         image: new URL('@/assets/images/game/05-character/list/jing.png', import.meta.url).href,
         fullname:  new URL('@/assets/images/game/05-character/list/jing-name.svg', import.meta.url).href,
+        phone: {
+            background: new URL('@/assets/images/game/05-character/list/phone/jing-background.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/05-character/list/phone/jing.png', import.meta.url).href
+        },
         description: '',
         description_en: ''
     },
@@ -24,6 +28,10 @@ export default [
         symbol: new URL('@/assets/images/game/05-character/list/wyatt-symbol.svg', import.meta.url).href,
         image: new URL('@/assets/images/game/05-character/list/wyatt.png', import.meta.url).href,
         fullname:  new URL('@/assets/images/game/05-character/list/wyatt-name.svg', import.meta.url).href,
+        phone: {
+            background: new URL('@/assets/images/game/05-character/list/phone/wyatt-background.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/05-character/list/phone/wyatt.png', import.meta.url).href
+        },
         description: '',
         description_en: ''
     },
@@ -38,6 +46,10 @@ export default [
         symbol: new URL('@/assets/images/game/05-character/list/famu-symbol.svg', import.meta.url).href,
         image: new URL('@/assets/images/game/05-character/list/famu.png', import.meta.url).href,
         fullname:  new URL('@/assets/images/game/05-character/list/famu-name.svg', import.meta.url).href,
+        phone: {
+            background: new URL('@/assets/images/game/05-character/list/phone/famu-background.png', import.meta.url).href,
+            image: new URL('@/assets/images/game/05-character/list/phone/famu.png', import.meta.url).href
+        },
         description: '',
         description_en: ''
     }

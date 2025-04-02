@@ -27,9 +27,7 @@
                             <img :src="item.icon" />
                         </div>
                         <div v-else class="point">
-                            <div>
-                                <div></div>
-                            </div>
+                            <div><div></div></div>
                         </div>
                     </Transition>
                 </div>
@@ -203,12 +201,12 @@ function goIndex(index) {
 
                 .image {
                     position: absolute;
-                    width: 100rem;
+                    width: 110rem;
                     cursor: pointer;
                     @include flex-center();
 
                     img {
-                        width: 100rem;
+                        width: 110rem;
                         border-radius: 50%;
                     }
                 }
@@ -250,12 +248,12 @@ function goIndex(index) {
 .left-enter-from,
 .right-leave-to {
     opacity: 0;
-    transform: translateX(auto-value(-60));
+    transform: translateX(-50rem);
 }
 .left-leave-to,
 .right-enter-from {
     opacity: 0;
-    transform: translateX(auto-value(60));
+    transform: translateX(50rem);
 }
 
 .popup-enter-active,
@@ -276,6 +274,6 @@ function goIndex(index) {
 .worldview-enter-from,
 .worldview-leave-to {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.5);
 }
 </style>
