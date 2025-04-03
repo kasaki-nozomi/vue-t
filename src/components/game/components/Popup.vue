@@ -45,6 +45,7 @@ const mask = new URL('@/assets/images/game/02-worldview/mask.svg', import.meta.u
 
             img {
                 width: auto-value(888);
+                filter: brightness(1.5);
             }
 
             .close {

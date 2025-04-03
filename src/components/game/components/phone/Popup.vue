@@ -51,8 +51,8 @@ const mask = new URL('@/assets/images/game/02-worldview/mask.svg', import.meta.u
 
             .close {
                 position: absolute;
-                top: 20rem;
-                right: 20rem;
+                top: 70rem;
+                right: 70rem;
                 width: 40rem;
                 height: 40rem;
                 cursor: pointer;

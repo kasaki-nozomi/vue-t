@@ -71,6 +71,7 @@ body {
 }
 
 .el-scrollbar__bar.is-vertical {
+    z-index: 999 !important;
     width: 12PX !important;
 }
 

@@ -4,35 +4,26 @@
             <img :src="title" />
         </div>
         <div class="project-list">
-            <div class="project-list-box" ref="container" @scroll="handleScroll" @mouseenter="scrollSpeed = 0"
-                @mouseleave="scrollSpeed = defaultSpeed" @touchstart="scrollSpeed = 0"
-                @touchend="scrollSpeed = defaultSpeed">
-                <div v-for="project of Projects.slice(-count)" :key="`start-${project.symbol}`">
-                    <Project :project="project"></Project>
-                </div>
+            <div class="project-list-box" :class="[direction, { stop }]" ref="container" @mouseenter="stop = true" @mouseleave="stop = false">
                 <div v-for="project of Projects" :key="project.symbol">
                     <Project :project="project"></Project>
                 </div>
-                <div v-for="project of Projects.slice(0, count)" :key="`end-${project.symbol}`">
+                <div v-for="project of Projects" :key="`${project.symbol}-repeat`">
                     <Project :project="project"></Project>
                 </div>
             </div>
-            <div class="project-scroll">
+            <!-- <div class="project-scroll">
                 <div class="left-box">
-                    <div class="button" @mousedown="handleScrollClick(leftSpeed)" @mouseup="handleScrollClickUp"
-                        @touchstart="handleScrollClick(leftSpeed)" @touchend="handleScrollClickUp"
-                        @touchcancel="handleScrollClickUp">
+                    <div class="button"  @click="direction = 'left'">
                         <img :src="left" />
                     </div>
                 </div>
                 <div class="right-box">
-                    <div class="button" @mousedown="handleScrollClick(rightSpeed)" @mouseup="handleScrollClickUp"
-                        @touchstart="handleScrollClick(rightSpeed)" @touchend="handleScrollClickUp"
-                        @touchcancel="handleScrollClickUp">
+                    <div class="button" @click="direction = 'right'">
                         <img :src="right" />
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -46,43 +37,26 @@ const title = new URL('@/assets/images/home/project/title.svg', import.meta.url)
 const left = new URL('@/assets/images/home/project/left.svg', import.meta.url).href
 const right = new URL('@/assets/images/home/project/right.svg', import.meta.url).href
 
-const count = 3
-const scrolling = ref(false)
 const container = ref(null)
+const stop = ref(false)
+const direction = ref('left')
 
-const defaultSpeed = 1
-const leftSpeed = -5
-const rightSpeed = 5
-
-let scrollSpeed = defaultSpeed
 let itemWidth = 0
 
-const handleScroll = () => {
-    if (scrolling.value) return
-    if (container.value.scrollLeft <= 0) {
-        container.value.style.scrollBehavior = 'auto'
-        container.value.scrollLeft += itemWidth * Projects.length
-        container.value.clientWidth
-    } else if (container.value.scrollLeft > Projects.length * itemWidth) {
-        container.value.style.scrollBehavior = 'auto'
-        container.value.scrollLeft -= itemWidth * Projects.length
-        container.value.clientWidth
-    }
+function goLeft() {
+    const translateX = getTranslateX(container.value)
+    container.value.style.transform = `translateX(${translateX + itemWidth}px)`
 }
 
-const handleScrollClick = (speed) => scrollSpeed = speed
-const handleScrollClickUp = () => scrollSpeed = defaultSpeed
+function getTranslateX(element) {
+    const style = window.getComputedStyle(element)
+    const matrix = new WebKitCSSMatrix(style.transform)
+    return matrix.m41
+}
 
 onMounted(() => {
     itemWidth = container.value.children[0].getBoundingClientRect().width
-
-    const autoScroll = () => {
-        if (container.value) container.value.scrollLeft += scrollSpeed
-        requestAnimationFrame(autoScroll)
-    }
-    autoScroll()
 })
-
 </script>
 
 <style lang="scss" scoped>
@@ -97,24 +71,43 @@ onMounted(() => {
     }
 
     .project-list {
+        z-index: 10;
         position: relative;
         height: 460px;
         margin-top: 60px;
 
         .project-list-box {
-            overflow-x: auto;
-            @include flex-center(normal, normal);
+            position: relative;
+            width: max-content;
+            flex-wrap: nowrap;
+            transition: all 0.2s ease;
+            animation: scroll 20s infinite linear forwards;
+            @include flex-center();
 
-            >div {
-                padding: 0 10px;
+            &.stop {
+                animation-play-state: paused;
+            }
+
+            &.left {
+                animation-direction: normal;
+            }
+
+            &.right {
+                animation-direction: reverse;
+            }
+
+            @keyframes scroll {
+                to {
+                    transform: translateX(-50%);
+                }
             }
 
             >div:nth-of-type(even) {
-                margin-top: 35px;
+                margin-top: 25px;
             }
 
             >div:nth-of-type(odd) {
-                margin-top: 75px;
+                margin-top: 85px;
             }
         }
 
@@ -127,11 +120,12 @@ onMounted(() => {
             width: 100%;
             height: 100%;
             pointer-events: none;
+            @include flex-center();
 
             >div {
                 position: absolute;
                 width: 500px;
-                height: 100%;
+                height: 150%;
                 @include flex-center(center, normal);
 
                 .button {
@@ -198,13 +192,7 @@ onMounted(() => {
             margin-top: 180px;
 
             .project-list-box {
-                overflow-x: auto;
                 @include flex-center(normal, normal);
-
-                >div {
-                    margin-top: 0;
-                    padding: 0 20px;
-                }
 
                 >div:nth-of-type(even) {
                     margin-top: 0;

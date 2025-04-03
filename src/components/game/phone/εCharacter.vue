@@ -4,7 +4,14 @@
             <div class="character-list">
                 <div v-for="(item, index) in character" :class="{'not-active': current !== index}" :key="item.name">
                     <Transition :name="direction" mode="out-in">
-                        <div class="character-item" v-show="current === index" :style="{ backgroundImage: `url(${item.phone.background})` }">
+                        <div class="character-item" v-show="current === index" :style="{ 
+                            backgroundImage: `url(${item.phone.background})`,
+                            backgroundSize: store.ratio < ratio 
+                                ? `auto ${store.ratio / ratio * 100}%`
+                                : store.ratio > 0.65 
+                                    ? 'contain'
+                                    : 'cover'
+                        }">
                             <img class="mask" :src="mask" /> 
                             <img class="image" :class="item.name"  :src="item.phone.image" />
                             <img class="symbol" :class="item.name" :src="item.symbol" />
@@ -37,7 +44,7 @@
             </div>
         </div>
         <Transition name="popup" mode="out-in">
-            <Popup v-if="popup && character[current].popup" :image="character[current].popup" @close="popup = false" />
+            <Popup v-if="popup && character[current].phone.popup" :image="character[current].phone.popup" @close="popup = false" />
         </Transition>
     </div>
 </template>
@@ -46,8 +53,12 @@
 import Popup from '@/components/game/components/phone/Popup.vue'
 
 import { ref } from 'vue'
+import { useStore } from '@/store'
 import { left, right, info } from '@/resource/game'
+import { ratio } from '@/utils/resize'
 import character from '@/resource/game/character'
+
+const store = useStore()
 
 const current = ref(0)
 
@@ -109,7 +120,6 @@ function goIndex(index) {
                 position: relative;
                 width: 100%;
                 height: 100%;
-                background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center center;
                 @include flex-center();
@@ -125,17 +135,17 @@ function goIndex(index) {
                     position: absolute;
 
                     &.jing {
-                        width: 1080rem;
-                        margin-top: 100rem;
+                        width: 1000rem;
+                        margin-top: 80rem;
                     }
 
                     &.wyatt {
-                        width: 1020rem;
-                        margin-top: 120rem;
+                        width: 980rem;
+                        margin-top: 80rem;
                     }
 
                     &.famu {
-                        width: 1080rem;
+                        width: 1020rem;
                         margin-top: 140rem;
                     }
                 }
@@ -215,8 +225,8 @@ function goIndex(index) {
             >div {
                 .avatar {
                     position: relative;
-                    width: 100rem;
-                    height: 100rem;
+                    width: 110rem;
+                    height: 110rem;
                     margin: 0 5rem;
                     opacity: 0.85;
                     transform: scale(0.85);

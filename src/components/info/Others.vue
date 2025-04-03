@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <button class="others-more" v-show="!more" @click="(count = Infinity) && (more = true)"> SEE MORE</button>
+        <!-- <button class="others-more" v-show="!more" @click="(count = Infinity) && (more = true)"> SEE MORE</button> -->
     </div>
 </template>
 
@@ -27,7 +27,7 @@ const router = useRouter()
 const store = useStore()
 
 const info = ref(null)
-const count = ref(store.phone ? 4 : 6)
+const count = ref(store.phone ? 2 : 3)
 
 const props = defineProps({ others: { type: Array, required: true } })
 
@@ -44,7 +44,7 @@ function goProject(project) {
     @include flex-center(center, center, column);
 
     .other-title {
-        font-size: 36px;
+        font-size: 32px;
         text-align: center;
         color: white;
 
@@ -132,7 +132,7 @@ function goProject(project) {
         padding: 150px 0;
 
         .other-title {
-            font-size: 72px;
+            font-size: 60px;
         }
 
         .others-list {

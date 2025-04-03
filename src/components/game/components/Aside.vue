@@ -3,6 +3,7 @@
         <img class="logo" :src="logo" />
         <div class="aside-list">
             <div class="aside-item" :class="{ active: current === index }" v-for="(aside, index) in Asides" :key="aside.name" @click="emit('updateCurrent', index)">
+                <img class="mask" :src="mask" v-show="current === index" />
                 <div class="icon">
                     <img :src="aside.icon" />
                     <div v-show="current === index"></div>
@@ -18,6 +19,8 @@ import Asides, { logo } from '@/resource/game'
 
 const { current } = defineProps(['current'])
 const emit = defineEmits(['updateCurrent'])
+
+const mask = new URL('@/assets/images/game/aside-mask.png', import.meta.url).href
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +38,7 @@ const emit = defineEmits(['updateCurrent'])
         margin: auto-value(100) 0 auto-value(160) 0;
 
         .aside-item {
+            position: relative;
             opacity: 0.6;
             margin: auto-value(20) 0;
             transition: all 0.3s ease;
@@ -47,6 +51,13 @@ const emit = defineEmits(['updateCurrent'])
 
             &.active {
                 opacity: 1;
+            }
+
+            .mask {
+                position: fixed;
+                left: 0;
+                width: auto-value(500);
+                opacity: 0.25;
             }
 
             .icon {

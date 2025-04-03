@@ -60,10 +60,16 @@ const current = ref(null)
 
             .capacity-item {
                 position: relative;
+                width: 100%;
                 height: 210px;
                 cursor: pointer;
                 transition: all 0.4s ease;
-                @include flex-center(center, normal);
+                border-top: 1px solid rgba(80, 80, 80, 0.25);
+                @include flex-center(center, center);
+
+                &:last-child {
+                    border-bottom: 1px solid rgba(80, 80, 80, 0.25);
+                }
 
                 &:hover {
                     filter: brightness(1.2);
@@ -129,6 +135,7 @@ const current = ref(null)
                 .capacity-item {
                     width: 1515px;
                     height: auto;
+                    border: none;
 
                     .capacity-content {
                         width: 100%;
@@ -178,11 +185,12 @@ const current = ref(null)
 
 .capacity-enter-active,
 .capacity-leave-active {
-    transition: all 0.4s ease;
+    transition: all 0.8s ease;
 }
 
 .capacity-enter-from,
 .capacity-leave-to {
     opacity: 0;
+    transform: translateX(5%);
 }
 </style>

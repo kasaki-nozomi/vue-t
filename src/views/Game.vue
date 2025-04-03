@@ -1,9 +1,13 @@
 <template>
-    <div ref="gameWrapper" class="game-wrapper" :class="{ 'game-wrapper-home-phone': current === 0 && store.ratio <= 1 }" :style="{ backgroundImage: `url(${List[current].cover})` }">
+    <div ref="gameWrapper" class="game-wrapper" :style="{ backgroundImage: `url(${store.ratio <= 1 ? List[current].coverPhone : List[current].cover})` }">
         <div class="game-container">
             <Particle />
             <Transition name="game-fade" mode="out-in">
                 <div v-if="store.ratio > 1" class="game-content-pc" :class="store.ratio > ratio ? 'horizontal' : 'portrait'">
+                    <div class="game-header">
+                        <img :src="music ? musicOpen : musicClose" @click="music = !music" />
+                        <img :src="share" />
+                    </div>
                     <div class="game-aside">
                         <Aside :current="current" @updateCurrent="updateCurrent" />
                     </div>
@@ -14,16 +18,17 @@
                     </div>
                 </div>
                 <div v-else class="game-content-phone">
-                    <Transition name="home-mask" mode="out-in">
-                        <div class="game-mask-phone" v-show="current === 0"></div>
-                    </Transition>
+                    <div class="game-header-phone">
+                        <img :src="music ? musicOpen : musicClose" @click="music = !music" />
+                        <img :src="share" />
+                    </div>
                     <div class="game-title-phone" :class="{ 'game-title-phone-home': current === 0 }">
                         <Transition name="game-title">
                             <img v-if="current === 0" class="first" :src="logo" />
                             <img v-else class="second" :src="logo" />
                         </Transition>
                     </div>
-                    <Transition name="home-mask" mode="out-in">
+                    <Transition name="game-mask" mode="out-in">
                         <div class="game-bottom-phone" v-show="current === 0">
                             <div>——<span>向上滑动开启旅程</span>——</div>
                             <div>Slide down to start the journey</div>
@@ -88,6 +93,12 @@ const ComponentsPhone = [
     Notice_Phone
 ]
 
+const music = ref(false)
+
+const share = new URL('@/assets/images/game/share.svg', import.meta.url).href
+const musicOpen = new URL('@/assets/images/game/music-open.svg', import.meta.url).href
+const musicClose = new URL('@/assets/images/game/music-close.svg', import.meta.url).href
+
 const direction = ref('up')
 function updateCurrent(value) {
     if (value < current.value) {
@@ -130,7 +141,7 @@ function throttling(func, wait = 1000) {
 
 onMounted(() => {
     gameWrapper.value.addEventListener('wheel', throttling((event) => {
-        if (event.deltaY > 0) {
+        if ((event.deltaY < 0 && store.os === 'Windows') || (event.deltaY > 0 && store.os !== 'Windows')) {
             direction.value = 'up'
             current.value = Math.max(current.value - 1, 0)
         } else {
@@ -156,7 +167,7 @@ onMounted(() => {
                 current.value = Math.min(current.value + 1, Components.length - 1)
             }
         }
-    }, 200), { passive: true })
+    }, 100), { passive: true })
 })
 
 </script>
@@ -171,10 +182,6 @@ onMounted(() => {
     transition: all 0.4s ease;
     color: white;
 
-    &.game-wrapper-home-phone {
-        background-position: center -22vh;
-    }
-
     .game-container {
         position: relative;
         height: 100%;
@@ -186,6 +193,19 @@ onMounted(() => {
             height: 100%;
             width: 100%;
             @include flex-center();
+
+            .game-header {
+                z-index: 10;
+                position: absolute;
+                top: auto-value(100);
+                right: auto-value(100);
+
+                img {
+                    width: auto-value(30);
+                    margin: 0 auto-value(20);
+                    cursor: pointer;
+                }
+            }
 
             .game-aside {
                 position: absolute;
@@ -226,6 +246,19 @@ onMounted(() => {
             height: 100%;
             @include flex-center();
 
+            .game-header-phone {
+                z-index: 10;
+                position: absolute;
+                top: 100rem;
+                right: 40rem;
+
+                img {
+                    width: 36rem;
+                    margin: 0 15rem;
+                    cursor: pointer;
+                }
+            }
+
             .game-mask-phone {
                 position: absolute;
                 bottom: 22vh;
@@ -241,7 +274,7 @@ onMounted(() => {
 
                 .first {
                     position: fixed;
-                    bottom: calc(22vh - 62rem);
+                    bottom: calc(20vh - 68rem);
                     width: 460rem;
                 }
 
@@ -312,15 +345,15 @@ onMounted(() => {
     opacity: 0;
 }
 
-.home-mask-enter-active,
-.home-mask-leave-active {
+.game-mask-enter-active,
+.game-mask-leave-active {
     transition: all 0.4s ease;
 }
 
-.home-mask-enter-from,
-.home-mask-leave-to {
+.game-mask-enter-from,
+.game-mask-leave-to {
     opacity: 0;
-    transform: translateY(22vh);
+    transform: translateY(-50rem);
 }
 
 .game-title-enter-active,
@@ -331,6 +364,6 @@ onMounted(() => {
 .game-title-enter-from,
 .game-title-leave-to {
     opacity: 0;
-    transform: translateY(50rem);
+    transform: translateY(-50rem);
 }
 </style>

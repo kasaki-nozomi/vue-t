@@ -3,8 +3,12 @@ import { defineStore } from 'pinia'
 import { useLoadingStore } from '@/store/module/loading'
 import { useUserStore } from '@/store/module/user'
 
+import { getUAOS } from '@/utils/utils'
+
 const useStore = defineStore('main', {
     state: () => ({
+        os: getUAOS(),
+
         width: window.innerWidth,
         height: window.innerHeight,
         ratio: window.innerWidth / window.innerHeight,

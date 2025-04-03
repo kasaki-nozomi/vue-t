@@ -53,8 +53,8 @@ const project = new URL('@/assets/images/project.svg', import.meta.url).href
         .title {
             position: absolute;
             left: 200px;
-            bottom: 160px;
-            width: 665px;
+            bottom: 180px;
+            width: 550px;
         }
 
         .bar {

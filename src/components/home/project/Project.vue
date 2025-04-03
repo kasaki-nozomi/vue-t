@@ -1,5 +1,5 @@
 <template>
-    <div class="project-item">
+    <div class="project-item" :class="{ pc: store.pc }">
         <div class="project-content">
             <div class="project-image" @click="goProject">
                 <img :src="project.image" />
@@ -29,30 +29,77 @@ function goProject() {
 </script>
 
 <style lang="scss" scoped>
+$scale: 1.32;
+
 .project-item {
-    width: 100%;
+    position: relative;
+    width: 312px;
+    height: 300px;
     filter: brightness(0.8);
     transition: all 0.2s ease;
     @include flex-center();
 
-    &:hover {
-        filter: brightness(1.2);
+    &.pc {
+        &:hover {
+            width: calc(312px * $scale);
+            filter: brightness(1.2);
+
+            .project-content {
+                width: calc(300px * $scale);
+                height: calc(300px * $scale);
+
+                .project-image {
+                    width: calc(300px * $scale);
+                    height: calc(300px * $scale);
+
+                    >img {
+                        width: calc(300px * $scale);
+                        height: calc(300px * $scale);
+                        border-radius: 6px;
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 199%;
+                        height: 199%;
+                        border-radius: 12px;
+                        border: 2px solid rgba(255, 255, 255, 0.4);
+                        transform: scale(0.5);
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                    }
+                }
+
+                .project-info {
+                    margin-top: calc(300px * $scale);
+                    transform: scale($scale);
+                }
+            }
+        }
     }
 
     .project-content {
+        position: absolute;
+        width: 300px;
+        height: 300px;
         pointer-events: auto;
+        transition: all 0.2s ease;
 
         .project-image {
-            position: relative;
+            position: absolute;
             width: 300px;
             height: 300px;
+            transition: all 0.2s ease;
             @include flex-center();
 
             >img {
+                position: absolute;
                 width: 300px;
                 height: 300px;
                 border-radius: 5px;
                 cursor: pointer;
+                transition: all 0.2s ease;
             }
 
             &::after {
@@ -64,12 +111,17 @@ function goProject() {
                 border: 1px solid rgba(255, 255, 255, 0.25);
                 transform: scale(0.5);
                 cursor: pointer;
+                transition: all 0.2s ease;
             }
         }
 
         .project-info {
-            margin-top: 12px;
-            padding-bottom: 12px;
+            margin-top: 300px;
+            margin-left: 2px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            transition: all 0.2s ease;
+            transform-origin: left top;
             @include flex-center(center, normal);
 
             .info-point {
@@ -90,7 +142,7 @@ function goProject() {
                     content: '';
                     position: absolute;
                     left: 0;
-                    bottom: -6px;
+                    bottom: -4px;
                     width: 0;
                     height: 1px;
                     background-color: rgba(120, 150, 255, 0.8);
@@ -107,9 +159,8 @@ function goProject() {
 
 @include setPhoneContent {
     .project-item {
-        width: 100%;
-        filter: brightness(0.8);
-        transition: all 0.2s ease;
+        width: 798px;
+        height: 768px;
         @include flex-center();
 
         &:hover {
@@ -117,19 +168,17 @@ function goProject() {
         }
 
         .project-content {
-            pointer-events: auto;
+            width: 768px;
+            height: 768px;
 
             .project-image {
-                position: relative;
                 width: 768px;
                 height: 768px;
-                @include flex-center();
 
                 >img {
                     width: 768px;
                     height: 768px;
                     border-radius: 5px;
-                    cursor: pointer;
                 }
 
                 &::after {
@@ -145,9 +194,10 @@ function goProject() {
             }
 
             .project-info {
-                margin-top: 32px;
+                margin-top: 768px;
+                margin-left: 10px;
+                padding-top: 20px;
                 padding-bottom: 20px;
-                @include flex-center(center, normal);
 
                 .info-point {
                     width: 25px;

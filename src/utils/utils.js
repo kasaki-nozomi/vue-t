@@ -22,6 +22,12 @@ export const getUADevice = () => {
     return parser.device.model
 }
 
+export const getUAOS = () => {
+    const ua = navigator.userAgent
+    const parser = UAParser(ua)
+    return parser.os.name
+}
+
 export const timeFormat = (seconds) => {
     const days = Math.floor(seconds / (24 * 60 * 60))
     const hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60))
