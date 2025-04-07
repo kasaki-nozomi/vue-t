@@ -31,7 +31,9 @@ function tabClick(symbol) {
 .tab-item {
     width: 320PX;
     height: 100%;
+    max-height: calc(100vh - 90PX);
     padding: 36PX 36PX 30PX 36PX;
+    overflow-y: auto;
 
     &.tab-item-odds {
         background: rgba(30, 30, 30, 1);

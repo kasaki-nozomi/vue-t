@@ -1,5 +1,6 @@
 import { useStore } from '@/store'
 
+export const ratioPC = 1920 / 1080
 export const ratio = 0.5
 
 const setRem = () => {

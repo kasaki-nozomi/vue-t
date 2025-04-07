@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from '@/store'
 
@@ -29,7 +28,7 @@ function goProject() {
 </script>
 
 <style lang="scss" scoped>
-$scale: 1.32;
+$scale: 1.3;
 
 .project-item {
     position: relative;
@@ -159,7 +158,7 @@ $scale: 1.32;
 
 @include setPhoneContent {
     .project-item {
-        width: 798px;
+        width: 808px;
         height: 768px;
         @include flex-center();
 
@@ -217,7 +216,7 @@ $scale: 1.32;
                         content: '';
                         position: absolute;
                         left: 0;
-                        bottom: -10px;
+                        bottom: -6px;
                         width: 0;
                         height: 2px;
                         background-color: rgba(120, 150, 255, 0.8);

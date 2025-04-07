@@ -1,9 +1,10 @@
 <template>
     <div class="content">
         <div v-if="store.project?.logo" class="content-logo">
-            <img :src="store.project?.logo" />
+            <img :src="store.project?.logo" :class="store.project.symbol" />
         </div>
         <div class="content-title">{{ store.project?.title }}</div>
+        <div v-if="store.project?.titleEN" class="content-title-en">{{ store.project?.titleEN }}</div>
         <div v-if="store.project?.description" class="content-description">
             {{ store.project?.description }}
         </div>
@@ -87,6 +88,7 @@ onMounted(() => {
 
 <style lang="scss">
 .el-image-viewer__wrapper {
+    z-index: 10 !important;
     top: 90PX;
     outline: unset;
 }
@@ -116,15 +118,49 @@ onMounted(() => {
     }
 
     .content-logo {
+        margin-top: 20px;
+
         >img {
-            width: 280px;
+            width: 220px;
+            margin-bottom: 40px;
+        }
+
+        .shanhaibian {
+            width: 100px;
+            margin-bottom: 0;
+        }
+
+        .yaomu {
+            width: 180px;
+        }
+
+        .xuanran {
+            width: 260px;
+            margin-bottom: 0;
+        }
+
+        .wukong {
+            width: 300px;
+        }
+
+        .shuohui {
+            width: 440px;
+            margin: -20px 0;
         }
     }
 
     .content-title {
         line-height: 48px;
-        font-size: 40px;
+        font-size: 34px;
         letter-spacing: 1px;
+    }
+
+    .content-title-en {
+        margin-top: 24px;
+        line-height: 40px;
+        font-size: 28px;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.9);
     }
 
     .content-description {
@@ -210,14 +246,49 @@ onMounted(() => {
         }
 
         .content-logo {
+            margin-top: 80px;
+
             >img {
+                width: 550px;
+                margin-bottom: 80px;
+            }
+
+            .shanhaibian {
+                width: 220px;
+                margin-bottom: 0;
+            }
+
+            .yaomu {
+                width: 380px;
+            }
+
+            .xuanran {
                 width: 600px;
+                margin: -20px 0;
+            }
+
+            .wukong {
+                width: 700px;
+                margin-bottom: 20px;
+            }
+
+            .shuohui {
+                width: 840px;
+                margin: 0 0 -40px 0;
             }
         }
 
         .content-title {
             line-height: 120px;
-            font-size: 100px;
+            font-size: 80px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .content-title-en {
+            margin-top: 60px;
+            line-height: 100px;
+            font-size: 66px;
             letter-spacing: 2px;
             font-weight: bold;
         }

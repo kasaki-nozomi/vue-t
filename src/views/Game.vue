@@ -1,9 +1,9 @@
 <template>
-    <div ref="gameWrapper" class="game-wrapper" :style="{ backgroundImage: `url(${store.ratio <= 1 ? List[current].coverPhone : List[current].cover})` }">
+    <div ref="gameWrapper" class="game-wrapper" :class="{ 'have-header': store.ratio > 1 && !store.pad }" :style="{ backgroundImage: `url(${store.ratio <= 1 ? List[current].coverPhone : List[current].cover})` }">
         <div class="game-container">
             <Particle />
             <Transition name="game-fade" mode="out-in">
-                <div v-if="store.ratio > 1" class="game-content-pc" :class="store.ratio > ratio ? 'horizontal' : 'portrait'">
+                <div v-if="store.ratio > 1" class="game-content-pc" :class="store.ratio > ratioPC ? 'horizontal' : 'portrait'">
                     <div class="game-header">
                         <img :src="music ? musicOpen : musicClose" @click="music = !music" />
                         <img :src="share" />
@@ -67,10 +67,10 @@ import Notice_Phone from '@/components/game/phone/ζNotice.vue'
 
 import { ref, onMounted } from 'vue'
 import { useStore } from '@/store'
+import { ratioPC } from '@/utils/resize'
 import List, { logo } from '@/resource/game'
 
 const store = useStore()
-const ratio = 1920 / 1080
 
 const gameWrapper = ref(null)
 
@@ -174,13 +174,28 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .game-wrapper {
+    position: fixed;
+    top: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     transition: all 0.4s ease;
-    color: white;
+    color: white;    
+
+    &.have-header {
+        height: calc(100vh - 90PX);
+        top: 90PX;
+
+        @include setPadContent {
+            top: 72PX;
+        }
+
+        @include setPhoneContent {
+            top: 300px;
+        }
+    }
 
     .game-container {
         position: relative;
@@ -224,7 +239,7 @@ onMounted(() => {
 
                 .game-main {
                     width: 177vh;
-                    height: 100vh;
+                    height: 100%;
                 }
             }
 

@@ -1,7 +1,7 @@
 <template>
     <div class="aside">
         <img class="logo" :src="logo" />
-        <div class="aside-list">
+        <div class="aside-list" :class="{ 'aside-have-header': store.ratio > ratioPC && !store.pad }">
             <div class="aside-item" :class="{ active: current === index }" v-for="(aside, index) in Asides" :key="aside.name" @click="emit('updateCurrent', index)">
                 <img class="mask" :src="mask" v-show="current === index" />
                 <div class="icon">
@@ -16,9 +16,13 @@
 
 <script setup>
 import Asides, { logo } from '@/resource/game'
+import { useStore } from '@/store'
+import { ratioPC } from '@/utils/resize'
 
 const { current } = defineProps(['current'])
 const emit = defineEmits(['updateCurrent'])
+
+const store = useStore()
 
 const mask = new URL('@/assets/images/game/aside-mask.png', import.meta.url).href
 </script>
@@ -36,6 +40,10 @@ const mask = new URL('@/assets/images/game/aside-mask.png', import.meta.url).hre
     .aside-list {
         width: auto-value(180);
         margin: auto-value(100) 0 auto-value(160) 0;
+
+        &.aside-have-header {
+            margin: auto-value(80) 0 auto-value(100) 0;
+        }
 
         .aside-item {
             position: relative;

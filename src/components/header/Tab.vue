@@ -48,6 +48,8 @@ const TabList = {
 
 <style lang="scss" scoped>
 .tab {
+    // max-height: calc(100vh - 90PX);
+    // overflow-y: auto;
     background: rgba(20, 20, 20, 1);
 
     .tab-list {

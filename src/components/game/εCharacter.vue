@@ -10,7 +10,7 @@
                         <div class="character-item" v-show="current === index">
                             <img class="background" :src="item.background" />
                             <img class="mask" :src="mask" /> 
-                            <img class="image" :class="item.name"  :src="item.image" />
+                            <img class="image" :class="[item.name, { 'image-have-header': store.ratio > ratioPC && !store.pad }]"  :src="item.image" />
                             <img class="symbol" :class="item.name" :src="item.symbol" />
                             <img class="fullname" :class="item.name" :src="item.fullname" />
                             <img class="info" :src="info" @click="popup = true" />
@@ -56,8 +56,12 @@
 import Popup from '@/components/game/components/Popup.vue'
 
 import { ref } from 'vue'
+import { useStore } from '@/store'
 import { left, right, info } from '@/resource/game'
+import { ratioPC } from '@/utils/resize'
 import character from '@/resource/game/character'
+
+const store = useStore()
 
 const current = ref(0)
 
@@ -156,6 +160,11 @@ function goIndex(index) {
 
                 .image {
                     position: absolute;
+
+                    &.image-have-header {
+                        transform: scale(0.85);
+                        transform-origin: center bottom;
+                    }
 
                     &.jing {
                         bottom: auto-value(-160);

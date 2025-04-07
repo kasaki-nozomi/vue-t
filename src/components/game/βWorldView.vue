@@ -87,10 +87,12 @@ function goIndex(index) {
 .worldview {
     position: relative;
     width: auto-value(1440);
+    height: 100%;
     @include flex-center();
 
     .worldview-content {
         position: relative;
+        height: 100%;
         @include flex-center();
 
         .left {
@@ -116,7 +118,7 @@ function goIndex(index) {
         .worldview-list {
             position: relative;
             width: auto-value(1000);
-            height: auto-value(1000);
+            height: 100%;
             pointer-events: none;
             @include flex-center();
 

@@ -75,7 +75,7 @@ function tabClick(link) {
 
 function tabClickPC(tab) {
     tabShow.value = false
-    if (tab === 'header') return elscroll.scrollTo({ top: 0, behavior: 'smooth' })
+    if (tab === 'header') return router.push({ path: '/' })
     if (route.name !== 'home' && tab === 'company') {
         router.push({ path: '/', query: { position: 'company' } })
     }

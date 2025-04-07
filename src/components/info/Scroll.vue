@@ -45,7 +45,7 @@ const props = defineProps({ scroll: { type: Array, required: true } })
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                height: 400px;
+                height: 360px;
                 background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
             }
         }
@@ -78,6 +78,16 @@ const props = defineProps({ scroll: { type: Array, required: true } })
 }
 
 @include setPhoneContent {
+    .scroll {
+        .scroll-box {
+            .banner {
+                .mask {
+                    height: 200px;
+                }
+            }
+        }
+    }
+
     :deep(.swiper-button-prev:after) {
         margin-left: -20px;
         font-size: 80px;

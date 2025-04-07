@@ -12,6 +12,7 @@
                                     ? 'contain'
                                     : 'cover'
                         }">
+                            <img class="image-mask" :src="item.phone.mask" /> 
                             <img class="mask" :src="mask" /> 
                             <img class="image" :class="item.name"  :src="item.phone.image" />
                             <img class="symbol" :class="item.name" :src="item.symbol" />
@@ -123,6 +124,11 @@ function goIndex(index) {
                 background-repeat: no-repeat;
                 background-position: center center;
                 @include flex-center();
+
+                .image-mask {
+                    position: absolute;
+                    width: 1200rem;
+                }
 
                 .mask {
                     position: absolute;

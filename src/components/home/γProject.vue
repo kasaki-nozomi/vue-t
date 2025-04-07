@@ -4,12 +4,12 @@
             <img :src="title" />
         </div>
         <div class="project-list">
-            <div class="project-list-box" :class="[direction, { stop }]" ref="container" @mouseenter="stop = true" @mouseleave="stop = false">
+            <div class="project-list-box" :class="[direction, { stop }]" ref="container">
                 <div v-for="project of Projects" :key="project.symbol">
-                    <Project :project="project"></Project>
+                    <Project :project="project" @mouseenter="stop = true" @mouseleave="stop = false"></Project>
                 </div>
                 <div v-for="project of Projects" :key="`${project.symbol}-repeat`">
-                    <Project :project="project"></Project>
+                    <Project :project="project" @mouseenter="stop = true" @mouseleave="stop = false"></Project>
                 </div>
             </div>
             <!-- <div class="project-scroll">
@@ -81,7 +81,7 @@ onMounted(() => {
             width: max-content;
             flex-wrap: nowrap;
             transition: all 0.2s ease;
-            animation: scroll 20s infinite linear forwards;
+            animation: scroll 40s infinite linear forwards;
             @include flex-center();
 
             &.stop {
@@ -188,11 +188,15 @@ onMounted(() => {
 
         .project-list {
             position: relative;
-            height: calc(1800px / 2);
+            // height: calc(1800px / 2);
+            height: 1800px;
             margin-top: 180px;
 
             .project-list-box {
-                @include flex-center(normal, normal);
+                height: 1800px;
+                flex-wrap: wrap;
+                animation-duration: 20s;
+                @include flex-center(normal, normal, column);
 
                 >div:nth-of-type(even) {
                     margin-top: 0;
@@ -200,6 +204,7 @@ onMounted(() => {
 
                 >div:nth-of-type(odd) {
                     margin-top: 0;
+                    margin-bottom: 130px;
                 }
             }
 

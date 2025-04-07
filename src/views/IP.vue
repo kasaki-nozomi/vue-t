@@ -117,7 +117,7 @@ const project = new URL('@/assets/images/project.svg', import.meta.url).href
                 position: absolute;
                 left: 200px;
                 bottom: 100px;
-                width: 1100px;
+                width: 750px;
             }
 
             .bar {
