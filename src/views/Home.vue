@@ -53,9 +53,9 @@ onMounted(() => {
     })
 
     const position = route.query?.position
-    if (position === 'company') {
+    if (position === 'home-box' || position === 'footer') {
         window.history.replaceState(null, null, window.location.href.split('?')[0])
-        elscroll.scrollTo({ top: document.getElementById('home-box').offsetTop, behavior: 'smooth' })
+        elscroll.scrollTo({ top: document.getElementById(position).offsetTop, behavior: 'smooth' })
     } else {
         elscroll.scrollTop = 0
     }

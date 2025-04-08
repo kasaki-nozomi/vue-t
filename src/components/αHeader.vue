@@ -75,9 +75,14 @@ function tabClick(link) {
 
 function tabClickPC(tab) {
     tabShow.value = false
-    if (tab === 'header') return router.push({ path: '/' })
-    if (route.name !== 'home' && tab === 'company') {
-        router.push({ path: '/', query: { position: 'company' } })
+    if (tab === 'header') {
+        return router.push({ path: '/' })
+    }
+    if (route.name !== 'home' && tab === 'home-box') {
+        return router.push({ path: '/', query: { position: 'home-box' } })
+    }
+    if (route.name === 'game' && tab === 'footer') {
+        return router.push({ path: '/', query: { position: 'footer' } })
     }
     elscroll.scrollTo({ top: document.getElementById(tab).offsetTop, behavior: 'smooth' })
 }

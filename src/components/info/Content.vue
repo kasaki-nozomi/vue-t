@@ -156,14 +156,15 @@ onMounted(() => {
     }
 
     .content-title-en {
-        margin-top: 24px;
-        line-height: 40px;
-        font-size: 28px;
+        margin-top: 10px;
+        line-height: 28px;
+        font-size: 24px;
         letter-spacing: 1px;
         color: rgba(255, 255, 255, 0.9);
     }
 
     .content-description {
+        margin-top: 50px;
         line-height: 32px;
         font-size: 16px;
         text-align: justify;
@@ -286,20 +287,21 @@ onMounted(() => {
         }
 
         .content-title-en {
-            margin-top: 60px;
-            line-height: 100px;
+            margin-top: 25px;
+            line-height: 80px;
             font-size: 66px;
             letter-spacing: 2px;
             font-weight: bold;
         }
 
         .content-description {
+            margin-top: 125px;
             line-height: 100px;
             font-size: 55px;
         }
 
         .content-section {
-            margin-top: 120px;
+            margin-top: 200px;
 
             img {
                 height: 184px;
@@ -307,7 +309,7 @@ onMounted(() => {
         }
 
         .content-images {
-            margin-top: 140px;
+            margin-top: 180px;
 
             .image {
                 margin-top: 24px;

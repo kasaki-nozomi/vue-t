@@ -5,7 +5,7 @@
         </Transition>
         <el-scrollbar>
             <router-view v-slot="{ Component, route }">
-                <Transition name="route" mode="out-in">
+                <Transition name="route" mode="out-in" appear>
                     <component :is="Component" :key="route.fullPath"></component>
                 </Transition>
                 <Transition name="footer" mode="out-in" appear>
