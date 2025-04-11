@@ -10,7 +10,7 @@
                         <div class="character-item" v-show="current === index">
                             <img class="background" :src="item.background" />
                             <img class="mask" :src="mask" /> 
-                            <img class="image" :class="[item.name, { 'image-have-header': store.ratio > ratioPC && !store.pad }]"  :src="item.image" />
+                            <img class="image" :class="[item.name]" :style="{ transform: `scale(${store.ratio > ratioPC && !store.pad ? ((store.height - 80) / store.height) : 1})` }" :src="item.image" />
                             <img class="symbol" :class="item.name" :src="item.symbol" />
                             <img class="fullname" :class="item.name" :src="item.fullname" />
                             <img class="info" :src="info" @click="popup = true" />
@@ -160,21 +160,17 @@ function goIndex(index) {
 
                 .image {
                     position: absolute;
-
-                    &.image-have-header {
-                        transform: scale(0.85);
-                        transform-origin: center bottom;
-                    }
+                    transform-origin: center bottom;
 
                     &.jing {
                         bottom: auto-value(-160);
-                        width: auto-value(1020);
+                        width: auto-value(1060);
                         margin-right: auto-value(100);
                     }
 
                     &.wyatt {
                         bottom: auto-value(-160);
-                        width: auto-value(1040);
+                        width: auto-value(1060);
                         margin-right: auto-value(120);
                     }
 
