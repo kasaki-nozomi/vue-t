@@ -85,12 +85,12 @@ export default [
         title: Project.DuanPian.title,
         image: new URL('@/assets/images/home/project/list/14-duanpian.jpg', import.meta.url).href
     },
-    {
-        id: 15,
-        symbol: Project.TengXun.symbol,
-        title: Project.TengXun.title,
-        image: new URL('@/assets/images/home/project/list/15-tengxun.jpg', import.meta.url).href
-    },
+    // {
+    //     id: 15,
+    //     symbol: Project.TengXun.symbol,
+    //     title: Project.TengXun.title,
+    //     image: new URL('@/assets/images/home/project/list/15-tengxun.jpg', import.meta.url).href
+    // },
     {
         id: 16,
         symbol: Project.MaiYa.symbol,
