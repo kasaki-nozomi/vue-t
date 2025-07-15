@@ -22,13 +22,13 @@ export default [
         image: new URL('@/assets/images/business/list/03-tiangong/cover.jpg', import.meta.url).href,
         list: () => import('@/resource/business/list/03-tiangong')
     },
-    {
-        id: 4,
-        symbol: Project.MiJing.symbol,
-        title: Project.MiJing.title,
-        image: new URL('@/assets/images/business/list/04-mijing/cover.jpg', import.meta.url).href,
-        list: () => import('@/resource/business/list/04-mijing')
-    },
+    // {
+    //     id: 4,
+    //     symbol: Project.MiJing.symbol,
+    //     title: Project.MiJing.title,
+    //     image: new URL('@/assets/images/business/list/04-mijing/cover.jpg', import.meta.url).href,
+    //     list: () => import('@/resource/business/list/04-mijing')
+    // },
     {
         id: 5,
         symbol: Project.DaYe.symbol,

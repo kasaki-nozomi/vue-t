@@ -73,12 +73,12 @@ export default [
         title: Project.TianGong.title,
         image: new URL('@/assets/images/home/project/list/12-tiangong.jpg', import.meta.url).href
     },
-    {
-        id: 13,
-        symbol: Project.MiJing.symbol,
-        title: Project.MiJing.title,
-        image: new URL('@/assets/images/home/project/list/13-mijing.jpg', import.meta.url).href
-    },
+    // {
+    //     id: 13,
+    //     symbol: Project.MiJing.symbol,
+    //     title: Project.MiJing.title,
+    //     image: new URL('@/assets/images/home/project/list/13-mijing.jpg', import.meta.url).href
+    // },
     {
         id: 14,
         symbol: Project.DuanPian.symbol,
