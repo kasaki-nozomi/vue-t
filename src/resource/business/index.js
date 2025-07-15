@@ -50,13 +50,13 @@ export default [
         image: new URL('@/assets/images/business/list/07-shuaitu/cover.jpg', import.meta.url).href,
         list: () => import('@/resource/business/list/07-shuaitu')
     },
-    {
-        id: 8,
-        symbol: Project.TengXun.symbol,
-        title: Project.TengXun.title,
-        image: new URL('@/assets/images/business/list/08-tengxun/cover.jpg', import.meta.url).href,
-        list: () => import('@/resource/business/list/08-tengxun')
-    },
+    // {
+    //     id: 8,
+    //     symbol: Project.TengXun.symbol,
+    //     title: Project.TengXun.title,
+    //     image: new URL('@/assets/images/business/list/08-tengxun/cover.jpg', import.meta.url).href,
+    //     list: () => import('@/resource/business/list/08-tengxun')
+    // },
     {
         id: 9,
         symbol: Project.ZhenXi.symbol,
