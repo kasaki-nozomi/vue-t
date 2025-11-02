@@ -66,4 +66,3 @@ export default defineConfig(({ _, mode }) => {
     }
     return config
 })
-
